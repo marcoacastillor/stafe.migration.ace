@@ -1,0 +1,125 @@
+BROKER SCHEMA Adapters
+
+-- declaración global de namespace
+DECLARE ns NAMESPACE 'http://co/org/fsfb/fmwk';
+DECLARE hl7 NAMESPACE 'urn:hl7-org:v2xml';
+
+---------------------------------------------------------------
+--	MODULE FSFB_LISAdapterMQ_Involve
+--	Este módulo adecua el mensaje entrante, proveniente de las
+--	colas MQ de LIS, al formato utilizado por el fmwk.
+--	Operaciones : ORM_OUT, ORU
+---------------------------------------------------------------
+CREATE COMPUTE MODULE FSFB_LISAdapterMQ_Involve
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- referencia al mensaje de entrada (hl7)
+		DECLARE inputHL7	
+			REFERENCE TO InputRoot.MRM.hl7:MSH;
+		
+		-- declaración de constantes	
+		DECLARE operation 	CHARACTER InputRoot.MRM.hl7:MSH.hl7:"MSH.9.MessageType".hl7:"MSG.1";
+		DECLARE system		CHARACTER 'LIS';
+		-- propiedades para convertir a BLOB
+		DECLARE parser		CHARACTER 'MRM';
+		DECLARE msgset		CHARACTER 'HL7v25';
+		DECLARE msgtype		CHARACTER 'HL7';
+		DECLARE msgformat	CHARACTER 'HL7';
+		DECLARE msgblob		BLOB;
+
+		-- condicional para el servicio ORM_OUT
+		IF operation = 'ORM' THEN
+			SET operation = 'ORM_OUT';
+		END IF;
+		
+		-- construcción del mensaje de salida (xml)
+		SET OutputRoot.Properties.MessageSet		= 'FSFB_MessageSet';
+		
+		-- construcción de cabecera MQMD
+		SET OutputRoot.MQMD							= InputRoot.MQMD;
+		
+		CREATE FIELD OutputRoot.XMLNSC.ns:FSFB;
+		DECLARE fsfb
+			REFERENCE TO OutputRoot.XMLNSC.ns:FSFB;
+		
+		-- crear header del mensaje
+		CALL UTILS.createHeader(fsfb, operation, system,'true','true');
+		SET fsfb.Header.messagecontrolid = InputRoot.MRM.hl7:MSH.hl7:"MSH.10.MessageControlID";
+		
+		-- codificar el mensaje original
+
+		CALL UTILS.encodemsg(msgtype, msgset, msgformat, InputRoot.MRM, msgblob); 
+	
+		-- crear body del mensaje
+		CALL UTILS.createBody(fsfb, msgblob, parser, msgset, msgtype, msgformat);
+		
+		RETURN TRUE;
+	END;
+	
+END MODULE;
+
+---------------------------------------------------------------
+--	MODULE FSFB_LISAdapterMQ_Devolve
+--	Este módulo extrae el mensaje de respuesta que se entrega 
+--	a la cola MQ de LIS que se dispuso para tal fin
+---------------------------------------------------------------
+CREATE COMPUTE MODULE FSFB_LISAdapterMQ_Devolve
+	DECLARE LeadingMLLPBytes EXTERNAL CHARACTER '0B';
+	DECLARE TrailingMLLPBytes EXTERNAL CHARACTER '1C0D';
+	DECLARE AddLeadingMLLPBytes EXTERNAL BOOLEAN TRUE;
+	DECLARE AddTrailingMLLPBytes EXTERNAL BOOLEAN TRUE;
+	
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE refInp REFERENCE TO InputRoot;
+		MOVE refInp LASTCHILD;
+		MOVE refInp LASTCHILD;
+		MOVE refInp LASTCHILD;
+		
+		/*******************************************************/
+		SET OutputRoot.BLOB.BLOB	= CAST(refInp.data AS BLOB);
+		DECLARE refInputBlob REFERENCE TO OutputRoot.BLOB.BLOB;
+		
+		DECLARE LeadingMLLPBLOB BLOB CAST ( LeadingMLLPBytes AS BLOB );
+		DECLARE TrailingMLLPBLOB BLOB CAST ( TrailingMLLPBytes AS BLOB );
+		
+		-- If AddLeadingMLLPBytes is enabled then add LeadingMLLPBytes		
+		IF ( AddLeadingMLLPBytes ) THEN
+			-- Convert LeadingMLLPBytes to its BLOB format
+			DECLARE LeadingMLLPBLOB BLOB CAST ( LeadingMLLPBytes AS BLOB );
+			-- Checking whether the message has Leading MLLP Bytes
+			-- If yes then propagate the message to 'Out' terminal, unchanged
+			DECLARE LeadingPosition INTEGER;
+			SET	LeadingPosition = POSITION ( LeadingMLLPBLOB IN refInputBlob ); 
+			
+			-- Message does not contain LeadingMLLPBytes hence adding the same
+			SET OutputRoot.BLOB.BLOB = LeadingMLLPBLOB || OutputRoot.BLOB.BLOB;
+	        
+	    END IF;
+		
+		-- If AddTrailingMLLPBytes is enabled then add TrailingMLLPBytes	
+		IF ( AddTrailingMLLPBytes ) THEN
+			-- Convert TrailingMLLPBytes to its BLOB format
+			DECLARE TrailingMLLPBLOB BLOB CAST ( TrailingMLLPBytes AS BLOB );
+			-- Checking whether the message has Trailing MLLP Bytes
+			-- If yes then propagate the message to 'Out' terminal, unchanged
+			DECLARE TrailingPosition INTEGER POSITION ( TrailingMLLPBLOB IN refInputBlob );
+			DECLARE TrailingBytesLength INTEGER LENGTH ( TrailingMLLPBLOB );
+			DECLARE MessageLength INTEGER LENGTH ( refInputBlob );
+			DECLARE ActualPosition INTEGER ( MessageLength - TrailingBytesLength ) + 1;
+						
+			-- Message does not contain TrailingMLLPBytes hence adding the same
+			SET OutputRoot.BLOB.BLOB =  OutputRoot.BLOB.BLOB || TrailingMLLPBLOB;
+	        
+		END IF;
+		
+		DECLARE refMQRFH2 REFERENCE TO InputRoot.MQRFH2;
+		
+		--Tomar identificador para responder a cliente
+		SET InputLocalEnvironment.TCPIP.Input.ConnectionDetails.Id = refMQRFH2.usr.response.TCP.Id;
+		SET InputLocalEnvironment.TCPIP.Input.ConnectionDetails.ReplyId = refMQRFH2.usr.response.TCP.ReplyId;	
+		
+		RETURN TRUE;
+	END;
+
+END MODULE;

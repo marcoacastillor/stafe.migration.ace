@@ -1,0 +1,36 @@
+CREATE COMPUTE MODULE CreateHabeas_CmpValResponse2
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE refInp REFERENCE TO InputRoot.ComIbmAggregateReplyBody;
+		
+		SET OutputRoot.Properties.Encoding			= 819;
+		SET OutputRoot.Properties.CodedCharSetId	= 1208;
+		
+		SET OutputRoot.MQMD 	= refInp.AggReqConfig.MQMD;
+		SET OutputRoot.MQRFH2 	= refInp.AggReqConfig.MQRFH2;
+		
+		DECLARE refOperation REFERENCE TO refInp.AggReqCreate;
+		MOVE refOperation LASTCHILD;
+		MOVE refOperation LASTCHILD;
+		
+		IF CAST(refOperation.transactionInfo.code AS INTEGER) = 0 THEN
+			--Enviar mensaje original 
+			DECLARE dataMsg ROW;
+			CREATE LASTCHILD OF dataMsg DOMAIN('JSON') PARSE(refInp.AggReqConfig.MQRFH2.usr.message ccsid 1208);
+			
+			DECLARE refMsg REFERENCE TO dataMsg;
+			MOVE refMsg LASTCHILD;
+			MOVE refMsg LASTCHILD;
+			
+			SET refMsg.patient.personalInfo.patientNumber 	= refOperation.patient.patientNumber;
+			SET OutputRoot.JSON = dataMsg.JSON;
+			RETURN TRUE;
+
+		END IF;
+		
+		--Responder por error
+		SET OutputRoot.JSON = refInp.AggReqCreate.JSON;
+		PROPAGATE TO TERMINAL 'out1' DELETE NONE;
+		RETURN FALSE;
+	END;
+END MODULE;

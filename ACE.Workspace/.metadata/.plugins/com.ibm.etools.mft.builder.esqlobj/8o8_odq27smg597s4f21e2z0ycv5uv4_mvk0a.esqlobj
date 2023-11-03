@@ -1,0 +1,85 @@
+CREATE COMPUTE MODULE Insert_AGFA_ADT_InsertAGFA
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE NM_COMPONENT CHARACTER 'CREATE_AGFA_ADT';
+		DECLARE SERVICE_RQ_TRACE INTEGER 2;
+		
+		/******************************************************/
+		-- Copiar cabeceras de mensaje
+		/******************************************************/
+		SET OutputRoot.MQMD 	= InputRoot.MQMD;
+		SET OutputRoot.MQRFH2 	= InputRoot.MQRFH2;
+		
+		/******************************************************/
+		-- Declarar referencias
+		/******************************************************/
+		DECLARE refEnv REFERENCE TO Environment;
+		DECLARE refMQRFH2 REFERENCE TO OutputRoot.MQRFH2;
+		DECLARE refInpRoot REFERENCE TO OutputRoot;
+		
+		/******************************************************/
+		-- Setear información para auditoría y headers
+		/******************************************************/
+		CALL common.procedures.utils.createMsgLogs(refMQRFH2, SERVICE_RQ_TRACE, NM_COMPONENT);
+		CALL common.procedures.utils.saveMQM(refInpRoot, refEnv);
+		
+		/******************************************************/
+		-- Declarar referencia a objeto de entrada
+		/******************************************************/
+		DECLARE sql CHARACTER '';
+		DECLARE refInp REFERENCE TO InputRoot.JSON;
+		MOVE refInp LASTCHILD;
+		
+		DECLARE PID_DOD DATE;
+		DECLARE EVN_RECDATE TIMESTAMP;
+		DECLARE PID_ID2 DECIMAL;
+		DECLARE PID_DOB, MSH_ID,MSH_STATUS, EVN_TYPECODE,PID_ID,PID_LNAMEF,PID_LNAMEM,PID_FNAME,PID_SEX,PID_STREET,PID_REGION,PID_PHONE,PID_MARITSTAT,PID_NATIONALITY,MRG_OLDPID,PV1_STATUS,PV1_LOCATION,PV1_ROOM,PV1_BED,PV1_ADMTYPE,PV1_ATTDOC,PV1_VISITNR,PV1_ADMITDATE,PV1_DISCHARGEDATE,ORC_04_QP_REQ_ID CHARACTER '';
+		
+		SET sql = 'INSERT INTO ADMSALUD.AGFA_ADT (MSH_ID,MSH_STATUS,EVN_TYPECODE,EVN_RECDATE,PID_ID,PID_ID2,PID_LNAMEF,PID_LNAMEM,PID_FNAME,PID_DOB,PID_SEX,PID_STREET,PID_REGION,PID_PHONE,PID_MARITSTAT,PID_NATIONALITY,PID_DOD,MRG_OLDPID,PV1_STATUS,PV1_LOCATION,PV1_ROOM,PV1_BED,PV1_ADMTYPE,PV1_ATTDOC,PV1_VISITNR,PV1_ADMITDATE,PV1_DISCHARGEDATE,ORC_04_QP_REQ_ID) 
+		VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+		
+		SET MSH_ID			= NULL;
+		SET MSH_STATUS		= 'N';
+		SET EVN_TYPECODE	= refInp.patient.personalInfo.env_typecode;
+		SET EVN_RECDATE		= CURRENT_TIMESTAMP;
+		SET PID_ID			= refInp.patient.personalInfo.idType || refInp.patient.personalInfo.idNumber;
+		SET PID_ID2			= CAST(refInp.patient.personalInfo.patientNumber AS DECIMAL);
+		SET PID_LNAMEF		= UPPER(refInp.patient.personalInfo.lastName);
+		SET PID_LNAMEM		= UPPER(refInp.patient.personalInfo.motherLastName);
+		SET PID_FNAME		= UPPER(refInp.patient.personalInfo.names);
+		SET PID_DOB			= com.common.utils.functions.getDateOraByJSON_yyyymmdd(refInp.patient.personalInfo.dateOfBirth);--'2020-08-26';
+		SET PID_SEX			= refInp.patient.personalInfo.gender;
+		SET PID_STREET		= UPPER(refInp.patient.contactInfo.address);
+		SET PID_REGION		= NULL;
+		SET PID_PHONE		= refInp.patient.contactInfo.phone;
+		SET PID_MARITSTAT	= refInp.patient.personalInfo.maritalStatus;
+		SET PID_NATIONALITY	= 'CO';
+		SET PID_DOD			= NULL;
+		SET MRG_OLDPID		= NULL;
+		SET PV1_STATUS		= 'O';
+		SET PV1_LOCATION	= NULL;
+		SET PV1_ROOM		= NULL;
+		SET PV1_BED			= NULL;
+		SET PV1_ADMTYPE		= NULL;
+		SET PV1_ATTDOC		= NULL;
+		SET PV1_VISITNR		= NULL;
+		SET PV1_ADMITDATE	= NULL;
+		SET PV1_DISCHARGEDATE	= NULL;
+		SET ORC_04_QP_REQ_ID	= NULL;
+		
+		PASSTHRU(sql,MSH_ID,MSH_STATUS,EVN_TYPECODE,EVN_RECDATE,PID_ID,PID_ID2,PID_LNAMEF,PID_LNAMEM,PID_FNAME,PID_DOB,PID_SEX,PID_STREET,PID_REGION,PID_PHONE,PID_MARITSTAT,PID_NATIONALITY,PID_DOD,MRG_OLDPID,PV1_STATUS,PV1_LOCATION,PV1_ROOM,PV1_BED,PV1_ADMTYPE,PV1_ATTDOC,PV1_VISITNR,PV1_ADMITDATE,PV1_DISCHARGEDATE,ORC_04_QP_REQ_ID);
+		
+		
+		/******************************************************/
+		-- Creación mensaje de respuesta
+		/******************************************************/
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
+		
+		SET refOut.transactionInfo.idTransaction	= refMQRFH2.usr.contextTransaction.IdTransaction;
+		SET refOut.transactionInfo.code				= '000';
+		SET refOut.transactionInfo.desc				= 'Transacción Exitosa';
+		
+		RETURN TRUE;
+	END;
+END MODULE;

@@ -1,0 +1,25 @@
+/*EATE FUNCTION Main() RETURNS BOOLE*/
+	BEGIN
+		DECLARE LeadingMLLPBytes CHARACTER '0b';
+		DECLARE TrailingMLLPBytes CHARACTER '1c0d';
+		
+		/******************************************************/
+		-- Declarar referencias
+		/******************************************************/
+		DECLARE refEnv REFERENCE TO Environment;
+		
+		/******************************************************/
+		-- Copiar identificadores de mensaje
+		/******************************************************/
+		SET OutputRoot.MQMD.MsgId 		= CAST(refEnv.Variables.headers.MQMD.MsgId AS BLOB);
+		SET OutputRoot.MQMD.CorrelId 	= CAST(refEnv.Variables.headers.MQMD.CorrelId AS BLOB);
+		SET OutputRoot.MQMD.ReplyToQ 	= TRIM(refEnv.Variables.headers.MQMD.ReplyToQ);
+		SET OutputRoot.MQRFH2 			= refEnv.Variables.headers.MQRFH2;
+		
+		--Copiar mensaje de respuesta de backend.
+		DECLARE msgTemp CHARACTER 'trama quemada de error timeout';
+		
+		
+		SET OutputRoot.BLOB.BLOB = CAST(msgTemp AS BLOB);
+		RETURN TRUE;
+	END;

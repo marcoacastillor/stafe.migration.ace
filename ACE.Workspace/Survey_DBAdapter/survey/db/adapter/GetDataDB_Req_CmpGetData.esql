@@ -1,0 +1,56 @@
+BROKER SCHEMA survey.db.adapter
+
+--definicion de constantes
+DECLARE FACADE_MQ CONSTANT CHARACTER '.FCD.MQ';
+DECLARE PREFIX_QUEUE CONSTANT CHARACTER 'MQINP.';
+DECLARE SUFIX_QUEUE CONSTANT CHARACTER '.REQ';
+
+CREATE COMPUTE MODULE GetDataDB_Req_CmpGetData
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		--Crear cabeceras MQ
+	    CREATE FIELD OutputRoot.Properties;
+	    CREATE FIELD OutputRoot.MQMD;
+	    CREATE FIELD OutputRoot.MQRFH2;
+	    
+	    --Crear mensaje XML para envío a fachada
+	    CREATE FIELD OutputRoot.XMLNSC.InvoiceReq;
+	    DECLARE refOut REFERENCE TO OutputRoot.XMLNSC.InvoiceReq;
+	    
+	    DECLARE sql CHARACTER 'SELECT  *  FROM USRPRUEBA.ENCUESTAS e WHERE e.STATUS = ? AND rownum <= ?  AND FECHA_EVENTO < CURRENT_DATE'; --WHERE e.STATUS  = ? AND rownum < ?
+	    
+	    DECLARE data ROW;
+	    SET data.results = PASSTHRU(sql,'N',10);
+	    
+	    FOR refData AS data.results[]  DO
+	      DECLARE nmProvider, backend CHARACTER '';
+	      
+	      -- Enviar mensaje a fachada..
+	      SET OutputRoot.MQRFH2.usr.response.DB.fct_id   			= refData.PACIENTE;
+	      SET OutputRoot.MQRFH2.usr.response.DB.fct_idd   			= refData.ID_PACIENTE;
+	      SET OutputRoot.MQRFH2.usr.response.BulkId					= refData.BULK_ID;
+		  SET OutputRoot.MQRFH2.usr.response.ChannelId				= refData.CHANNEL_ID;
+	      
+	      -- Definición de mensaje estándar para transacción
+	      DECLARE id_transaction CHARACTER CAST(CURRENT_GMTTIMESTAMP AS CHARACTER FORMAT 'YYYYmmddHHmmss')|| '_' || CAST(refData.PACIENTE AS CHARACTER);
+	      SET refOut.ContextTransaction.IdTransaction       = id_transaction;
+	      SET refOut.ContextTransaction.Operation         	= 'SEND';
+	      SET refOut.ContextTransaction.ApiName         	= 'SURVEY';
+	      SET refOut.ContextTransaction.Interface         	= 'SURVEY';
+	      
+	      --Enviar para configuración
+	      SET OutputRoot.MQRFH2.usr.contextTransaction.IdTransaction	= refData.PACIENTE;
+	      SET OutputRoot.MQRFH2.usr.contextTransaction.idService		= refOut.ContextTransaction.Interface || '.' || refOut.ContextTransaction.Operation;
+	      SET OutputRoot.MQRFH2.usr.contextTransaction.Operation		= refOut.ContextTransaction.Operation;
+	      SET OutputRoot.MQRFH2.usr.contextTransaction.ApiName			= refOut.ContextTransaction.ApiName;
+	      SET OutputRoot.MQRFH2.usr.contextTransaction.Interface		= refOut.ContextTransaction.Interface;
+	      
+	      -- Cuerpo del mensaje
+	      SET refOut.Message                    = refData;
+	      
+	      --Enviar mensaje a fachada y flujo que cambia estado de transacción.
+	      PROPAGATE TO TERMINAL 'out1' DELETE NONE;
+	    END FOR;
+	    RETURN FALSE;
+	END;
+END MODULE;

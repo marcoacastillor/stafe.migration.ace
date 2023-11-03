@@ -1,0 +1,10 @@
+CREATE COMPUTE MODULE UDProute
+	
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- mantener CorrelId
+		SET OutputRoot = InputRoot;
+		
+		SET OutputLocalEnvironment.Destination.RouterList.DestinationData[1].labelName = UDPformato;
+	END;
+END MODULE;

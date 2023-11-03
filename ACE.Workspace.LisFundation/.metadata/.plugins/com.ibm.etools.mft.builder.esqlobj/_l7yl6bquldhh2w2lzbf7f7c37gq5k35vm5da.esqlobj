@@ -1,0 +1,43 @@
+/*EATE FUNCTION Main() RETURNS BOOLE*/
+	BEGIN
+		-- referencia al mensaje de entrada (hl7)
+		DECLARE inputHL7	
+		REFERENCE TO InputRoot.MRM.hl7:MSH;
+		
+		-- declaración de constantes	
+		DECLARE operation 	CHARACTER InputRoot.MRM.hl7:MSH.hl7:"MSH.9.MessageType".hl7:"MSG.1";
+		DECLARE system		CHARACTER 'LIS';
+		-- propiedades para convertir a BLOB
+		DECLARE parser		CHARACTER 'MRM';
+		DECLARE msgset		CHARACTER 'HL7v25';
+		DECLARE msgtype		CHARACTER 'HL7';
+		DECLARE msgformat	CHARACTER 'HL7';
+		DECLARE msgblob		BLOB;
+
+		-- condicional para el servicio ORM_OUT
+		IF operation = 'ORM' THEN
+			SET operation = 'ORM_OUT';
+		END IF;
+		
+		-- construcción del mensaje de salida (xml)
+		SET OutputRoot.Properties.MessageSet		= 'FSFB_MessageSet';
+		
+		-- construcción de cabecera MQMD
+		SET OutputRoot.MQMD							= InputRoot.MQMD;
+		SET OutputRoot.MQRFH2						= InputRoot.MQRFH2;
+		
+		CREATE FIELD OutputRoot.XMLNSC.ns:FSFB;
+		DECLARE fsfb REFERENCE TO OutputRoot.XMLNSC.ns:FSFB;
+		
+		-- crear header del mensaje
+		CALL UTILS.createHeader(fsfb, operation, system, 'true', 'true');
+		SET fsfb.Header.messagecontrolid = InputRoot.MRM.hl7:MSH.hl7:"MSH.10.MessageControlID";
+		
+		-- codificar el mensaje original
+		CALL UTILS.encodemsg(msgtype, msgset, msgformat, InputRoot.MRM, msgblob); 
+	
+		-- crear body del mensaje
+		CALL UTILS.createBody(fsfb, msgblob, parser, msgset, msgtype, msgformat);
+		
+		RETURN TRUE;
+	END;

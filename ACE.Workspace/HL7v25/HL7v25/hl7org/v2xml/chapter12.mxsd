@@ -1,0 +1,2604 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="urn:hl7-org:v2xml" xmlns="urn:hl7-org:v2xml" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <xsd:include schemaLocation="segments.mxsd"/>
+    <xsd:complexType name="PGL_PC6.PATIENT_VISIT.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PV1"/>
+            <xsd:element maxOccurs="1" minOccurs="0" ref="PV2"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PGL_PC6.PATIENT_VISIT" type="PGL_PC6.PATIENT_VISIT.CONTENT"/>
+    <xsd:complexType name="PGL_PC6.GOAL_ROLE.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="ROL"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PGL_PC6.GOAL_ROLE" type="PGL_PC6.GOAL_ROLE.CONTENT"/>
+    <xsd:complexType name="PGL_PC6.PATHWAY.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PTH"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PGL_PC6.PATHWAY" type="PGL_PC6.PATHWAY.CONTENT"/>
+    <xsd:complexType name="PGL_PC6.OBSERVATION.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="OBX"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PGL_PC6.OBSERVATION" type="PGL_PC6.OBSERVATION.CONTENT"/>
+    <xsd:complexType name="PGL_PC6.PROBLEM_ROLE.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="ROL"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PGL_PC6.PROBLEM_ROLE" type="PGL_PC6.PROBLEM_ROLE.CONTENT"/>
+    <xsd:complexType name="PGL_PC6.PROBLEM_OBSERVATION.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="OBX"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PGL_PC6.PROBLEM_OBSERVATION" type="PGL_PC6.PROBLEM_OBSERVATION.CONTENT"/>
+    <xsd:complexType name="PGL_PC6.PROBLEM.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PRB"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PGL_PC6.PROBLEM_ROLE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PGL_PC6.PROBLEM_OBSERVATION"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PGL_PC6.PROBLEM" type="PGL_PC6.PROBLEM.CONTENT"/>
+    <xsd:complexType name="PGL_PC6.CHOICE.CONTENT">
+        <xsd:choice>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="OBR"/>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="anyHL7Segment"/>
+        </xsd:choice>
+    </xsd:complexType>
+    <xsd:element name="PGL_PC6.CHOICE" type="PGL_PC6.CHOICE.CONTENT"/>
+    <xsd:complexType name="PGL_PC6.ORDER_OBSERVATION.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="OBX"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PGL_PC6.ORDER_OBSERVATION" type="PGL_PC6.ORDER_OBSERVATION.CONTENT"/>
+    <xsd:complexType name="PGL_PC6.ORDER_DETAIL.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PGL_PC6.CHOICE"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PGL_PC6.ORDER_OBSERVATION"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PGL_PC6.ORDER_DETAIL" type="PGL_PC6.ORDER_DETAIL.CONTENT"/>
+    <xsd:complexType name="PGL_PC6.ORDER.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="ORC"/>
+            <xsd:element maxOccurs="1" minOccurs="0" ref="PGL_PC6.ORDER_DETAIL"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PGL_PC6.ORDER" type="PGL_PC6.ORDER.CONTENT"/>
+    <xsd:complexType name="PGL_PC6.GOAL.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="GOL"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PGL_PC6.GOAL_ROLE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PGL_PC6.PATHWAY"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PGL_PC6.OBSERVATION"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PGL_PC6.PROBLEM"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PGL_PC6.ORDER"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PGL_PC6.GOAL" type="PGL_PC6.GOAL.CONTENT"/>
+
+    <xsd:complexType name="PC6_PC8_Patient_Goal_Message.TYPE">
+        <xsd:annotation>
+            <xsd:appinfo source="WMQI_APPINFO">
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="&lt;CR&gt;&lt;LF&gt;" messageSetDefaultRep="TDS1" tagDataSeparator="|"/>
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7"/>
+      </xsd:appinfo>
+        </xsd:annotation>
+            <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:sequence>
+                <xsd:annotation>
+                    <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" messageSetDefaultRep="TDS1" tagLength="3"/>
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7" tagLength="3"/>
+          </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MSH"/>
+            </xsd:sequence>
+           
+                
+            <xsd:group ref="PC6_PC8_Patient_Goal_Message.GROUP"/>
+        	
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="PC6_PC8_Patient_Goal_Message" type="PC6_PC8_Patient_Goal_Message.TYPE">
+        <xsd:annotation>
+            <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/PC6_PC8_Patient_Goal_Message;XSDElementDeclaration=12$MRObject">
+          <xmlMsgRep messageSetDefaultRep="HL7XML" xmlName="PGL_PC6"/>
+        </MRMessage>
+        <xmlElemRep messageSetDefaultRep="HL7XML" xmlName="PGL_PC6"/>
+      </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:group name="PC6_PC8_Patient_Goal_Message.GROUP">
+        <xsd:annotation>
+                    <xsd:appinfo source="WMQI_APPINFO">
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" messageSetDefaultRep="TDS1" tagDataSeparator="|"/>
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7"/>
+      </xsd:appinfo>
+                </xsd:annotation>
+        <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:annotation>
+                <xsd:appinfo source="WMQI_APPINFO">
+                    <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+                </xsd:appinfo>
+            </xsd:annotation>
+                  <xsd:element maxOccurs="unbounded" minOccurs="0" ref="SFT"/>
+    <xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+                  <xsd:element maxOccurs="1" minOccurs="1" ref="PID"/>
+                  <xsd:element maxOccurs="1" minOccurs="0" ref="PGL_PC6.PATIENT_VISIT"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="1" ref="PGL_PC6.GOAL"/>
+            <xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:group>
+
+	<xsd:complexType name="PPR_PC1.PATIENT_VISIT.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PV1"/>
+            <xsd:element maxOccurs="1" minOccurs="0" ref="PV2"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPR_PC1.PATIENT_VISIT" type="PPR_PC1.PATIENT_VISIT.CONTENT"/>
+    <xsd:complexType name="PPR_PC1.PROBLEM_ROLE.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="ROL"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPR_PC1.PROBLEM_ROLE" type="PPR_PC1.PROBLEM_ROLE.CONTENT"/>
+    <xsd:complexType name="PPR_PC1.PATHWAY.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PTH"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPR_PC1.PATHWAY" type="PPR_PC1.PATHWAY.CONTENT"/>
+    <xsd:complexType name="PPR_PC1.PROBLEM_OBSERVATION.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="OBX"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPR_PC1.PROBLEM_OBSERVATION" type="PPR_PC1.PROBLEM_OBSERVATION.CONTENT"/>
+    <xsd:complexType name="PPR_PC1.GOAL_ROLE.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="ROL"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPR_PC1.GOAL_ROLE" type="PPR_PC1.GOAL_ROLE.CONTENT"/>
+    <xsd:complexType name="PPR_PC1.GOAL_OBSERVATION.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="OBX"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPR_PC1.GOAL_OBSERVATION" type="PPR_PC1.GOAL_OBSERVATION.CONTENT"/>
+    <xsd:complexType name="PPR_PC1.GOAL.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="GOL"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPR_PC1.GOAL_ROLE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPR_PC1.GOAL_OBSERVATION"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPR_PC1.GOAL" type="PPR_PC1.GOAL.CONTENT"/>
+    <xsd:complexType name="PPR_PC1.CHOICE.CONTENT">
+        <xsd:choice>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="OBR"/>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="anyHL7Segment"/>
+        </xsd:choice>
+    </xsd:complexType>
+    <xsd:element name="PPR_PC1.CHOICE" type="PPR_PC1.CHOICE.CONTENT"/>
+    <xsd:complexType name="PPR_PC1.ORDER_OBSERVATION.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="OBX"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPR_PC1.ORDER_OBSERVATION" type="PPR_PC1.ORDER_OBSERVATION.CONTENT"/>
+    <xsd:complexType name="PPR_PC1.ORDER_DETAIL.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PPR_PC1.CHOICE"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPR_PC1.ORDER_OBSERVATION"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPR_PC1.ORDER_DETAIL" type="PPR_PC1.ORDER_DETAIL.CONTENT"/>
+    <xsd:complexType name="PPR_PC1.ORDER.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="ORC"/>
+            <xsd:element maxOccurs="1" minOccurs="0" ref="PPR_PC1.ORDER_DETAIL"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPR_PC1.ORDER" type="PPR_PC1.ORDER.CONTENT"/>
+    <xsd:complexType name="PPR_PC1.PROBLEM.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PRB"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPR_PC1.PROBLEM_ROLE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPR_PC1.PATHWAY"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPR_PC1.PROBLEM_OBSERVATION"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPR_PC1.GOAL"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPR_PC1.ORDER"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPR_PC1.PROBLEM" type="PPR_PC1.PROBLEM.CONTENT"/>
+
+    <xsd:complexType name="PC1_PC3_Patient_Problem_Message.TYPE">
+        <xsd:annotation>
+            <xsd:appinfo source="WMQI_APPINFO">
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="&lt;CR&gt;&lt;LF&gt;" messageSetDefaultRep="TDS1" tagDataSeparator="|"/>
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7"/>
+      </xsd:appinfo>
+        </xsd:annotation>
+            <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:sequence>
+                <xsd:annotation>
+                    <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" messageSetDefaultRep="TDS1" tagLength="3"/>
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7" tagLength="3"/>
+          </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MSH"/>
+            </xsd:sequence>
+           
+                
+            <xsd:group ref="PC1_PC3_Patient_Problem_Message.GROUP"/>
+        	
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="PC1_PC3_Patient_Problem_Message" type="PC1_PC3_Patient_Problem_Message.TYPE">
+        <xsd:annotation>
+            <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/PC1_PC3_Patient_Problem_Message;XSDElementDeclaration=25$MRObject">
+          <xmlMsgRep messageSetDefaultRep="HL7XML" xmlName="PPR_PC1"/>
+        </MRMessage>
+        <xmlElemRep messageSetDefaultRep="HL7XML" xmlName="PPR_PC1"/>
+      </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:group name="PC1_PC3_Patient_Problem_Message.GROUP">
+        <xsd:annotation>
+                    <xsd:appinfo source="WMQI_APPINFO">
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" messageSetDefaultRep="TDS1" tagDataSeparator="|"/>
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7"/>
+      </xsd:appinfo>
+                </xsd:annotation>
+        <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:annotation>
+                <xsd:appinfo source="WMQI_APPINFO">
+                    <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+                </xsd:appinfo>
+            </xsd:annotation>
+                  <xsd:element maxOccurs="unbounded" minOccurs="0" ref="SFT"/>
+    <xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+                  <xsd:element maxOccurs="1" minOccurs="1" ref="PID"/>
+                  <xsd:element maxOccurs="1" minOccurs="0" ref="PPR_PC1.PATIENT_VISIT"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="1" ref="PPR_PC1.PROBLEM"/>
+            <xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:group>
+
+	<xsd:complexType name="PPP_PCB.PATIENT_VISIT.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PV1"/>
+            <xsd:element maxOccurs="1" minOccurs="0" ref="PV2"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPP_PCB.PATIENT_VISIT" type="PPP_PCB.PATIENT_VISIT.CONTENT"/>
+    <xsd:complexType name="PPP_PCB.PATHWAY_ROLE.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="ROL"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPP_PCB.PATHWAY_ROLE" type="PPP_PCB.PATHWAY_ROLE.CONTENT"/>
+    <xsd:complexType name="PPP_PCB.PROBLEM_ROLE.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="ROL"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPP_PCB.PROBLEM_ROLE" type="PPP_PCB.PROBLEM_ROLE.CONTENT"/>
+    <xsd:complexType name="PPP_PCB.PROBLEM_OBSERVATION.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="OBX"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPP_PCB.PROBLEM_OBSERVATION" type="PPP_PCB.PROBLEM_OBSERVATION.CONTENT"/>
+    <xsd:complexType name="PPP_PCB.GOAL_ROLE.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="ROL"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPP_PCB.GOAL_ROLE" type="PPP_PCB.GOAL_ROLE.CONTENT"/>
+    <xsd:complexType name="PPP_PCB.GOAL_OBSERVATION.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="OBX"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPP_PCB.GOAL_OBSERVATION" type="PPP_PCB.GOAL_OBSERVATION.CONTENT"/>
+    <xsd:complexType name="PPP_PCB.GOAL.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="GOL"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPP_PCB.GOAL_ROLE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPP_PCB.GOAL_OBSERVATION"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPP_PCB.GOAL" type="PPP_PCB.GOAL.CONTENT"/>
+    <xsd:complexType name="PPP_PCB.CHOICE.CONTENT">
+        <xsd:choice>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="OBR"/>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="anyHL7Segment"/>
+        </xsd:choice>
+    </xsd:complexType>
+    <xsd:element name="PPP_PCB.CHOICE" type="PPP_PCB.CHOICE.CONTENT"/>
+    <xsd:complexType name="PPP_PCB.ORDER_OBSERVATION.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="OBX"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPP_PCB.ORDER_OBSERVATION" type="PPP_PCB.ORDER_OBSERVATION.CONTENT"/>
+    <xsd:complexType name="PPP_PCB.ORDER_DETAIL.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PPP_PCB.CHOICE"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPP_PCB.ORDER_OBSERVATION"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPP_PCB.ORDER_DETAIL" type="PPP_PCB.ORDER_DETAIL.CONTENT"/>
+    <xsd:complexType name="PPP_PCB.ORDER.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="ORC"/>
+            <xsd:element maxOccurs="1" minOccurs="0" ref="PPP_PCB.ORDER_DETAIL"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPP_PCB.ORDER" type="PPP_PCB.ORDER.CONTENT"/>
+    <xsd:complexType name="PPP_PCB.PROBLEM.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PRB"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPP_PCB.PROBLEM_ROLE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPP_PCB.PROBLEM_OBSERVATION"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPP_PCB.GOAL"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPP_PCB.ORDER"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPP_PCB.PROBLEM" type="PPP_PCB.PROBLEM.CONTENT"/>
+    <xsd:complexType name="PPP_PCB.PATHWAY.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PTH"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPP_PCB.PATHWAY_ROLE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPP_PCB.PROBLEM"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPP_PCB.PATHWAY" type="PPP_PCB.PATHWAY.CONTENT"/>
+
+    <xsd:complexType name="PCB_PCD_Patient_Pathway_Problem_Oriented_Message.TYPE">
+        <xsd:annotation>
+            <xsd:appinfo source="WMQI_APPINFO">
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="&lt;CR&gt;&lt;LF&gt;" messageSetDefaultRep="TDS1" tagDataSeparator="|"/>
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7"/>
+      </xsd:appinfo>
+        </xsd:annotation>
+            <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:sequence>
+                <xsd:annotation>
+                    <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" messageSetDefaultRep="TDS1" tagLength="3"/>
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7" tagLength="3"/>
+          </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MSH"/>
+            </xsd:sequence>
+           
+                
+            <xsd:group ref="PCB_PCD_Patient_Pathway_Problem_Oriented_Message.GROUP"/>
+        	
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="PCB_PCD_Patient_Pathway_Problem_Oriented_Message" type="PCB_PCD_Patient_Pathway_Problem_Oriented_Message.TYPE">
+        <xsd:annotation>
+            <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/PCB_PCD_Patient_Pathway_Problem_Oriented_Message;XSDElementDeclaration=39$MRObject">
+          <xmlMsgRep messageSetDefaultRep="HL7XML" xmlName="PPP_PCB"/>
+        </MRMessage>
+        <xmlElemRep messageSetDefaultRep="HL7XML" xmlName="PPP_PCB"/>
+      </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:group name="PCB_PCD_Patient_Pathway_Problem_Oriented_Message.GROUP">
+        <xsd:annotation>
+                    <xsd:appinfo source="WMQI_APPINFO">
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" messageSetDefaultRep="TDS1" tagDataSeparator="|"/>
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7"/>
+      </xsd:appinfo>
+                </xsd:annotation>
+        <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:annotation>
+                <xsd:appinfo source="WMQI_APPINFO">
+                    <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+                </xsd:appinfo>
+            </xsd:annotation>
+                  <xsd:element maxOccurs="unbounded" minOccurs="0" ref="SFT"/>
+    <xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+                  <xsd:element maxOccurs="1" minOccurs="1" ref="PID"/>
+                  <xsd:element maxOccurs="1" minOccurs="0" ref="PPP_PCB.PATIENT_VISIT"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="1" ref="PPP_PCB.PATHWAY"/>
+            <xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:group>
+
+    <xsd:complexType name="PC4_Query.TYPE">
+        <xsd:annotation>
+            <xsd:appinfo source="WMQI_APPINFO">
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="&lt;CR&gt;&lt;LF&gt;" messageSetDefaultRep="TDS1" tagDataSeparator="|"/>
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7"/>
+      </xsd:appinfo>
+        </xsd:annotation>
+            <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:sequence>
+                <xsd:annotation>
+                    <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" messageSetDefaultRep="TDS1" tagLength="3"/>
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7" tagLength="3"/>
+          </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MSH"/>
+            </xsd:sequence>
+           
+                
+            <xsd:group ref="PC4_Query.GROUP"/>
+        	
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="PC4_Query" type="PC4_Query.TYPE">
+        <xsd:annotation>
+            <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/PC4_Query;XSDElementDeclaration=40$MRObject">
+          <xmlMsgRep messageSetDefaultRep="HL7XML" xmlName="QRY_PC4"/>
+        </MRMessage>
+        <xmlElemRep messageSetDefaultRep="HL7XML" xmlName="QRY_PC4"/>
+      </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:group name="PC4_Query.GROUP">
+        <xsd:annotation>
+                    <xsd:appinfo source="WMQI_APPINFO">
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" messageSetDefaultRep="TDS1" tagDataSeparator="|"/>
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7"/>
+      </xsd:appinfo>
+                </xsd:annotation>
+        <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:annotation>
+                <xsd:appinfo source="WMQI_APPINFO">
+                    <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+                </xsd:appinfo>
+            </xsd:annotation>
+                  <xsd:element maxOccurs="unbounded" minOccurs="0" ref="SFT"/>
+    <xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+                  <xsd:element maxOccurs="1" minOccurs="1" ref="QRD"/>
+                  <xsd:element maxOccurs="1" minOccurs="0" ref="QRF"/>
+        </xsd:sequence>
+    </xsd:group>
+
+	<xsd:complexType name="PRR_PC5.PATIENT_VISIT.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PV1"/>
+            <xsd:element maxOccurs="1" minOccurs="0" ref="PV2"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PRR_PC5.PATIENT_VISIT" type="PRR_PC5.PATIENT_VISIT.CONTENT"/>
+    <xsd:complexType name="PRR_PC5.PROBLEM_ROLE.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="ROL"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PRR_PC5.PROBLEM_ROLE" type="PRR_PC5.PROBLEM_ROLE.CONTENT"/>
+    <xsd:complexType name="PRR_PC5.PROBLEM_PATHWAY.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PTH"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PRR_PC5.PROBLEM_PATHWAY" type="PRR_PC5.PROBLEM_PATHWAY.CONTENT"/>
+    <xsd:complexType name="PRR_PC5.PROBLEM_OBSERVATION.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="OBX"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PRR_PC5.PROBLEM_OBSERVATION" type="PRR_PC5.PROBLEM_OBSERVATION.CONTENT"/>
+    <xsd:complexType name="PRR_PC5.GOAL_ROLE.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="ROL"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PRR_PC5.GOAL_ROLE" type="PRR_PC5.GOAL_ROLE.CONTENT"/>
+    <xsd:complexType name="PRR_PC5.GOAL_OBSERVATION.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="OBX"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PRR_PC5.GOAL_OBSERVATION" type="PRR_PC5.GOAL_OBSERVATION.CONTENT"/>
+    <xsd:complexType name="PRR_PC5.GOAL.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="GOL"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PRR_PC5.GOAL_ROLE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PRR_PC5.GOAL_OBSERVATION"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PRR_PC5.GOAL" type="PRR_PC5.GOAL.CONTENT"/>
+    <xsd:complexType name="PRR_PC5.CHOICE.CONTENT">
+        <xsd:choice>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="OBR"/>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="anyHL7Segment"/>
+        </xsd:choice>
+    </xsd:complexType>
+    <xsd:element name="PRR_PC5.CHOICE" type="PRR_PC5.CHOICE.CONTENT"/>
+    <xsd:complexType name="PRR_PC5.ORDER_OBSERVATION.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="OBX"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PRR_PC5.ORDER_OBSERVATION" type="PRR_PC5.ORDER_OBSERVATION.CONTENT"/>
+    <xsd:complexType name="PRR_PC5.ORDER_DETAIL.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PRR_PC5.CHOICE"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PRR_PC5.ORDER_OBSERVATION"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PRR_PC5.ORDER_DETAIL" type="PRR_PC5.ORDER_DETAIL.CONTENT"/>
+    <xsd:complexType name="PRR_PC5.ORDER.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="ORC"/>
+            <xsd:element maxOccurs="1" minOccurs="0" ref="PRR_PC5.ORDER_DETAIL"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PRR_PC5.ORDER" type="PRR_PC5.ORDER.CONTENT"/>
+    <xsd:complexType name="PRR_PC5.PROBLEM.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PRB"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PRR_PC5.PROBLEM_ROLE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PRR_PC5.PROBLEM_PATHWAY"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PRR_PC5.PROBLEM_OBSERVATION"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PRR_PC5.GOAL"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PRR_PC5.ORDER"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PRR_PC5.PROBLEM" type="PRR_PC5.PROBLEM.CONTENT"/>
+    <xsd:complexType name="PRR_PC5.PATIENT.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PID"/>
+            <xsd:element maxOccurs="1" minOccurs="0" ref="PRR_PC5.PATIENT_VISIT"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="1" ref="PRR_PC5.PROBLEM"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PRR_PC5.PATIENT" type="PRR_PC5.PATIENT.CONTENT"/>
+
+    <xsd:complexType name="PC5_Problem_Query_Response.TYPE">
+        <xsd:annotation>
+            <xsd:appinfo source="WMQI_APPINFO">
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="&lt;CR&gt;&lt;LF&gt;" messageSetDefaultRep="TDS1" tagDataSeparator="|"/>
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7"/>
+      </xsd:appinfo>
+        </xsd:annotation>
+            <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:sequence>
+                <xsd:annotation>
+                    <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" messageSetDefaultRep="TDS1" tagLength="3"/>
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7" tagLength="3"/>
+          </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MSH"/>
+            </xsd:sequence>
+           
+                
+            <xsd:group ref="PC5_Problem_Query_Response.GROUP"/>
+        	
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="PC5_Problem_Query_Response" type="PC5_Problem_Query_Response.TYPE">
+        <xsd:annotation>
+            <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/PC5_Problem_Query_Response;XSDElementDeclaration=54$MRObject">
+          <xmlMsgRep messageSetDefaultRep="HL7XML" xmlName="PRR_PC5"/>
+        </MRMessage>
+        <xmlElemRep messageSetDefaultRep="HL7XML" xmlName="PRR_PC5"/>
+      </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:group name="PC5_Problem_Query_Response.GROUP">
+        <xsd:annotation>
+                    <xsd:appinfo source="WMQI_APPINFO">
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" messageSetDefaultRep="TDS1" tagDataSeparator="|"/>
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7"/>
+      </xsd:appinfo>
+                </xsd:annotation>
+        <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:annotation>
+                <xsd:appinfo source="WMQI_APPINFO">
+                    <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+                </xsd:appinfo>
+            </xsd:annotation>
+                  <xsd:element maxOccurs="unbounded" minOccurs="0" ref="SFT"/>
+    <xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+                  <xsd:element maxOccurs="1" minOccurs="1" ref="MSA"/>
+                  <xsd:element maxOccurs="1" minOccurs="0" ref="ERR"/>
+                  <xsd:element maxOccurs="1" minOccurs="0" ref="QAK"/>
+                  <xsd:element maxOccurs="1" minOccurs="1" ref="QRD"/>
+                  <xsd:element maxOccurs="unbounded" minOccurs="1" ref="PRR_PC5.PATIENT"/>
+                  <xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:group>
+
+    <xsd:complexType name="PC9_Query.TYPE">
+        <xsd:annotation>
+            <xsd:appinfo source="WMQI_APPINFO">
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="&lt;CR&gt;&lt;LF&gt;" messageSetDefaultRep="TDS1" tagDataSeparator="|"/>
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7"/>
+      </xsd:appinfo>
+        </xsd:annotation>
+            <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:sequence>
+                <xsd:annotation>
+                    <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" messageSetDefaultRep="TDS1" tagLength="3"/>
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7" tagLength="3"/>
+          </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MSH"/>
+            </xsd:sequence>
+           
+                
+            <xsd:group ref="PC9_Query.GROUP"/>
+        	
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="PC9_Query" type="PC9_Query.TYPE">
+        <xsd:annotation>
+            <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/PC9_Query;XSDElementDeclaration=55$MRObject"/>
+      </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:group name="PC9_Query.GROUP">
+        <xsd:annotation>
+                    <xsd:appinfo source="WMQI_APPINFO">
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" messageSetDefaultRep="TDS1" tagDataSeparator="|"/>
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7"/>
+      </xsd:appinfo>
+                </xsd:annotation>
+        <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:annotation>
+                <xsd:appinfo source="WMQI_APPINFO">
+                    <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+                </xsd:appinfo>
+            </xsd:annotation>
+                  <xsd:element maxOccurs="1" minOccurs="1" ref="QRD"/>
+                  <xsd:element maxOccurs="1" minOccurs="0" ref="QRF"/>
+        </xsd:sequence>
+    </xsd:group>
+
+	<xsd:complexType name="PPV_PCA.PATIENT_VISIT.CONTENT">
+        <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PV1"/>
+            <xsd:element maxOccurs="1" minOccurs="0" ref="PV2"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPV_PCA.PATIENT_VISIT" type="PPV_PCA.PATIENT_VISIT.CONTENT"/>
+    <xsd:complexType name="PPV_PCA.GOAL_ROLE.CONTENT">
+        <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="ROL"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPV_PCA.GOAL_ROLE" type="PPV_PCA.GOAL_ROLE.CONTENT"/>
+    <xsd:complexType name="PPV_PCA.GOAL_PATHWAY.CONTENT">
+        <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PTH"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPV_PCA.GOAL_PATHWAY" type="PPV_PCA.GOAL_PATHWAY.CONTENT"/>
+    <xsd:complexType name="PPV_PCA.GOAL_OBSERVATION.CONTENT">
+        <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="OBX"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPV_PCA.GOAL_OBSERVATION" type="PPV_PCA.GOAL_OBSERVATION.CONTENT"/>
+    <xsd:complexType name="PPV_PCA.PROBLEM_ROLE.CONTENT">
+        <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="ROL"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPV_PCA.PROBLEM_ROLE" type="PPV_PCA.PROBLEM_ROLE.CONTENT"/>
+    <xsd:complexType name="PPV_PCA.PROBLEM_OBSERVATION.CONTENT">
+        <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="OBX"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPV_PCA.PROBLEM_OBSERVATION" type="PPV_PCA.PROBLEM_OBSERVATION.CONTENT"/>
+    <xsd:complexType name="PPV_PCA.PROBLEM.CONTENT">
+        <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PRB"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPV_PCA.PROBLEM_ROLE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPV_PCA.PROBLEM_OBSERVATION"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPV_PCA.PROBLEM" type="PPV_PCA.PROBLEM.CONTENT"/>
+    <xsd:complexType name="PPV_PCA.OBRanyHL7Segment_SUPPGRP.CONTENT">
+        <xsd:choice>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="OBR"/>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="anyHL7Segment"/>
+        </xsd:choice>
+    </xsd:complexType>
+    <xsd:element name="PPV_PCA.OBRanyHL7Segment_SUPPGRP" type="PPV_PCA.OBRanyHL7Segment_SUPPGRP.CONTENT"/>
+    <xsd:complexType name="PPV_PCA.ORDER_OBSERVATION.CONTENT">
+        <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="OBX"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPV_PCA.ORDER_OBSERVATION" type="PPV_PCA.ORDER_OBSERVATION.CONTENT"/>
+    <xsd:complexType name="PPV_PCA.ORDER_DETAIL.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PPV_PCA.OBRanyHL7Segment_SUPPGRP"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPV_PCA.ORDER_OBSERVATION"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPV_PCA.ORDER_DETAIL" type="PPV_PCA.ORDER_DETAIL.CONTENT"/>
+    <xsd:complexType name="PPV_PCA.ORDER.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="ORC"/>
+            <xsd:element maxOccurs="1" minOccurs="0" ref="PPV_PCA.ORDER_DETAIL"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPV_PCA.ORDER" type="PPV_PCA.ORDER.CONTENT"/>
+    <xsd:complexType name="PPV_PCA.GOAL.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="GOL"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPV_PCA.GOAL_ROLE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPV_PCA.GOAL_PATHWAY"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPV_PCA.GOAL_OBSERVATION"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPV_PCA.PROBLEM"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPV_PCA.ORDER"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPV_PCA.GOAL" type="PPV_PCA.GOAL.CONTENT"/>
+    <xsd:complexType name="PPV_PCA.PATIENT.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PID"/>
+            <xsd:element maxOccurs="1" minOccurs="0" ref="PPV_PCA.PATIENT_VISIT"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="1" ref="PPV_PCA.GOAL"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPV_PCA.PATIENT" type="PPV_PCA.PATIENT.CONTENT"/>
+
+    <xsd:complexType name="PCA_Goal_Query_Response.TYPE">
+        <xsd:annotation>
+            <xsd:appinfo source="WMQI_APPINFO">
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="&lt;CR&gt;&lt;LF&gt;" messageSetDefaultRep="TDS1" tagDataSeparator="|"/>
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7"/>
+      </xsd:appinfo>
+        </xsd:annotation>
+            <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:sequence>
+                <xsd:annotation>
+                    <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" messageSetDefaultRep="TDS1" tagLength="3"/>
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7" tagLength="3"/>
+          </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MSH"/>
+            </xsd:sequence>
+           
+                
+            <xsd:group ref="PCA_Goal_Query_Response.GROUP"/>
+        	
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="PCA_Goal_Query_Response" type="PCA_Goal_Query_Response.TYPE">
+        <xsd:annotation>
+            <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/PCA_Goal_Query_Response;XSDElementDeclaration=69$MRObject">
+          <xmlMsgRep messageSetDefaultRep="HL7XML" xmlName="PPV_PCA"/>
+        </MRMessage>
+        <xmlElemRep messageSetDefaultRep="HL7XML" xmlName="PPV_PCA"/>
+      </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:group name="PCA_Goal_Query_Response.GROUP">
+        <xsd:annotation>
+                    <xsd:appinfo source="WMQI_APPINFO">
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" messageSetDefaultRep="TDS1" tagDataSeparator="|"/>
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7"/>
+      </xsd:appinfo>
+                </xsd:annotation>
+        <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:annotation>
+                <xsd:appinfo source="WMQI_APPINFO">
+                    <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+                </xsd:appinfo>
+            </xsd:annotation>
+                  <xsd:element maxOccurs="unbounded" minOccurs="0" ref="SFT"/>
+    <xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+                  <xsd:element maxOccurs="1" minOccurs="1" ref="MSA"/>
+                  <xsd:element maxOccurs="1" minOccurs="0" ref="ERR"/>
+                  <xsd:element maxOccurs="1" minOccurs="0" ref="QAK"/>
+                  <xsd:element maxOccurs="1" minOccurs="1" ref="QRD"/>
+                  <xsd:element maxOccurs="unbounded" minOccurs="1" ref="PPV_PCA.PATIENT"/>
+                  <xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:group>
+
+    <xsd:complexType name="PCE_Query.TYPE">
+        <xsd:annotation>
+            <xsd:appinfo source="WMQI_APPINFO">
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="&lt;CR&gt;&lt;LF&gt;" messageSetDefaultRep="TDS1" tagDataSeparator="|"/>
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7"/>
+      </xsd:appinfo>
+        </xsd:annotation>
+            <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:sequence>
+                <xsd:annotation>
+                    <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" messageSetDefaultRep="TDS1" tagLength="3"/>
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7" tagLength="3"/>
+          </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MSH"/>
+            </xsd:sequence>
+           
+                
+            <xsd:group ref="PCE_Query.GROUP"/>
+        	
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="PCE_Query" type="PCE_Query.TYPE">
+        <xsd:annotation>
+            <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/PCE_Query;XSDElementDeclaration=70$MRObject"/>
+      </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:group name="PCE_Query.GROUP">
+        <xsd:annotation>
+                    <xsd:appinfo source="WMQI_APPINFO">
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" messageSetDefaultRep="TDS1" tagDataSeparator="|"/>
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7"/>
+      </xsd:appinfo>
+                </xsd:annotation>
+        <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:annotation>
+                <xsd:appinfo source="WMQI_APPINFO">
+                    <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+                </xsd:appinfo>
+            </xsd:annotation>
+                  <xsd:element maxOccurs="1" minOccurs="1" ref="QRD"/>
+                  <xsd:element maxOccurs="1" minOccurs="0" ref="QRF"/>
+        </xsd:sequence>
+    </xsd:group>
+
+	<xsd:complexType name="PTR_PCF.PATIENT_VISIT.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PV1"/>
+            <xsd:element maxOccurs="1" minOccurs="0" ref="PV2"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PTR_PCF.PATIENT_VISIT" type="PTR_PCF.PATIENT_VISIT.CONTENT"/>
+    <xsd:complexType name="PTR_PCF.PATHWAY_ROLE.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="ROL"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PTR_PCF.PATHWAY_ROLE" type="PTR_PCF.PATHWAY_ROLE.CONTENT"/>
+    <xsd:complexType name="PTR_PCF.PROBLEM_ROLE.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="ROL"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PTR_PCF.PROBLEM_ROLE" type="PTR_PCF.PROBLEM_ROLE.CONTENT"/>
+    <xsd:complexType name="PTR_PCF.PROBLEM_OBSERVATION.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="OBX"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PTR_PCF.PROBLEM_OBSERVATION" type="PTR_PCF.PROBLEM_OBSERVATION.CONTENT"/>
+    <xsd:complexType name="PTR_PCF.GOAL_ROLE.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="ROL"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PTR_PCF.GOAL_ROLE" type="PTR_PCF.GOAL_ROLE.CONTENT"/>
+    <xsd:complexType name="PTR_PCF.GOAL_OBSERVATION.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="OBX"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PTR_PCF.GOAL_OBSERVATION" type="PTR_PCF.GOAL_OBSERVATION.CONTENT"/>
+    <xsd:complexType name="PTR_PCF.GOAL.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="GOL"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PTR_PCF.GOAL_ROLE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PTR_PCF.GOAL_OBSERVATION"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PTR_PCF.GOAL" type="PTR_PCF.GOAL.CONTENT"/>
+    <xsd:complexType name="PTR_PCF.CHOICE.CONTENT">
+        <xsd:choice>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="OBR"/>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="anyHL7Segment"/>
+        </xsd:choice>
+    </xsd:complexType>
+    <xsd:element name="PTR_PCF.CHOICE" type="PTR_PCF.CHOICE.CONTENT"/>
+    <xsd:complexType name="PTR_PCF.ORDER_OBSERVATION.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="OBX"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PTR_PCF.ORDER_OBSERVATION" type="PTR_PCF.ORDER_OBSERVATION.CONTENT"/>
+    <xsd:complexType name="PTR_PCF.ORDER_DETAIL.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PTR_PCF.CHOICE"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PTR_PCF.ORDER_OBSERVATION"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PTR_PCF.ORDER_DETAIL" type="PTR_PCF.ORDER_DETAIL.CONTENT"/>
+    <xsd:complexType name="PTR_PCF.ORDER.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="ORC"/>
+            <xsd:element maxOccurs="1" minOccurs="0" ref="PTR_PCF.ORDER_DETAIL"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PTR_PCF.ORDER" type="PTR_PCF.ORDER.CONTENT"/>
+    <xsd:complexType name="PTR_PCF.PROBLEM.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PRB"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PTR_PCF.PROBLEM_ROLE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PTR_PCF.PROBLEM_OBSERVATION"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PTR_PCF.GOAL"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PTR_PCF.ORDER"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PTR_PCF.PROBLEM" type="PTR_PCF.PROBLEM.CONTENT"/>
+    <xsd:complexType name="PTR_PCF.PATHWAY.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PTH"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PTR_PCF.PATHWAY_ROLE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PTR_PCF.PROBLEM"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PTR_PCF.PATHWAY" type="PTR_PCF.PATHWAY.CONTENT"/>
+    <xsd:complexType name="PTR_PCF.PATIENT.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PID"/>
+            <xsd:element maxOccurs="1" minOccurs="0" ref="PTR_PCF.PATIENT_VISIT"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="1" ref="PTR_PCF.PATHWAY"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PTR_PCF.PATIENT" type="PTR_PCF.PATIENT.CONTENT"/>
+
+    <xsd:complexType name="PCF_Patient_Pathway_Problem_Oriented_Response.TYPE">
+        <xsd:annotation>
+            <xsd:appinfo source="WMQI_APPINFO">
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="&lt;CR&gt;&lt;LF&gt;" messageSetDefaultRep="TDS1" tagDataSeparator="|"/>
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7"/>
+      </xsd:appinfo>
+        </xsd:annotation>
+            <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:sequence>
+                <xsd:annotation>
+                    <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" messageSetDefaultRep="TDS1" tagLength="3"/>
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7" tagLength="3"/>
+          </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MSH"/>
+            </xsd:sequence>
+           
+                
+            <xsd:group ref="PCF_Patient_Pathway_Problem_Oriented_Response.GROUP"/>
+        	
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="PCF_Patient_Pathway_Problem_Oriented_Response" type="PCF_Patient_Pathway_Problem_Oriented_Response.TYPE">
+        <xsd:annotation>
+            <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/PCF_Patient_Pathway_Problem_Oriented_Response;XSDElementDeclaration=85$MRObject">
+          <xmlMsgRep messageSetDefaultRep="HL7XML" xmlName="PTR_PCF"/>
+        </MRMessage>
+        <xmlElemRep messageSetDefaultRep="HL7XML" xmlName="PTR_PCF"/>
+      </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:group name="PCF_Patient_Pathway_Problem_Oriented_Response.GROUP">
+        <xsd:annotation>
+                    <xsd:appinfo source="WMQI_APPINFO">
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" messageSetDefaultRep="TDS1" tagDataSeparator="|"/>
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7"/>
+      </xsd:appinfo>
+                </xsd:annotation>
+        <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:annotation>
+                <xsd:appinfo source="WMQI_APPINFO">
+                    <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+                </xsd:appinfo>
+            </xsd:annotation>
+                  <xsd:element maxOccurs="unbounded" minOccurs="0" ref="SFT"/>
+    <xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+                  <xsd:element maxOccurs="1" minOccurs="1" ref="MSA"/>
+                  <xsd:element maxOccurs="1" minOccurs="0" ref="ERR"/>
+                  <xsd:element maxOccurs="1" minOccurs="0" ref="QAK"/>
+                  <xsd:element maxOccurs="1" minOccurs="1" ref="QRD"/>
+                  <xsd:element maxOccurs="unbounded" minOccurs="1" ref="PTR_PCF.PATIENT"/>
+                  <xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:group>
+
+    <xsd:complexType name="PCK_Query.TYPE">
+        <xsd:annotation>
+            <xsd:appinfo source="WMQI_APPINFO">
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="&lt;CR&gt;&lt;LF&gt;" messageSetDefaultRep="TDS1" tagDataSeparator="|"/>
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7"/>
+      </xsd:appinfo>
+        </xsd:annotation>
+            <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:sequence>
+                <xsd:annotation>
+                    <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" messageSetDefaultRep="TDS1" tagLength="3"/>
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7" tagLength="3"/>
+          </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MSH"/>
+            </xsd:sequence>
+           
+                
+            <xsd:group ref="PCK_Query.GROUP"/>
+        	
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="PCK_Query" type="PCK_Query.TYPE">
+        <xsd:annotation>
+            <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/PCK_Query;XSDElementDeclaration=86$MRObject"/>
+      </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:group name="PCK_Query.GROUP">
+        <xsd:annotation>
+                    <xsd:appinfo source="WMQI_APPINFO">
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" messageSetDefaultRep="TDS1" tagDataSeparator="|"/>
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7"/>
+      </xsd:appinfo>
+                </xsd:annotation>
+        <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:annotation>
+                <xsd:appinfo source="WMQI_APPINFO">
+                    <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+                </xsd:appinfo>
+            </xsd:annotation>
+                  <xsd:element maxOccurs="1" minOccurs="1" ref="QRD"/>
+                  <xsd:element maxOccurs="1" minOccurs="0" ref="QRF"/>
+        </xsd:sequence>
+    </xsd:group>
+
+	<xsd:complexType name="PPT_PCL.PATIENT_VISIT.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PV1"/>
+            <xsd:element maxOccurs="1" minOccurs="0" ref="PV2"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPT_PCL.PATIENT_VISIT" type="PPT_PCL.PATIENT_VISIT.CONTENT"/>
+    <xsd:complexType name="PPT_PCL.PATHWAY_ROLE.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="ROL"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPT_PCL.PATHWAY_ROLE" type="PPT_PCL.PATHWAY_ROLE.CONTENT"/>
+    <xsd:complexType name="PPT_PCL.GOAL_ROLE.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="ROL"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPT_PCL.GOAL_ROLE" type="PPT_PCL.GOAL_ROLE.CONTENT"/>
+    <xsd:complexType name="PPT_PCL.GOAL_OBSERVATION.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="OBX"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPT_PCL.GOAL_OBSERVATION" type="PPT_PCL.GOAL_OBSERVATION.CONTENT"/>
+    <xsd:complexType name="PPT_PCL.PROBLEM_ROLE.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="ROL"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPT_PCL.PROBLEM_ROLE" type="PPT_PCL.PROBLEM_ROLE.CONTENT"/>
+    <xsd:complexType name="PPT_PCL.PROBLEM_OBSERVATION.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="OBX"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPT_PCL.PROBLEM_OBSERVATION" type="PPT_PCL.PROBLEM_OBSERVATION.CONTENT"/>
+    <xsd:complexType name="PPT_PCL.PROBLEM.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PRB"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPT_PCL.PROBLEM_ROLE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPT_PCL.PROBLEM_OBSERVATION"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPT_PCL.PROBLEM" type="PPT_PCL.PROBLEM.CONTENT"/>
+    <xsd:complexType name="PPT_PCL.CHOICE.CONTENT">
+        <xsd:choice>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="OBR"/>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="anyHL7Segment"/>
+        </xsd:choice>
+    </xsd:complexType>
+    <xsd:element name="PPT_PCL.CHOICE" type="PPT_PCL.CHOICE.CONTENT"/>
+    <xsd:complexType name="PPT_PCL.ORDER_OBSERVATION.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="OBX"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPT_PCL.ORDER_OBSERVATION" type="PPT_PCL.ORDER_OBSERVATION.CONTENT"/>
+    <xsd:complexType name="PPT_PCL.ORDER_DETAIL.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PPT_PCL.CHOICE"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPT_PCL.ORDER_OBSERVATION"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPT_PCL.ORDER_DETAIL" type="PPT_PCL.ORDER_DETAIL.CONTENT"/>
+    <xsd:complexType name="PPT_PCL.ORDER.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="ORC"/>
+            <xsd:element maxOccurs="1" minOccurs="0" ref="PPT_PCL.ORDER_DETAIL"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPT_PCL.ORDER" type="PPT_PCL.ORDER.CONTENT"/>
+    <xsd:complexType name="PPT_PCL.GOAL.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="GOL"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPT_PCL.GOAL_ROLE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPT_PCL.GOAL_OBSERVATION"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPT_PCL.PROBLEM"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPT_PCL.ORDER"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPT_PCL.GOAL" type="PPT_PCL.GOAL.CONTENT"/>
+    <xsd:complexType name="PPT_PCL.PATHWAY.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PTH"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="VAR"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPT_PCL.PATHWAY_ROLE"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" ref="PPT_PCL.GOAL"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPT_PCL.PATHWAY" type="PPT_PCL.PATHWAY.CONTENT"/>
+    <xsd:complexType name="PPT_PCL.PATIENT.CONTENT">
+        <xsd:sequence>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+            <xsd:element maxOccurs="1" minOccurs="1" ref="PID"/>
+            <xsd:element maxOccurs="1" minOccurs="0" ref="PPT_PCL.PATIENT_VISIT"/>
+            <xsd:element maxOccurs="unbounded" minOccurs="1" ref="PPT_PCL.PATHWAY"/>
+<xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="PPT_PCL.PATIENT" type="PPT_PCL.PATIENT.CONTENT"/>
+
+    <xsd:complexType name="PCL_Patient_Pathway_Goal_Oriented_Response.TYPE">
+        <xsd:annotation>
+            <xsd:appinfo source="WMQI_APPINFO">
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="&lt;CR&gt;&lt;LF&gt;" messageSetDefaultRep="TDS1" tagDataSeparator="|"/>
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7"/>
+      </xsd:appinfo>
+        </xsd:annotation>
+            <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:sequence>
+                <xsd:annotation>
+                    <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" messageSetDefaultRep="TDS1" tagLength="3"/>
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7" tagLength="3"/>
+          </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="MSH"/>
+            </xsd:sequence>
+           
+                
+            <xsd:group ref="PCL_Patient_Pathway_Goal_Oriented_Response.GROUP"/>
+        	
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="PCL_Patient_Pathway_Goal_Oriented_Response" type="PCL_Patient_Pathway_Goal_Oriented_Response.TYPE">
+        <xsd:annotation>
+            <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/PCL_Patient_Pathway_Goal_Oriented_Response;XSDElementDeclaration=101$MRObject">
+          <xmlMsgRep messageSetDefaultRep="HL7XML" xmlName="PPT_PCL"/>
+        </MRMessage>
+        <xmlElemRep messageSetDefaultRep="HL7XML" xmlName="PPT_PCL"/>
+      </xsd:appinfo>
+        </xsd:annotation>
+    </xsd:element>
+
+    <xsd:group name="PCL_Patient_Pathway_Goal_Oriented_Response.GROUP">
+        <xsd:annotation>
+                    <xsd:appinfo source="WMQI_APPINFO">
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" messageSetDefaultRep="TDS1" tagDataSeparator="|"/>
+        <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="" messageSetDefaultRep="HL7"/>
+      </xsd:appinfo>
+                </xsd:annotation>
+        <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:annotation>
+                <xsd:appinfo source="WMQI_APPINFO">
+                    <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+                </xsd:appinfo>
+            </xsd:annotation>
+                  <xsd:element maxOccurs="unbounded" minOccurs="0" ref="SFT"/>
+    <xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsInclRep messageSetDefaultRep="HL7" repeatingElementDelimiter="&lt;CR&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+                  <xsd:element maxOccurs="1" minOccurs="1" ref="MSA"/>
+                  <xsd:element maxOccurs="1" minOccurs="0" ref="ERR"/>
+                  <xsd:element maxOccurs="1" minOccurs="0" ref="QAK"/>
+                  <xsd:element maxOccurs="1" minOccurs="1" ref="QRD"/>
+                  <xsd:element maxOccurs="unbounded" minOccurs="1" ref="PPT_PCL.PATIENT"/>
+                  <xsd:annotation>
+        <xsd:appinfo source="WMQI_APPINFO">
+            <tdsStructRep dataElementSeparation="TaggedDelimited" delimiter="" groupTerminator="&lt;CR&gt;" messageSetDefaultRep="HL7" tagDataSeparator="&lt;HL7_FS&gt;"/>
+        </xsd:appinfo>
+    </xsd:annotation>
+        </xsd:sequence>
+    </xsd:group>
+</xsd:schema>

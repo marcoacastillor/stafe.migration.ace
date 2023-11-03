@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><MRMessageSet id="EG8N15C002001" name="LIS_ORMIN_SpecificMessageSet" parser="XMLNSC">
+  
+<MRMsgCollection href="platform:/resource/LIS_ORMIN_SpecificMessageSet/LIS_ORMIN_SpecificMessageSet/co/org/fsfb/hisormintable/impl/HIS_ORMInTable.mxsd" prefix="NS1" targetNamespace="http://co/org/fsfb/HIS_ORMInTable/impl">
+    <message href="platform:/resource/LIS_ORMIN_SpecificMessageSet/LIS_ORMIN_SpecificMessageSet/co/org/fsfb/hisormintable/impl/HIS_ORMInTable.mxsd#/0/ORM_IN;XSDElementDeclaration$MRMessage" name="ORM_IN"/>
+    <message href="platform:/resource/LIS_ORMIN_SpecificMessageSet/LIS_ORMIN_SpecificMessageSet/co/org/fsfb/hisormintable/impl/HIS_ORMInTable.mxsd#/0/ORM_INRIS;XSDElementDeclaration=1$MRMessage" name="ORM_INRIS"/>
+    <message href="platform:/resource/LIS_ORMIN_SpecificMessageSet/LIS_ORMIN_SpecificMessageSet/co/org/fsfb/hisormintable/impl/HIS_ORMInTable.mxsd#/0/ACK_OUT;XSDElementDeclaration=2$MRMessage" name="ACK_OUT"/>
+    <element href="platform:/resource/LIS_ORMIN_SpecificMessageSet/LIS_ORMIN_SpecificMessageSet/co/org/fsfb/hisormintable/impl/HIS_ORMInTable.mxsd#/0/ORM_IN;XSDElementDeclaration" name="ORM_IN"/>
+    <element href="platform:/resource/LIS_ORMIN_SpecificMessageSet/LIS_ORMIN_SpecificMessageSet/co/org/fsfb/hisormintable/impl/HIS_ORMInTable.mxsd#/0/ORM_INRIS;XSDElementDeclaration=1" name="ORM_INRIS"/>
+    <element href="platform:/resource/LIS_ORMIN_SpecificMessageSet/LIS_ORMIN_SpecificMessageSet/co/org/fsfb/hisormintable/impl/HIS_ORMInTable.mxsd#/0/ACK_OUT;XSDElementDeclaration=2" name="ACK_OUT"/>
+  </MRMsgCollection>
+</MRMessageSet>

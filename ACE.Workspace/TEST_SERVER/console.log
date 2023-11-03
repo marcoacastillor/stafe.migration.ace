@@ -1,0 +1,7 @@
+2023-10-05 12:52:43.717032: BIP1990I: El servidor de integración 'TEST_SERVER' está empezando la inicialización; versión '12.0.5.0' (64 bits) 
+2023-10-05 12:52:43.831192: BIP9905I: Inicializando gestores de recursos. 
+Listening for transport dt_socket at address: 9997
+2023-10-05 12:53:24.240204: BIP9906I: Leyendo recursos desplegados. 
+2023-10-05 12:53:31.140344: BIP2866I: La administración de seguridad de IBM App Connect Enterprise es inactive. 
+2023-10-05 12:53:31.197344: BIP3132I: El escucha HTTP ha empezado a escuchar en el puerto '7600' para conexiones 'RestAdmin http'. 
+2023-10-05 12:53:31.237506: BIP1991I: El servidor de integración ha terminado la inicialización. 

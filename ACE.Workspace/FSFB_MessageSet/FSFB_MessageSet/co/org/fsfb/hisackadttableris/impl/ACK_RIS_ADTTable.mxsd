@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://co/org/fsfb/HIS_ACK_ADTTable_RIS/impl" xmlns:NS2="http://co/org/fsfb/HIS_ADTTable_RIS/impl" xmlns:Q1="http://co/org/fsfb/HIS_ACK_ADTTable_RIS/impl" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<xsd:element name="ACK_ADT_RIS" type="Q1:ACK_ADT_RIS">
+        <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/ACK_ADT_RIS;XSDElementDeclaration$MRObject"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+</xsd:element>
+    <xsd:complexType name="ACK_ADT_RIS">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="MSH_ID" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

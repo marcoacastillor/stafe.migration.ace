@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0" xmlns:map="default">
+    <input path="/HIS_ADTTable.xsd"/>
+    <output path="mbsharedlib://HL7-2.7/FSFB_HL7.xsd"/>
+    <imports>
+        <import kind="esql" namespace="/UTILS/mapping.esql"/>
+    </imports>
+    <namespaces>
+        <namespace kind="supplement" prefix="in" uri="http://co/org/fsfb/HIS_ADTTable/impl"/>
+        <namespace kind="supplement" prefix="out" uri="urn:hl7-org:v2xml"/>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+        <namespace kind="extension" prefix="mapping" uri="/UTILS/mapping.esql"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="adt_LIS_Mapping">
+        <input namespace="http://co/org/fsfb/HIS_ADTTable/impl" path="mb:msg(ADT,assembly,XMLNSC,Properties)" var="ComIbmMessageAssembly_ADT"/>
+        <output namespace="urn:hl7-org:v2xml" path="mb:msg(ADT,assembly,DFDL,Properties)" var="MessageAssembly"/>
+        <move>
+            <input path="$ComIbmMessageAssembly_ADT/Properties"/>
+            <output path="$MessageAssembly/Properties"/>
+            <override>
+                <assign value="{HL7-2.7}">
+                    <output path="$MessageAssembly/Properties/MessageSet"/>
+                </assign>
+                <assign value="{urn:hl7-org:v2xml}:ADT">
+                    <output path="$MessageAssembly/Properties/MessageType"/>
+                </assign>
+            </override>
+        </move>
+        <local>
+            <input path="$ComIbmMessageAssembly_ADT/ADT" var="ADT3"/>
+            <output path="$MessageAssembly/ADT/MSH"/>
+            <assign value="|">
+                <output path="MSH.1.FieldSeparator"/>
+            </assign>
+            <assign value="^">
+                <output path="MSH.2.ServiceString/ComponentSeparator"/>
+            </assign>
+            <assign value="~">
+                <output path="MSH.2.ServiceString/RepeatSeparator"/>
+            </assign>
+            <assign value="\">
+                <output path="MSH.2.ServiceString/EscapeCharacter"/>
+            </assign>
+            <assign value="&amp;">
+                <output path="MSH.2.ServiceString/SubComponentSeparator"/>
+            </assign>
+            <assign value="HIS">
+                <output path="MSH.3.SendingApplication/HD.1"/>
+            </assign>
+            <assign value="LAB">
+                <output path="MSH.5.ReceivingApplication/HD.1"/>
+            </assign>
+            <customFunction lang="esql" ref="mapping:CurrentTimestampHL7">
+                <output path="MSH.7.DateTimeOfMessage"/>
+            </customFunction>
+            <function ref="normalize">
+                <input path="$ADT3/TIPO_REGISTRO" var="TIPO_REGISTRO"/>
+                <output path="MSH.9.MessageType/MSG.1"/>
+                <param name="input" value="$TIPO_REGISTRO"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ADT3/EVENTO_REGISTRO" var="EVENTO_REGISTRO"/>
+                <output path="MSH.9.MessageType/MSG.2"/>
+                <param name="input" value="$EVENTO_REGISTRO"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ADT3/ESTRUC_REGISTRO" var="ESTRUC_REGISTRO"/>
+                <output path="MSH.9.MessageType/MSG.3"/>
+                <param name="input" value="$ESTRUC_REGISTRO"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ADT3/FEC_EVENTO" var="FEC_EVENTO"/>
+                <output path="MSH.10.MessageControlID"/>
+                <param name="input" value="$FEC_EVENTO"/>
+            </function>
+            <assign value="P">
+                <output path="MSH.11.ProcessingID/PT.1"/>
+            </assign>
+            <assign value="2.3">
+                <output path="MSH.12.VersionID/VID.1"/>
+            </assign>
+            <assign value="AL">
+                <output path="MSH.16.ApplicationAcknowledgmentType"/>
+            </assign>
+            <assign value="8859/1">
+                <output path="MSH.18.CharacterSet"/>
+            </assign>
+        </local>
+        <local>
+            <input path="$ComIbmMessageAssembly_ADT/ADT"/>
+            <output path="$MessageAssembly/ADT/EVN"/>
+            <function ref="normalize">
+                <input path="EVENTO_REGISTRO" var="EVENTO_REGISTRO1"/>
+                <output path="EVN.1.EventTypeCode"/>
+                <param name="input" value="$EVENTO_REGISTRO1"/>
+            </function>
+            <function ref="normalize">
+                <input path="FEC_EVENTO" var="FEC_EVENTO1"/>
+                <output path="EVN.2.RecordedDateTime"/>
+                <param name="input" value="$FEC_EVENTO1"/>
+            </function>
+        </local>
+        <local>
+            <input path="$ComIbmMessageAssembly_ADT/ADT" var="ADT2"/>
+            <output path="$MessageAssembly/ADT/PID"/>
+            <assign value="1">
+                <output path="PID.1.SetIDPID"/>
+            </assign>
+            <function ref="normalize">
+                <input path="$ADT2/PAC_PAC_SEXO" var="PAC_PAC_SEXO"/>
+                <output path="PID.8.AdministrativeSex/CWE.1"/>
+                <param name="input" value="$PAC_PAC_SEXO"/>
+            </function>
+            <convert>
+                <input path="$ADT2/PAC_PAC_NUMERO" var="PAC_PAC_NUMERO"/>
+                <output path="PID.3.PatientIdentifierList/CX.1"/>
+            </convert>
+            <function ref="normalize">
+                <input path="$ADT2/PAC_PAC_RUT" var="PAC_PAC_RUT"/>
+                <output path="PID.4.AlternatePatientIDPID/CX.1"/>
+                <param name="input" value="$PAC_PAC_RUT"/>
+            </function>
+            <condition>
+                <if>
+                    <input path="$ADT2/PAC_PAC_TIPOIDENTCODIGO" var="PAC_PAC_TIPOIDENTCODIGO9"/>
+                    <output path="PID.4.AlternatePatientIDPID/CX.5"/>
+                    <test lang="xpath">$PAC_PAC_TIPOIDENTCODIGO9 = '2'</test>
+                    <assign value="BR">
+                        <output path="."/>
+                    </assign>
+                </if>
+                <elseif>
+                    <input path="$ADT2/PAC_PAC_TIPOIDENTCODIGO" var="PAC_PAC_TIPOIDENTCODIGO10"/>
+                    <output path="PID.4.AlternatePatientIDPID/CX.5"/>
+                    <test lang="xpath">$PAC_PAC_TIPOIDENTCODIGO10 = '3'</test>
+                    <assign value="PI">
+                        <output path="."/>
+                    </assign>
+                </elseif>
+                <elseif>
+                    <input path="$ADT2/PAC_PAC_TIPOIDENTCODIGO" var="PAC_PAC_TIPOIDENTCODIGO11"/>
+                    <output path="PID.4.AlternatePatientIDPID/CX.5"/>
+                    <test lang="xpath">$PAC_PAC_TIPOIDENTCODIGO11 = '4'</test>
+                    <assign value="PN">
+                        <output path="."/>
+                    </assign>
+                </elseif>
+                <elseif>
+                    <input path="$ADT2/PAC_PAC_TIPOIDENTCODIGO" var="PAC_PAC_TIPOIDENTCODIGO12"/>
+                    <output path="PID.4.AlternatePatientIDPID/CX.5"/>
+                    <test lang="xpath">$PAC_PAC_TIPOIDENTCODIGO12 = '5'</test>
+                    <assign value="VS">
+                        <output path="."/>
+                    </assign>
+                </elseif>
+                <elseif>
+                    <input path="$ADT2/PAC_PAC_TIPOIDENTCODIGO" var="PAC_PAC_TIPOIDENTCODIGO13"/>
+                    <output path="PID.4.AlternatePatientIDPID/CX.5"/>
+                    <test lang="xpath">$PAC_PAC_TIPOIDENTCODIGO13 = '6'</test>
+                    <assign value="XX">
+                        <output path="."/>
+                    </assign>
+                </elseif>
+                <elseif>
+                    <input path="$ADT2/PAC_PAC_TIPOIDENTCODIGO" var="PAC_PAC_TIPOIDENTCODIGO14"/>
+                    <output path="PID.4.AlternatePatientIDPID/CX.5"/>
+                    <test lang="xpath">$PAC_PAC_TIPOIDENTCODIGO14 = 'M'</test>
+                    <assign value="AN">
+                        <output path="."/>
+                    </assign>
+                </elseif>
+                <elseif>
+                    <input path="$ADT2/PAC_PAC_TIPOIDENTCODIGO" var="PAC_PAC_TIPOIDENTCODIGO15"/>
+                    <output path="PID.4.AlternatePatientIDPID/CX.5"/>
+                    <test lang="xpath">$PAC_PAC_TIPOIDENTCODIGO15 = 'P'</test>
+                    <assign value="DS">
+                        <output path="."/>
+                    </assign>
+                </elseif>
+                <elseif>
+                    <input path="$ADT2/PAC_PAC_TIPOIDENTCODIGO" var="PAC_PAC_TIPOIDENTCODIGO16"/>
+                    <output path="PID.4.AlternatePatientIDPID/CX.5"/>
+                    <test lang="xpath">$PAC_PAC_TIPOIDENTCODIGO16 = 'A'</test>
+                    <assign value="DL">
+                        <output path="."/>
+                    </assign>
+                </elseif>
+                <elseif>
+                    <input path="$ADT2/PAC_PAC_TIPOIDENTCODIGO" var="PAC_PAC_TIPOIDENTCODIGO17"/>
+                    <output path="PID.4.AlternatePatientIDPID/CX.5"/>
+                    <test lang="xpath">$PAC_PAC_TIPOIDENTCODIGO17 = 'N'</test>
+                    <assign value="UPIN">
+                        <output path="."/>
+                    </assign>
+                </elseif>
+                <elseif>
+                    <input path="$ADT2/PAC_PAC_TIPOIDENTCODIGO" var="PAC_PAC_TIPOIDENTCODIGO"/>
+                    <output path="PID.4.AlternatePatientIDPID/CX.5"/>
+                    <test lang="xpath">$PAC_PAC_TIPOIDENTCODIGO = 'D'</test>
+                    <assign value="DP">
+                        <output path="."/>
+                    </assign>
+                </elseif>
+                <elseif>
+                    <input path="$ADT2/PAC_PAC_TIPOIDENTCODIGO" var="PAC_PAC_TIPOIDENTCODIGO1"/>
+                    <output path="PID.4.AlternatePatientIDPID/CX.5"/>
+                    <test lang="xpath">$PAC_PAC_TIPOIDENTCODIGO1 = 'S'</test>
+                    <assign value="LR">
+                        <output path="."/>
+                    </assign>
+                </elseif>
+                <else>
+                    <output path="PID.4.AlternatePatientIDPID/CX.5"/>
+                    <assign value=" ">
+                        <output path="."/>
+                    </assign>
+                </else>
+            </condition>
+            <function ref="normalize">
+                <input path="$ADT2/PAC_PAC_APELLPATER" var="PAC_PAC_APELLPATER"/>
+                <output path="PID.5.PatientName/XPN.1/FN.1"/>
+                <param name="input" value="$PAC_PAC_APELLPATER"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ADT2/PAC_PAC_APELLMATER" var="PAC_PAC_APELLMATER"/>
+                <output path="PID.5.PatientName/XPN.2"/>
+                <param name="input" value="$PAC_PAC_APELLMATER"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ADT2/PAC_PAC_NOMBRE" var="PAC_PAC_NOMBRE"/>
+                <output path="PID.5.PatientName/XPN.3"/>
+                <param name="input" value="$PAC_PAC_NOMBRE"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ADT2/PAC_PAC_DIRECCIONGRALHABIT" var="PAC_PAC_DIRECCIONGRALHABIT"/>
+                <output path="PID.11.PatientAddress/XAD.1/SAD.1"/>
+                <param name="input" value="$PAC_PAC_DIRECCIONGRALHABIT"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ADT2/PAC_PAC_CIUDAHABIT" var="PAC_PAC_CIUDAHABIT"/>
+                <output path="PID.11.PatientAddress/XAD.3"/>
+                <param name="input" value="$PAC_PAC_CIUDAHABIT"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ADT2/PAC_PAC_REGIOHABIT" var="PAC_PAC_REGIOHABIT"/>
+                <output path="PID.11.PatientAddress/XAD.4"/>
+                <param name="input" value="$PAC_PAC_REGIOHABIT"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ADT2/PAC_PAC_FONO" var="PAC_PAC_FONO"/>
+                <output path="PID.13.PhoneNumberHome/XTN.1"/>
+                <param name="input" value="$PAC_PAC_FONO"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ADT2/DONURL" var="DONURL"/>
+                <output path="PID.13.PhoneNumberHome/XTN.4"/>
+                <param name="input" value="$DONURL"/>
+            </function>
+            <move>
+                <input path="$ADT2/PAC_PAC_ESTADCIVIL" var="PAC_PAC_ESTADCIVIL"/>
+                <output path="PID.16.MaritalStatus/CWE.1"/>
+            </move>
+            <customFunction lang="esql" ref="mapping:DatetoHL7">
+                <input path="$ADT2/PAC_PAC_FECHANACIM" var="PAC_PAC_FECHANACIM"/>
+                <output path="PID.7.DateTimeOfBirth"/>
+                <param name="FECHA" value="$PAC_PAC_FECHANACIM"/>
+            </customFunction>
+        </local>
+        <local>
+            <input path="$ComIbmMessageAssembly_ADT/ADT" var="ADT4"/>
+            <output path="$MessageAssembly/ADT/PV1"/>
+            <assign value="1">
+                <output path="PV1.1.SetIDPV1"/>
+            </assign>
+            <function ref="normalize">
+                <input path="$ADT4/PV1_STATUS" var="PV1_STATUS"/>
+                <output path="PV1.2.PatientClass/CWE.1"/>
+                <param name="input" value="$PV1_STATUS"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ADT4/PV1_ADMTYPE" var="PV1_ADMTYPE"/>
+                <output path="PV1.4.AdmissionType/CWE.1"/>
+                <param name="input" value="$PV1_ADMTYPE"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ADT4/PV1_ADMITDATE" var="PV1_ADMITDATE"/>
+                <output path="PV1.44.AdmitDateTime"/>
+                <param name="input" value="$PV1_ADMITDATE"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ADT4/PV1_VISITNR" var="PV1_VISITNR"/>
+                <output path="PV1.19.VisitNumber/CX.1"/>
+                <param name="input" value="$PV1_VISITNR"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ADT4/PV1_VISITNR" var="PV1_VISITNR1"/>
+                <output path="PV1.5.PreadmitNumber/CX.1"/>
+                <param name="input" value="$PV1_VISITNR1"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ADT4/XSER_PRO_RUT" var="XSER_PRO_RUT"/>
+                <output path="PV1.7.AttendingDoctor/XCN.1"/>
+                <param name="input" value="$XSER_PRO_RUT"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ADT4/SER_PRO_NOMBREFULL" var="SER_PRO_NOMBREFULL"/>
+                <output path="PV1.7.AttendingDoctor/XCN.2/FN.1"/>
+                <param name="input" value="$SER_PRO_NOMBREFULL"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ADT4/PV1_LOCATION" var="PV1_LOCATION"/>
+                <output path="PV1.3.AssignedPatientLocation/PL.1/HD.1"/>
+                <param name="input" value="$PV1_LOCATION"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ADT4/PV1_ROOM" var="PV1_ROOM"/>
+                <output path="PV1.3.AssignedPatientLocation/PL.2/HD.1"/>
+                <param name="input" value="$PV1_ROOM"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ADT4/PV1_BED" var="PV1_BED"/>
+                <output path="PV1.3.AssignedPatientLocation/PL.3/HD.1"/>
+                <param name="input" value="$PV1_BED"/>
+            </function>
+        </local>
+    </mappingDeclaration>
+</mappingRoot>

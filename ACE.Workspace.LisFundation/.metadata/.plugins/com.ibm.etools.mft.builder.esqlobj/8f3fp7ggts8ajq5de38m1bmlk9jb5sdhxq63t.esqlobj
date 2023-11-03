@@ -1,0 +1,7 @@
+CREATE FUNCTION decodemsg (IN parser CHARACTER,IN msgtype CHARACTER, IN msgset CHARACTER, IN msgformat CHARACTER, 
+							IN msgblob BLOB, INOUT msgref REFERENCE) BEGIN
+		
+	CREATE LASTCHILD OF msgref DOMAIN (parser) 
+		PARSE(msgblob SET msgset TYPE msgtype FORMAT msgformat ENCODING 819 CCSID 1209);
+			
+END;

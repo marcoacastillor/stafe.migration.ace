@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://xe/admsalud" xmlns:NS1="http://xe/admsalud"> 
+
+<xsd:element name="AGFA_MFN">
+        <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/AGFA_MFN;XSDElementDeclaration$MRObject"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+        <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element minOccurs="0" name="MSH_07_HIS_DATE" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="MSH_09_EVENT_TYPE" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="MSH_10_MESS_ID" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="MFE_01_TRANS_CODE" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="STF_01_HIS_CODE" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="STF_02_RIS_CODE" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="STF_03_01_LAST_NAME" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="STF_03_02_FIRST_NAME" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="STF_10_01_PHONE1" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="STF_10_02_PHONE2" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="STF_10_03_EMAIL" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="STF_11_ADDRESS" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="STF_13_INACT_DATE" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="PRA_05_SPECIALTY" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="PRA_09_INSTITUTION" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="MFN_01_STATUS" nillable="true" type="xsd:string"/>
+        <xsd:element minOccurs="0" name="MFN_02_RIS_DATE" nillable="true" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+
+ </xsd:element>
+
+
+</xsd:schema>

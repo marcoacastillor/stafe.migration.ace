@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0" xmlns:map="default">
+    <input path="/ACK_LIS.xsd"/>
+    <output path="mbsharedlib://HL7-2.7/FSFB_HL7.xsd"/>
+    <imports>
+        <import kind="esql" namespace="/UTILS/mapping.esql"/>
+        <import kind="esql" namespace="/Commons/FSFB_errorHandler.esql"/>
+        <import kind="esql" namespace="/DateToTime.esql"/>
+    </imports>
+    <namespaces>
+        <namespace kind="supplement" prefix="in" uri="http://co/org/fsfb/HIS_ORMOUT/impl"/>
+        <namespace kind="supplement" prefix="out" uri="urn:hl7-org:v2xml"/>
+        <namespace kind="extension" prefix="mapping" uri="/UTILS/mapping.esql"/>
+        <namespace kind="extension" prefix="FSFB_errorHandler" uri="/Commons/FSFB_errorHandler.esql"/>
+        <namespace kind="extension" prefix="DateToTime" uri="/DateToTime.esql"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="oru_lis_xmltohl7">
+        <input namespace="http://co/org/fsfb/HIS_ORMOUT/impl" path="mb:msg(ACK_LIS,assembly,XMLNSC,Properties)" var="ComIbmMessageAssembly_ACK_LIS"/>
+        <output namespace="urn:hl7-org:v2xml" path="mb:msg(ACK,assembly,DFDL,Properties)" var="ComIbmMessageAssembly_ACK"/>
+        <move>
+            <input path="$ComIbmMessageAssembly_ACK_LIS/Properties"/>
+            <output path="$ComIbmMessageAssembly_ACK/Properties"/>
+            <override>
+                <assign value="{HL7-2.7}">
+                    <output path="$ComIbmMessageAssembly_ACK/Properties/MessageSet"/>
+                </assign>
+                <assign value="{urn:hl7-org:v2xml}:ACK">
+                    <output path="$ComIbmMessageAssembly_ACK/Properties/MessageType"/>
+                </assign>
+            </override>
+        </move>
+        <local>
+            <input path="$ComIbmMessageAssembly_ACK_LIS/ACK_LIS/XMENSAJEID" var="XMENSAJEID2"/>
+            <input path="$ComIbmMessageAssembly_ACK_LIS/ACK_LIS/FEC_EVENTO" var="FEC_EVENTO"/>
+            <output path="$ComIbmMessageAssembly_ACK/ACK/MSH"/>
+            <assign value="|">
+                <output path="MSH.1.FieldSeparator"/>
+            </assign>
+            <assign value="^">
+                <output path="MSH.2.ServiceString/ComponentSeparator"/>
+            </assign>
+            <assign value="~">
+                <output path="MSH.2.ServiceString/RepeatSeparator"/>
+            </assign>
+            <assign value="\">
+                <output path="MSH.2.ServiceString/EscapeCharacter"/>
+            </assign>
+            <assign value="&amp;">
+                <output path="MSH.2.ServiceString/SubComponentSeparator"/>
+            </assign>
+            <assign value="HIS">
+                <output path="MSH.3.SendingApplication/HD.1"/>
+            </assign>
+            <assign value="LAB">
+                <output path="MSH.5.ReceivingApplication/HD.1"/>
+            </assign>
+            <assign value="ACK">
+                <output path="MSH.9.MessageType/MSG.1"/>
+            </assign>
+            <assign value="R01">
+                <output path="MSH.9.MessageType/MSG.2"/>
+            </assign>
+            <assign value="P">
+                <output path="MSH.11.ProcessingID/PT.1"/>
+            </assign>
+            <assign value="2.3">
+                <output path="MSH.12.VersionID/VID.1"/>
+            </assign>
+            <assign value="NE">
+                <output path="MSH.15.AcceptAcknowledgmentType"/>
+            </assign>
+            <function ref="normalize">
+                <input path="$XMENSAJEID2/." var="XMENSAJEID"/>
+                <output path="MSH.10.MessageControlID"/>
+                <param name="input" value="$XMENSAJEID"/>
+            </function>
+            <customFunction lang="esql" ref="mapping:CurrentTimestampHL7">
+                <output path="MSH.7.DateTimeOfMessage"/>
+            </customFunction>
+        </local>
+        <local>
+            <input path="$ComIbmMessageAssembly_ACK_LIS/ACK_LIS" var="ACK_LIS"/>
+            <output path="$ComIbmMessageAssembly_ACK/ACK/MSA"/>
+            <condition>
+                <if>
+                    <input path="$ACK_LIS/MSH_STATUS" var="MSH_STATUS"/>
+                    <output path="MSA.1.AcknowledgementCode"/>
+                    <test lang="xpath">$MSH_STATUS = '1000000'</test>
+                    <assign value="AA">
+                        <output path="."/>
+                    </assign>
+                </if>
+                <else>
+                    <output path="MSA.1.AcknowledgementCode"/>
+                    <assign value="AE">
+                        <output path="."/>
+                    </assign>
+                </else>
+            </condition>
+            <function ref="normalize">
+                <input path="$ACK_LIS/XMENSAJEID" var="XMENSAJEID1"/>
+                <output path="MSA.2.MessageControlID"/>
+                <param name="input" value="$XMENSAJEID1"/>
+            </function>
+        </local>
+    </mappingDeclaration>
+</mappingRoot>

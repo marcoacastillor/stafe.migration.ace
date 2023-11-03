@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://sisips/admsalud" xmlns:NS1="http://sisips/admsalud">
+	<xsd:element name="AGFA_DFT">
+        <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/AGFA_DFT;XSDElementDeclaration$MRObject"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+        <xsd:complexType>
+           <xsd:sequence>
+                <xsd:element minOccurs="0" name="FT1_02_EXAM_CODE" type="xsd:string"/>
+                <xsd:element minOccurs="0" name="FT1_03_BATCH_ID" type="xsd:string"/>
+                <xsd:element minOccurs="0" name="FT1_06_STATUS" type="xsd:string"/>
+                <xsd:element minOccurs="0" name="MSH_DFT_ID" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

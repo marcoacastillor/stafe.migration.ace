@@ -1,0 +1,10 @@
+CREATE FUNCTION createBody(INOUT fsfb REFERENCE, IN msgblob BLOB, IN parser CHARACTER, 
+								IN msgset CHARACTER, IN msgtype CHARACTER, IN msgformat CHARACTER) 
+BEGIN
+	-- crear body del mensaje
+	SET fsfb.ns:Body.data				= msgblob;
+	SET fsfb.ns:Body.parse.parser		= parser;
+	SET fsfb.ns:Body.parse.msgset		= msgset;
+	SET fsfb.ns:Body.parse.msgtype		= msgtype;
+	SET fsfb.ns:Body.parse.msgformat	= msgformat;
+END;

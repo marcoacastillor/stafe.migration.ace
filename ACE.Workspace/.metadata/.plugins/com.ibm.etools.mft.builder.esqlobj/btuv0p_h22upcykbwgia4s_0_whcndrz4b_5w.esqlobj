@@ -1,0 +1,19 @@
+/*EATE FUNCTION Main() RETURNS BOOLE*/
+	BEGIN
+		
+		SET OutputRoot = InputRoot;
+		SET OutputLocalEnvironment = InputLocalEnvironment;
+		--DECLARE msgin REFERENCE TO OutputRoot.DFDL.ns:O01;
+		DECLARE msgin REFERENCE TO OutputRoot.MRM;
+		
+		IF EXISTS(msgin.*:FT1[]) THEN
+			SET OutputRoot.MQMD.CorrelId = InputRoot.MQMD.MsgId;
+			PROPAGATE TO TERMINAL 'out1' DELETE NONE;
+		ELSE 
+			SET OutputLocalEnvironment.Destination.MQ.DestinationData[1].queueName = 'RIS.ORMOUT.INPUT';
+			PROPAGATE TO TERMINAL 'out2' DELETE NONE;
+		END IF;
+		
+		
+	END;
+

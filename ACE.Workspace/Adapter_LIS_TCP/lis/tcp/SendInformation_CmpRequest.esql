@@ -1,0 +1,71 @@
+BROKER SCHEMA lis.tcp
+
+
+CREATE COMPUTE MODULE SendInformation_CmpRequest
+	DECLARE LeadingMLLPBytes EXTERNAL CHARACTER '0B';
+	DECLARE TrailingMLLPBytes EXTERNAL CHARACTER '1C0D';
+	DECLARE AddLeadingMLLPBytes EXTERNAL BOOLEAN TRUE;
+	DECLARE AddTrailingMLLPBytes EXTERNAL BOOLEAN TRUE;
+	
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		/******************************************************/
+		-- Copiar cabeceras de mensaje
+		/******************************************************/
+		SET OutputRoot.MQMD 		= InputRoot.MQMD;
+		SET OutputRoot.MQRFH2 		= InputRoot.MQRFH2;
+		SET OutputRoot.BLOB			= InputRoot.BLOB;
+		
+		/******************************************************/
+		-- Declarar referencias
+		/******************************************************/
+		DECLARE refEnv REFERENCE TO Environment;
+		DECLARE refMQRFH2 REFERENCE TO OutputRoot.MQRFH2;
+		DECLARE refInpRoot REFERENCE TO OutputRoot;
+		
+		/******************************************************/
+		-- Copiar cabeceras para responder
+		/******************************************************/
+		SET refEnv.Variables.headers.MQMD 	= InputRoot.MQMD;
+		SET refEnv.Variables.headers.MQRFH2 = InputRoot.MQRFH2;
+		
+		DECLARE refInputBlob REFERENCE TO OutputRoot.BLOB.BLOB;
+		
+		DECLARE LeadingMLLPBLOB BLOB CAST ( LeadingMLLPBytes AS BLOB );
+		DECLARE TrailingMLLPBLOB BLOB CAST ( TrailingMLLPBytes AS BLOB );
+		
+		-- If AddLeadingMLLPBytes is enabled then add LeadingMLLPBytes		
+		IF ( AddLeadingMLLPBytes ) THEN
+			-- Convert LeadingMLLPBytes to its BLOB format
+			DECLARE LeadingMLLPBLOB BLOB CAST ( LeadingMLLPBytes AS BLOB );
+			-- Checking whether the message has Leading MLLP Bytes
+			-- If yes then propagate the message to 'Out' terminal, unchanged
+			DECLARE LeadingPosition INTEGER;
+			SET	LeadingPosition = POSITION ( LeadingMLLPBLOB IN refInputBlob ); 
+			
+			IF ( LeadingPosition <> 1 ) THEN
+		        -- Message does not contain LeadingMLLPBytes hence adding the same
+				SET OutputRoot.BLOB.BLOB = LeadingMLLPBLOB || OutputRoot.BLOB.BLOB;
+	        END IF;
+	    END IF;
+		
+		-- If AddTrailingMLLPBytes is enabled then add TrailingMLLPBytes	
+		IF ( AddTrailingMLLPBytes ) THEN
+			-- Convert TrailingMLLPBytes to its BLOB format
+			DECLARE TrailingMLLPBLOB BLOB CAST ( TrailingMLLPBytes AS BLOB );
+			-- Checking whether the message has Trailing MLLP Bytes
+			-- If yes then propagate the message to 'Out' terminal, unchanged
+			DECLARE TrailingPosition INTEGER POSITION ( TrailingMLLPBLOB IN refInputBlob );
+			DECLARE TrailingBytesLength INTEGER LENGTH ( TrailingMLLPBLOB );
+			DECLARE MessageLength INTEGER LENGTH ( refInputBlob );
+			DECLARE ActualPosition INTEGER ( MessageLength - TrailingBytesLength ) + 1;
+						
+			IF ( TrailingPosition <> ActualPosition ) THEN
+		        -- Message does not contain TrailingMLLPBytes hence adding the same
+				SET OutputRoot.BLOB.BLOB =  OutputRoot.BLOB.BLOB || TrailingMLLPBLOB;
+	        END IF;
+		END IF;
+		
+		RETURN TRUE;
+	END;
+END MODULE;

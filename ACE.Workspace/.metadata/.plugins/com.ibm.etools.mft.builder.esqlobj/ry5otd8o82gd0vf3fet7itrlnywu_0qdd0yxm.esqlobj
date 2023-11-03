@@ -1,0 +1,202 @@
+CREATE DATABASEEVENT MODULE LISADT_Database_TABPACLABCORE
+
+	/*
+	 * ReadEvents populates the NewEvents structure with event data read from the event table.
+	 * ReadEvents is called after all current events have been dispatched.
+	 * ReadEvents is called on a new transaction that is a separate transaction from the message
+	 * flow, and that runs before the message flow transaction.
+	 *
+	 * After ReadEvents completes:
+	 * - the current transaction is committed to ensure that any database locks obtained during
+	 *   ReadEvents are released.
+	 * - All events in NewEvents are moved to Ready state.  This means that they are ready to be
+	 *   dispatched.
+	 *
+	 * Parameters:
+	 * IN NewEvents REFERENCE.  This is a reference to a ROW. ReadEvents must create children of
+	 *                          this ROW for each event that is being processed.
+	 *                          Each child must include a Usr field and a Key field.
+	 */
+	 CREATE PROCEDURE ReadEvents( IN NewEvents REFERENCE )
+	 BEGIN
+		DECLARE EXIT HANDLER FOR SQLSTATE LIKE 'D%'
+		BEGIN
+			RESIGNAL; /* pass the error back to the node */
+
+			/* To choose to handle Database errors yourself, delete the RESIGNAL statement above
+			 * and uncomment the following procedure call */
+--			CALL HandleDatabaseError('ReadEvents');
+		END;
+
+		/*
+		 * Here you select all unprocessed events from the event store.
+		 * You only read the events here; you delete them in EndEvent.
+		 * In general, it is not good practice to delete or update the events here because this
+		 * transaction will be committed even before the BuildMessage procedure is called.
+		 * Under certain circumstances, for example, if you do not need assured delivery of the
+		 * events, it is acceptable to update or delete the events here. This means that
+		 * the deletion or update is committed before the message flow processes the in-memory
+		 * copies of these events. If the broker, execution group, or message flow is stopped
+		 * or redeployed in the meantime, the in-memory copy is lost, and the events are never
+		 * processed by the flow.
+		 *
+		 * NOTE: You do not need to filter out events that are currently dispatched here.
+		 *       The framework ensures that events are not duplicated by comparing the Key field
+		 *       to the Key field of dispatched events.
+		 */
+
+		/* For example*/
+--		SET NewEvents.Event[] = SELECT <MyEventTableName>.* AS Usr,
+--									<MyEventTableName>.<MyEventTablePrimaryKey> AS Key
+--									FROM Database.<MySchemaName>.<MyEventTableName>;
+
+		/*
+		 * Optionally, if your event table has a column to store state (events are not removed from
+		 * the table after processing), use the WHERE clause to filter the events.
+		 */
+		 --DECLARE sql CHARACTER 'SELECT TABPACLABCORE.* AS Usr,TABPACLABCORE.FEC_EVENTO AS Key FROM Database.admsalud.TABPACLABCORE WHERE TABPACLABCORE.ESTADO = ? AND ROWNUM < ?';
+		 --DECLARE data ROW;
+		 --SET data.results =  PASSTHRU(sql,'N','7');
+		 --SET NewEvents.Event[] = data;
+		 
+		 SET NewEvents.Event[] = SELECT TABPACLABCORE.* AS Usr,
+									TABPACLABCORE.FEC_EVENTO AS Key
+									FROM Database.admsalud.TABPACLABCORE
+									WHERE TABPACLABCORE.ESTADO = 'N';
+	END;
+
+
+	/*
+	 * BuildMessage builds the message to be propagated to the flow.
+	 * Typically, you use the event data for the current dispatched event to look up data in
+	 * the application table, and copy that data into the message.
+	 * BuildMessage is called while some events are in the Ready state.
+	 * BuildMessage is called as part of the message flow transaction. This transaction also
+	 * involves EndEvent.
+	 *
+	 * After BuildMessage returns, the message is propagated to the message flow.
+	 *
+	 * Parameters:
+	 * IN DispatchedEvent REFERENCE.  A Reference to a ROW containing the event data for the
+	 *                                current dispatched event. This is a copy of one of the 
+	 *                                events added to NewEvents by ReadEvents procedure.
+	 */
+	CREATE PROCEDURE BuildMessage(IN DispatchedEvent REFERENCE)
+	BEGIN
+		DECLARE EXIT HANDLER FOR SQLSTATE LIKE 'D%'
+		BEGIN
+			RESIGNAL; /* pass the error back to the node */
+
+			/* To choose to handle Database errors yourself, delete the RESIGNAL statement above
+			 * and uncomment the following procedure call */
+--			CALL HandleDatabaseError('BuildMessage');
+		END;
+		/* Here you use the event data in the local environment to retrieve the application data. */
+
+		--SET Root.DataObject.ns:LABHSP_ADT [] =
+		
+		-- SET output.hl7:"AIP.7.StartDateTimeOffset" VALUE = input.hl7:StartDateTimeOffset;
+		
+	--SET Root.DataObject.(XMLNSC.XmlDeclaration)*.(XMLNSC.Attribute)Encoding = 'iso-8859-1'; 
+	SET Root.DataObject.(XMLNSC.XmlDeclaration)*.(XMLNSC.Attribute)Encoding = 'UTF-8';
+    SET Root.DataObject.adtns:TABPACLABCORE [] =    			
+				SELECT TABPACLABCORE.rowid as ID_MESSAGE,
+				       TRUNCATE (TABPACLABCORE.PAC_PAC_NUMERO,0) as PAC_PAC_NUMERO
+				       ,TRIM (TABPACLABCORE.PAC_PAC_RUT) as PAC_PAC_RUT, 
+				       TRIM (TABPACLABCORE.PAC_PAC_APELLPATER) as PAC_PAC_APELLPATER, 
+				       TRIM (TABPACLABCORE.PAC_PAC_APELLMATER) as PAC_PAC_APELLMATER, 
+				       TRIM (TABPACLABCORE.PAC_PAC_NOMBRE) as PAC_PAC_NOMBRE, 
+				       TABPACLABCORE.PAC_PAC_FECHANACIM as PAC_PAC_FECHANACIM, 
+				       TABPACLABCORE.PAC_PAC_COTIZANTE as PAC_PAC_COTIZANTE, 
+				       TRIM (TABPACLABCORE.PAC_PAC_DIRECCIONGRALHABIT) as PAC_PAC_DIRECCIONGRALHABIT, 
+				       TABPACLABCORE.PAC_PAC_CALLEHABIT as PAC_PAC_CALLEHABIT,  
+				       TABPACLABCORE.PAC_PAC_NUMERHABIT as PAC_PAC_NUMERHABIT, 
+				       TABPACLABCORE.PAC_PAC_DEPARHABIT as PAC_PAC_DEPARHABIT, 
+				       TRIM (TABPACLABCORE.PAC_PAC_POBLAHABIT) as PAC_PAC_POBLAHABIT, 
+				       TRIM (TABPACLABCORE.PAC_PAC_COMUNHABIT) as PAC_PAC_COMUNHABIT,
+				       TABPACLABCORE.PAC_PAC_CIUDAHABIT as PAC_PAC_CIUDAHABIT, 
+				       TRIM (TABPACLABCORE.PAC_PAC_REGIOHABIT) as PAC_PAC_REGIOHABIT,
+				       TRIM (TABPACLABCORE.PAC_PAC_FONO) as PAC_PAC_FONO,
+				       TABPACLABCORE.PAC_PAC_SEXO as PAC_PAC_SEXO, 
+				       TABPACLABCORE.PAC_PAC_ESTADCIVIL as PAC_PAC_ESTADCIVIL,
+				       TABPACLABCORE.PAC_PAC_FECHAFALLEC as PAC_PAC_FECHAFALLEC,
+				       TRIM (TABPACLABCORE.PAC_PAC_TIPOBENEF) as PAC_PAC_TIPOBENEF,
+				       TRIM (TABPACLABCORE.PAC_PAC_CLASECODIGO) as PAC_PAC_CLASECODIGO,
+				       TABPACLABCORE.PAC_PAC_TIPOIDENTCODIGO as PAC_PAC_TIPOIDENTCODIGO,
+				       TRIM (TABPACLABCORE.DONURL) as DONURL,
+				       TABPACLABCORE.FECPRC as FECPRC,
+				       TABPACLABCORE.USRCOD as USRCOD, 
+				       TABPACLABCORE.ACCIONTIPO as ACCIONTIPO,
+				       TABPACLABCORE.ESTADO as ESTADO,
+					   TABPACLABCORE.TIPO_REGISTRO as TIPO_REGISTRO,
+					   TABPACLABCORE.EVENTO_REGISTRO as EVENTO_REGISTRO,
+					   TABPACLABCORE.ESTRUC_REGISTRO as ESTRUC_REGISTRO,
+					   TABPACLABCORE.FEC_EVENTO as FEC_EVENTO, 
+					   TABPACLABCORE.IPORIGEN as IPORIGEN,
+					   TABPACLABCORE.FEC_NACIM as FEC_NACIM,
+					   TABPACLABCORE.PV1_ADMTYPE as PV1_ADMTYPE,
+					   TABPACLABCORE.XSER_PRO_RUT as XSER_PRO_RUT,
+					   TABPACLABCORE.SER_PRO_NOMBREFULL as SER_PRO_NOMBREFULL,
+					   TABPACLABCORE.PV1_STATUS as PV1_STATUS,
+					   TABPACLABCORE.PV1_LOCATION as PV1_LOCATION,
+					   TABPACLABCORE.PV1_ROOM as PV1_ROOM,
+					   TABPACLABCORE.PV1_BED as PV1_BED,
+					   TABPACLABCORE.RUT_ATIENDE as RUT_ATIENDE,
+					   TABPACLABCORE.SER_PRO_ATIENDEORDEN as SER_PRO_ATIENDEORDEN,
+					   TABPACLABCORE.PV1_ADMITDATE as PV1_ADMITDATE,
+					   TABPACLABCORE.PV1_VISITNR as PV1_VISITNR					   
+					   FROM Database.admsalud.TABPACLABCORE
+					   WHERE TABPACLABCORE.FEC_EVENTO = DispatchedEvent.Usr.FEC_EVENTO AND TABPACLABCORE.PAC_PAC_NUMERO = DispatchedEvent.Usr.PAC_PAC_NUMERO;
+					   
+		SET Root.DataObject.adtns:TABPACLABCORE [1].APLDESTINO = 'LIS';							    
+
+		RETURN;
+	END;
+
+
+	/*
+	 * EndEvent updates the event table to record the event as processed.
+	 * EndEvent is called after the message flow has processed the event.
+	 * EndEvent is called as part of the message flow transaction.  This transaction also involves
+	 * BuildMessage. The transaction will be committed when this procedure ends.
+	 *
+	 * Parameters:
+	 * IN DispatchedEvent REFERENCE.  A Reference to a ROW containing the event data for the current
+	 *                                dispatched event. This is a copy of one of the events added to
+	 *                                NewEvents by ReadEvents procedure.
+	 */
+	CREATE PROCEDURE EndEvent(IN DispatchedEvent REFERENCE)
+	BEGIN
+		DECLARE EXIT HANDLER FOR SQLSTATE LIKE 'D%'
+		BEGIN
+			RESIGNAL; /* pass the error back to the node */
+
+			/* To choose to handle Database errors yourself, delete the RESIGNAL statement above
+			 * and uncomment the following procedure call */
+--			CALL HandleDatabaseError('EndEvent');
+
+		END;
+		/* Here you update the event table to ensure that this event is not processed again. */
+
+		/* For example */
+--		DELETE FROM  Database.<MySchemaName>.<MyEventTableName>
+--				WHERE <MyEventTableName>.<MyEventTablePrimaryKey> = DispatchedEvent.Usr.<MyEventTablePrimaryKey>;
+
+		/* Optionally, if your event table has a column to store state, you can update the events here. */
+  			UPDATE Database.admsalud.TABPACLABCORE
+				SET ESTADO = 'P'
+				--WHERE TABPACLABCORE.ESTADO  =  'N';
+				WHERE TABPACLABCORE.FEC_EVENTO = DispatchedEvent.Usr.FEC_EVENTO AND TABPACLABCORE.PAC_PAC_NUMERO = DispatchedEvent.Usr.PAC_PAC_NUMERO; 
+        		
+		RETURN;
+	END;
+
+
+	CREATE PROCEDURE HandleDatabaseError( IN FunctionName CHARACTER )
+	BEGIN
+		/* Throw a different exception; this could be changed. */
+		DECLARE message CHARACTER 'Exception occured calling Database Input Node function: ' || FunctionName;
+		THROW USER EXCEPTION VALUES( SQLCODE, SQLSTATE, SQLNATIVEERROR, SQLERRORTEXT, message );
+	END;
+
+END MODULE;

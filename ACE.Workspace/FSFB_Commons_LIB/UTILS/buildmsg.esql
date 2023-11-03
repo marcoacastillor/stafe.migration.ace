@@ -1,0 +1,149 @@
+BROKER SCHEMA UTILS
+
+
+-- declaración de namespace
+DECLARE ns NAMESPACE 'http://co/org/fsfb/fmwk';
+DECLARE hl7 NAMESPACE 'urn:hl7-org:v2xml';
+
+-- declaración de variables UDP
+DECLARE msgflow		EXTERNAL CHARACTER '';
+--
+---------------------------------------------------------------
+--	MODULE build_errormsg
+--	Este módulo adecua el mensaje de error
+---------------------------------------------------------------
+CREATE COMPUTE MODULE build_errormsg
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		CALL CopyMessageHeaders();
+		
+		SET OutputRoot.XMLNSC.error.msgflow 	= msgflow;
+		SET OutputRoot.XMLNSC.error.corrid 		= InputRoot.MQMD.CorrelId;
+		SET OutputRoot.XMLNSC.error.timestamp 	= CURRENT_TIMESTAMP;
+		SET OutputRoot.XMLNSC.error.metadata 	= '';
+		
+		SET OutputRoot.XMLNSC.error.system 		= InputExceptionList;
+		
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+END MODULE;
+
+---------------------------------------------------------------
+--	MODULE build_errormsg
+--	Este módulo adecua el mensaje de error
+---------------------------------------------------------------
+CREATE COMPUTE MODULE build_logmsg
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		CALL CopyMessageHeaders();
+		
+		CREATE FIELD OutputRoot.XMLNSC.log;
+		
+		SET OutputRoot.XMLNSC.log.msgflow = 'ORM_IN_ACK_LIS_RIS';
+		SET OutputRoot.XMLNSC.log.corrid = InputRoot.MQMD.CorrelId;
+		SET OutputRoot.XMLNSC.log.timestamp = CURRENT_TIMESTAMP;
+		SET OutputRoot.XMLNSC.log.metadata = '';
+		
+		PROPAGATE TO TERMINAL 'out1';
+		
+		CALL CopyEntireMessage();
+				
+		PROPAGATE TO TERMINAL 'out';
+		
+		RETURN FALSE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;
+
+-------------------------------------------------------------
+-- 	FUNCTION generateCorrelID
+--	genera una secuencia BLOB para ser utilizada como correlID
+-------------------------------------------------------------
+CREATE FUNCTION generateCorrelID() 
+	RETURNS BLOB 
+BEGIN
+	
+	DECLARE correlid_01	INTEGER RAND(123)*1000000000000;
+	DECLARE correlid_02	INTEGER RAND(456)*1000000000000;
+	DECLARE correlid_03	INTEGER RAND(789)*1000000000000;
+
+	RETURN CAST(correlid_01 AS BLOB) || CAST(correlid_02 AS BLOB) || CAST(correlid_03 AS BLOB);
+	
+END;
+
+-------------------------------------------------------------
+-- 	FUNCTION createBody
+--	construye el FSFB:Body del mensaje
+-------------------------------------------------------------
+CREATE FUNCTION createBody(INOUT fsfb REFERENCE, IN msgblob BLOB, IN parser CHARACTER, 
+								IN msgset CHARACTER, IN msgtype CHARACTER, IN msgformat CHARACTER) 
+BEGIN
+	-- crear body del mensaje
+	SET fsfb.ns:Body.data				= msgblob;
+	SET fsfb.ns:Body.parse.parser		= parser;
+	SET fsfb.ns:Body.parse.msgset		= msgset;
+	SET fsfb.ns:Body.parse.msgtype		= msgtype;
+	SET fsfb.ns:Body.parse.msgformat	= msgformat;
+END;
+
+-------------------------------------------------------------
+-- 	FUNCTION createHeader
+--	construye el FSFB:Header del mensaje
+-------------------------------------------------------------
+CREATE FUNCTION createHeader(INOUT fsfb REFERENCE, IN operation CHARACTER, IN system CHARACTER) 
+BEGIN
+	-- crear header del mensaje
+	CREATE FIELD fsfb.ns:Header;
+		SET fsfb.ns:Header.ns:operation 		= operation;
+		SET fsfb.ns:Header.ns:system			= system;
+END;
+
+-------------------------------------------------------------
+-- 	FUNCTION createHeaderEnv
+--	construye el FSFB:Header del mensaje a partir
+--	de un header de resguardo
+-------------------------------------------------------------
+CREATE FUNCTION copyHeader(INOUT fsfb REFERENCE, IN header REFERENCE) 
+BEGIN
+	-- crear header del mensaje
+	CREATE FIELD fsfb.ns:Header;
+	MOVE header NEXTSIBLING;
+	
+	SET fsfb.ns:Header.ns:operation			= header;
+	
+--	DECLARE operation_ CHARACTER header.operation;
+--		SET fsfb.ns:Header.ns:system			= header.system;
+--		
+--		-- escribirlas en el campo service
+		SET fsfb.ns:service.(XMLNSC.Attribute)nombre		= header.service.nombre;
+		SET fsfb.ns:service.(XMLNSC.Attribute)audit 		= header.service.audit;
+		SET fsfb.ns:service.(XMLNSC.Attribute)log			= header.service.log;
+		
+		SET fsfb.ns:service.request							= header.service.request;
+		SET fsfb.ns:service.response						= header.service.response;
+		
+END;
+

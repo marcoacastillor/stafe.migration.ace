@@ -1,0 +1,250 @@
+
+==============================================
+
+!Sun Mar 20 00:16:12 COT 2022
+
+Processing file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_8HEADCUENTASMED.msgflow.
+Successfully added file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_8HEADCUENTASMED.msgflow to BAR file.
+
+==============================================
+
+!Sun Mar 20 00:16:12 COT 2022
+
+Processing file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_7SUBDETAILFEDOS_TRIBUTOS.msgflow.
+Successfully added file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_7SUBDETAILFEDOS_TRIBUTOS.msgflow to BAR file.
+
+==============================================
+
+!Sun Mar 20 00:16:12 COT 2022
+
+Processing file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_6SUBDETAILFEDOS.msgflow.
+Successfully added file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_6SUBDETAILFEDOS.msgflow to BAR file.
+
+==============================================
+
+!Sun Mar 20 00:16:12 COT 2022
+
+Processing file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_5DETAILFEDOS.msgflow.
+Successfully added file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_5DETAILFEDOS.msgflow to BAR file.
+
+==============================================
+
+!Sun Mar 20 00:16:12 COT 2022
+
+Processing file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_4DETAILCUENTASMED.msgflow.
+Successfully added file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_4DETAILCUENTASMED.msgflow to BAR file.
+
+==============================================
+
+!Sun Mar 20 00:16:13 COT 2022
+
+Processing file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_3TRIBUTOSFEDOS.msgflow.
+Successfully added file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_3TRIBUTOSFEDOS.msgflow to BAR file.
+
+==============================================
+
+!Sun Mar 20 00:16:13 COT 2022
+
+Processing file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_2ANTABOFEDOS.msgflow.
+Successfully added file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_2ANTABOFEDOS.msgflow to BAR file.
+
+==============================================
+
+!Sun Mar 20 00:16:13 COT 2022
+
+Processing file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_1HEADFEDOS.msgflow.
+Successfully added file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_1HEADFEDOS.msgflow to BAR file.
+
+==============================================
+
+!Sun Mar 20 00:16:13 COT 2022
+
+Processing file ElectronicBillV2_GetDataDB\application.descriptor.
+Successfully added file ElectronicBillV2_GetDataDB\application.descriptor to BAR file.
+Elapsed time: 0 second(s).
+
+Successfully added file ElectronicBillV2_GetDataDB\application.descriptor to BAR file.
+
+==============================================
+
+!Sun Mar 20 00:16:13 COT 2022
+
+Processing file ElectronicBillV2_GetDataDB\application.descriptor.
+Successfully added file ElectronicBillV2_GetDataDB\application.descriptor to BAR file.
+Elapsed time: 0 second(s).
+
+Successfully added file ElectronicBillV2_GetDataDB\application.descriptor to BAR file.
+
+==============================================
+
+!Sun Mar 20 00:16:13 COT 2022
+
+Processing file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_1HEADFEDOS_CreateErrorMsg.esql.
+Successfully added file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_1HEADFEDOS_CreateErrorMsg.esql to BAR file.
+
+==============================================
+
+!Sun Mar 20 00:16:13 COT 2022
+
+Processing file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_1HEADFEDOS_GetData.esql.
+Dependent ESQL file com/common/utils/procedures/Procedures.esql is added to the BAR file.
+
+Dependent ESQL file common/procedures/utils/Procedures.esql is added to the BAR file.
+
+Dependent ESQL file com/common/global/cache/FunctionsCacheJava.esql is added to the BAR file.
+
+Successfully added file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_1HEADFEDOS_GetData.esql to BAR file.
+
+==============================================
+
+!Sun Mar 20 00:16:13 COT 2022
+
+Processing file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_2ANTABOFEDOS_CreateErrorMsg.esql.
+Successfully added file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_2ANTABOFEDOS_CreateErrorMsg.esql to BAR file.
+
+==============================================
+
+!Sun Mar 20 00:16:13 COT 2022
+
+Processing file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_2ANTABOFEDOS_GetData.esql.
+Dependent ESQL file com/common/utils/procedures/Procedures.esql is added to the BAR file.
+
+Dependent ESQL file common/procedures/utils/Procedures.esql is added to the BAR file.
+
+Dependent ESQL file com/common/global/cache/FunctionsCacheJava.esql is added to the BAR file.
+
+Dependent ESQL file electronic/bill/v2/get/data/db/GetDataBy_1HEADFEDOS_GetData.esql is added to the BAR file.
+
+Successfully added file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_2ANTABOFEDOS_GetData.esql to BAR file.
+
+==============================================
+
+!Sun Mar 20 00:16:13 COT 2022
+
+Processing file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_3TRIBUTOSFEDOS_CreateErrorMsg.esql.
+Successfully added file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_3TRIBUTOSFEDOS_CreateErrorMsg.esql to BAR file.
+
+==============================================
+
+!Sun Mar 20 00:16:13 COT 2022
+
+Processing file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_3TRIBUTOSFEDOS_GetData.esql.
+Dependent ESQL file com/common/utils/procedures/Procedures.esql is added to the BAR file.
+
+Dependent ESQL file common/procedures/utils/Procedures.esql is added to the BAR file.
+
+Dependent ESQL file com/common/global/cache/FunctionsCacheJava.esql is added to the BAR file.
+
+Dependent ESQL file electronic/bill/v2/get/data/db/GetDataBy_1HEADFEDOS_GetData.esql is added to the BAR file.
+
+Successfully added file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_3TRIBUTOSFEDOS_GetData.esql to BAR file.
+
+==============================================
+
+!Sun Mar 20 00:16:13 COT 2022
+
+Processing file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_4DETAILCUENTASMED_CreateErrorMsg.esql.
+Successfully added file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_4DETAILCUENTASMED_CreateErrorMsg.esql to BAR file.
+
+==============================================
+
+!Sun Mar 20 00:16:13 COT 2022
+
+Processing file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_4DETAILCUENTASMED_GetData.esql.
+Dependent ESQL file com/common/utils/procedures/Procedures.esql is added to the BAR file.
+
+Dependent ESQL file common/procedures/utils/Procedures.esql is added to the BAR file.
+
+Dependent ESQL file com/common/global/cache/FunctionsCacheJava.esql is added to the BAR file.
+
+Dependent ESQL file electronic/bill/v2/get/data/db/GetDataBy_1HEADFEDOS_GetData.esql is added to the BAR file.
+
+Successfully added file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_4DETAILCUENTASMED_GetData.esql to BAR file.
+
+==============================================
+
+!Sun Mar 20 00:16:13 COT 2022
+
+Processing file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_5DETAILFEDOS_CreateErrorMsg.esql.
+Successfully added file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_5DETAILFEDOS_CreateErrorMsg.esql to BAR file.
+
+==============================================
+
+!Sun Mar 20 00:16:13 COT 2022
+
+Processing file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_5DETAILFEDOS_GetData.esql.
+Dependent ESQL file com/common/utils/procedures/Procedures.esql is added to the BAR file.
+
+Dependent ESQL file common/procedures/utils/Procedures.esql is added to the BAR file.
+
+Dependent ESQL file com/common/global/cache/FunctionsCacheJava.esql is added to the BAR file.
+
+Dependent ESQL file electronic/bill/v2/get/data/db/GetDataBy_1HEADFEDOS_GetData.esql is added to the BAR file.
+
+Successfully added file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_5DETAILFEDOS_GetData.esql to BAR file.
+
+==============================================
+
+!Sun Mar 20 00:16:13 COT 2022
+
+Processing file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_6SUBDETAILFEDOS_CreateErrorMsg.esql.
+Successfully added file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_6SUBDETAILFEDOS_CreateErrorMsg.esql to BAR file.
+
+==============================================
+
+!Sun Mar 20 00:16:13 COT 2022
+
+Processing file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_6SUBDETAILFEDOS_GetData.esql.
+Dependent ESQL file com/common/utils/procedures/Procedures.esql is added to the BAR file.
+
+Dependent ESQL file common/procedures/utils/Procedures.esql is added to the BAR file.
+
+Dependent ESQL file com/common/global/cache/FunctionsCacheJava.esql is added to the BAR file.
+
+Dependent ESQL file electronic/bill/v2/get/data/db/GetDataBy_1HEADFEDOS_GetData.esql is added to the BAR file.
+
+Successfully added file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_6SUBDETAILFEDOS_GetData.esql to BAR file.
+
+==============================================
+
+!Sun Mar 20 00:16:13 COT 2022
+
+Processing file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_7SUBDETAILFEDOS_TRIBUTOS_CreateErrorMsg.esql.
+Successfully added file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_7SUBDETAILFEDOS_TRIBUTOS_CreateErrorMsg.esql to BAR file.
+
+==============================================
+
+!Sun Mar 20 00:16:13 COT 2022
+
+Processing file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_7SUBDETAILFEDOS_TRIBUTOS_GetData.esql.
+Dependent ESQL file com/common/utils/procedures/Procedures.esql is added to the BAR file.
+
+Dependent ESQL file common/procedures/utils/Procedures.esql is added to the BAR file.
+
+Dependent ESQL file com/common/global/cache/FunctionsCacheJava.esql is added to the BAR file.
+
+Dependent ESQL file electronic/bill/v2/get/data/db/GetDataBy_1HEADFEDOS_GetData.esql is added to the BAR file.
+
+Successfully added file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_7SUBDETAILFEDOS_TRIBUTOS_GetData.esql to BAR file.
+
+==============================================
+
+!Sun Mar 20 00:16:13 COT 2022
+
+Processing file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_8HEADCUENTASMED_CreateErrorMsg.esql.
+Successfully added file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_8HEADCUENTASMED_CreateErrorMsg.esql to BAR file.
+
+==============================================
+
+!Sun Mar 20 00:16:13 COT 2022
+
+Processing file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_8HEADCUENTASMED_GetData.esql.
+Dependent ESQL file com/common/utils/procedures/Procedures.esql is added to the BAR file.
+
+Dependent ESQL file common/procedures/utils/Procedures.esql is added to the BAR file.
+
+Dependent ESQL file com/common/global/cache/FunctionsCacheJava.esql is added to the BAR file.
+
+Dependent ESQL file electronic/bill/v2/get/data/db/GetDataBy_1HEADFEDOS_GetData.esql is added to the BAR file.
+
+Successfully added file ElectronicBillV2_GetDataDB\electronic\bill\v2\get\data\db\GetDataBy_8HEADCUENTASMED_GetData.esql to BAR file.

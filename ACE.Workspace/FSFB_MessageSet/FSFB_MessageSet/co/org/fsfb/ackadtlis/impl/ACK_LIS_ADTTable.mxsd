@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://co/org/fsfb/ACK_ADT_LIS/impl" xmlns:NS1="http://co/org/fsfb/ACK_LIS_ADTTable/impl">
+	<xsd:element name="ACK_LIS_ADT">
+        <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/ACK_LIS_ADT;XSDElementDeclaration$MRObject"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element minOccurs="0" name="MSH_ID" type="xsd:string"/>
+                <xsd:element minOccurs="0" name="ACK_CODE" type="xsd:string"/>
+           </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

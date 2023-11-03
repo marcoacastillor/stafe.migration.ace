@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://sisips/admsalud" xmlns:NS1="http://sisips/admsalud">
+<xsd:element name="AGFA_ADT">
+        <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/AGFA_ADT;XSDElementDeclaration$MRObject"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+        <xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="0" name="ID_MESSAGE" type="xsd:string"/>
+				<xsd:element minOccurs="0" name="MSH_ID" type="xsd:string"/>
+				<xsd:element minOccurs="0" name="MSH_STATUS" type="xsd:string"/>
+				<xsd:element minOccurs="0" name="EVN_TYPECODE" type="xsd:string"/>	
+				<xsd:element minOccurs="0" name="PID_ID" type="xsd:string"/>
+				<xsd:element minOccurs="0" name="PID_ID2" type="xsd:string"/>	
+				<xsd:element minOccurs="0" name="PID_LNAMEF" type="xsd:string"/>
+				<xsd:element minOccurs="0" name="PID_LNAMEM" type="xsd:string"/>
+				<xsd:element minOccurs="0" name="PID_FNAME" type="xsd:string"/>
+				<xsd:element minOccurs="0" name="PID_DOB" type="xsd:string"/>	
+				<xsd:element minOccurs="0" name="PID_SEX" type="xsd:string"/>
+				<xsd:element minOccurs="0" name="PID_STREET" type="xsd:string"/>
+				<xsd:element minOccurs="0" name="PID_NATIONALITY" type="xsd:string"/>
+				<xsd:element minOccurs="0" name="PID_PHONE" type="xsd:string"/>
+				<xsd:element minOccurs="0" name="PID_MARITSTAT" type="xsd:string"/>
+				<xsd:element minOccurs="0" name="PID_DOD" nillable="true" type="xsd:string"/>	
+				<xsd:element minOccurs="0" name="PV1_STATUS" type="xsd:string"/>	
+				<xsd:element minOccurs="0" name="PV1_LOCATION" type="xsd:string"/>
+				<xsd:element minOccurs="0" name="PV1_ROOM" type="xsd:string"/>
+				<xsd:element minOccurs="0" name="PV1_BED" type="xsd:string"/>
+				<xsd:element minOccurs="0" name="PV1_ATTDOC" type="xsd:string"/>
+				<xsd:element minOccurs="0" name="PV1_VISITNR" type="xsd:string"/>
+				<xsd:element minOccurs="0" name="PV1_ADMITDATE" type="xsd:string"/>
+				<xsd:element minOccurs="0" name="PV1_DISCHARGEDATE" type="xsd:string"/>	
+				<xsd:element minOccurs="0" name="EVN_RECDATE" type="xsd:string"/>
+				<xsd:element minOccurs="0" name="APLDESTINO" type="xsd:string"/>	
+                <xsd:element minOccurs="0" name="DONURL" type="xsd:string"/>
+                <xsd:element minOccurs="0" name="CELULAR" type="xsd:string"/>
+            </xsd:sequence>
+		</xsd:complexType>
+</xsd:element>
+</xsd:schema>

@@ -1,0 +1,57 @@
+CREATE COMPUTE MODULE REQ_serviceRoute
+	-- referencias al mensaje de entrada
+	DECLARE msgin 		REFERENCE TO InputRoot.XMLNSC.ns:FSFB;
+	DECLARE headerin	REFERENCE TO msgin.ns:Header;
+	DECLARE bodyin		REFERENCE TO msgin.ns:Body;
+			
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- variables para decodificar mensaje de body : data
+		DECLARE msgset		CHARACTER bodyin.parse.msgset;
+		DECLARE msgtype		CHARACTER bodyin.parse.msgtype;
+		DECLARE msgformat	CHARACTER bodyin.parse.msgformat;
+
+		-- construcción del mensaje de salida
+		CALL CopyMessageHeaders();
+			
+		-- enrutamiento mensaje de respaldo para correlacionar respuesta
+		CREATE FIELD OutputRoot.XMLNSC.ns:FSFB;
+		DECLARE msgout		REFERENCE TO OutputRoot.XMLNSC.ns:FSFB;
+		
+		CREATE FIELD msgout.ns:Header;	
+		DECLARE headerout	REFERENCE TO msgout.ns:Header;
+		
+		SET headerout 		= headerin;
+		
+		CREATE FIELD msgout.ns:Body;
+		DECLARE bodyout		REFERENCE TO msgout.ns:Body;
+		
+		SET bodyout			= bodyin;
+		
+		CREATE FIELD OutputLocalEnvironment.Destination.MQDestinationList;
+		DECLARE destination	
+			REFERENCE TO OutputLocalEnvironment.Destination.MQDestinationList;
+		
+		DECLARE cont INTEGER 0;
+			
+		-- propagar metadata del mensaje a la interface correspondiente
+		SET cont = cont + 1;
+		SET destination.DestinationData[cont].queueName = headerin.ns:service.request.queueName ;
+		
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;
+END MODULE;

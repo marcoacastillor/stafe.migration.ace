@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0" xmlns:map="default">
+    <input path="/ACK_RIS_ORMOUT.xsd"/>
+    <output path="mbsharedlib://HL7-2.7/FSFB_HL7.xsd"/>
+    <imports>
+        <import kind="esql" namespace="/UTILS/mapping.esql"/>
+    </imports>
+    <namespaces>
+        <namespace kind="supplement" prefix="in" uri="http://co/org/fsfb/HIS_ORMOUT/impl"/>
+        <namespace kind="supplement" prefix="out" uri="urn:hl7-org:v2xml"/>
+        <namespace kind="extension" prefix="mapping" uri="/UTILS/mapping.esql"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="ormout_RIS_xml_to_hl7">
+        <input namespace="http://co/org/fsfb/HIS_ORMOUT/impl" path="mb:msg(ACK_RIS,assembly,XMLNSC,Properties)" var="ComIbmMessageAssembly_ACK_RIS"/>
+        <output namespace="urn:hl7-org:v2xml" path="mb:msg(ACK,assembly,DFDL,Properties)" var="ComIbmMessageAssembly_ACK"/>
+        <move>
+            <input path="$ComIbmMessageAssembly_ACK_RIS/Properties"/>
+            <output path="$ComIbmMessageAssembly_ACK/Properties"/>
+            <override>
+                <assign value="{HL7-2.7}">
+                    <output path="$ComIbmMessageAssembly_ACK/Properties/MessageSet"/>
+                </assign>
+                <assign value="{urn:hl7-org:v2xml}:ACK">
+                    <output path="$ComIbmMessageAssembly_ACK/Properties/MessageType"/>
+                </assign>
+            </override>
+        </move>
+        <local>
+            <input path="$ComIbmMessageAssembly_ACK_RIS/ACK_RIS/MSH_ORU_ID"/>
+            <output path="$ComIbmMessageAssembly_ACK/ACK/MSH"/>
+            <assign value="|">
+                <output path="MSH.1.FieldSeparator"/>
+            </assign>
+            <assign value="^">
+                <output path="MSH.2.ServiceString/ComponentSeparator"/>
+            </assign>
+            <assign value="~">
+                <output path="MSH.2.ServiceString/RepeatSeparator"/>
+            </assign>
+            <assign value="\">
+                <output path="MSH.2.ServiceString/EscapeCharacter"/>
+            </assign>
+            <assign value="&amp;">
+                <output path="MSH.2.ServiceString/SubComponentSeparator"/>
+            </assign>
+            <assign value="HIS">
+                <output path="MSH.3.SendingApplication/HD.1"/>
+            </assign>
+            <assign value="AGFA Healthcare Colombia">
+                <output path="MSH.5.ReceivingApplication/HD.1"/>
+            </assign>
+            <assign value="ACK">
+                <output path="MSH.9.MessageType/MSG.1"/>
+            </assign>
+            <assign value="O01">
+                <output path="MSH.9.MessageType/MSG.2"/>
+            </assign>
+            <assign value="ACK">
+                <output path="MSH.9.MessageType/MSG.3"/>
+            </assign>
+            <function ref="normalize">
+                <input path="." var="MSH_ORU_ID"/>
+                <output path="MSH.10.MessageControlID"/>
+                <param name="input" value="$MSH_ORU_ID"/>
+            </function>
+            <assign value="P">
+                <output path="MSH.11.ProcessingID/PT.1"/>
+            </assign>
+            <assign value="2.4">
+                <output path="MSH.12.VersionID/VID.1"/>
+            </assign>
+            <customFunction lang="esql" ref="mapping:CurrentTimestampHL7">
+                <output path="MSH.7.DateTimeOfMessage"/>
+            </customFunction>
+        </local>
+        <local>
+            <input path="$ComIbmMessageAssembly_ACK_RIS/ACK_RIS"/>
+            <output path="$ComIbmMessageAssembly_ACK/ACK/MSA"/>
+            <function ref="normalize">
+                <input path="MSH_ORU_ID" var="MSH_ORU_ID1"/>
+                <output path="MSA.2.MessageControlID"/>
+                <param name="input" value="$MSH_ORU_ID1"/>
+            </function>
+            <condition>
+                <if>
+                    <input path="SRV_Message" var="SRV_Message"/>
+                    <output path="MSA.1.AcknowledgementCode"/>
+                    <test lang="xpath">$SRV_Message = 'OK'</test>
+                    <assign value="AA">
+                        <output path="."/>
+                    </assign>
+                </if>
+                <else>
+                    <output path="MSA.1.AcknowledgementCode"/>
+                    <assign value="AR">
+                        <output path="."/>
+                    </assign>
+                </else>
+            </condition>
+            <condition>
+                <if>
+                    <input path="SRV_Message" var="SRV_Message1"/>
+                    <output path="MSA.3.TextMessage"/>
+                    <test lang="xpath">$SRV_Message1 = 'OK'</test>
+                    <assign>
+                        <output path="."/>
+                    </assign>
+                </if>
+                <else>
+                    <input path="SRV_Message" var="SRV_Message2"/>
+                    <output path="MSA.3.TextMessage"/>
+                    <function ref="normalize">
+                        <input path="$SRV_Message2/." var="SRV_Message3"/>
+                        <output path="."/>
+                        <param name="input" value="$SRV_Message3"/>
+                    </function>
+                </else>
+            </condition>
+        </local>
+    </mappingDeclaration>
+</mappingRoot>

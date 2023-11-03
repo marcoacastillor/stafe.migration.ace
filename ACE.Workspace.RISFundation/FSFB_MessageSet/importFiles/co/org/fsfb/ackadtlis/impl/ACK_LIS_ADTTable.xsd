@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://co/org/fsfb/ACK_ADT_LIS/impl"
+	xmlns:NS1="http://co/org/fsfb/ACK_LIS_ADTTable/impl" xmlns:xsd="http://www.w3.org/2001/XMLSchema" >
+	<xsd:element name="ACK_LIS_ADT">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="MSH_ID" type="xsd:string"  minOccurs="0" />
+                <xsd:element name="ACK_CODE" type="xsd:string"  minOccurs="0" />
+           </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

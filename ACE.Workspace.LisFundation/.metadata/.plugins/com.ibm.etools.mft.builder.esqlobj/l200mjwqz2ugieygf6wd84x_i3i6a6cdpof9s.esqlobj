@@ -1,0 +1,41 @@
+CREATE COMPUTE MODULE devolveFSFB
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN		
+		-- referenciar mensaje FSFB
+		DECLARE mqrfh2		REFERENCE TO InputRoot.MQRFH2;
+		DECLARE mqmd		REFERENCE TO InputRoot.MQMD;
+		
+		DECLARE fsfb		REFERENCE TO InputRoot.XMLNSC.ns:FSFB;
+		DECLARE bodyin		REFERENCE TO fsfb.ns:Body;
+		DECLARE headin		REFERENCE TO fsfb.ns:Header;
+		-- referenciar propiedades para decodificar mensaje
+		DECLARE parser 		CHARACTER bodyin.parse.parser;
+		DECLARE msgtype		CHARACTER bodyin.parse.msgtype;
+		DECLARE msgset 		CHARACTER bodyin.parse.msgset;
+		DECLARE msgformat	CHARACTER bodyin.parse.msgformat;
+		DECLARE msgref		REFERENCE TO OutputRoot;
+		DECLARE msgblob		BLOB bodyin.data;
+				
+		-- construir mensaje de salida
+		SET OutputRoot.Properties = InputRoot.Properties;
+		SET OutputRoot.Properties.MessageType		= msgtype;
+		SET OutputRoot.Properties.MessageSet		= msgset;
+		SET OutputRoot.Properties.MessageFormat		= msgformat;
+		--Set codeChar Ascci extended
+		SET OutputRoot.Properties.Encoding			= 1209;
+		SET OutputRoot.Properties.CodedCharSetId	= 819;
+				
+		-- mantener correlId
+		SET OutputRoot.MQMD	= InputRoot.MQMD;
+		
+		CALL UTILS.decodemsg(parser, msgtype, msgset, msgformat, msgblob, msgref);
+		
+		-- almacenar en environment propiedades del mensaje
+		SET Environment.Variables.header		= headin;
+		SET Environment.Variables.body			= bodyin;
+		SET Environment.Variables.mqrfh2		= mqrfh2;
+		SET Environment.Variables.mqmd			= mqmd;
+				
+		RETURN TRUE;
+	END;
+END MODULE;

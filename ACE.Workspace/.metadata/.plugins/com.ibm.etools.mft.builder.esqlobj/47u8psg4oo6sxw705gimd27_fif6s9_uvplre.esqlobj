@@ -1,0 +1,112 @@
+CREATE COMPUTE MODULE  ormout_spRIS
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+		SET Environment.Variables.MQMD = InputRoot.MQMD;
+		
+		DECLARE ack 		CHARACTER;
+		DECLARE msgin 		REFERENCE TO InputRoot.XMLNSC.O01;
+		
+		DECLARE ordst 		REFERENCE TO msgin.ORC_LOOP.ORC.OrderStatusModifier;
+		DECLARE nmref 		REFERENCE TO msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.PrincipalResultInterpreter.Name_1936;
+		DECLARE ordstm		CHARACTER;
+		DECLARE medint		CHARACTER;
+		DECLARE tmp 		CHARACTER;-- SUBSTRING(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.RequestedDateTime.DateTime_1516 BEFORE 'T')||' '||SUBSTRING(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.RequestedDateTime.DateTime_1516 AFTER 'T');
+		
+		SET ordstm = ordst.Identifier_1385;
+		SET medint = nmref.IDNumber_1386;
+		
+		--SET tmp = SUBSTRING(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.RequestedDateTime.DateTime_1516 BEFORE 'T')||' '||SUBSTRING(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.RequestedDateTime.DateTime_1516 AFTER 'T');
+		--SET tmp = CAST(CAST(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.RequestedDateTime.DateTime_1516 AS TIMESTAMP) AS CHARACTER);
+		SET tmp = SUBSTRING(CAST(CAST(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.RequestedDateTime.DateTime_1516 AS TIMESTAMP FORMAT 'yyyyMMddHHmmss') AS CHARACTER) FROM 12 FOR 19);
+--
+
+--
+		
+		SET ordstm = 
+				CASE ordstm
+					  WHEN 'F'			THEN 'COMPLETED' 
+					  WHEN 'CREATED'	THEN 'CREATED^CREATED^QPLANNER'
+					  WHEN 'A' 			THEN 'ARRIBADO^ARRIBADO^QPLANNER' 
+					  WHEN 'PX' 		THEN 'CANCELLED' 
+					  WHEN 'PS' 		THEN 'IN_PROGRESS'
+				      WHEN 'IMAGE_AVAILABLE' THEN 'IMAGE_AVAILABLE'
+				      WHEN 'P'          THEN 'PRELIMINAR' 
+					  WHEN '2' 			THEN '2^Deleted' 
+					  WHEN 'PP' 		THEN '2^Paused'
+				ELSE ''
+			END;
+					   
+			CALL spRIS (	
+						ack, 	
+						CAST(msgin.MSH.Data_In_MSH.MessageControlID AS INTEGER),
+						--SUBSTRING(msgin.MSH.Data_In_MSH.DateTimeOfMessage.DateTime_1516 BEFORE 'T')||' '||SUBSTRING(msgin.MSH.Data_In_MSH.DateTimeOfMessage.DateTime_1516 AFTER 'T'),
+						--SUBSTRING(msgin.MSH.Data_In_MSH.DateTimeOfMessage.DateTime_1516 BEFORE 'T')||' '||SUBSTRING(msgin.MSH.Data_In_MSH.DateTimeOfMessage.DateTime_1516 AFTER 'T'),
+						SUBSTRING(CAST(CAST(msgin.MSH.Data_In_MSH.DateTimeOfMessage.DateTime_1516 AS TIMESTAMP FORMAT 'yyyyMMddHHmmss') AS CHARACTER) FROM 12 FOR 19),
+						SUBSTRING(CAST(CAST(msgin.MSH.Data_In_MSH.DateTimeOfMessage.DateTime_1516 AS TIMESTAMP FORMAT 'yyyyMMddHHmmss') AS CHARACTER) FROM 12 FOR 19), 	
+						--msgin.ORC_LOOP.ORC.FillerOrderNumber_585.EntityIdentifier_1362,	Se realiza cambio 31-07-2018
+						msgin.ORC_LOOP.ORC.FillerOrderNumber_440.EntityIdentifier_1362,
+						msgin.ORC_LOOP.ORC.OrderingFacilityName.OrganizationName_1412,
+						msgin.ORC_LOOP.ORC.EnteredBy.IDNumber_1386,	
+						ordstm, 
+						msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.OrderingProvider.OrderingProvider_684.IDNumber_1386,
+						--SUBSTRING(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.RequestedDateTime.DateTime_1516 BEFORE 'T')||' '||SUBSTRING(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.RequestedDateTime.DateTime_1516 AFTER 'T'),
+						SUBSTRING(CAST(CAST(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.RequestedDateTime.DateTime_1516 AS TIMESTAMP FORMAT 'yyyyMMddHHmmss') AS CHARACTER) FROM 12 FOR 19),		
+						msgin.PID_LOOP.PID.AlternatePatientIDPID.AlternatePatientIDPID.ID_1384,
+						msgin.PID_LOOP.PID.PatientIDInternalID.PatientIDInternalID.ID_1384,
+						msgin.PID_LOOP.PV1_LOOP.PV1.PatientType,	
+						msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.UniversalServiceID.Identifier_1385,	
+						msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.UniversalServiceID.Text_1473,
+						msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.PlacerOrderNumber_449.EntityIdentifier_1362||'^'||msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.PlacerOrderNumber_449.NamespaceID_1091,
+						msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.ReasonForStudy.ReasonForStudy.Identifier_1385,	
+						SUBSTRING(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.RelevantClinicalInfo FROM 1 FOR 255),
+						msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.PlacerField1,	
+						--SUBSTRING(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.ObservationDateTime.DateTime_1516 BEFORE 'T')||' '||SUBSTRING(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.ObservationDateTime.DateTime_1516 AFTER 'T'),	
+						--SUBSTRING(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.RequestedDateTime.DateTime_1516 BEFORE 'T')||' '||SUBSTRING(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.RequestedDateTime.DateTime_1516 AFTER 'T'),
+						SUBSTRING(CAST(CAST(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.ObservationDateTime.DateTime_1516 AS TIMESTAMP FORMAT 'yyyyMMddHHmmss') AS CHARACTER) FROM 12 FOR 19),
+						SUBSTRING(CAST(CAST(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.RequestedDateTime.DateTime_1516 AS TIMESTAMP FORMAT 'yyyyMMddHHmmss') AS CHARACTER) FROM 12 FOR 19),
+						medint,	
+						'N', 	
+						--msgin.PID_LOOP.PV1_LOOP.PV1.VisitNumber.ID_1384,
+						SUBSTRING(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.PlacerOrderNumber_449.EntityIdentifier_1362  FROM 1 FOR 20),
+						'', --IN	In_AGFARIS_ErrorMsg		CHARACTER,	
+						'', --IN	In_MSH_STATUS			CHARACTER,	
+						SUBSTRING(msgin.ORC_LOOP.ORC.PlacerGroupNumber.EntityIdentifier_1362 AFTER '_')
+						);
+				
+			-- mantener correlId
+			SET OutputRoot.MQMD	= InputRoot.MQMD;
+			CREATE FIELD OutputRoot.XMLNSC.ns51:ACK_RIS;
+			SET OutputRoot.XMLNSC.ns51:ACK_RIS.ns51:MSH_ORU_ID = CAST(msgin.MSH.Data_In_MSH.MessageControlID AS CHARACTER);
+			SET OutputRoot.XMLNSC.ns51:ACK_RIS.ns51:SRV_Message = ack;
+	END;
+
+	CREATE PROCEDURE spRIS (	INOUT 	SRV_Message 			CHARACTER, 	
+								IN	In_MSH_ORMO_ID 				INTEGER, 	
+								IN 	In_ORM_01_HIS_DATE 			CHARACTER,
+								IN 	In_MSH_06_RIS_DATE 			CHARACTER, 	
+								IN 	In_ORC_04_QP_REQ_ID 		CHARACTER,	
+								IN 	In_ORC_21_QP_SERV_ID		CHARACTER,
+								IN	In_ORC_10_QP_USER_RIS		CHARACTER,	
+								IN	In_ORC_25_QP_STATUS			CHARACTER,	
+								IN	In_OBR_16_QP_MED_ID			CHARACTER,
+								IN 	In_OBR_6_QP_REQ_DATE		CHARACTER,	
+								IN	In_PID_05_ID				CHARACTER,	
+								IN	In_PID_05_ID2				CHARACTER,
+								IN	In_PV1_18_PTYPE				CHARACTER,	
+								IN	In_OBR_04_EXAM_CODE			CHARACTER,	
+								IN	In_OBR_04_EXAM_DESC			CHARACTER,
+								IN 	In_OBR_02_QP_EXAM_ID		CHARACTER,	
+								IN	In_OBR_31_PREST_INFO		CHARACTER,	
+								IN 	In_OBR_13_ORDER_INFO		CHARACTER,
+								IN	In_OBR_18_ACC_NUMBER		CHARACTER,	
+								IN	In_OBR_07_EXAM_DATE_APP		CHARACTER,	
+								IN	In_OBR_06_EXAM_DATE_BATCH 	CHARACTER,
+								IN	In_OBR_32_RAD_ID			CHARACTER,	
+								IN	In_ORM_02_STATUS_HIS		CHARACTER,	
+								IN	In_PV1_VISITNR				CHARACTER,
+								IN	In_AGFARIS_ErrorMsg			CHARACTER,	
+								IN	In_MSH_STATUS				CHARACTER,	
+								IN	In_ORC_04_QP_REQ_IDOUT		CHARACTER
+						) LANGUAGE DATABASE EXTERNAL NAME "ADMSALUD.SvcIbmPrcOrm_Pkg.SvcIbmPrcOrm";
+END MODULE;

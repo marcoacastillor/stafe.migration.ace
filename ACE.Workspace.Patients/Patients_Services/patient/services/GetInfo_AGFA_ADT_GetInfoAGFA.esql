@@ -1,0 +1,74 @@
+BROKER SCHEMA patient.services
+
+
+CREATE COMPUTE MODULE GetInfo_AGFA_ADT_GetInfoAGFA
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE NM_COMPONENT CHARACTER 'GETINFO_AGFA_ADT';
+		DECLARE SERVICE_RQ_TRACE INTEGER 2;
+		
+		/******************************************************/
+		-- Copiar cabeceras de mensaje
+		/******************************************************/
+		SET OutputRoot.MQMD 	= InputRoot.MQMD;
+		SET OutputRoot.MQRFH2 	= InputRoot.MQRFH2;
+		
+		/******************************************************/
+		-- Declarar referencias
+		/******************************************************/
+		DECLARE refEnv REFERENCE TO Environment;
+		DECLARE refMQRFH2 REFERENCE TO OutputRoot.MQRFH2;
+		DECLARE refInpRoot REFERENCE TO OutputRoot;
+		
+		/******************************************************/
+		-- Setear información para auditoría y headers
+		/******************************************************/
+		CALL common.procedures.utils.createMsgLogs(refMQRFH2, SERVICE_RQ_TRACE, NM_COMPONENT);
+		CALL common.procedures.utils.saveMQM(refInpRoot, refEnv);
+		
+		/******************************************************/
+		-- Declarar referencia a objeto de entrada
+		/******************************************************/
+		DECLARE sql CHARACTER '';
+		DECLARE refInp REFERENCE TO InputRoot.JSON;
+		MOVE refInp LASTCHILD;
+		
+		DECLARE  PAC_PAC_NUMBER CHARACTER '';
+		DECLARE result ROW;
+		
+		SET PAC_PAC_NUMBER = refInp.patient.personalInfo.idNumber;
+		
+		SET sql = 'SELECT PAC_PAC_NUMERO,  
+			PAC_PAC_TIPOIDENTCODIGO,  
+			PAC_PAC_RUT,  
+			TRIM(PAC_PAC_APELLPATER) AS PAC_PAC_APELLPATER, 
+			TRIM(PAC_PAC_APELLMATER) AS PAC_PAC_APELLMATER,  
+			TRIM(PAC_PAC_NOMBRE) AS PAC_PAC_NOMBRE,  
+			PAC_PAC_FECHANACIM,  PAC_PAC_DIRECCIONGRALHABIT,  
+			PAC_PAC_FONO,  PAC_PAC_SEXO,  PAC_PAC_ESTADCIVIL,    
+			TRIM (DONURL) DONURL  
+			FROM ADMSALUD.PAC_PACIENTE    
+			WHERE PAC_PAC_NUMERO= ?';
+			
+		SET result.data =  PASSTHRU(sql,PAC_PAC_NUMBER);
+		
+		/******************************************************/
+		-- Creación mensaje de respuesta
+		/******************************************************/
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
+	
+		IF EXISTS(result.data[]) THEN
+			SET refOut.transactionInfo.idTransaction	= refMQRFH2.usr.contextTransaction.IdTransaction;
+			SET refOut.transactionInfo.code				= '000';
+			SET refOut.transactionInfo.desc				= 'Transacción Exitosa';
+			SET refOut.data								= result.data;	
+		ELSE
+			SET refOut.transactionInfo.idTransaction	= refMQRFH2.usr.contextTransaction.IdTransaction;
+			SET refOut.transactionInfo.code				= '101';
+			SET refOut.transactionInfo.desc				= 'No se encontraron datos';
+		END IF;
+		
+		RETURN TRUE;
+	END;
+END MODULE;

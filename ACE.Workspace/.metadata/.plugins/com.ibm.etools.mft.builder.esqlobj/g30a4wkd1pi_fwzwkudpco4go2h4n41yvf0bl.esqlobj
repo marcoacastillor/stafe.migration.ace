@@ -1,0 +1,20 @@
+CREATE FUNCTION copyHeader(INOUT fsfb REFERENCE, IN header REFERENCE) 
+BEGIN
+	-- crear header del mensaje
+	CREATE FIELD fsfb.ns:Header;
+	MOVE header NEXTSIBLING;
+	
+	SET fsfb.ns:Header.ns:operation			= header;
+	
+--	DECLARE operation_ CHARACTER header.operation;
+--		SET fsfb.ns:Header.ns:system			= header.system;
+--		
+--		-- escribirlas en el campo service
+		SET fsfb.ns:service.(XMLNSC.Attribute)nombre		= header.service.nombre;
+		SET fsfb.ns:service.(XMLNSC.Attribute)audit 		= header.service.audit;
+		SET fsfb.ns:service.(XMLNSC.Attribute)log			= header.service.log;
+		
+		SET fsfb.ns:service.request							= header.service.request;
+		SET fsfb.ns:service.response						= header.service.response;
+		
+END;

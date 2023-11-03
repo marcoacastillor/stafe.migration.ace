@@ -1,0 +1,49 @@
+/*EATE FUNCTION Main() RETURNS BOOLE*/
+	BEGIN
+		SET OutputRoot.Properties = InputRoot.Properties;
+		SET OutputLocalEnvironment = InputLocalEnvironment;
+		SET Environment.Variables.MQMD = COALESCE(InputRoot.ComIbmAggregateReplyBody.ORM.MQMD,InputRoot.ComIbmAggregateReplyBody.DFT.MQMD);
+		-- referenciar mensaje FSFB
+		DECLARE ORM 			REFERENCE TO InputRoot.ComIbmAggregateReplyBody.ORM.XMLNSC.ns1:FSFB;
+		DECLARE DFT 			REFERENCE TO InputRoot.ComIbmAggregateReplyBody.DFT.XMLNSC.ns1:FSFB;
+		DECLARE ORMbodyin		REFERENCE TO ORM.ns1:Body;
+		DECLARE DFTbodyin		REFERENCE TO DFT.ns1:Body;
+		DECLARE ORMheadin		REFERENCE TO ORM.ns1:Header;
+		DECLARE DFTheadin		REFERENCE TO DFT.ns1:Header;
+		-- referenciar propiedades para decodificar mensaje
+		DECLARE ORMparser 		CHARACTER ORMbodyin.parse.parser;
+		DECLARE ORMmsgtype		CHARACTER ORMbodyin.parse.msgtype;
+		DECLARE ORMmsgset 		CHARACTER ORMbodyin.parse.msgset;
+		DECLARE ORMmsgformat	CHARACTER ORMbodyin.parse.msgformat;
+		DECLARE DFTparser 		CHARACTER DFTbodyin.parse.parser;
+		DECLARE DFTmsgtype		CHARACTER DFTbodyin.parse.msgtype;
+		DECLARE DFTmsgset 		CHARACTER DFTbodyin.parse.msgset;
+		DECLARE DFTmsgformat	CHARACTER DFTbodyin.parse.msgformat;
+		DECLARE msgref			REFERENCE TO OutputRoot;
+		DECLARE ORMmsgblob		BLOB ORMbodyin.data;		
+		DECLARE DFTmsgblob		BLOB DFTbodyin.data;
+		DECLARE ORMmsg			CHARACTER;		
+		DECLARE DFTmsg			CHARACTER;
+		
+		-- construir mensaje de salida
+		SET OutputRoot.Properties = InputRoot.Properties;
+		SET OutputRoot.Properties.MessageType		= ORMmsgtype;
+		SET OutputRoot.Properties.MessageSet		= ORMmsgset;
+		SET OutputRoot.Properties.MessageFormat		= ORMmsgformat;
+		
+		-- mantener correlId
+		SET OutputRoot.MQMD	= InputRoot.MQMD;
+		
+		CALL UTILS.decodemsg(DFTparser, DFTmsgtype, DFTmsgset, DFTmsgformat, DFTmsgblob, msgref);
+		SET DFTmsg = msgref;
+		SET msgref = NULL;
+		CALL UTILS.decodemsg(ORMparser, ORMmsgtype, ORMmsgset, ORMmsgformat, ORMmsgblob, msgref);
+		
+		-- almacenar en environment propiedades del mensaje
+		SET Environment.Variables.header	= ORMheadin;
+		SET Environment.Variables.body		= ORMbodyin;
+		SET Environment.Variables.DFT.header	= DFTheadin;
+		SET Environment.Variables.DFT.body		= DFTbodyin;
+				
+		RETURN TRUE;
+	END;

@@ -1,0 +1,16 @@
+/*EATE FUNCTION Main() RETURNS BOOLE*/
+	BEGIN
+		DECLARE correlid		CHARACTER '';
+		DECLARE cont			INTEGER 1;
+		DECLARE longitud 		INTEGER LENGTH(correlid);
+		
+		WHILE longitud < 48 DO
+			SET correlid = REPLICATE('1',cont) || InputRoot.MRM.hl7:MSH.hl7:"MSH.10.MessageControlID";
+			SET cont = cont + 1;
+			SET longitud = LENGTH(correlid);
+		END WHILE;
+		
+		SET OutputRoot.MQMD.CorrelId = CAST( correlid AS BLOB);
+		SET OutputRoot.XMLNSC.ReturnedMessage.Variables = Environment;
+	END;
+	

@@ -1,0 +1,14 @@
+CREATE COMPUTE MODULE oru_orch_res
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+	
+		SET OutputRoot = InputRoot;
+		DECLARE msh REFERENCE TO OutputRoot.DFDL.*:ACK.*:MSH;
+		
+		SET msh.ns:"MSH.9.MessageType".ns:"MSG.2" = 'R01';
+		SET msh.ns:"MSH.9.MessageType".ns:"MSG.3" = '';
+		SET msh.ns:"MSH.16.ApplicationAcknowledgmentType" = 'NE';
+		
+	END;
+
+END MODULE;

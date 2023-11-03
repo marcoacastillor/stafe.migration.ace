@@ -1,0 +1,13 @@
+CREATE FUNCTION getPlaneDate(IN myDate CHARACTER)RETURNS CHARACTER
+BEGIN
+	DECLARE dateStr CHARACTER '';
+	IF(LENGTH(myDate) > 0) THEN
+    	SET dateStr 		= REPLACE(myDate, ' ','');
+    	SET dateStr 		= REPLACE(dateStr, ':','');
+    	SET dateStr 		= REPLACE(dateStr, '.','');
+	    
+	    RETURN dateStr;
+	ELSE
+		RETURN getDateWhitFormat('yyyyMMddHHmmss');
+	END IF;
+END;

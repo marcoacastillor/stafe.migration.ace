@@ -1,0 +1,13 @@
+
+
+Importing file: C:\Users\Administrator\IBM\IIBT10\workspace\migracion\FSFB_MessageSet\importFiles\hl7_v2_3_ORMO01.xsd
+
+BIP0224W The message set has no XML Wire Format layer defined. Only the logical information will appear in the model.
+
+Elapsed time processing this message definition file: 0.562 seconds
+Number of warnings for this message definition file: 1
+
+
+Number of files processed: 1
+
+

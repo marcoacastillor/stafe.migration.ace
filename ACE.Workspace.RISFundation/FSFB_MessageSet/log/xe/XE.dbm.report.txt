@@ -1,0 +1,25 @@
+
+
+Importing file: C:\Documents and Settings\Administrator\IBM\wmbt70\workspace\DataBaseDefinition\XE.dbm
+
+
+Processing schema ADMSALUD.
+Creating complex type for table AGFA_MFN.
+Creating global element for table AGFA_MFN.
+Creating complex type for table AGFA_ORM_INBOUND.
+Creating global element for table AGFA_ORM_INBOUND.
+Creating complex type for table LABHSP_ADT.
+Creating global element for table LABHSP_ADT.
+Creating complex type for table TABADMAMBLABCORE.
+Creating global element for table TABADMAMBLABCORE.
+Creating complex type for table TABADMCHKLABCORE.
+Creating global element for table TABADMCHKLABCORE.
+Creating file \FSFB_MessageSet\FSFB_MessageSet\xe\admsalud\XE.mxsd in the workspace.
+
+Elapsed time processing this message definition file: 47.64 seconds
+Number of warnings for this message definition file: 0
+
+
+Number of files processed: 1
+
+

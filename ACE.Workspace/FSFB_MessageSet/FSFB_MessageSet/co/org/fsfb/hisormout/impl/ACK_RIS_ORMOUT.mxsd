@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><!--  Created by Miguel Angel Castillo Camacho - IBM - 29/04/2011 --><xs:schema elementFormDefault="qualified" targetNamespace="http://co/org/fsfb/HIS_ORMOUT/impl" xmlns:tns="http://co/org/fsfb/HIS_ORMOUT/impl" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="ACK_RIS">
+        <xs:annotation>
+      <xs:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/ACK_RIS;XSDElementDeclaration$MRObject"/>
+      </xs:appinfo>
+    </xs:annotation>
+        <xs:complexType>
+			<xs:sequence>
+				<xs:element name="MSH_ORU_ID" type="xs:string"/>
+				<xs:element name="SRV_Message" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

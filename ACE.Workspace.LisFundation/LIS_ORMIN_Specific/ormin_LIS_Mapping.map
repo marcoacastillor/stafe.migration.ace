@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0" xmlns:map="default">
+    <input path="/LIS_ORMIN_SpecificMessageSet/co/org/fsfb/hisormintable/impl/HIS_ORMInTable.mxsd"/>
+    <output path="mbsharedlib://HL7-2.7/FSFB_HL7.xsd" var="var"/>
+    <imports>
+        <import kind="esql" namespace="/UTILS/mapping.esql"/>
+    </imports>
+    <namespaces>
+        <namespace kind="supplement" prefix="in" uri="http://co/org/fsfb/HIS_ORMInTable/impl"/>
+        <namespace kind="supplement" prefix="out" uri="urn:hl7-org:v2xml"/>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+        <namespace kind="extension" prefix="mapping" uri="/UTILS/mapping.esql"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="ormin_LIS_Mapping">
+        <input namespace="http://co/org/fsfb/HIS_ORMInTable/impl" path="mb:msg(ORM_IN,assembly,,Properties)" var="ComIbmMessageAssembly_ORM_IN"/>
+        <output namespace="urn:hl7-org:v2xml" path="$var/mb:msg(O01,assembly,DFDL,Properties)" var="ComIbmMessageAssembly_O01"/>
+        <move>
+            <input path="$ComIbmMessageAssembly_ORM_IN/Properties"/>
+            <output path="$ComIbmMessageAssembly_O01/Properties"/>
+            <override>
+                <assign value="{HL7-2.7}">
+                    <output path="$ComIbmMessageAssembly_O01/Properties/MessageSet"/>
+                </assign>
+                <assign value="{urn:hl7-org:v2xml}:O01">
+                    <output path="$ComIbmMessageAssembly_O01/Properties/MessageType"/>
+                </assign>
+            </override>
+        </move>
+        <local>
+            <input path="$ComIbmMessageAssembly_ORM_IN/ORM_IN" var="ORM_IN7"/>
+            <output path="$ComIbmMessageAssembly_O01/O01/MSH"/>
+            <assign value="|">
+                <output path="MSH.1.FieldSeparator"/>
+            </assign>
+            <assign value="^">
+                <output path="MSH.2.ServiceString/ComponentSeparator"/>
+            </assign>
+            <assign value="~">
+                <output path="MSH.2.ServiceString/RepeatSeparator"/>
+            </assign>
+            <assign value="\">
+                <output path="MSH.2.ServiceString/EscapeCharacter"/>
+            </assign>
+            <assign value="&amp;">
+                <output path="MSH.2.ServiceString/SubComponentSeparator"/>
+            </assign>
+            <assign value="HIS">
+                <output path="MSH.3.SendingApplication/HD.1"/>
+            </assign>
+            <assign value="LAB">
+                <output path="MSH.5.ReceivingApplication/HD.1"/>
+            </assign>
+            <customFunction lang="esql" ref="mapping:CurrentTimestampHL7">
+                <output path="MSH.7.DateTimeOfMessage"/>
+            </customFunction>
+            <function ref="normalize">
+                <input path="$ORM_IN7/FEC_EVENTO" var="FEC_EVENTO1"/>
+                <output path="MSH.10.MessageControlID"/>
+                <param name="input" value="$FEC_EVENTO1"/>
+            </function>
+            <assign value="P">
+                <output path="MSH.11.ProcessingID/PT.1"/>
+            </assign>
+            <assign value="2.3">
+                <output path="MSH.12.VersionID/VID.1"/>
+            </assign>
+            <assign value="AL">
+                <output path="MSH.16.ApplicationAcknowledgmentType"/>
+            </assign>
+            <assign value="ORM">
+                <output path="MSH.9.MessageType/MSG.1"/>
+            </assign>
+            <assign value="O01">
+                <output path="MSH.9.MessageType/MSG.2"/>
+            </assign>
+            <assign>
+                <output path="MSH.9.MessageType/MSG.3"/>
+            </assign>
+            <assign value="8859/1">
+                <output path="MSH.18.CharacterSet"/>
+            </assign>
+        </local>
+        <local>
+            <input path="$ComIbmMessageAssembly_ORM_IN/ORM_IN" var="ORM_IN4"/>
+            <output path="$ComIbmMessageAssembly_O01/O01/PID_LOOP"/>
+            <local>
+                <input path="$ORM_IN4/." var="ORM_IN"/>
+                <output path="PID"/>
+                <assign value="1">
+                    <output path="PID.1.SetIDPID"/>
+                </assign>
+                <function ref="normalize">
+                    <input path="$ORM_IN/PAC_PAC_SEXO" var="PAC_PAC_SEXO"/>
+                    <output path="PID.8.AdministrativeSex/CWE.1"/>
+                    <param name="input" value="$PAC_PAC_SEXO"/>
+                </function>
+                <move>
+                    <input path="$ORM_IN/PAC_PAC_ESTADCIVIL" var="PAC_PAC_ESTADCIVIL"/>
+                    <output path="PID.16.MaritalStatus/CWE.1"/>
+                </move>
+                <assign>
+                    <output path="PID.17.Religion/CWE.1"/>
+                </assign>
+                <assign>
+                    <output path="PID.19.SSNNumberPatient"/>
+                </assign>
+                <convert>
+                    <input path="$ORM_IN/PAC_PAC_NUMERO"/>
+                    <output path="PID.3.PatientIdentifierList/CX.1"/>
+                </convert>
+                <function ref="normalize">
+                    <input path="$ORM_IN/PAC_PAC_RUT" var="PAC_PAC_RUT"/>
+                    <output path="PID.4.AlternatePatientIDPID/CX.1"/>
+                    <param name="input" value="$PAC_PAC_RUT"/>
+                </function>
+                <function ref="normalize">
+                    <input path="$ORM_IN/PAC_PAC_APELLPATER" var="PAC_PAC_APELLPATER"/>
+                    <output path="PID.5.PatientName/XPN.1/FN.1"/>
+                    <param name="input" value="$PAC_PAC_APELLPATER"/>
+                </function>
+                <function ref="normalize">
+                    <input path="$ORM_IN/PAC_PAC_APELLMATER" var="PAC_PAC_APELLMATER"/>
+                    <output path="PID.5.PatientName/XPN.2"/>
+                    <param name="input" value="$PAC_PAC_APELLMATER"/>
+                </function>
+                <function ref="normalize">
+                    <input path="$ORM_IN/PAC_PAC_NOMBRE" var="PAC_PAC_NOMBRE"/>
+                    <output path="PID.5.PatientName/XPN.3"/>
+                    <param name="input" value="$PAC_PAC_NOMBRE"/>
+                </function>
+                <condition>
+                    <if>
+                        <input path="$ORM_IN/PAC_PAC_TIPOIDENT" var="PAC_PAC_TIPOIDENT"/>
+                        <output path="PID.4.AlternatePatientIDPID/CX.5"/>
+                        <test lang="xpath">$PAC_PAC_TIPOIDENT = '2'</test>
+                        <assign value="BR">
+                            <output path="."/>
+                        </assign>
+                    </if>
+                    <elseif>
+                        <input path="$ORM_IN/PAC_PAC_TIPOIDENT" var="PAC_PAC_TIPOIDENT1"/>
+                        <output path="PID.4.AlternatePatientIDPID/CX.5"/>
+                        <test lang="xpath">$PAC_PAC_TIPOIDENT1 = '3'</test>
+                        <assign value="PI">
+                            <output path="."/>
+                        </assign>
+                    </elseif>
+                    <elseif>
+                        <input path="$ORM_IN/PAC_PAC_TIPOIDENT" var="PAC_PAC_TIPOIDENT2"/>
+                        <output path="PID.4.AlternatePatientIDPID/CX.5"/>
+                        <test lang="xpath">$PAC_PAC_TIPOIDENT2 = '4'</test>
+                        <assign value="PN">
+                            <output path="."/>
+                        </assign>
+                    </elseif>
+                    <elseif>
+                        <input path="$ORM_IN/PAC_PAC_TIPOIDENT" var="PAC_PAC_TIPOIDENT3"/>
+                        <output path="PID.4.AlternatePatientIDPID/CX.5"/>
+                        <test lang="xpath">$PAC_PAC_TIPOIDENT3 = '5'</test>
+                        <assign value="VS">
+                            <output path="."/>
+                        </assign>
+                    </elseif>
+                    <elseif>
+                        <input path="$ORM_IN/PAC_PAC_TIPOIDENT" var="PAC_PAC_TIPOIDENT4"/>
+                        <output path="PID.4.AlternatePatientIDPID/CX.5"/>
+                        <test lang="xpath">$PAC_PAC_TIPOIDENT4 = '6'</test>
+                        <assign value="XX">
+                            <output path="."/>
+                        </assign>
+                    </elseif>
+                    <elseif>
+                        <input path="$ORM_IN/PAC_PAC_TIPOIDENT" var="PAC_PAC_TIPOIDENT5"/>
+                        <output path="PID.4.AlternatePatientIDPID/CX.5"/>
+                        <test lang="xpath">$PAC_PAC_TIPOIDENT5 = 'M'</test>
+                        <assign value="AN">
+                            <output path="."/>
+                        </assign>
+                    </elseif>
+                    <elseif>
+                        <input path="$ORM_IN/PAC_PAC_TIPOIDENT" var="PAC_PAC_TIPOIDENT6"/>
+                        <output path="PID.4.AlternatePatientIDPID/CX.5"/>
+                        <test lang="xpath">$PAC_PAC_TIPOIDENT6 = 'P'</test>
+                        <assign value="DS">
+                            <output path="."/>
+                        </assign>
+                    </elseif>
+                    <elseif>
+                        <input path="$ORM_IN/PAC_PAC_TIPOIDENT" var="PAC_PAC_TIPOIDENT7"/>
+                        <output path="PID.4.AlternatePatientIDPID/CX.5"/>
+                        <test lang="xpath">$PAC_PAC_TIPOIDENT7 = 'A'</test>
+                        <assign value="DL">
+                            <output path="."/>
+                        </assign>
+                    </elseif>
+                    <elseif>
+                        <input path="$ORM_IN/PAC_PAC_TIPOIDENT" var="PAC_PAC_TIPOIDENT8"/>
+                        <output path="PID.4.AlternatePatientIDPID/CX.5"/>
+                        <test lang="xpath">$PAC_PAC_TIPOIDENT8 = 'N'</test>
+                        <assign value="UPIN">
+                            <output path="."/>
+                        </assign>
+                    </elseif>
+                    <elseif>
+                        <input path="$ORM_IN/PAC_PAC_TIPOIDENT" var="PAC_PAC_TIPOIDENT9"/>
+                        <output path="PID.4.AlternatePatientIDPID/CX.5"/>
+                        <test lang="xpath">$PAC_PAC_TIPOIDENT9 = 'D'</test>
+                        <assign value="DP">
+                            <output path="."/>
+                        </assign>
+                    </elseif>
+                    <elseif>
+                        <input path="$ORM_IN/PAC_PAC_TIPOIDENT" var="PAC_PAC_TIPOIDENT10"/>
+                        <output path="PID.4.AlternatePatientIDPID/CX.5"/>
+                        <test lang="xpath">$PAC_PAC_TIPOIDENT10 = 'S'</test>
+                        <assign value="LR">
+                            <output path="."/>
+                        </assign>
+                    </elseif>
+                    <else>
+                        <output path="PID.4.AlternatePatientIDPID/CX.5"/>
+                        <assign value=" ">
+                            <output path="."/>
+                        </assign>
+                    </else>
+                </condition>
+                <customFunction lang="esql" ref="mapping:DatetoHL7">
+                    <input path="$ORM_IN/PAC_PAC_FECHANACIM" var="PAC_PAC_FECHANACIM"/>
+                    <output path="PID.7.DateTimeOfBirth"/>
+                    <param name="FECHA" value="$PAC_PAC_FECHANACIM"/>
+                </customFunction>
+                <function ref="normalize">
+                    <input path="$ORM_IN/PAC_PAC_DIRECCIONGRALHABIT" var="PAC_PAC_DIRECCIONGRALHABIT"/>
+                    <output path="PID.11.PatientAddress/XAD.1/SAD.1"/>
+                    <param name="input" value="$PAC_PAC_DIRECCIONGRALHABIT"/>
+                </function>
+                <function ref="normalize">
+                    <input path="$ORM_IN/PAC_PAC_REGIOHABIT" var="PAC_PAC_REGIOHABIT"/>
+                    <output path="PID.11.PatientAddress/XAD.4"/>
+                    <param name="input" value="$PAC_PAC_REGIOHABIT"/>
+                </function>
+                <function ref="normalize">
+                    <input path="$ORM_IN/PAC_PAC_FONO" var="PAC_PAC_FONO"/>
+                    <output path="PID.13.PhoneNumberHome/XTN.1"/>
+                    <param name="input" value="$PAC_PAC_FONO"/>
+                </function>
+                <function ref="normalize">
+                    <input path="$ORM_IN/DONURL" var="DONURL"/>
+                    <output path="PID.13.PhoneNumberHome/XTN.4"/>
+                    <param name="input" value="$DONURL"/>
+                </function>
+                <assign>
+                    <output path="PID.18.PatientAccountNumber/CX.1"/>
+                </assign>
+                <condition>
+                    <if>
+                        <input path="$ORM_IN/DONURL" var="DONURL1"/>
+                        <output path="PID.13.PhoneNumberHome/XTN.2"/>
+                        <test lang="xpath">fn:contains($DONURL1, '@')</test>
+                        <assign value="">
+                            <output path="."/>
+                        </assign>
+                    </if>
+                    <else>
+                        <output path="PID.13.PhoneNumberHome/XTN.2"/>
+                        <assign value="^^">
+                            <output path="."/>
+                        </assign>
+                    </else>
+                </condition>
+            </local>
+            <local>
+                <input path="$ORM_IN4/." var="ORM_IN1"/>
+                <output path="PV1_LOOP/PV1"/>
+                <assign value="1">
+                    <output path="PV1.1.SetIDPV1"/>
+                </assign>
+                <move>
+                    <input path="$ORM_IN1/PV1_ROOM" var="PV1_ROOM"/>
+                    <output path="PV1.3.AssignedPatientLocation/PL.2/HD.1"/>
+                </move>
+                <move>
+                    <input path="$ORM_IN1/PV1_BED" var="PV1_BED"/>
+                    <output path="PV1.3.AssignedPatientLocation/PL.3/HD.1"/>
+                </move>
+                <function ref="normalize">
+                    <input path="$ORM_IN1/PV1_ADMTYPE" var="PV1_ADMTYPE"/>
+                    <output path="PV1.4.AdmissionType/CWE.1"/>
+                    <param name="input" value="$PV1_ADMTYPE"/>
+                </function>
+                <move>
+                    <input path="$ORM_IN1/XSER_PRO_RUT" var="XSER_PRO_RUT"/>
+                    <output path="PV1.8.ReferringDoctor/XCN.1"/>
+                </move>
+                <move>
+                    <input path="$ORM_IN1/SER_PRO_NOMBREFULL" var="SER_PRO_NOMBREFULL1"/>
+                    <output path="PV1.8.ReferringDoctor/XCN.3"/>
+                </move>
+                <move>
+                    <input path="$ORM_IN1/RUT_ATIENDE" var="RUT_ATIENDE"/>
+                    <output path="PV1.9.ConsultingDoctor/XCN.1"/>
+                </move>
+                <move>
+                    <input path="$ORM_IN1/SER_PRO_ATIENDEORDEN" var="SER_PRO_ATIENDEORDEN"/>
+                    <output path="PV1.9.ConsultingDoctor/XCN.3"/>
+                </move>
+                <function ref="normalize">
+                    <input path="$ORM_IN1/PV1_STATUS" var="PV1_STATUS"/>
+                    <output path="PV1.15.AmbulatoryStatus/CWE.1"/>
+                    <param name="input" value="$PV1_STATUS"/>
+                </function>
+                <function ref="normalize">
+                    <input path="$ORM_IN1/PV1_VISITNR" var="PV1_VISITNR"/>
+                    <output path="PV1.19.VisitNumber/CX.1"/>
+                    <param name="input" value="$PV1_VISITNR"/>
+                </function>
+                <function ref="normalize">
+                    <input path="$ORM_IN1/PV1_ADMITDATE" var="PV1_ADMITDATE"/>
+                    <output path="PV1.44.AdmitDateTime"/>
+                    <param name="input" value="$PV1_ADMITDATE"/>
+                </function>
+                <move>
+                    <input path="$ORM_IN1/PV1_LOCATION" var="PV1_LOCATION"/>
+                    <output path="PV1.3.AssignedPatientLocation/PL.1/HD.1"/>
+                </move>
+            </local>
+            <local>
+                <input path="$ORM_IN4/." var="ORM_IN2"/>
+                <output path="PV1_LOOP/PV2"/>
+                <assign value="1">
+                    <output path="PV2.1.PriorPendingLocation/PL.1/HD.1"/>
+                </assign>
+                <function ref="normalize">
+                    <input path="$ORM_IN2/DIA_DIA_CODIGO" var="DIA_DIA_CODIGO"/>
+                    <output path="PV2.3.AdmitReason/CWE.1"/>
+                    <param name="input" value="$DIA_DIA_CODIGO"/>
+                </function>
+                <function ref="normalize">
+                    <input path="$ORM_IN2/DIA_DIA_DESCRIPCIO" var="DIA_DIA_DESCRIPCIO"/>
+                    <output path="PV2.3.AdmitReason/CWE.2"/>
+                    <param name="input" value="$DIA_DIA_DESCRIPCIO"/>
+                </function>
+            </local>
+            <local>
+                <input path="$ORM_IN4/." var="ORM_IN3"/>
+                <output path="IN1_LOOP/IN1"/>
+                <assign value="1">
+                    <output path="IN1.1.SetIDIN1"/>
+                </assign>
+                <function ref="normalize">
+                    <input path="$ORM_IN3/CON_CON_CODIGO" var="CON_CON_CODIGO"/>
+                    <output path="IN1.2.InsurancePlanID/CWE.1"/>
+                    <param name="input" value="$CON_CON_CODIGO"/>
+                </function>
+                <function ref="normalize">
+                    <input path="$ORM_IN3/CON_CON_DESCRIPCIO" var="CON_CON_DESCRIPCIO"/>
+                    <output path="IN1.3.InsuranceCompanyID/CX.1"/>
+                    <param name="input" value="$CON_CON_DESCRIPCIO"/>
+                </function>
+                <function ref="normalize">
+                    <input path="$ORM_IN3/CON_CON_DESCRIPCIO" var="CON_CON_DESCRIPCIO1"/>
+                    <output path="IN1.4.InsuranceCompanyName/XON.1"/>
+                    <param name="input" value="$CON_CON_DESCRIPCIO1"/>
+                </function>
+            </local>
+        </local>
+        <local>
+            <input path="$ComIbmMessageAssembly_ORM_IN/ORM_IN" var="ORM_IN5"/>
+            <output path="$ComIbmMessageAssembly_O01/O01/ORC_LOOP"/>
+            <function ref="normalize">
+                <input path="$ORM_IN5/ORDERCONTROL" var="ORDERCONTROL"/>
+                <output path="ORC/ORC.1.OrderControl"/>
+                <param name="input" value="$ORDERCONTROL"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ORM_IN5/PV1_VISITNR" var="PV1_VISITNR1"/>
+                <output path="ORC/ORC.3.FillerOrderNumber/EI.1"/>
+                <param name="input" value="$PV1_VISITNR1"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ORM_IN5/ORDERSTATUS" var="ORDERSTATUS"/>
+                <output path="ORC/ORC.5.OrderStatus"/>
+                <param name="input" value="$ORDERSTATUS"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ORM_IN5/FEC_EVENTO" var="FEC_EVENTO"/>
+                <output path="ORC/ORC.9.DateTimeofTransaction"/>
+                <param name="input" value="$FEC_EVENTO"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ORM_IN5/RUT_ATIENDE" var="RUT_ATIENDE1"/>
+                <output path="ORC/ORC.10.EnteredBy/XCN.6"/>
+                <param name="input" value="$RUT_ATIENDE1"/>
+            </function>
+            <assign value="^^^^">
+                <output path="ORC/ORC.11.VerifiedBy/XCN.3"/>
+            </assign>
+            <function ref="normalize">
+                <input path="$ORM_IN5/XCODIGOCENTROATEN" var="XCODIGOCENTROATEN"/>
+                <output path="ORC/ORC.13.EnterersLocation/PL.1/HD.1"/>
+                <param name="input" value="$XCODIGOCENTROATEN"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ORM_IN5/CHKCON" var="CHKCON"/>
+                <output path="ORC/ORC.16.OrderControlCodeReason/CWE.1"/>
+                <param name="input" value="$CHKCON"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ORM_IN5/CHECKED" var="CHECKED"/>
+                <output path="ORC/ORC.17.EnteringOrganization/CWE.1"/>
+                <param name="input" value="$CHECKED"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ORM_IN5/HOST_ORIGEN" var="HOST_ORIGEN"/>
+                <output path="ORC/ORC.18.EnteringDevice/CWE.1"/>
+                <param name="input" value="$HOST_ORIGEN"/>
+            </function>
+            <assign value="^">
+                <output path="ORC/ORC.7.QuantityTiming/TQ.1/CQ.1"/>
+            </assign>
+        </local>
+        <move>
+            <input path="$ComIbmMessageAssembly_ORM_IN/ORM_IN/SEGMENT_OBR" var="SEGMENT_OBR"/>
+            <output path="$ComIbmMessageAssembly_O01/O01/OBR1"/>
+        </move>
+    </mappingDeclaration>
+</mappingRoot>

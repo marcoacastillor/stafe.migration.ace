@@ -1,0 +1,16 @@
+CREATE FUNCTION builderror(INOUT errormsg REFERENCE, IN messageid BLOB, IN metadata REFERENCE, IN lsexception REFERENCE)
+BEGIN
+	SET errormsg.Properties.MessageSet		= 'FSFB_MessageSet (ERE46DS002001)';
+	SET errormsg.Properties.Encoding		= 546;
+	SET errormsg.Properties.CodedCharSetId	= 850;
+	
+	SET errormsg.MQMD.MsgId					= messageid ;
+	
+	CREATE FIELD errormsg.XMLNSC.error;
+	
+	SET errormsg.XMLNSC.error.msgflow 		= UDPmsgflow;
+	SET errormsg.XMLNSC.error.messageId		= messageid ;
+	SET errormsg.XMLNSC.error.timestamp 	= CURRENT_TIMESTAMP;
+	SET errormsg.XMLNSC.error.metadata 		= metadata;
+	SET errormsg.XMLNSC.error.system 		= lsexception;
+END;

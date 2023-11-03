@@ -1,0 +1,132 @@
+BROKER SCHEMA Adapters
+
+CREATE DATABASEEVENT MODULE ORM_IN_LIS_RIS_Database_Input_AGFA_ORM_INBOUND
+
+	/*
+	 * ReadEvents populates the NewEvents structure with event data read from the event table.
+	 * ReadEvents is called after all current events have been dispatched.
+	 * ReadEvents is called on a new transaction that is a separate transaction from the message
+	 * flow, and that runs before the message flow transaction.
+	 *
+	 * After ReadEvents completes:
+	 * - the current transaction is committed to ensure that any database locks obtained during
+	 *   ReadEvents are released.
+	 * - All events in NewEvents are moved to Ready state.  This means that they are ready to be
+	 *   dispatched.
+	 *
+	 * Parameters:
+	 * IN NewEvents REFERENCE.  This is a reference to a ROW. ReadEvents must create children of
+	 *                          this ROW for each event that is being processed.
+	 *                          Each child must include a Usr field and a Key field.
+	 */
+	 CREATE PROCEDURE ReadEvents( IN NewEvents REFERENCE )
+	 BEGIN
+		DECLARE EXIT HANDLER FOR SQLSTATE LIKE 'D%'
+		BEGIN
+			RESIGNAL; /* pass the error back to the node */
+
+			/* To choose to handle Database errors yourself, delete the RESIGNAL statement above
+			 * and uncomment the following procedure call */
+--			CALL HandleDatabaseError('ReadEvents');
+		END;
+
+	      SET NewEvents.Event[] = SELECT AGFA_ORM_INBOUND.* AS Usr 
+	      FROM Database.admsalud.AGFA_ADT, Database.admsalud.AGFA_ORM_INBOUND   
+	      	WHERE AGFA_ADT.PV1_VISITNR= AGFA_ORM_INBOUND.ORC_04_QP_REQ_IDADT 
+			AND AGFA_ADT.EVN_TYPECODE = 'A01' AND AGFA_ADT.MSH_STATUS = 'T' 
+		 AND AGFA_ADT.PID_ID2=AGFA_ORM_INBOUND.PID_03_ID2
+			AND AGFA_ORM_INBOUND.MSH_STATUS = 'N';
+
+			
+
+								
+-- AGFA_ORM_INBOUND
+-- MSH_10_ID
+-- MSH_STATUS
+
+	END;
+
+
+	/*
+	 * BuildMessage builds the message to be propagated to the flow.
+	 * Typically, you use the event data for the current dispatched event to look up data in
+	 * the application table, and copy that data into the message.
+	 * BuildMessage is called while some events are in the Ready state.
+	 * BuildMessage is called as part of the message flow transaction. This transaction also
+	 * involves EndEvent.
+	 *
+	 * After BuildMessage returns, the message is propagated to the message flow.
+	 *
+	 * Parameters:
+	 * IN DispatchedEvent REFERENCE.  A Reference to a ROW containing the event data for the
+	 *                                current dispatched event. This is a copy of one of the 
+	 *                                events added to NewEvents by ReadEvents procedure.
+	 */
+	CREATE PROCEDURE BuildMessage(IN DispatchedEvent REFERENCE)
+	BEGIN
+		DECLARE EXIT HANDLER FOR SQLSTATE LIKE 'D%'
+		BEGIN
+			RESIGNAL; /* pass the error back to the node */
+
+			/* To choose to handle Database errors yourself, delete the RESIGNAL statement above
+			 * and uncomment the following procedure call */
+--			CALL HandleDatabaseError('BuildMessage');
+		END;
+		/* Here you use the event data in the local environment to retrieve the application data. */
+
+		/* For example */
+     
+     	SET Root.DataObject.(XMLNSC.XmlDeclaration)*.(XMLNSC.Attribute)Encoding = 'iso-8859-1';
+        SET Root.DataObject.ns23:ORM_INRIS [] =
+				SELECT AGFA_ORM_INBOUND.* 
+        		FROM Database.admsalud.AGFA_ORM_INBOUND
+					WHERE AGFA_ORM_INBOUND.MSH_10_ID = DispatchedEvent.Usr.MSH_10_ID
+					AND AGFA_ORM_INBOUND.MSH_STATUS = 'N';
+		SET Root.DataObject.ns23:ORM_INRIS[1].APLDESTINO = 'RIS';
+          
+        
+
+		RETURN;
+	END;
+
+
+	/*
+	 * EndEvent updates the event table to record the event as processed.
+	 * EndEvent is called after the message flow has processed the event.
+	 * EndEvent is called as part of the message flow transaction.  This transaction also involves
+	 * BuildMessage. The transaction will be committed when this procedure ends.
+	 *
+	 * Parameters:
+	 * IN DispatchedEvent REFERENCE.  A Reference to a ROW containing the event data for the current
+	 *                                dispatched event. This is a copy of one of the events added to
+	 *                                NewEvents by ReadEvents procedure.
+	 */
+	CREATE PROCEDURE EndEvent(IN DispatchedEvent REFERENCE)
+	BEGIN
+		DECLARE EXIT HANDLER FOR SQLSTATE LIKE 'D%'
+		BEGIN
+			RESIGNAL; /* pass the error back to the node */
+
+			/* To choose to handle Database errors yourself, delete the RESIGNAL statement above
+			 * and uncomment the following procedure call */
+--			CALL HandleDatabaseError('EndEvent');
+
+		END;
+        
+                 UPDATE Database.admsalud.AGFA_ORM_INBOUND
+				 SET MSH_STATUS = 'P'
+				 WHERE AGFA_ORM_INBOUND.MSH_10_ID = DispatchedEvent.Usr.MSH_10_ID;							
+
+
+		RETURN;
+	END;
+
+
+	CREATE PROCEDURE HandleDatabaseError( IN FunctionName CHARACTER )
+	BEGIN
+		/* Throw a different exception; this could be changed. */
+		DECLARE message CHARACTER 'Exception occured calling Database Input Node function: ' || FunctionName;
+		THROW USER EXCEPTION VALUES( SQLCODE, SQLSTATE, SQLNATIVEERROR, SQLERRORTEXT, message );
+	END;
+
+END MODULE;

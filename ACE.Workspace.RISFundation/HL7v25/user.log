@@ -1,0 +1,55 @@
+Generating .dictionary file for message set "HL7v25" 
+
+BIP0183W This dictionary requires a Version 5 (or later) integration node.
+Physical Format "HL7XML" uses Strict Datetime Checking. This option is not supported by integration nodes earlier than Version 5.
+
+Processing file "/HL7v25/HL7v25/messageSet.mset" 
+
+BIP0177W This dictionary requires a Version 5 (or later) integration node.
+This message set has namespace support enabled. Namespaces are not supported by integration nodes earlier than Version 5.
+
+"Broker will treat Length facet as MaxLength" is true. Length facets will be interpreted as maximum length only. This ensures that string fields which use padding characters will be processed correctly, but does not validate the message according to XML Schema rules. See the documentation for more details. 
+
+Processing file "HL7v25/.wmqi21.mxsd" 
+
+Processing file "HL7v25/hl7org/v2xml/chapter10.mxsd" 
+
+Processing file "HL7v25/hl7org/v2xml/chapter11.mxsd" 
+
+Processing file "HL7v25/hl7org/v2xml/chapter12.mxsd" 
+
+Processing file "HL7v25/hl7org/v2xml/chapter13.mxsd" 
+
+Processing file "HL7v25/hl7org/v2xml/chapter14.mxsd" 
+
+Processing file "HL7v25/hl7org/v2xml/chapter15.mxsd" 
+
+Processing file "HL7v25/hl7org/v2xml/chapter3.mxsd" 
+
+Processing file "HL7v25/hl7org/v2xml/chapter4.mxsd" 
+
+Processing file "HL7v25/hl7org/v2xml/chapter5.mxsd" 
+
+Processing file "HL7v25/hl7org/v2xml/chapter6.mxsd" 
+
+Processing file "HL7v25/hl7org/v2xml/chapter8.mxsd" 
+
+Processing file "HL7v25/hl7org/v2xml/chapter9.mxsd" 
+
+Processing file "HL7v25/hl7org/v2xml/datatypes.mxsd" 
+
+Processing file "HL7v25/hl7org/v2xml/fields.mxsd" 
+
+Processing file "HL7v25/hl7org/v2xml/segments.mxsd" 
+
+Generating dictionary logical model
+Generating dictionary physical format "HL7"
+Generating dictionary physical format "HL7XML"
+
+Elapsed time: 6.188 seconds
+Warnings: 2
+
+
+Operation complete
+
+

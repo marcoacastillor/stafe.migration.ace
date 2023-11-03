@@ -1,0 +1,32 @@
+CREATE COMPUTE MODULE FSFB_AdapterMQ_LIS_IN_normalizeMsg
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE LeadingMLLPBytes CHARACTER '0b';
+		DECLARE TrailingMLLPBytes CHARACTER '0d0d';
+		
+		/******************************************************/
+		--Crear cabeceras de mensaje
+		/******************************************************/
+		CREATE FIELD OutputRoot.Properties;
+		CREATE FIELD OutputRoot.MQMD;
+		CREATE FIELD OutputRoot.MQRFH2;
+		
+		--Tomar identificador de cliente.
+		SET OutputRoot.MQRFH2.usr.response.TCP.Id                               = InputLocalEnvironment.TCPIP.Input.ConnectionDetails.Id;
+		SET OutputRoot.MQRFH2.usr.response.TCP.ReplyId                          = InputLocalEnvironment.TCPIP.Input.ConnectionDetails.Id;
+		
+		/******************************************************/
+		-- Copiar identificadores de mensaje
+		/******************************************************/
+		DECLARE msgTemp CHARACTER CAST(InputRoot.BLOB.BLOB AS BLOB CCSID 819);
+		DECLARE posInit INTEGER POSITION(LeadingMLLPBytes in msgTemp);
+		DECLARE posEnd INTEGER POSITION(TrailingMLLPBytes in msgTemp);
+		
+		IF posEnd = 0 THEN
+			SET posEnd = LENGTH(msgTemp);
+		END IF;
+		
+		SET OutputRoot.BLOB.BLOB = CAST(SUBSTRING(msgTemp FROM (posInit+2) FOR (posEnd-posInit-2)) AS BLOB);
+		RETURN TRUE; 
+	END;
+END MODULE;

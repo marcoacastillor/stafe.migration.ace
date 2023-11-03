@@ -1,0 +1,11 @@
+/*EATE FUNCTION Main() RETURNS BOOLE*/
+	BEGIN
+		SET OutputLocalEnvironment = InputLocalEnvironment;
+		SET OutputRoot = InputRoot;
+		
+		--Copiar identificadores de mensaje
+		SET OutputRoot.MQMD.MsgId 			= InputRoot.MQMD.MsgId;
+		SET OutputRoot.MQMD.CorrelId		= InputRoot.MQMD.MsgId;
+		
+		RETURN TRUE;
+	END;

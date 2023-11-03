@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0" xmlns:map="default">
+    <input path="/RIS_ORMIN_SpecificMessageSet/co/org/fsfb/hisormintable/impl/HIS_ORMInTable.mxsd"/>
+    <output path="mbsharedlib://HL7-2.7/FSFB_HL7.xsd"/>
+    <imports>
+        <import kind="esql" namespace="/UTILS/mapping.esql"/>
+    </imports>
+    <namespaces>
+        <namespace kind="supplement" prefix="in" uri="http://co/org/fsfb/HIS_ORMInTable/impl"/>
+        <namespace kind="supplement" prefix="out" uri="urn:hl7-org:v2xml"/>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+        <namespace kind="extension" prefix="mapping" uri="/UTILS/mapping.esql"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="ormin_RIS_ORM_IN_RIS">
+        <input namespace="http://co/org/fsfb/HIS_ORMInTable/impl" path="mb:msg(ORM_INRIS,assembly,,Properties)" var="ComIbmMessageAssembly_ORM_INRIS"/>
+        <output namespace="urn:hl7-org:v2xml" path="mb:msg(O01,assembly,DFDL,Properties)" var="ComIbmMessageAssembly_O01"/>
+        <move>
+            <input path="$ComIbmMessageAssembly_ORM_INRIS/Properties"/>
+            <output path="$ComIbmMessageAssembly_O01/Properties"/>
+            <override>
+                <assign value="{HL7-2.7}">
+                    <output path="$ComIbmMessageAssembly_O01/Properties/MessageSet"/>
+                </assign>
+                <assign value="{urn:hl7-org:v2xml}:O01">
+                    <output path="$ComIbmMessageAssembly_O01/Properties/MessageType"/>
+                </assign>
+            </override>
+        </move>
+        <local>
+            <input path="$ComIbmMessageAssembly_ORM_INRIS/ORM_INRIS" var="ORM_INRIS1"/>
+            <output path="$ComIbmMessageAssembly_O01/O01/MSH"/>
+            <assign value="|">
+                <output path="MSH.1.FieldSeparator"/>
+            </assign>
+            <assign value="^">
+                <output path="MSH.2.ServiceString/ComponentSeparator"/>
+            </assign>
+            <assign value="~">
+                <output path="MSH.2.ServiceString/RepeatSeparator"/>
+            </assign>
+            <assign value="\">
+                <output path="MSH.2.ServiceString/EscapeCharacter"/>
+            </assign>
+            <assign value="&amp;">
+                <output path="MSH.2.ServiceString/SubComponentSeparator"/>
+            </assign>
+            <assign value="HI_ORM_IN">
+                <output path="MSH.3.SendingApplication/HD.1"/>
+            </assign>
+            <assign value="AGFA Healthcare Colombia">
+                <output path="MSH.5.ReceivingApplication/HD.1"/>
+            </assign>
+            <customFunction lang="esql" ref="mapping:CurrentTimestampHL7">
+                <output path="MSH.7.DateTimeOfMessage"/>
+            </customFunction>
+            <assign value="ORM">
+                <output path="MSH.9.MessageType/MSG.1"/>
+            </assign>
+            <assign value="O01">
+                <output path="MSH.9.MessageType/MSG.2"/>
+            </assign>
+            <assign>
+                <output path="MSH.9.MessageType/MSG.3"/>
+            </assign>
+            <function ref="normalize">
+                <input path="$ORM_INRIS1/MSH_10_ID" var="MSH_10_ID"/>
+                <output path="MSH.10.MessageControlID"/>
+                <param name="input" value="$MSH_10_ID"/>
+            </function>
+            <assign value="2.4">
+                <output path="MSH.12.VersionID/VID.1"/>
+            </assign>
+            <assign value="CO">
+                <output path="MSH.17.CountryCode"/>
+            </assign>
+            <assign value="8859/1">
+                <output path="MSH.18.CharacterSet"/>
+            </assign>
+            <assign>
+                <output path="MSH.11.ProcessingID/PT.1"/>
+            </assign>
+        </local>
+        <local>
+            <input path="$ComIbmMessageAssembly_ORM_INRIS/ORM_INRIS"/>
+            <output path="$ComIbmMessageAssembly_O01/O01/PID_LOOP"/>
+            <local>
+                <input path="."/>
+                <output path="PID"/>
+                <function ref="normalize">
+                    <input path="PID_03_ID2" var="PID_03_ID2"/>
+                    <output path="PID.2.PatientID/CX.1"/>
+                    <param name="input" value="$PID_03_ID2"/>
+                </function>
+                <function ref="normalize">
+                    <input path="PID_03_ID2" var="PID_03_ID21"/>
+                    <output path="PID.3.PatientIdentifierList/CX.1"/>
+                    <param name="input" value="$PID_03_ID21"/>
+                </function>
+                <function ref="normalize">
+                    <input path="PID_02_ID" var="PID_02_ID"/>
+                    <output path="PID.4.AlternatePatientIDPID/CX.1"/>
+                    <param name="input" value="$PID_02_ID"/>
+                </function>
+                <function ref="concat">
+                    <input path="PID_05_LNAMEF" var="PID_05_LNAMEF"/>
+                    <input path="PID_05_LNAMEM" var="PID_05_LNAMEM"/>
+                    <output path="PID.5.PatientName/XPN.1/FN.1"/>
+                    <param name="input" value="$PID_05_LNAMEF"/>
+                    <property key="defaultDelimiter" value=" "/>
+                </function>
+                <function ref="normalize">
+                    <input path="PID_05_FNAME" var="PID_05_FNAME"/>
+                    <output path="PID.5.PatientName/XPN.2"/>
+                    <param name="input" value="$PID_05_FNAME"/>
+                </function>
+                <function ref="normalize">
+                    <input path="PID_13_PHONE" var="PID_13_PHONE"/>
+                    <output path="PID.13.PhoneNumberHome/XTN.1"/>
+                    <param name="input" value="$PID_13_PHONE"/>
+                </function>
+                <task type="todo">
+                    <input path="."/>
+                </task>
+            </local>
+            <local>
+                <input path="."/>
+                <output path="PV1_LOOP/PV1"/>
+                <assign value="1">
+                    <output path="PV1.1.SetIDPV1"/>
+                </assign>
+                <function ref="normalize">
+                    <input path="PV1_18_PTYPE" var="PV1_18_PTYPE"/>
+                    <output path="PV1.2.PatientClass/CWE.1"/>
+                    <param name="input" value="$PV1_18_PTYPE"/>
+                </function>
+                <move>
+                    <input path="ORC_04_QP_REQ_IDADT"/>
+                    <output path="PV1.19.VisitNumber/CX.1"/>
+                </move>
+            </local>
+        </local>
+        <local>
+            <input path="$ComIbmMessageAssembly_ORM_INRIS/ORM_INRIS" var="ORM_INRIS"/>
+            <output path="$ComIbmMessageAssembly_O01/O01/ORC_LOOP"/>
+            <function ref="fn:concat">
+                <input path="$ORM_INRIS/ORC_04_QP_REQ_ID" var="ORC_04_QP_REQ_ID"/>
+                <output path="ORC/ORC.4.PlacerGroupNumber/EI.1"/>
+                <param name="string1" value="'QPREQ_'"/>
+                <param name="string2" value="$ORC_04_QP_REQ_ID"/>
+                <param name="string3" value="'^FSFB'"/>
+            </function>
+            <customFunction lang="esql" ref="mapping:DTFormat">
+                <input path="$ORM_INRIS/ORC_07_DATE_INIT" var="ORC_07_DATE_INIT"/>
+                <output path="ORC/ORC.7.QuantityTiming/TQ.4/TS.1"/>
+                <param name="FECHA" value="$ORC_07_DATE_INIT"/>
+            </customFunction>
+            <customFunction lang="esql" ref="mapping:DTFormat">
+                <input path="$ORM_INRIS/ORC_07_DATE_FIN" var="ORC_07_DATE_FIN"/>
+                <output path="ORC/ORC.7.QuantityTiming/TQ.5/TS.1"/>
+                <param name="FECHA" value="$ORC_07_DATE_FIN"/>
+            </customFunction>
+            <function ref="normalize">
+                <input path="$ORM_INRIS/ORC_07_PRIORITY" var="ORC_07_PRIORITY1"/>
+                <output path="ORC/ORC.7.QuantityTiming/TQ.6"/>
+                <param name="input" value="$ORC_07_PRIORITY1"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ORM_INRIS/ORC_USER_ID" var="ORC_USER_ID"/>
+                <output path="ORC/ORC.10.EnteredBy/XCN.1"/>
+                <param name="input" value="$ORC_USER_ID"/>
+            </function>
+            <function ref="fn:concat">
+                <input path="$ORM_INRIS/ORC_12_REQ_DOC" var="ORC_12_REQ_DOC"/>
+                <output path="ORC/ORC.12.OrderingProvider/XCN.1"/>
+                <param name="string1" value="$ORC_12_REQ_DOC"/>
+                <param name="string2" value="'^^'"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ORM_INRIS/ORC_13_REQ_SERV" var="ORC_13_REQ_SERV"/>
+                <output path="ORC/ORC.13.EnterersLocation/PL.1/HD.1"/>
+                <param name="input" value="$ORC_13_REQ_SERV"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ORM_INRIS/ORC_25_STATUS" var="ORC_25_STATUS"/>
+                <output path="ORC/ORC.25.OrderStatusModifier/CWE.1"/>
+                <param name="input" value="$ORC_25_STATUS"/>
+            </function>
+            <function ref="fn:concat">
+                <input path="$ORM_INRIS/ORC_02_QP_EXAM_ID" var="ORC_02_QP_EXAM_ID1"/>
+                <output path="OrderDetail_LOOP/Order/OBR/OBR.2.PlacerOrderNumber/EI.1"/>
+                <param name="string1" value="'QPTOP_'"/>
+                <param name="string2" value="$ORC_02_QP_EXAM_ID1"/>
+                <param name="string3" value="'^FSFB'"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ORM_INRIS/OBR_04_EXAM_CODE" var="OBR_04_EXAM_CODE"/>
+                <output path="OrderDetail_LOOP/Order/OBR/OBR.4.UniversalServiceIdentifier/CWE.1"/>
+                <param name="input" value="$OBR_04_EXAM_CODE"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ORM_INRIS/OBR_04_EXAM_DESC" var="OBR_04_EXAM_DESC"/>
+                <output path="OrderDetail_LOOP/Order/OBR/OBR.4.UniversalServiceIdentifier/CWE.2"/>
+                <param name="input" value="$OBR_04_EXAM_DESC"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ORM_INRIS/XCODIGOCENTROATEN" var="XCODIGOCENTROATEN"/>
+                <output path="OrderDetail_LOOP/Order/OBR/OBR.4.UniversalServiceIdentifier/CWE.3"/>
+                <param name="input" value="$XCODIGOCENTROATEN"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ORM_INRIS/ORC_07_PRIORITY" var="ORC_07_PRIORITY"/>
+                <output path="OrderDetail_LOOP/Order/OBR/OBR.5.Priority"/>
+                <param name="input" value="$ORC_07_PRIORITY"/>
+            </function>
+            <customFunction lang="esql" ref="mapping:DTFormat">
+                <input path="$ORM_INRIS/OBR_06_REQ_DATE" var="OBR_06_REQ_DATE"/>
+                <output path="OrderDetail_LOOP/Order/OBR/OBR.6.RequestedDateTime/TS.1"/>
+                <param name="FECHA" value="$OBR_06_REQ_DATE"/>
+            </customFunction>
+            <customFunction lang="esql" ref="mapping:DTFormat">
+                <input path="$ORM_INRIS/OBR_06_REQ_DATE" var="OBR_06_REQ_DATE1"/>
+                <output path="OrderDetail_LOOP/Order/OBR/OBR.7.ObservationDateTime"/>
+                <param name="FECHA" value="$OBR_06_REQ_DATE1"/>
+            </customFunction>
+            <function ref="normalize">
+                <input path="$ORM_INRIS/OBR_13_CLIN_INFO" var="OBR_13_CLIN_INFO"/>
+                <output path="OrderDetail_LOOP/Order/OBR/OBR.13.RelevantClinicalInfo"/>
+                <param name="input" value="$OBR_13_CLIN_INFO"/>
+            </function>
+            <function ref="normalize">
+                <input path="$ORM_INRIS/OBR_31_STUDYREASON" var="OBR_31_STUDYREASON"/>
+                <output path="OrderDetail_LOOP/Order/OBR/OBR.31.ReasonforStudy/CWE.1"/>
+                <param name="input" value="$OBR_31_STUDYREASON"/>
+            </function>
+            <assign>
+                <output path="ORC/ORC.1.OrderControl"/>
+            </assign>
+            <move>
+                <input path="$ORM_INRIS/PV1_VISIT_NR"/>
+                <output path="ORC/ORC.2.PlacerOrderNumber/EI.1"/>
+            </move>
+        </local>
+    </mappingDeclaration>
+</mappingRoot>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema targetNamespace="http://co/org/fsfb/hisdfttable/HIS_DFTACKTable/impl/" xmlns:NS1="http://co/org/fsfb/hisdfttable/HIS_DFTACKTable/impl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:element name="DFT_ACK" type="NS1:DFT_ACK">
+        <xsd:annotation>
+      <xsd:appinfo source="WMQI_APPINFO">
+        <MRMessage messageDefinition="/0/DFT_ACK;XSDElementDeclaration$MRObject"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="DFT_ACK">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="SRV_Message" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="MSH_DFT_ID" type="xsd:string"/>
+        </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

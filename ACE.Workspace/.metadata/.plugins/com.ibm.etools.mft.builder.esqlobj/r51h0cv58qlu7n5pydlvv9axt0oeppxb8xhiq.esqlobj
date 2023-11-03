@@ -1,0 +1,29 @@
+CREATE COMPUTE MODULE FSFB_LISORMIN03UpdateDB
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+
+		DECLARE msgin 				REFERENCE TO InputRoot.XMLNS.*:ACK_OUT;
+		DECLARE messageidcontrol 	CHARACTER; --msgin.IDTRANSACCION ;
+		DECLARE codigoerror			CHARACTER; --msgin.CODIGOERROR;
+		DECLARE descripcion			CHARACTER; --msgin.DESCRIPCION;
+		DECLARE error				CHARACTER; --msgin.ERROR;
+		
+		SET messageidcontrol = msgin.IDTRANSACCION ;
+		SET codigoerror = msgin.CODIGOERROR ;
+		SET descripcion = msgin.DESCRIPCION ;
+		SET error = msgin.ERROR ;
+		
+		IF codigoerror = 'AA' THEN
+			SET codigoerror = 'T';
+			SET error = 'PROCESADO EXITOSO';
+		ELSE
+			SET codigoerror = 'E';
+		END IF;
+				
+		PASSTHRU ('UPDATE ADMSALUD.TABADMCHKLABCORE SET TABADMCHKLABCORE.ESTADO =? WHERE TABADMCHKLABCORE.PV1_VISITNR =?', codigoerror, descripcion);
+		
+		RETURN FALSE;
+		
+	END;
+
+END MODULE;

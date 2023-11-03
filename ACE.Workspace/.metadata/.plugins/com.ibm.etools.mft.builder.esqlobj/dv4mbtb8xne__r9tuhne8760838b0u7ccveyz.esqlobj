@@ -1,0 +1,86 @@
+/*EATE FUNCTION Main() RETURNS BOOLE*/
+	BEGIN
+		DECLARE NM_COMPONENT CHARACTER 'AUTHORIZATION.REGISTER';
+		DECLARE SERVICE_RQ_TRACE INTEGER 2;
+		
+		/******************************************************/
+		-- Copiar cabeceras de mensaje
+		/******************************************************/
+		SET OutputRoot.MQMD 	= InputRoot.MQMD;
+		SET OutputRoot.MQRFH2 	= InputRoot.MQRFH2;
+		
+		/******************************************************/
+		-- Declarar referencias
+		/******************************************************/
+		DECLARE refEnv REFERENCE TO Environment;
+		DECLARE refMQRFH2 REFERENCE TO OutputRoot.MQRFH2;
+		DECLARE refInpRoot REFERENCE TO OutputRoot;
+		
+		/******************************************************/
+		-- Setear información para auditoría y headers
+		/******************************************************/
+		CALL common.procedures.utils.createMsgLogs(refMQRFH2, SERVICE_RQ_TRACE, NM_COMPONENT);
+		CALL common.procedures.utils.saveMQM(refInpRoot, refEnv);
+		
+		/******************************************************/
+		-- Declarar referencia a objeto de entrada
+		/******************************************************/
+		DECLARE sql CHARACTER '';
+		DECLARE refInp REFERENCE TO InputRoot.JSON;
+		MOVE refInp LASTCHILD;
+		
+		DECLARE SRV_MESSAGE, IN_AUT_NUMAUTO, IN_AUT_FORMULARIO, IN_AUT_MTVAUT, IN_AUT_CONVENIO, IN_AUT_NOMBREAUT, IN_AUT_CUPS, IN_AUT_USER, IN_AUT_FISICA, OUT_AUT_RESULTRAN, OUT_AUT_ESTADO CHARACTER '';
+		DECLARE IN_AUT_PAC_PAC_NUMERO, IN_AUT_VALOR DECIMAL;
+		DECLARE IN_AUT_FECAUTO DATE;
+		
+		SET SRV_MESSAGE 			= NULL;
+		SET IN_AUT_NUMAUTO 			= refInp.authorizationInfo.number;
+		SET IN_AUT_FORMULARIO 		= refInp.authorizationInfo.formNumber;
+		SET IN_AUT_PAC_PAC_NUMERO 	= refInp.patientInfo.patientNumber;
+		SET IN_AUT_MTVAUT 			= refInp.authorizationInfo.description;
+		SET IN_AUT_FECAUTO 			= REPLACE(refInp.authorizationInfo.authDate, '/','-');  
+		SET IN_AUT_CONVENIO 		= refInp.authorizationInfo.agreementCode;
+		SET IN_AUT_NOMBREAUT 		= refInp.authorizationInfo.authPersonName;
+		SET IN_AUT_CUPS 			= refInp.authorizationInfo.CUPS;
+		SET IN_AUT_VALOR 			= refInp.authorizationInfo.value;
+		SET IN_AUT_USER 			= refInp.authorizationInfo.userCode;
+		SET IN_AUT_FISICA			= refInp.authorizationInfo.autFisica;
+		SET OUT_AUT_RESULTRAN		= NULL; 
+		SET OUT_AUT_ESTADO			= NULL;
+				
+		CALL authorizationRegister(
+		 	SRV_MESSAGE,
+			IN_AUT_NUMAUTO,
+			IN_AUT_FORMULARIO,
+			IN_AUT_PAC_PAC_NUMERO,
+			IN_AUT_MTVAUT,
+			IN_AUT_FECAUTO,
+			IN_AUT_CONVENIO,
+			IN_AUT_NOMBREAUT,
+			IN_AUT_CUPS,
+			IN_AUT_VALOR,
+			IN_AUT_USER,
+			IN_AUT_FISICA,
+			OUT_AUT_RESULTRAN,
+			OUT_AUT_ESTADO
+		);
+		
+		/******************************************************/
+		-- Creación mensaje de respuesta
+		/******************************************************/
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
+		
+		SET refOut.transactionInfo.idTransaction	= refMQRFH2.usr.contextTransaction.IdTransaction;
+		IF CONTAINS(SRV_MESSAGE, '1000000') THEN
+			SET refOut.transactionInfo.code				= '000';
+			SET refOut.transactionInfo.desc				= OUT_AUT_RESULTRAN;
+		ELSE
+			DECLARE desc, code CHARACTER '';
+			
+			SET refOut.transactionInfo.code				= '300';
+			SET refOut.transactionInfo.desc				= SRV_MESSAGE;
+		END IF;
+		
+		RETURN TRUE;
+	END;

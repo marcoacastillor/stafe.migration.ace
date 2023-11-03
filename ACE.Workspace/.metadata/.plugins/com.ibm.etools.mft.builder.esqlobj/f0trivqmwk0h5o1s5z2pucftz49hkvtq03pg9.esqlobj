@@ -1,0 +1,23 @@
+CREATE COMPUTE MODULE FSFB_matchCorrelID
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- declaración de variables
+		DECLARE correlid		CHARACTER '';
+		DECLARE cont			INTEGER 1;
+		DECLARE longitud 		INTEGER LENGTH(correlid);
+		
+		-- dejar pasar el mensaje como llega de LIS
+		SET OutputRoot = InputRoot;
+		
+		-- utilizar el messagecontrolID para la correlación
+		WHILE longitud < 48 DO
+			SET correlid = REPLICATE('1',cont) || InputRoot.MRM.hl7:MSA.hl7:"MSA.2.MessageControlID";
+			SET cont = cont + 1;
+			SET longitud = LENGTH(correlid);
+		END WHILE;
+		
+		SET OutputRoot.MQMD.CorrelId = CAST( correlid AS BLOB);
+	
+	END;
+	
+END MODULE;

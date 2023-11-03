@@ -1,0 +1,46 @@
+/*EATE FUNCTION Main() RETURNS BOOLE*/
+	BEGIN
+		
+		-- referencias al mensaje de salida
+		CALL CopyMessageHeaders();
+
+		CREATE FIELD OutputRoot.XMLNSC.ns:FSFB;
+		DECLARE msgout		REFERENCE TO OutputRoot.XMLNSC.ns:FSFB;
+		CREATE FIELD msgout.ns:Header;
+		DECLARE headerout	REFERENCE TO msgout.ns:Header;
+		CREATE FIELD msgout.ns:Body;
+		DECLARE bodyout		REFERENCE TO msgout.ns:Body;
+		
+		SET headerout 	= headerin;
+		SET bodyout		= bodyin;
+		
+		-- obtener propiedades del servicio
+		SET OutputLocalEnvironment.Variables.servicio[] 	= 
+							SELECT srv.nombre, srv.log, srv.audit, srv.request, srv.response
+								FROM InputLocalEnvironment.Variables.meta.XMLNSC.servicios.servicio[] AS srv 
+									WHERE srv.nombre = FIELDVALUE(headerin.ns:operation) AND srv.sistema = FIELDVALUE(headerin.ns:system);
+		
+		-- escribirlas en el campo service
+		SET headerout.ns:service.(XMLNSC.Attribute)nombre		= OutputLocalEnvironment.Variables.servicio[1].nombre;
+		SET headerout.ns:service.(XMLNSC.Attribute)audit 		= OutputLocalEnvironment.Variables.servicio[1].audit;
+		SET headerout.ns:service.(XMLNSC.Attribute)log			= OutputLocalEnvironment.Variables.servicio[1].log;
+		
+		SET headerout.ns:service.request		= OutputLocalEnvironment.Variables.servicio[1].request;
+		SET headerout.ns:service.response		= OutputLocalEnvironment.Variables.servicio[1].response;
+		
+		RETURN TRUE;
+	END;
+
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;
+
+	CREATE PROCEDURE CopyEntireMessage() BEGIN
+		SET OutputRoot = InputRoot;
+	END;

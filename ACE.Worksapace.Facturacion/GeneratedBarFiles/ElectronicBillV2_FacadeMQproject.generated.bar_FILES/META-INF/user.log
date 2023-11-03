@@ -1,0 +1,25 @@
+
+==============================================
+
+!Mon Dec 13 14:29:30 COT 2021
+
+Processing file ElectronicBillV2_FacadeMQ.
+Application file ElectronicBillV2_FacadeMQ.appzip successfully added to the BAR.
+Application compiled contents:
+    
+    Processing file ElectronicBillV2_FacadeMQ\electronic\bill\v2\facade\Facade_Req.msgflow.
+    Successfully added file ElectronicBillV2_FacadeMQ\electronic\bill\v2\facade\Facade_Req.msgflow to BAR file.
+    
+    
+    Processing file ElectronicBillV2_FacadeMQ\application.descriptor.
+    Successfully added file ElectronicBillV2_FacadeMQ\application.descriptor to BAR file.
+    Elapsed time: 0 second(s).
+    
+    Successfully added file ElectronicBillV2_FacadeMQ\application.descriptor to BAR file.
+    
+    
+    Processing file ElectronicBillV2_FacadeMQ\electronic\bill\v2\facade\Facade_Resp.msgflow.
+    Successfully added file ElectronicBillV2_FacadeMQ\electronic\bill\v2\facade\Facade_Resp.msgflow to BAR file.
+    
+
+Elapsed time: 0.196 second(s).

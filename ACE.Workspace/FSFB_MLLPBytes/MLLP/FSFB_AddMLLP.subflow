@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmCompute.msgnode="ComIbmCompute.msgnode" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="MLLP/FSFB_AddMLLP.subflow" nsPrefix="MLLP_FSFB_AddMLLP.subflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.LeadingMLLPBytes" name="LeadingMLLPBytes" defaultValueLiteral="0B">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.TrailingMLLPBytes" name="TrailingMLLPBytes" defaultValueLiteral="1C0D">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.AddLeadingMLLPBytes" name="AddLeadingMLLPBytes" lowerBound="1" defaultValueLiteral="true">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.AddTrailingMLLPBytes" name="AddTrailingMLLPBytes" lowerBound="1" defaultValueLiteral="true">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <translation xmi:type="utility:TranslatableString" key="FSFB_AddMLLP" bundleName="MLLP/FSFB_AddMLLP" pluginId="FSFB_MLLPBytes"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/FSFB_MLLPBytes/icons/full/obj16/FSFB_AddMLLP.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/FSFB_MLLPBytes/icons/full/obj30/FSFB_AddMLLP.gif"/>
+    <longDescription xmi:type="utility:ConstantString" string="Licensed Materials - Property of IBM (C) Copyright IBM Corporation 2008, 2009. All Rights Reserved. &#xD;&#xA;US Government Users Restricted Rights- Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp."/>
+    <version xmi:type="utility:ConstantString" string="v1.0"/>
+    <composition>
+      <nodes xmi:type="eflow:FCMSource" xmi:id="InTerminal.Input" location="108,92">
+        <translation xmi:type="utility:TranslatableString" key="InTerminal.Input" bundleName="MLLP/FSFB_AddMLLP" pluginId="FSFB_MLLPBytes"/>
+      </nodes>
+      <nodes xmi:type="eflow:FCMSink" xmi:id="OutTerminal.Output" location="408,93">
+        <translation xmi:type="utility:TranslatableString" key="OutTerminal.Output" bundleName="MLLP/FSFB_AddMLLP" pluginId="FSFB_MLLPBytes"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="242,92" computeExpression="esql://routine/MLLP#AddMLLPBytes_Compute.Main">
+        <translation xmi:type="utility:ConstantString" string="Add MLLP Bytes"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_1" sourceNode="InTerminal.Input" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="OutTerminal.Output" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+    </composition>
+    <propertyOrganizer>
+      <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.LeadingMLLPBytes">
+        <propertyName xmi:type="utility:TranslatableString" key="Property.LeadingMLLPBytes" bundleName="MLLP/FSFB_AddMLLP" pluginId="FSFB_MLLPBytes"/>
+        <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.TrailingMLLPBytes">
+          <propertyName xmi:type="utility:TranslatableString" key="Property.TrailingMLLPBytes" bundleName="MLLP/FSFB_AddMLLP" pluginId="FSFB_MLLPBytes"/>
+          <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.AddLeadingMLLPBytes">
+            <propertyName xmi:type="utility:TranslatableString" key="Property.AddLeadingMLLPBytes" bundleName="MLLP/FSFB_AddMLLP" pluginId="FSFB_MLLPBytes"/>
+            <propertyDescriptor groupName="Group.Basic" configurable="true" userDefined="true" describedAttribute="Property.AddTrailingMLLPBytes">
+              <propertyName xmi:type="utility:TranslatableString" key="Property.AddTrailingMLLPBytes" bundleName="MLLP/FSFB_AddMLLP" pluginId="FSFB_MLLPBytes"/>
+            </propertyDescriptor>
+          </propertyDescriptor>
+        </propertyDescriptor>
+      </propertyDescriptor>
+    </propertyOrganizer>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>

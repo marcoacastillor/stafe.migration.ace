@@ -1,0 +1,67 @@
+BROKER SCHEMA Adapters
+
+-- declaración global de namespace
+DECLARE ns NAMESPACE 'http://co/org/fsfb/fmwk';
+DECLARE hl7 NAMESPACE 'urn:hl7-org:v2xml';
+
+DECLARE UDPtraceable 	EXTERNAL BOOLEAN TRUE;
+DECLARE UDPauditable 	EXTERNAL BOOLEAN TRUE;
+
+---------------------------------------------------------------
+--	MODULE FSFB_RISAdapterSC_Involve
+--	Este módulo adecua el mensaje entrante, proveniente del
+--	socket provisto por RIS, al formato utilizado por el fmwk.
+--	operacoines ORM_OUT, ORU
+---------------------------------------------------------------
+CREATE COMPUTE MODULE FSFB_RISAdapterSC_Involve
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- declaración de constantes	
+		DECLARE operation 	CHARACTER 'DFT';
+		DECLARE system		CHARACTER 'RIS';
+		-- propiedades para convertir a BLOB
+		DECLARE parser		CHARACTER 'MRM';
+		DECLARE msgset		CHARACTER 'HL7v25';
+		DECLARE msgtype		CHARACTER 'HL7';
+		DECLARE msgformat	CHARACTER 'HL7';
+		DECLARE msgblob		BLOB;
+		
+		-- condicional para el servicio ORM_OUT
+		IF operation = 'ORM' THEN
+			SET operation = 'ORM_OUT';
+		END IF;
+		
+		-- construcción del mensaje de salida (xml)
+		SET OutputRoot.Properties = InputRoot.Properties;
+		SET OutputRoot.Properties.CodedCharSetId = 819; 
+		SET OutputRoot.Properties		= InputRoot.Properties;
+		
+		-- construcción de cabecera MQMD
+		CREATE FIELD OutputRoot.MQMD;
+		SET OutputRoot.MQMD.CodedCharSetId			= 850;
+		
+		SET OutputRoot.MQMD.Format					= 'DataObject';
+		CALL UTILS.generateCorrelID() INTO OutputRoot.MQMD.CorrelId;
+		
+		-- construcción del mensaje FSFB
+		CREATE FIELD OutputRoot.XMLNSC.ns:FSFB;
+		DECLARE fsfb
+			REFERENCE TO OutputRoot.XMLNSC.ns:FSFB;
+		
+		-- crear header del mensaje
+		CALL UTILS.createHeader(fsfb, operation, system);
+		SET fsfb.ns:Header.messagecontrolid = InputRoot.MRM.hl7:MSH.hl7:"MSH.10.MessageControlID";
+		SET fsfb.ns:Header.ns:service.log = UDPtraceable;
+		SET fsfb.ns:Header.ns:service.audit = UDPauditable;
+		
+		-- codificar el mensaje original		
+		--CALL UTILS.encodemsg(msgtype, msgset, msgformat, InputRoot.DataObject, msgblob); 
+		--SET msgblob		= ASBITSTREAM(InputRoot.MRM CCSID 850  
+			--					SET msgset TYPE msgtype FORMAT msgformat);
+		
+		-- crear body del mensaje
+		CALL UTILS.createBody(fsfb, InputRoot.BLOB.BLOB, parser, msgset, msgtype, msgformat);
+		
+		RETURN TRUE;
+	END;
+END MODULE;

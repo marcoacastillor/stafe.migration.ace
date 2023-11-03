@@ -1,0 +1,15 @@
+
+
+CREATE COMPUTE MODULE FSFB_AdapterMQ_ADT_LIS_SetSeparators
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot = InputRoot;
+		
+		--Acceder al campo PID.13.PhoneNumberHome
+		IF FIELDTYPE(InputRoot.MRM.hl7:PID.hl7:"PID.13.PhoneNumberHome".hl7:"XTN.4") IS NULL OR NOT CONTAINS(InputRoot.MRM.hl7:PID.hl7:"PID.13.PhoneNumberHome".hl7:"XTN.4",'@') THEN
+			SET OutputRoot.MRM.hl7:PID.hl7:"PID.13.PhoneNumberHome".hl7:"XTN.2" = '^^';	
+		END IF;
+		
+		RETURN TRUE;
+	END;
+END MODULE;

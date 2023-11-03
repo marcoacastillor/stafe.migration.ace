@@ -1,0 +1,165 @@
+BROKER SCHEMA patient.services
+
+CREATE COMPUTE MODULE Register_RegisterPatient
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE NM_COMPONENT CHARACTER 'CREATE';
+		DECLARE SERVICE_RQ_TRACE INTEGER 2;
+		
+		/******************************************************/
+		-- Copiar cabeceras de mensaje
+		/******************************************************/
+		SET OutputRoot.MQMD 	= InputRoot.MQMD;
+		SET OutputRoot.MQRFH2 	= InputRoot.MQRFH2;
+		
+		/******************************************************/
+		-- Declarar referencias
+		/******************************************************/
+		DECLARE refEnv REFERENCE TO Environment;
+		DECLARE refMQRFH2 REFERENCE TO OutputRoot.MQRFH2;
+		DECLARE refInpRoot REFERENCE TO OutputRoot;
+		
+		/******************************************************/
+		-- Setear información para auditoría y headers
+		/******************************************************/
+		CALL common.procedures.utils.createMsgLogs(refMQRFH2, SERVICE_RQ_TRACE, NM_COMPONENT);
+		CALL common.procedures.utils.saveMQM(refInpRoot, refEnv);
+		
+		/******************************************************/
+		-- Declarar referencia a objeto de entrada
+		/******************************************************/
+		DECLARE sql CHARACTER '';
+		DECLARE refInp REFERENCE TO InputRoot.JSON;
+		MOVE refInp LASTCHILD;
+		
+		DECLARE In_PAC_PAC_Cotizante, In_PaisCodPac, In_PaisCodProce INTEGER;
+		DECLARE SRV_Message, In_PAC_PAC_TipoIdentCodigo, In_PAC_PAC_Rut, In_PAC_PAC_Nombre, In_PAC_PAC_ApellPater, In_PAC_PAC_ApellMater, In_PAC_PAC_FechaNacim, In_PAC_PAC_Sexo, In_PAC_PAC_EstadCivil, In_CON_CON_Codigo, In_PAC_PAC_Profesion, In_PAC_PAC_Ocupacion, In_PacResiColom, In_DVP_REG_Codigo, In_DVP_PRO_Codigo, In_PAC_PAC_DireccionGralHabit, In_PAC_PAC_Fono, In_DonUrl, In_CodigoCentroAten, In_PAC_PAC_TipoBenef, In_PAC_TEL_Estado, In_fecprc, In_Pac_Tel_Observacion, In_Pac_Tel_Especialidad, In_PAC_PAC_POBLAHABIT, In_PAC_PAC_CELULAR, In_PAC_PAC_PREVISION, In_PAC_PAC_CODIGO, In_PAC_PAC_CENTRORADIC CHARACTER '';
+		
+		SET In_PAC_PAC_TipoIdentCodigo 	= refInp.patient.personalInfo.idType;
+		SET In_PAC_PAC_Rut 				= overlay(REPLICATE(' ',13) PLACING refInp.patient.personalInfo.idNumber FROM 1 FOR LENGTH(refInp.patient.personalInfo.idNumber));
+		SET In_PAC_PAC_Nombre 			= overlay(REPLICATE(' ',40) PLACING UPPER(refInp.patient.personalInfo.names) FROM 1 FOR LENGTH(refInp.patient.personalInfo.names));
+		SET In_PAC_PAC_ApellPater 		= overlay(REPLICATE(' ',20) PLACING UPPER(refInp.patient.personalInfo.lastName) FROM 1 FOR LENGTH(refInp.patient.personalInfo.lastName));
+		SET In_PAC_PAC_ApellMater 		= overlay(REPLICATE(' ',20) PLACING UPPER(refInp.patient.personalInfo.motherLastName) FROM 1 FOR LENGTH(refInp.patient.personalInfo.motherLastName));
+		SET In_PAC_PAC_FechaNacim 		= refInp.patient.personalInfo.dateOfBirth;
+		SET In_PAC_PAC_Sexo 			= refInp.patient.personalInfo.gender;
+		SET In_PAC_PAC_EstadCivil 		= refInp.patient.personalInfo.maritalStatus;
+		SET In_CON_CON_Codigo 			= overlay(REPLICATE(' ',8) PLACING refInp.agreementInfo.agreementCode FROM 1 FOR LENGTH(refInp.agreementInfo.agreementCode));
+		SET In_PAC_PAC_Profesion 		= refInp.patient.laboralInfo.profession;
+		SET In_PAC_PAC_Ocupacion 		= refInp.patient.laboralInfo.ocupation;
+		SET In_PaisCodPac				= overlay(REPLICATE(' ',8) PLACING refInp.patient.contactInfo.countryResidence FROM 1 FOR LENGTH(refInp.patient.contactInfo.countryResidence));
+		SET In_PacResiColom 			= refInp.patient.contactInfo.colombianResident;
+		SET In_PaisCodProce 			= refInp.patient.contactInfo.countryOrigin;
+		SET In_DVP_REG_Codigo 			= refInp.patient.contactInfo.deptResidence;
+		SET In_DVP_PRO_Codigo 			= refInp.patient.contactInfo.cityResidence;
+		SET In_PAC_PAC_DireccionGralHabit = overlay(REPLICATE(' ',100) PLACING refInp.patient.contactInfo.address FROM 1 FOR LENGTH(refInp.patient.contactInfo.address));
+		SET In_PAC_PAC_Fono 			= overlay(REPLICATE(' ',20) PLACING refInp.patient.contactInfo.phone FROM 1 FOR LENGTH(refInp.patient.contactInfo.phone));
+		SET In_DonUrl 					= overlay(REPLICATE(' ',255) PLACING refInp.patient.contactInfo.url FROM 1 FOR LENGTH(refInp.patient.contactInfo.url)); 
+		SET In_CodigoCentroAten 		= refInp.agreementInfo.attentionCenterCode;
+		SET In_PAC_PAC_TipoBenef 		= refInp.agreementInfo.baneficiaryType;
+		SET In_PAC_PAC_Cotizante 		= refInp.agreementInfo.contributing;
+		SET In_PAC_PAC_PREVISION 		= refInp.agreementInfo.agreementType;
+		SET In_PAC_PAC_CODIGO 			= overlay(REPLICATE(' ',8) PLACING refInp.agreementInfo.agreementName FROM 1 FOR LENGTH(refInp.agreementInfo.agreementName));
+		SET In_PAC_PAC_CENTRORADIC 		= refInp.agreementInfo.attentionCenterName;
+		
+		--SET In_PAC_TEL_Estado 		= ;
+		--SET In_fecprc 				= refInp.object.id;
+		--SET In_Pac_Tel_Observacion 	= refInp.object.id;
+		--SET In_Pac_Tel_Especialidad 	= refInp.object.id;
+		
+		SET In_PAC_PAC_POBLAHABIT 		= overlay(REPLICATE(' ',30) PLACING refInp.patient.contactInfo.neighborhood FROM 1 FOR LENGTH(refInp.patient.contactInfo.neighborhood));
+		SET In_PAC_PAC_CELULAR 			= overlay(REPLICATE(' ',20) PLACING refInp.patient.contactInfo.cellPhone FROM 1 FOR LENGTH(refInp.patient.contactInfo.cellPhone));
+		
+		CALL registerPatient(
+		 SRV_Message,
+		 In_PAC_PAC_TipoIdentCodigo,
+		 In_PAC_PAC_Rut,
+		 In_PAC_PAC_Nombre,
+		 In_PAC_PAC_ApellPater,
+		 In_PAC_PAC_ApellMater,
+		 In_PAC_PAC_FechaNacim,
+		 In_PAC_PAC_Sexo,
+		 In_PAC_PAC_EstadCivil,
+		 In_CON_CON_Codigo,
+		 In_PAC_PAC_Profesion,
+		 In_PAC_PAC_Ocupacion,
+		 In_PaisCodPac,
+		 In_PacResiColom,
+		 In_PaisCodProce,
+		 In_DVP_REG_Codigo,
+		 In_DVP_PRO_Codigo,
+		 In_PAC_PAC_DireccionGralHabit,
+		 In_PAC_PAC_Fono,
+		 In_DonUrl, 
+		 In_CodigoCentroAten,
+		 In_PAC_PAC_TipoBenef,
+		 In_PAC_PAC_Cotizante,
+		 In_PAC_TEL_Estado,
+		 In_fecprc,
+		 In_Pac_Tel_Observacion,
+		 In_Pac_Tel_Especialidad,
+		 In_PAC_PAC_POBLAHABIT,
+		 In_PAC_PAC_CELULAR,
+		 In_PAC_PAC_PREVISION,
+		 In_PAC_PAC_CODIGO,
+		 In_PAC_PAC_CENTRORADIC
+		);
+		
+		/******************************************************/
+		-- Creación mensaje de respuesta
+		/******************************************************/
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
+		
+		SET refOut.transactionInfo.idTransaction	= refMQRFH2.usr.contextTransaction.IdTransaction;
+		IF CONTAINS(SRV_Message, '1000000') THEN
+			DECLARE serverDesc CHARACTER SUBSTRING(SRV_Message BEFORE '.');
+			DECLARE resultDesc CHARACTER SUBSTRING(SRV_Message AFTER '.'); 
+			 
+			SET refOut.transactionInfo.code				= '000';
+			SET refOut.transactionInfo.desc				= serverDesc;
+			
+			SET refOut.patient.personalInfo.patientNumber			= resultDesc;
+			SET refOut.patient.personalInfo.authorizationHabeas		= refInp.patient.personalInfo.authorizationHabeas;
+		ELSE
+			SET refOut.transactionInfo.code				= '300';
+			SET refOut.transactionInfo.desc				= SRV_Message;
+		END IF;
+		
+		RETURN TRUE;
+	END;
+END MODULE;
+
+CREATE PROCEDURE registerPatient(
+	INOUT SRV_Message CHARACTER, 
+	IN In_PAC_PAC_TipoIdentCodigo CHARACTER,
+	IN In_PAC_PAC_Rut CHARACTER,
+	IN In_PAC_PAC_Nombre CHARACTER,
+	IN In_PAC_PAC_ApellPater CHARACTER,
+	IN In_PAC_PAC_ApellMater CHARACTER,
+	IN In_PAC_PAC_FechaNacim CHARACTER,
+	IN In_PAC_PAC_Sexo CHARACTER,
+	IN In_PAC_PAC_EstadCivil CHARACTER,
+	IN In_CON_CON_Codigo CHARACTER,
+	IN In_PAC_PAC_Profesion CHARACTER,
+	IN In_PAC_PAC_Ocupacion CHARACTER,
+	IN In_PaisCodPac INTEGER,
+	IN In_PacResiColom CHARACTER,
+	IN In_PaisCodProce INTEGER,
+	IN In_DVP_REG_Codigo CHARACTER,
+	IN In_DVP_PRO_Codigo CHARACTER,
+	IN In_PAC_PAC_DireccionGralHabit CHARACTER,
+	IN In_PAC_PAC_Fono CHARACTER,
+	IN In_DonUrl CHARACTER, 
+	IN In_CodigoCentroAten CHARACTER,
+	IN In_PAC_PAC_TipoBenef CHARACTER,
+	IN In_PAC_PAC_Cotizante INTEGER,
+	IN In_PAC_TEL_Estado CHARACTER,
+	IN In_fecprc CHARACTER,
+	IN In_Pac_Tel_Observacion CHARACTER,
+	IN In_Pac_Tel_Especialidad CHARACTER,
+	IN In_PAC_PAC_POBLAHABIT CHARACTER,
+	IN In_PAC_PAC_CELULAR CHARACTER,
+	IN In_PAC_PAC_PREVISION CHARACTER,
+	IN In_PAC_PAC_CODIGO CHARACTER,
+	IN In_PAC_PAC_CENTRORADIC CHARACTER
+	) LANGUAGE DATABASE EXTERNAL NAME "ADMSALUD.SVCIBMUPDSOLPAC_PKG.SVCIBMUPDSOLPAC";

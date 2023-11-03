@@ -1,0 +1,16 @@
+CREATE COMPUTE MODULE ServiceTCP_CreateMsgError
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		--Copiar cabeceras
+		SET OutputRoot 	= InputRoot;
+		
+		--Declare referencia Datos de respuesta
+		DECLARE refMQRFH2 REFERENCE TO InputRoot.MQRFH2;
+		
+		--Tomar identificador para responder a cliente		
+		SET InputLocalEnvironment.TCPIP.Input.ConnectionDetails.Id 		=	refMQRFH2.usr.response.TCP.Id;
+		SET InputLocalEnvironment.TCPIP.Input.ConnectionDetails.ReplyId = 	refMQRFH2.usr.response.TCP.ReplyId ;
+	
+		RETURN TRUE;
+	END;
+END MODULE;

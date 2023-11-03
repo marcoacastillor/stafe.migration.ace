@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmCompute.msgnode="ComIbmCompute.msgnode" xmlns:ComIbmMQOutput.msgnode="ComIbmMQOutput.msgnode" xmlns:ComIbmTimeoutNotification.msgnode="ComIbmTimeoutNotification.msgnode" xmlns:Commons_FSFB_ErrorHandler.subflow="Commons/FSFB_ErrorHandler.subflow" xmlns:Commons_FSFB_LogHandler.subflow="Commons/FSFB_LogHandler.subflow" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility"
+    nsURI="FSFB_Adapter_DB_REQ.msgflow" nsPrefix="FSFB_Adapter_DB_REQ.msgflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <translation xmi:type="utility:TranslatableString" key="FSFB_Adapter_DB_REQ" bundleName="FSFB_Adapter_DB_REQ" pluginId="RIS_ADT_DB_Adapter_v1.2"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/RIS_ADT_DB_Adapter_v1.2/icons/full/obj16/FSFB_Adapter_DB_REQ.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/RIS_ADT_DB_Adapter_v1.2/icons/full/obj30/FSFB_Adapter_DB_REQ.gif"/>
+    <shortDescription xmi:type="utility:ConstantString" string="Adaptador de tablas de paso para sistema RIS"/>
+    <longDescription xmi:type="utility:ConstantString" string="@Athor: IBM - Miguel Angel Castillo Camacho"/>
+    <version xmi:type="utility:ConstantString" string="v1.0"/>
+    <composition>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="326,27" computeExpression="esql://routine/#FSFB_Adapter_DB_REQ_Involve.Main">
+        <translation xmi:type="utility:ConstantString" string="Involve"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="555,28" queueName="RIS.ADT.INPUT" newMsgId="true" request="true" replyToQ="ADP.RESP.ORMIN.RIS">
+        <translation xmi:type="utility:ConstantString" string="RIS.ADT.INPUT"/>
+      </nodes>
+      <nodes xmi:type="Commons_FSFB_ErrorHandler.subflow:FCMComposite_1" xmi:id="FCMComposite_1_9" location="169,275" outputFilename="error_adpDB_orminris.err" UDPmsgflow="FSFB_MessageCommons.Adapters.FSFB_AdapterDB_RIS_ORMIN.REQ" UDPformato="xmlns">
+        <translation xmi:type="utility:ConstantString" string="FSFB_ErrorHandler"/>
+      </nodes>
+      <nodes xmi:type="Commons_FSFB_LogHandler.subflow:FCMComposite_1" xmi:id="FCMComposite_1_4" location="355,96" msgflow="FSFB_Commons.Adapters.FSFB_AdaptersDB_RIS_ORMIN.REQ" logfilename="log_adpSC_risormin.log" auditfilename="IN_HIS.aud">
+        <translation xmi:type="utility:ConstantString" string="FSFB_LogHandler REQ"/>
+      </nodes>
+      <nodes xmi:type="ComIbmTimeoutNotification.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="107,220" uniqueIdentifier="ReadData" transactionMode="no" timeoutInterval="10">
+        <translation xmi:type="utility:ConstantString" string="TimerNot"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="266,220" dataSource="FSFB_HIS" computeExpression="esql://routine/#FSFB_Adapter_DB_REQ_Compute.Main" computeMode="destinationAndMessage">
+        <translation xmi:type="utility:ConstantString" string="Compute"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="404,221" dataSource="FSFB_HIS" computeExpression="esql://routine/#FSFB_Adapter_DB_REQ_SetUpdate.Main" computeMode="destinationAndMessage">
+        <translation xmi:type="utility:ConstantString" string="SetUpdate"/>
+      </nodes>
+      <nodes xmi:type="ComIbmTimeoutNotification.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="96,399" uniqueIdentifier="getDataAdtP" timeoutInterval="120">
+        <translation xmi:type="utility:ConstantString" string="Timeout Notification"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="269,397" dataSource="FSFB_HIS" computeExpression="esql://routine/#FSFB_Adapter_DB_REQ_Compute1.Main" computeMode="destinationAndMessage">
+        <translation xmi:type="utility:ConstantString" string="Compute1"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_10" location="431,397" dataSource="FSFB_HIS" computeExpression="esql://routine/#FSFB_Adapter_DB_REQ_Compute2.Main" computeMode="destinationAndMessage">
+        <translation xmi:type="utility:ConstantString" string="Compute2"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_7" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="FCMComposite_1_9" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.catch" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_7" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_7" targetNode="FCMComposite_1_9" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.catch" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="FCMComposite_1_8" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_9" targetNode="FCMComposite_1_10" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+    </composition>
+    <propertyOrganizer/>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>

@@ -1,0 +1,77 @@
+/*EATE FUNCTION Main() RETURNS BOOLE*/
+	BEGIN
+		
+		CALL CopyMessageHeaders();
+		
+		-- Declaración de referencias
+		CREATE FIELD OutputRoot.XMLNSC.ORU;
+		DECLARE refOut REFERENCE TO OutputRoot.XMLNSC.ORU;
+		DECLARE refIn REFERENCE TO InputRoot.DFDL.*:R01;
+		FOR orc AS refIn.ns:O01_LOOP.ns:ORC_LOOP[] DO
+			DECLARE ordstm CHARACTER CASE orc.*:"OrderDetail_LOOP".*:Order.*:OBR.*:"OBR.25.ResultStatus"
+				WHEN 'F' THEN '1^Validated'
+				WHEN 'C' THEN '2^Addendum'
+				WHEN 'X' THEN '3^Deleted'
+				ELSE ''
+			END;
+			
+			CREATE LASTCHILD OF refOut NAME 'ORC_LOOP';
+			MOVE refOut LASTCHILD; 
+			SET refOut.SRV_Message 				= '';--
+			SET refOut.In_MSH_ORU_ID 			= refIn.*:MSH.*:"MSH.10.MessageControlID";
+			SET refOut.In_ORU_01_HIS_DATE 		= SUBSTRING(CAST(CAST(refIn.ns:MSH.*:"MSH.7.DateTimeOfMessage" AS TIMESTAMP FORMAT 'yyyyMMddHHmmss') AS CHARACTER) FROM 12 FOR 19);
+			SET refOut.In_MSH_06_RIS_DATE 		= SUBSTRING(CAST(CAST(refIn.ns:MSH.*:"MSH.7.DateTimeOfMessage" AS TIMESTAMP FORMAT 'yyyyMMddHHmmss') AS CHARACTER) FROM 12 FOR 19);--refIn.ns:O01_LOOP.ns:PID_LOOP.PID."PID.4.AlternatePatientIDPID";
+			
+			SET refOut.In_OBR_02_QP_REQ_ID 		= orc.*:OrderDetail_LOOP.*:Order.*:OBR.*:"OBR.2.PlacerOrderNumber".*:"EI.1";
+			SET refOut.In_OBR_03_BATCH_ID 		= orc.*:OrderDetail_LOOP.*:Order.*:OBR.*:"OBR.3.FillerOrderNumber".*:"EI.1";
+			SET refOut.In_ORU_03_ACC_NUMBER 	= orc.*:OrderDetail_LOOP.*:Order.*:OBR.*:"OBR.18.PlacerField1";
+			SET refOut.In_PID_05_ID 			= refIn.ns:O01_LOOP.ns:PID_LOOP.*:PID.*:"PID.3.PatientIdentifierList".*:"CX.1";
+			SET refOut.In_PID_05_ID2 			= refIn.ns:O01_LOOP.ns:PID_LOOP.*:PID.*:"PID.4.AlternatePatientIDPID".*:"CX.1";
+			SET refOut.In_OBR_04_EXAM_CODE 		= orc.*:OrderDetail_LOOP.*:Order.*:OBR.*:"OBR.4.UniversalServiceIdentifier".*:"CWE.1";
+			SET refOut.In_OBR_32_RAD_ID 		= orc.*:OrderDetail_LOOP.*:Order.*:OBR.*:"OBR.32.PrincipalResultInterpreter".*:"NDL.1".*:"CNN.1";
+			SET refOut.In_OBR_25_STATUS_REP 	= ordstm;
+			SET refOut.In_OBR_22_CREATE_DATE 	= SUBSTRING(CAST(CAST(orc.*:OrderDetail_LOOP.*:Order.*:OBR.*:"OBR.22.ResultsRptStatusChngDateTime" AS TIMESTAMP FORMAT 'yyyyMMddHHmmss') AS CHARACTER) FROM 12 FOR 19);
+			SET refOut.In_OBR_27_VALIDATE_DATE 	= SUBSTRING(CAST(CAST(orc.*:OrderDetail_LOOP.*:Order.*:OBR.*:"OBR.22.ResultsRptStatusChngDateTime" AS TIMESTAMP FORMAT 'yyyyMMddHHmmss') AS CHARACTER) FROM 12 FOR 19);
+			SET refOut.In_ORU_02_STATUS_HIS 	= 'N';
+			SET refOut.In_OBR_34_USER_RIS 		= orc.*:OrderDetail_LOOP.*:Order.*:OBR.*:"OBR.34.Technician".*:"NDL.1".*:"CNN.1";
+			SET refOut.In_OBX_03_OBSERVATION_ID = SUBSTRING(orc.*:OrderDetail_LOOP.*:OBX_LOOP.*:OBX.*:"OBX.3.ObservationIdentifier".*:"CWE.1" BEFORE '&');
+			SET refOut.In_OBX_05_OBSERVATION 	= orc.*:OrderDetail_LOOP.*:OBX_LOOP.*:OBX.*:"OBX.5.ObservationValue";
+			SET refOut.In_AGFARIS_ErrorMsg 		= '';
+			MOVE refOut PARENT;
+			
+		END FOR;
+		
+		/*
+		
+		/***********************
+		  VALORES PARA AUDITORIA
+		***********************/
+		DECLARE refLog REFERENCE TO  OutputRoot.MQRFH2.usr.log;
+		SET refLog.prevTransactionDate 	= refLog.transactionDate;
+		SET refLog.transactionDate 		= CURRENT_TIMESTAMP;
+		SET refLog.callType 			= 'BD';
+		
+		PROPAGATE TO TERMINAL 'out1' DELETE NONE;
+		*/
+		--Pasar cabeceras de mensaje.
+		SET Environment.Msg.MQMD 		= InputRoot.MQMD;
+		SET Environment.Msg.MQRFH2 		= InputRoot.MQRFH2;
+		SET Environment.Msg.XMLNSC		= InputRoot.DFDL;
+		SET Environment.Variables.usr	= InputRoot.MQRFH2.usr;
+		
+		SET OutputRoot.Properties = null;
+		SET OutputRoot.MQMD = null;
+		SET OutputRoot.MQRFH2 = null;
+		
+		RETURN TRUE;
+	END;
+	
+	CREATE PROCEDURE CopyMessageHeaders() BEGIN
+		DECLARE I INTEGER 1;
+		DECLARE J INTEGER;
+		SET J = CARDINALITY(InputRoot.*[]);
+		WHILE I < J DO
+			SET OutputRoot.*[I] = InputRoot.*[I];
+			SET I = I + 1;
+		END WHILE;
+	END;

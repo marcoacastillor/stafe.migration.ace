@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><MRMessageSet id="EFIM410002001" name="RIS_ADT_SpecificMessageSet" parser="XMLNSC">
+  
+<MRMsgCollection href="platform:/resource/RIS_ADT_SpecificMessageSet/RIS_ADT_SpecificMessageSet/sisips/admsalud/HIS_ADTTable_RIS.mxsd" prefix="NS1" targetNamespace="http://sisips/admsalud">
+    <message href="platform:/resource/RIS_ADT_SpecificMessageSet/RIS_ADT_SpecificMessageSet/sisips/admsalud/HIS_ADTTable_RIS.mxsd#/0/AGFA_ADT;XSDElementDeclaration$MRMessage" name="AGFA_ADT"/>
+    <element href="platform:/resource/RIS_ADT_SpecificMessageSet/RIS_ADT_SpecificMessageSet/sisips/admsalud/HIS_ADTTable_RIS.mxsd#/0/AGFA_ADT;XSDElementDeclaration" name="AGFA_ADT"/>
+  </MRMsgCollection>
+</MRMessageSet>

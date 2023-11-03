@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmAggregateControl.msgnode="ComIbmAggregateControl.msgnode" xmlns:ComIbmAggregateReply.msgnode="ComIbmAggregateReply.msgnode" xmlns:ComIbmAggregateRequest.msgnode="ComIbmAggregateRequest.msgnode" xmlns:ComIbmCompute.msgnode="ComIbmCompute.msgnode" xmlns:ComIbmMQInput.msgnode="ComIbmMQInput.msgnode" xmlns:ComIbmMQOutput.msgnode="ComIbmMQOutput.msgnode" xmlns:ComIbmMQReply.msgnode="ComIbmMQReply.msgnode" xmlns:ComIbmTryCatch.msgnode="ComIbmTryCatch.msgnode"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility" nsURI="update/cmd/Update.msgflow" nsPrefix="update_cmd_Update.msgflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <translation xmi:type="utility:TranslatableString" key="Update" bundleName="update/cmd/Update" pluginId="Patient_Update"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/Patient_Update/icons/full/obj16/Update.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/Patient_Update/icons/full/obj30/Update.gif"/>
+    <composition>
+      <nodes xmi:type="ComIbmTryCatch.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="441,125">
+        <translation xmi:type="utility:ConstantString" string="TryGetMsg"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_7" location="985,899">
+        <translation xmi:type="utility:ConstantString" string="MQReply2"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_12" location="180,901" queueName="MQINP.PATIENT.INSERT.HIS.CMP.RESP" messageDomainProperty="JSON">
+        <translation xmi:type="utility:ConstantString" string="MQINP.PATIENT.INSERT.HIS.CMP.RESP.1"/>
+      </nodes>
+      <nodes xmi:type="ComIbmAggregateControl.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_19" location="542,129" aggregateName="aggCtrlUpdate" timeoutInterval="0" timeoutLocation="$LocalEnvironment/Aggregation/Timeout">
+        <translation xmi:type="utility:ConstantString" string="aggCtrlUpdate"/>
+      </nodes>
+      <nodes xmi:type="ComIbmAggregateReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_20" location="578,897" aggregateName="aggCtrlInsertAgfa" unsolicitedTimeout="0" transactionMode="true">
+        <translation xmi:type="utility:ConstantString" string="AggRlpyInsertAgfa"/>
+      </nodes>
+      <nodes xmi:type="ComIbmAggregateRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_26" location="1171,201" folderName="AggReqConfig">
+        <translation xmi:type="utility:ConstantString" string="AggReqConfig1"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_27" location="787,898" computeExpression="esql://routine/update.cmd#Update_CmpValResponse1.Main">
+        <translation xmi:type="utility:ConstantString" string="CmpValResponse1"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_29" location="677,196" computeExpression="esql://routine/update.cmd#Update_CmpCreate3.Main" computeMode="destinationAndMessage">
+        <translation xmi:type="utility:ConstantString" string="CmpControl2"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_30" location="119,125" queueName="MQINP.PATIENT.UPDATE.CMP.REQ" messageDomainProperty="JSON">
+        <translation xmi:type="utility:ConstantString" string="MQINP.PATIENT.UPDATE.CMP.REQ"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_36" location="676,125" computeExpression="esql://routine/update.cmd#Update_CmpCreate3.Main" computeMode="destinationAndMessage">
+        <translation xmi:type="utility:ConstantString" string="CmpCreate3"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_38" location="795,197" queueName="MQINP.PATIENT.UPD.HIS.CMP.RESP">
+        <translation xmi:type="utility:ConstantString" string="MQINP.PATIENT.UPD.HIS.CMP.RESP"/>
+      </nodes>
+      <nodes xmi:type="ComIbmAggregateRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_40" location="1150,130" folderName="AggReqCreate">
+        <translation xmi:type="utility:ConstantString" string="AggReqCreate2"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_45" location="811,126" queueName="MQINP.PATIENT.UPDATE.REQ" request="true" replyToQ="MQINP.PATIENT.UPD.HIS.CMP.RESP">
+        <translation xmi:type="utility:ConstantString" string="MQINP.PATIENT.UPDATE.REQ"/>
+      </nodes>
+      <nodes xmi:type="ComIbmAggregateControl.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_48" location="817,409" aggregateName="aggCtrlGetInfoAgfa" timeoutInterval="0" timeoutLocation="$LocalEnvironment/Aggregation/Timeout">
+        <translation xmi:type="utility:ConstantString" string="aggCtrlGetInfoAgfa"/>
+      </nodes>
+      <nodes xmi:type="ComIbmAggregateRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_49" location="1501,480" folderName="AggReqConfig">
+        <translation xmi:type="utility:ConstantString" string="AggReqConfig4"/>
+      </nodes>
+      <nodes xmi:type="ComIbmAggregateRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_50" location="1505,410" folderName="AggReqCreate">
+        <translation xmi:type="utility:ConstantString" string="AggReqCreate4"/>
+      </nodes>
+      <nodes xmi:type="ComIbmAggregateReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_51" location="575,321" aggregateName="aggCtrlUpdate" unsolicitedTimeout="0" transactionMode="true">
+        <translation xmi:type="utility:ConstantString" string="AggRlyUpdate"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_52" location="996,476" computeExpression="esql://routine/update.cmd#Update_CmpCreate3.Main" computeMode="destinationAndMessage">
+        <translation xmi:type="utility:ConstantString" string="CmpControl4"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_53" location="927,323">
+        <translation xmi:type="utility:ConstantString" string="MQReply"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_54" location="1158,406" queueName="MQINP.PATIENT.GETINFO.AGFA.ADT.REQ" request="true" replyToQ="MQINP.PATIENT.GETINFO.HIS.CMP.RESP">
+        <translation xmi:type="utility:ConstantString" string="MQINP.PATIENT.GETINFO.AGFA.ADT.REQ"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_55" location="1000,405" dataSource="ESBDATA" computeExpression="esql://routine/update.cmd#Update_CmpCreate3.Main" computeMode="destinationAndMessage">
+        <translation xmi:type="utility:ConstantString" string="CmpGetInfoAGFA"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_56" location="743,322" computeExpression="esql://routine/update.cmd#Update_CmpValRespUpd.Main">
+        <translation xmi:type="utility:ConstantString" string="CmpValRespUpd"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_57" location="178,325" queueName="MQINP.PATIENT.UPD.HIS.CMP.RESP" messageDomainProperty="JSON">
+        <translation xmi:type="utility:ConstantString" string="MQINP.PATIENT.UPD.HIS.CMP.RESP.1"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_58" location="1114,477" queueName="MQINP.PATIENT.GETINFO.HIS.CMP.RESP">
+        <translation xmi:type="utility:ConstantString" string="MQINP.PATIENT.GETINFO.HIS.CMP.RESP"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="1109,729" queueName="MQINP.PATIENT.INSERT.HIS.CMP.RESP">
+        <translation xmi:type="utility:ConstantString" string="MQINP.PATIENT.INSERT.HIS.CMP.RESP"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="991,728" computeExpression="esql://routine/update.cmd#Update_CmpCreate3.Main" computeMode="destinationAndMessage">
+        <translation xmi:type="utility:ConstantString" string="CmpControl"/>
+      </nodes>
+      <nodes xmi:type="ComIbmAggregateRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="1496,732" folderName="AggReqConfig">
+        <translation xmi:type="utility:ConstantString" string="AggReqConfig"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="995,657" dataSource="ESBDATA" computeExpression="esql://routine/update.cmd#Update_CmpUpdateAGFA.Main" computeMode="destinationAndMessage">
+        <translation xmi:type="utility:ConstantString" string="CmpUpdateAGFA1"/>
+      </nodes>
+      <nodes xmi:type="ComIbmAggregateReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="570,573" aggregateName="aggCtrlGetInfoAgfa" unsolicitedTimeout="0" transactionMode="true">
+        <translation xmi:type="utility:ConstantString" string="AggRlyGetInfoAgfa"/>
+      </nodes>
+      <nodes xmi:type="ComIbmAggregateRequest.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="1500,662" folderName="AggReqCreate">
+        <translation xmi:type="utility:ConstantString" string="AggReqCreate"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_9" location="922,575">
+        <translation xmi:type="utility:ConstantString" string="MQReply1"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_10" location="1142,658" queueName="MQINP.PATIENT.INSERT.AGFA.ADT.REQ" request="true" replyToQ="MQINP.PATIENT.INSERT.HIS.CMP.RESP">
+        <translation xmi:type="utility:ConstantString" string="MQINP.PATIENT.INSERT.AGFA.ADT.REQ"/>
+      </nodes>
+      <nodes xmi:type="ComIbmAggregateControl.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_11" location="812,661" aggregateName="aggCtrlInsertAgfa" timeoutInterval="0" timeoutLocation="$LocalEnvironment/Aggregation/Timeout">
+        <translation xmi:type="utility:ConstantString" string="aggCtrlInsertAgfa1"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_13" location="173,577" queueName="MQINP.PATIENT.GETINFO.HIS.CMP.RESP" messageDomainProperty="JSON">
+        <translation xmi:type="utility:ConstantString" string="MQINP.PATIENT.GETINFO.HIS.CMP.RESP.1"/>
+      </nodes>
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_14" location="738,574" computeExpression="esql://routine/update.cmd#Update_CmpValRespGetInfo.Main">
+        <translation xmi:type="utility:ConstantString" string="CmpValRespGetInfo"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_7" targetNode="FCMComposite_1_36" sourceNode="FCMComposite_1_19" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_11" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_30" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_18" targetNode="FCMComposite_1_7" sourceNode="FCMComposite_1_27" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_19" targetNode="FCMComposite_1_45" sourceNode="FCMComposite_1_36" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_21" targetNode="FCMComposite_1_19" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.try" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_23" targetNode="FCMComposite_1_26" sourceNode="FCMComposite_1_38" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_28" targetNode="FCMComposite_1_20" sourceNode="FCMComposite_1_12" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_29" targetNode="FCMComposite_1_29" sourceNode="FCMComposite_1_19" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_33" targetNode="FCMComposite_1_38" sourceNode="FCMComposite_1_29" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_37" targetNode="FCMComposite_1_27" sourceNode="FCMComposite_1_20" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_39" targetNode="FCMComposite_1_40" sourceNode="FCMComposite_1_45" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_42" targetNode="FCMComposite_1_54" sourceNode="FCMComposite_1_55" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_43" targetNode="FCMComposite_1_56" sourceNode="FCMComposite_1_51" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_44" targetNode="FCMComposite_1_49" sourceNode="FCMComposite_1_58" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_45" targetNode="FCMComposite_1_48" sourceNode="FCMComposite_1_56" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_46" targetNode="FCMComposite_1_52" sourceNode="FCMComposite_1_48" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_47" targetNode="FCMComposite_1_55" sourceNode="FCMComposite_1_48" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_48" targetNode="FCMComposite_1_51" sourceNode="FCMComposite_1_57" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_49" targetNode="FCMComposite_1_50" sourceNode="FCMComposite_1_54" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_50" targetNode="FCMComposite_1_53" sourceNode="FCMComposite_1_56" sourceTerminalName="OutTerminal.out1" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_51" targetNode="FCMComposite_1_58" sourceNode="FCMComposite_1_52" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_9" sourceNode="FCMComposite_1_14" sourceTerminalName="OutTerminal.out1" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_8" sourceNode="FCMComposite_1_10" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_11" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_10" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="FCMComposite_1_14" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_11" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_9" targetNode="FCMComposite_1_11" sourceNode="FCMComposite_1_14" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_10" targetNode="FCMComposite_1_6" sourceNode="FCMComposite_1_13" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_12" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+    </composition>
+    <propertyOrganizer/>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>

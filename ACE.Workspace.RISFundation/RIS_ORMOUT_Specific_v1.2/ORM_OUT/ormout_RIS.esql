@@ -1,0 +1,336 @@
+BROKER SCHEMA ORM_OUT
+
+DECLARE ns51 NAMESPACE 'http://co/org/fsfb/HIS_ORMOUT/impl';
+DECLARE UDP_OrderStatusModifier EXTERNAL CHARACTER '';
+DECLARE ns1 NAMESPACE 'http://co/org/fsfb/fmwk';
+
+CREATE COMPUTE MODULE  ormout_spRIS
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+		SET Environment.Variables.MQMD = InputRoot.MQMD;
+		
+		DECLARE ack 		CHARACTER;
+		DECLARE msgin 		REFERENCE TO InputRoot.XMLNSC.O01;
+		
+		DECLARE ordst 		REFERENCE TO msgin.ORC_LOOP.ORC.OrderStatusModifier;
+		DECLARE nmref 		REFERENCE TO msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.PrincipalResultInterpreter.Name_1936;
+		DECLARE ordstm		CHARACTER;
+		DECLARE medint		CHARACTER;
+		DECLARE tmp 		CHARACTER;-- SUBSTRING(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.RequestedDateTime.DateTime_1516 BEFORE 'T')||' '||SUBSTRING(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.RequestedDateTime.DateTime_1516 AFTER 'T');
+		
+		SET ordstm = ordst.Identifier_1385;
+		SET medint = nmref.IDNumber_1386;
+		
+		--SET tmp = SUBSTRING(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.RequestedDateTime.DateTime_1516 BEFORE 'T')||' '||SUBSTRING(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.RequestedDateTime.DateTime_1516 AFTER 'T');
+		--SET tmp = CAST(CAST(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.RequestedDateTime.DateTime_1516 AS TIMESTAMP) AS CHARACTER);
+		SET tmp = SUBSTRING(CAST(CAST(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.RequestedDateTime.DateTime_1516 AS TIMESTAMP FORMAT 'yyyyMMddHHmmss') AS CHARACTER) FROM 12 FOR 19);
+--
+
+--
+		
+		SET ordstm = 
+				CASE ordstm
+					  WHEN 'F'			THEN 'COMPLETED' 
+					  WHEN 'CREATED'	THEN 'CREATED^CREATED^QPLANNER'
+					  WHEN 'A' 			THEN 'ARRIBADO^ARRIBADO^QPLANNER' 
+					  WHEN 'PX' 		THEN 'CANCELLED' 
+					  WHEN 'PS' 		THEN 'IN_PROGRESS'
+				      WHEN 'IMAGE_AVAILABLE' THEN 'IMAGE_AVAILABLE'
+				      WHEN 'P'          THEN 'PRELIMINAR' 
+					  WHEN '2' 			THEN '2^Deleted' 
+					  WHEN 'PP' 		THEN '2^Paused'
+				ELSE ''
+			END;
+					   
+			CALL spRIS (	
+						ack, 	
+						CAST(msgin.MSH.Data_In_MSH.MessageControlID AS INTEGER),
+						--SUBSTRING(msgin.MSH.Data_In_MSH.DateTimeOfMessage.DateTime_1516 BEFORE 'T')||' '||SUBSTRING(msgin.MSH.Data_In_MSH.DateTimeOfMessage.DateTime_1516 AFTER 'T'),
+						--SUBSTRING(msgin.MSH.Data_In_MSH.DateTimeOfMessage.DateTime_1516 BEFORE 'T')||' '||SUBSTRING(msgin.MSH.Data_In_MSH.DateTimeOfMessage.DateTime_1516 AFTER 'T'),
+						SUBSTRING(CAST(CAST(msgin.MSH.Data_In_MSH.DateTimeOfMessage.DateTime_1516 AS TIMESTAMP FORMAT 'yyyyMMddHHmmss') AS CHARACTER) FROM 12 FOR 19),
+						SUBSTRING(CAST(CAST(msgin.MSH.Data_In_MSH.DateTimeOfMessage.DateTime_1516 AS TIMESTAMP FORMAT 'yyyyMMddHHmmss') AS CHARACTER) FROM 12 FOR 19), 	
+						--msgin.ORC_LOOP.ORC.FillerOrderNumber_585.EntityIdentifier_1362,	Se realiza cambio 31-07-2018
+						msgin.ORC_LOOP.ORC.FillerOrderNumber_440.EntityIdentifier_1362,
+						msgin.ORC_LOOP.ORC.OrderingFacilityName.OrganizationName_1412,
+						msgin.ORC_LOOP.ORC.EnteredBy.IDNumber_1386,	
+						ordstm, 
+						msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.OrderingProvider.OrderingProvider_684.IDNumber_1386,
+						--SUBSTRING(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.RequestedDateTime.DateTime_1516 BEFORE 'T')||' '||SUBSTRING(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.RequestedDateTime.DateTime_1516 AFTER 'T'),
+						SUBSTRING(CAST(CAST(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.RequestedDateTime.DateTime_1516 AS TIMESTAMP FORMAT 'yyyyMMddHHmmss') AS CHARACTER) FROM 12 FOR 19),		
+						msgin.PID_LOOP.PID.AlternatePatientIDPID.AlternatePatientIDPID.ID_1384,
+						msgin.PID_LOOP.PID.PatientIDInternalID.PatientIDInternalID.ID_1384,
+						msgin.PID_LOOP.PV1_LOOP.PV1.PatientType,	
+						msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.UniversalServiceID.Identifier_1385,	
+						msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.UniversalServiceID.Text_1473,
+						msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.PlacerOrderNumber_449.EntityIdentifier_1362||'^'||msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.PlacerOrderNumber_449.NamespaceID_1091,
+						msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.ReasonForStudy.ReasonForStudy.Identifier_1385,	
+						SUBSTRING(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.RelevantClinicalInfo FROM 1 FOR 255),
+						msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.PlacerField1,	
+						--SUBSTRING(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.ObservationDateTime.DateTime_1516 BEFORE 'T')||' '||SUBSTRING(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.ObservationDateTime.DateTime_1516 AFTER 'T'),	
+						--SUBSTRING(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.RequestedDateTime.DateTime_1516 BEFORE 'T')||' '||SUBSTRING(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.RequestedDateTime.DateTime_1516 AFTER 'T'),
+						SUBSTRING(CAST(CAST(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.ObservationDateTime.DateTime_1516 AS TIMESTAMP FORMAT 'yyyyMMddHHmmss') AS CHARACTER) FROM 12 FOR 19),
+						SUBSTRING(CAST(CAST(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.RequestedDateTime.DateTime_1516 AS TIMESTAMP FORMAT 'yyyyMMddHHmmss') AS CHARACTER) FROM 12 FOR 19),
+						medint,	
+						'N', 	
+						--msgin.PID_LOOP.PV1_LOOP.PV1.VisitNumber.ID_1384,
+						SUBSTRING(msgin.ORC_LOOP.OrderDetail_LOOP.Order.OBR.PlacerOrderNumber_449.EntityIdentifier_1362  FROM 1 FOR 20),
+						'', --IN	In_AGFARIS_ErrorMsg		CHARACTER,	
+						'', --IN	In_MSH_STATUS			CHARACTER,	
+						SUBSTRING(msgin.ORC_LOOP.ORC.PlacerGroupNumber.EntityIdentifier_1362 AFTER '_')
+						);
+				
+			-- mantener correlId
+			SET OutputRoot.MQMD	= InputRoot.MQMD;
+			CREATE FIELD OutputRoot.XMLNSC.ns51:ACK_RIS;
+			SET OutputRoot.XMLNSC.ns51:ACK_RIS.ns51:MSH_ORU_ID = CAST(msgin.MSH.Data_In_MSH.MessageControlID AS CHARACTER);
+			SET OutputRoot.XMLNSC.ns51:ACK_RIS.ns51:SRV_Message = ack;
+	END;
+
+	CREATE PROCEDURE spRIS (	INOUT 	SRV_Message 			CHARACTER, 	
+								IN	In_MSH_ORMO_ID 				INTEGER, 	
+								IN 	In_ORM_01_HIS_DATE 			CHARACTER,
+								IN 	In_MSH_06_RIS_DATE 			CHARACTER, 	
+								IN 	In_ORC_04_QP_REQ_ID 		CHARACTER,	
+								IN 	In_ORC_21_QP_SERV_ID		CHARACTER,
+								IN	In_ORC_10_QP_USER_RIS		CHARACTER,	
+								IN	In_ORC_25_QP_STATUS			CHARACTER,	
+								IN	In_OBR_16_QP_MED_ID			CHARACTER,
+								IN 	In_OBR_6_QP_REQ_DATE		CHARACTER,	
+								IN	In_PID_05_ID				CHARACTER,	
+								IN	In_PID_05_ID2				CHARACTER,
+								IN	In_PV1_18_PTYPE				CHARACTER,	
+								IN	In_OBR_04_EXAM_CODE			CHARACTER,	
+								IN	In_OBR_04_EXAM_DESC			CHARACTER,
+								IN 	In_OBR_02_QP_EXAM_ID		CHARACTER,	
+								IN	In_OBR_31_PREST_INFO		CHARACTER,	
+								IN 	In_OBR_13_ORDER_INFO		CHARACTER,
+								IN	In_OBR_18_ACC_NUMBER		CHARACTER,	
+								IN	In_OBR_07_EXAM_DATE_APP		CHARACTER,	
+								IN	In_OBR_06_EXAM_DATE_BATCH 	CHARACTER,
+								IN	In_OBR_32_RAD_ID			CHARACTER,	
+								IN	In_ORM_02_STATUS_HIS		CHARACTER,	
+								IN	In_PV1_VISITNR				CHARACTER,
+								IN	In_AGFARIS_ErrorMsg			CHARACTER,	
+								IN	In_MSH_STATUS				CHARACTER,	
+								IN	In_ORC_04_QP_REQ_IDOUT		CHARACTER
+						) LANGUAGE DATABASE EXTERNAL NAME "ADMSALUD.SvcIbmPrcOrm_Pkg.SvcIbmPrcOrm";
+END MODULE;
+
+CREATE COMPUTE MODULE envolveHL7FSFB
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- recuperar propiedades del mensaje de petición
+		DECLARE envvar		REFERENCE TO Environment.Variables;
+		
+		-- construir mensaje FSFB de salida
+		SET OutputRoot.MQMD		= InputRoot.MQMD;
+		SET OutputRoot.Properties = InputRoot.Properties;
+		SET OutputLocalEnvironment = InputLocalEnvironment;
+		--SET OutputRoot = InputRoot;
+		
+		CREATE FIELD OutputRoot.XMLNSC.ns1:FSFB;
+		DECLARE fsfb		REFERENCE TO OutputRoot.XMLNSC.ns1:FSFB;
+		CREATE FIELD fsfb.ns1:Header;
+		DECLARE headout		REFERENCE TO fsfb.ns1:Header;
+		CREATE FIELD fsfb.ns1:Body;
+		DECLARE bodyout		REFERENCE TO fsfb.ns1:Body;
+		
+		
+		-- referenciar propiedades para decodificar mensaje
+		DECLARE msgtype		CHARACTER envvar.body.parse.msgtype;
+		DECLARE msgset 		CHARACTER envvar.body.parse.msgset;
+		DECLARE msgformat	CHARACTER envvar.body.parse.msgformat;
+		DECLARE msgblob		BLOB;
+	
+		-- codificar el mensaje de respuesta obtenido del servicio
+		CALL UTILS.encodemsg(msgtype, msgset, msgformat, InputRoot.MRM, msgblob);
+		
+		-- construir mensaje de salida
+		SET headout				= envvar.header;
+		
+		CREATE FIELD bodyout.parse;
+		SET bodyout.parse		= envvar.body.parse;
+		CREATE FIELD bodyout.data;
+		SET bodyout.data		= msgblob;
+		
+		IF NOT EXISTS(InputLocalEnvironment.Destination.MQ.DestinationData[1].queueName[]) THEN
+			SET OutputLocalEnvironment.Destination.MQ.DestinationData[1].queueName = 'RIS.ORMOUT.OUTPUT';
+		END IF;
+		
+	END;
+END MODULE;
+
+CREATE COMPUTE MODULE envolveHL7FSFB_ORM
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- recuperar propiedades del mensaje de petición
+		DECLARE envvar		REFERENCE TO Environment.Variables;
+		--DECLARE msgin		REFERENCE TO Environment.Variables.msgin;
+		--SET msgin = InputRoot.MRM;
+		
+		-- construir mensaje FSFB de salida
+		SET OutputRoot.MQMD			= InputRoot.MQMD;
+		SET OutputRoot.Properties 	= InputRoot.Properties;
+		SET OutputLocalEnvironment 	= InputLocalEnvironment;
+		--SET OutputRoot = InputRoot;
+		
+		DECLARE msgin REFERENCE TO InputRoot.MRM;
+		--DELETE FIELD msgin.*:FT1;
+		SET OutputRoot.MQMD.MsgId = LEFT(OutputRoot.MQMD.MsgId, LENGTH (InputRoot.MQMD.MsgId) - 5) || RIGHT(UUIDASBLOB, 5);		
+		
+		CREATE FIELD OutputRoot.XMLNSC.ns1:FSFB;
+		DECLARE fsfb		REFERENCE TO OutputRoot.XMLNSC.ns1:FSFB;
+		CREATE FIELD fsfb.ns1:Header;
+		DECLARE headout		REFERENCE TO fsfb.ns1:Header;
+		CREATE FIELD fsfb.ns1:Body;
+		DECLARE bodyout		REFERENCE TO fsfb.ns1:Body;
+		
+		
+		-- referenciar propiedades para decodificar mensaje
+		DECLARE msgtype		CHARACTER envvar.body.parse.msgtype;
+		DECLARE msgset 		CHARACTER envvar.body.parse.msgset;
+		DECLARE msgformat	CHARACTER envvar.body.parse.msgformat;
+		DECLARE msgblob		BLOB;
+	
+		-- codificar el mensaje de respuesta obtenido del servicio
+		CALL UTILS.encodemsg(msgtype, msgset, msgformat, InputRoot.MRM, msgblob);
+		
+		-- construir mensaje de salida
+		SET headout				= envvar.header;
+		
+		CREATE FIELD bodyout.parse;
+		SET bodyout.parse		= envvar.body.parse;
+		CREATE FIELD bodyout.data;
+		SET bodyout.data		= msgblob;
+		
+		IF NOT EXISTS(InputLocalEnvironment.Destination.MQ.DestinationData[1].queueName[]) THEN
+			SET OutputLocalEnvironment.Destination.MQ.DestinationData[1].queueName = 'RIS.ORMOUT.OUTPUT';
+		END IF;
+		
+	END;
+END MODULE;
+
+CREATE COMPUTE MODULE envolveHL7FSFB_DFT
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- recuperar propiedades del mensaje de petición
+		DECLARE envvar		REFERENCE TO Environment.Variables;
+		
+		-- construir mensaje FSFB de salida
+		SET OutputRoot.MQMD			= InputRoot.MQMD;
+		SET OutputRoot.Properties 	= InputRoot.Properties;
+		SET OutputLocalEnvironment 	= InputLocalEnvironment;
+		--SET OutputRoot = InputRoot;
+
+		DECLARE msgin2 REFERENCE TO InputRoot.MRM;
+		SET OutputRoot.MQMD.MsgId = LEFT(OutputRoot.MQMD.MsgId, LENGTH (InputRoot.MQMD.MsgId) - 5) || RIGHT(UUIDASBLOB, 5);		
+		--DELETE FIELD msgin2.*:ORC;
+		--DELETE FIELD msgin2.*:OBR;
+
+		CREATE FIELD OutputRoot.XMLNSC.ns1:FSFB;
+		DECLARE fsfb		REFERENCE TO OutputRoot.XMLNSC.ns1:FSFB;
+		CREATE FIELD fsfb.ns1:Header;
+		DECLARE headout		REFERENCE TO fsfb.ns1:Header;
+		CREATE FIELD fsfb.ns1:Body;
+		DECLARE bodyout		REFERENCE TO fsfb.ns1:Body;
+		
+		
+		-- referenciar propiedades para decodificar mensaje
+		DECLARE msgtype		CHARACTER envvar.body.parse.msgtype;
+		DECLARE msgset 		CHARACTER envvar.body.parse.msgset;
+		DECLARE msgformat	CHARACTER envvar.body.parse.msgformat;
+		DECLARE msgblob		BLOB;
+	
+		-- codificar el mensaje de respuesta obtenido del servicio
+		CALL UTILS.encodemsg(msgtype, msgset, msgformat, InputRoot.MRM, msgblob);
+		
+		-- construir mensaje de salida
+		SET headout				= envvar.header;
+		
+		CREATE FIELD bodyout.parse;
+		SET bodyout.parse		= envvar.body.parse;
+		CREATE FIELD bodyout.data;
+		SET bodyout.data		= msgblob;
+		
+		IF NOT EXISTS(InputLocalEnvironment.Destination.MQ.DestinationData[1].queueName[]) THEN
+			SET OutputLocalEnvironment.Destination.MQ.DestinationData[1].queueName = 'RIS.ORMOUT.OUTPUT';
+		END IF;
+		
+	END;
+END MODULE;
+
+CREATE COMPUTE MODULE ormout_route
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+		SET OutputRoot = InputRoot;
+		SET OutputLocalEnvironment = InputLocalEnvironment;
+		--DECLARE msgin REFERENCE TO OutputRoot.DFDL.ns:O01;
+		DECLARE msgin REFERENCE TO OutputRoot.MRM;
+		
+		IF EXISTS(msgin.*:FT1[]) THEN
+			SET OutputRoot.MQMD.CorrelId = InputRoot.MQMD.MsgId;
+			PROPAGATE TO TERMINAL 'out1' DELETE NONE;
+		ELSE 
+			SET OutputLocalEnvironment.Destination.MQ.DestinationData[1].queueName = 'RIS.ORMOUT.INPUT';
+			PROPAGATE TO TERMINAL 'out2' DELETE NONE;
+		END IF;
+		
+		
+	END;
+
+END MODULE;
+
+CREATE COMPUTE MODULE devolveFSFB_AGG
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		SET OutputRoot.Properties = InputRoot.Properties;
+		SET OutputLocalEnvironment = InputLocalEnvironment;
+		SET Environment.Variables.MQMD = COALESCE(InputRoot.ComIbmAggregateReplyBody.ORM.MQMD,InputRoot.ComIbmAggregateReplyBody.DFT.MQMD);
+		-- referenciar mensaje FSFB
+		DECLARE ORM 			REFERENCE TO InputRoot.ComIbmAggregateReplyBody.ORM.XMLNSC.ns1:FSFB;
+		DECLARE DFT 			REFERENCE TO InputRoot.ComIbmAggregateReplyBody.DFT.XMLNSC.ns1:FSFB;
+		DECLARE ORMbodyin		REFERENCE TO ORM.ns1:Body;
+		DECLARE DFTbodyin		REFERENCE TO DFT.ns1:Body;
+		DECLARE ORMheadin		REFERENCE TO ORM.ns1:Header;
+		DECLARE DFTheadin		REFERENCE TO DFT.ns1:Header;
+		-- referenciar propiedades para decodificar mensaje
+		DECLARE ORMparser 		CHARACTER ORMbodyin.parse.parser;
+		DECLARE ORMmsgtype		CHARACTER ORMbodyin.parse.msgtype;
+		DECLARE ORMmsgset 		CHARACTER ORMbodyin.parse.msgset;
+		DECLARE ORMmsgformat	CHARACTER ORMbodyin.parse.msgformat;
+		DECLARE DFTparser 		CHARACTER DFTbodyin.parse.parser;
+		DECLARE DFTmsgtype		CHARACTER DFTbodyin.parse.msgtype;
+		DECLARE DFTmsgset 		CHARACTER DFTbodyin.parse.msgset;
+		DECLARE DFTmsgformat	CHARACTER DFTbodyin.parse.msgformat;
+		DECLARE msgref			REFERENCE TO OutputRoot;
+		DECLARE ORMmsgblob		BLOB ORMbodyin.data;		
+		DECLARE DFTmsgblob		BLOB DFTbodyin.data;
+		DECLARE ORMmsg			CHARACTER;		
+		DECLARE DFTmsg			CHARACTER;
+		
+		-- construir mensaje de salida
+		SET OutputRoot.Properties = InputRoot.Properties;
+		SET OutputRoot.Properties.MessageType		= ORMmsgtype;
+		SET OutputRoot.Properties.MessageSet		= ORMmsgset;
+		SET OutputRoot.Properties.MessageFormat		= ORMmsgformat;
+		
+		-- mantener correlId
+		SET OutputRoot.MQMD	= InputRoot.MQMD;
+		
+		CALL UTILS.decodemsg(DFTparser, DFTmsgtype, DFTmsgset, DFTmsgformat, DFTmsgblob, msgref);
+		SET DFTmsg = msgref;
+		SET msgref = NULL;
+		CALL UTILS.decodemsg(ORMparser, ORMmsgtype, ORMmsgset, ORMmsgformat, ORMmsgblob, msgref);
+		
+		-- almacenar en environment propiedades del mensaje
+		SET Environment.Variables.header	= ORMheadin;
+		SET Environment.Variables.body		= ORMbodyin;
+		SET Environment.Variables.DFT.header	= DFTheadin;
+		SET Environment.Variables.DFT.body		= DFTbodyin;
+				
+		RETURN TRUE;
+	END;
+END MODULE;
+

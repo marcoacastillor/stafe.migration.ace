@@ -1,0 +1,84 @@
+BROKER SCHEMA Adapters
+
+DECLARE ns NAMESPACE 'http://co/org/fsfb/fmwk';
+DECLARE ns23 NAMESPACE 'http://co/org/fsfb/HIS_ORMInTable/impl';
+
+---------------------------------------------------------------
+--	MODULE FSFB_RISMFN_AdapterDB_Involve
+--	Este módulo adecua el mensaje entrante, proveniente de las
+--	tablas de paso de RIS, al formato utilizado por el fmwk.
+--	Operación MFN
+---------------------------------------------------------------
+CREATE COMPUTE MODULE FSFB_RISMFN_AdapterDB_Involve
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+
+		-- declaración de constantes	
+		DECLARE operation 	CHARACTER 'MFN';
+		DECLARE system		CHARACTER 'RIS';
+		-- propiedades para convertir a BLOB
+		DECLARE parser		CHARACTER 'XMLNS';
+		DECLARE msgset		CHARACTER 'FSFB_MessageSet';
+		DECLARE msgtype		CHARACTER 'ORM_INRIS';
+		DECLARE msgformat	CHARACTER 'XML';
+		DECLARE msgblob		BLOB;
+		
+		-- construcción del mensaje de salida (xml)
+		SET OutputRoot.Properties.MessageSet		= 'FSFB_MessageSet';
+		
+		-- construcción de cabecera MQMD
+		CREATE FIELD OutputRoot.MQMD;
+		
+		SET OutputRoot.MQMD.Format					= 'DataObject';
+		CALL UTILS.generateCorrelID() INTO OutputRoot.MQMD.CorrelId;
+		
+		-- construcción del mensaje FSFB
+		CREATE FIELD OutputRoot.XMLNSC.ns:FSFB;
+		DECLARE fsfb
+			REFERENCE TO OutputRoot.XMLNSC.ns:FSFB;
+		
+		-- crear header del mensaje
+		CALL UTILS.createHeader(fsfb, operation, system);
+		
+		-- codificar el mensaje original	
+		CALL UTILS.encodemsg(msgtype, msgset, msgformat, InputRoot.DataObject, msgblob); 
+		
+		-- crear body del mensaje
+		CALL UTILS.createBody(fsfb, msgblob, parser, msgset, msgtype, msgformat);
+			
+		RETURN TRUE;
+	END;
+
+END MODULE;
+
+
+---------------------------------------------------------------
+--	MODULE FSFB_RISMFNUpdateDB
+--	Este módulo actualiza las tablas de paso de RIS
+--	Operación MFN
+--	Tabla TABADMCHKLABCORE
+---------------------------------------------------------------
+CREATE COMPUTE MODULE FSFB_RISMFNUpdateDB
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+
+		DECLARE msgin 				REFERENCE TO InputRoot.XMLNS.*:ACK_OUT;
+		DECLARE messageidcontrol 	CHARACTER;
+		DECLARE codigoerror			CHARACTER;
+		
+		SET messageidcontrol = msgin.IDTRANSACCION;
+		SET codigoerror =  msgin.CODIGOERROR;
+		
+		IF codigoerror = 'AA' THEN
+			SET codigoerror = 'T';
+		ELSE
+			SET codigoerror = 'E';
+		END IF;
+		
+		PASSTHRU ('UPDATE ADMSALUD.AGFA_MFN SET AGFA_MFN.MFN_01_STATUS =? WHERE AGFA_MFN.MSH_10_MESS_ID = ?',codigoerror,messageidcontrol);
+		
+		RETURN FALSE;
+		
+	END;
+
+END MODULE;

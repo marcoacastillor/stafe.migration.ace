@@ -1,0 +1,77 @@
+CREATE COMPUTE MODULE AuthorizationHabeasData_validateResponse
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE NM_COMPONENT CHARACTER 'AUTHORIZATION.HABEAS';
+		DECLARE SERVICE_RQ_TRACE INTEGER 2;
+		
+		/******************************************************/
+		-- Copiar cabeceras de mensaje
+		/******************************************************/
+		SET OutputRoot.MQMD 	= InputRoot.MQMD;
+		SET OutputRoot.MQRFH2 	= InputRoot.MQRFH2;
+		
+		/******************************************************/
+		-- Declarar referencias
+		/******************************************************/
+		DECLARE refEnv REFERENCE TO Environment;
+		DECLARE refMQRFH2 REFERENCE TO OutputRoot.MQRFH2;
+		DECLARE refInpRoot REFERENCE TO OutputRoot;
+		
+		/******************************************************/
+		-- Setear información para auditoría y headers
+		/******************************************************/
+		CALL common.procedures.utils.createMsgLogs(refMQRFH2, SERVICE_RQ_TRACE, NM_COMPONENT);
+		CALL common.procedures.utils.saveMQM(refInpRoot, refEnv);
+		
+		/******************************************************/
+		-- Declarar referencia a objeto de entrada
+		/******************************************************/
+		DECLARE sql CHARACTER '';
+		DECLARE refInp REFERENCE TO InputRoot.JSON;
+		MOVE refInp LASTCHILD;
+		
+		DECLARE In_PAC_PAC_Numero INTEGER;
+		DECLARE SRV_Message, In_PAC_PAC_APELLPATER,In_PAC_PAC_APELLMATER,In_PAC_PAC_NOMBRE,In_PAC_PAC_FONO,In_DONURL,In_xTratVigente    CHARACTER '';
+		
+		SET In_PAC_PAC_Numero			= CAST(refInp.patient.personalInfo.numberHabeas AS DECIMAL);
+		SET In_PAC_PAC_APELLPATER 		= overlay(REPLICATE(' ',20) PLACING UPPER(refInp.patient.personalInfo.lastName) FROM 1 FOR LENGTH(refInp.patient.personalInfo.lastName));
+		SET In_PAC_PAC_APELLMATER 		= overlay(REPLICATE(' ',20) PLACING UPPER(refInp.patient.personalInfo.motherLastName) FROM 1 FOR LENGTH(refInp.patient.personalInfo.motherLastName));
+		SET In_PAC_PAC_NOMBRE 			= overlay(REPLICATE(' ',40) PLACING UPPER(refInp.patient.personalInfo.names) FROM 1 FOR LENGTH(refInp.patient.personalInfo.names));
+		SET In_PAC_PAC_FONO 			= refInp.patient.contactInfo.cellPhone; 
+		SET In_DONURL 					= refInp.patient.contactInfo.url;
+		SET In_xTratVigente 			= UPPER(refInp.patient.personalInfo.authorizationHabeas);
+		
+		CALL dataTreatment(
+		 SRV_Message,
+		 In_PAC_PAC_Numero,
+		 In_PAC_PAC_APELLPATER,
+		 In_PAC_PAC_APELLMATER,
+		 In_PAC_PAC_NOMBRE,
+		 In_PAC_PAC_FONO,
+		 In_DONURL,
+		 In_xTratVigente
+		);
+		
+		/******************************************************/
+		-- Creación mensaje de respuesta
+		/******************************************************/
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
+		
+		SET refOut.transactionInfo.idTransaction	= refMQRFH2.usr.contextTransaction.IdTransaction;
+		IF CONTAINS(SRV_Message, '110000000') THEN
+			DECLARE serverDesc CHARACTER SUBSTRING(SRV_Message BEFORE '110000000');
+			DECLARE resultDesc CHARACTER SUBSTRING(SRV_Message AFTER '110000000'); 
+			 
+			SET refOut.transactionInfo.code				= '000';
+			SET refOut.transactionInfo.desc				= 'Paciente creado exitosamente';
+			
+			SET refOut.patient.personalInfo.patientNumber			= CAST(refInp.patient.personalInfo.numberHabeas AS DECIMAL);
+		ELSE
+			SET refOut.transactionInfo.code				= '300';
+			SET refOut.transactionInfo.desc				= SRV_Message;
+		END IF;
+		
+		RETURN TRUE;
+	END;
+END MODULE;

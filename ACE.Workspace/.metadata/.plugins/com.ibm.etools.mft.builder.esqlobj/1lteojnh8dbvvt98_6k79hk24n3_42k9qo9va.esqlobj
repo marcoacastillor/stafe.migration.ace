@@ -1,0 +1,15 @@
+CREATE COMPUTE MODULE Update_CmpValResponse1
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE refInp REFERENCE TO InputRoot.ComIbmAggregateReplyBody;
+		
+		SET OutputRoot.Properties.Encoding			= 819;
+		SET OutputRoot.Properties.CodedCharSetId	= 1208;
+		
+		SET OutputRoot.MQMD 	= refInp.AggReqConfig.MQMD;
+		SET OutputRoot.MQRFH2 	= refInp.AggReqConfig.MQRFH2;
+		
+		SET OutputRoot.JSON = refInp.AggReqCreate.JSON;
+		RETURN TRUE;
+	END;
+END MODULE;

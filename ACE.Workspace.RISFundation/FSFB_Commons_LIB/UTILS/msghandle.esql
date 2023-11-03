@@ -1,0 +1,239 @@
+BROKER SCHEMA UTILS
+
+-----------------------------------------------
+-- FUNCTION codemsg
+-- parámetro IN parser 		: parser a utilizar (MRM, XMLNSC)
+-- parámetro IN msgtype 	: tipo de mensaje a codificar (MRM, XMLNSC)
+-- parámetro IN msgset 		: messageSet que valida la estructura del mensaje
+-- parámetro IN msgblob		: BLOB del mensaje que se va a convertir
+-- parámetro INOUT msgref	: referencia donde quedará el mensaje resultante
+-- función que convierte el mensaje BLOB al formato original
+-----------------------------------------------
+CREATE FUNCTION decodemsg (IN parser CHARACTER,IN msgtype CHARACTER, IN msgset CHARACTER, IN msgformat CHARACTER, 
+							IN msgblob BLOB, INOUT msgref REFERENCE) BEGIN
+		
+	CREATE LASTCHILD OF msgref DOMAIN (parser) 
+		PARSE(msgblob SET msgset TYPE msgtype FORMAT msgformat);
+			
+END;
+
+-----------------------------------------------
+-- FUNCTION codemsg
+-- parámetro IN msgtype 	: tipo de mensaje a codificar (MRM, XMLNSC)
+-- parámetro IN msgset 		: messageSet que valida la estructura del mensaje
+-- parámetro IN msgformat	: formato de conversión (HL7, XML)
+-- parámetro IN msgref		: referencia al mensaje a convertir
+-- parámetro OUT msgblob	: variable BLOB del mensaje  
+-- función que convierte la metadata a BLOB y lo retorna en la variable msgblob
+-----------------------------------------------
+CREATE FUNCTION encodemsg (IN msgtype CHARACTER, IN msgset CHARACTER, IN msgformat CHARACTER, 
+							IN msgref REFERENCE, OUT msgblob BLOB ) BEGIN
+	
+	SET msgblob		= ASBITSTREAM(msgref CCSID 850  
+								SET msgset TYPE msgtype FORMAT msgformat);
+			
+END;
+
+-----------------------------------------------
+-- MODULE devolveFSFB
+-- Quitar el formato FSFB del mensaje y pasarlo 
+-- a la cola de entrada del servicio
+-----------------------------------------------		
+CREATE COMPUTE MODULE devolveFSFB
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- referenciar mensaje FSFB
+		DECLARE fsfb		REFERENCE TO InputRoot.XMLNSC.ns:FSFB;
+		DECLARE bodyin		REFERENCE TO fsfb.ns:Body;
+		DECLARE headin		REFERENCE TO fsfb.ns:Header;
+		-- referenciar propiedades para decodificar mensaje
+		DECLARE parser 		CHARACTER bodyin.parse.parser;
+		DECLARE msgtype		CHARACTER bodyin.parse.msgtype;
+		DECLARE msgset 		CHARACTER bodyin.parse.msgset;
+		DECLARE msgformat	CHARACTER bodyin.parse.msgformat;
+		DECLARE msgref		REFERENCE TO OutputRoot;
+		DECLARE msgblob		BLOB bodyin.data;
+		
+		-- construir mensaje de salida
+		SET OutputRoot.Properties = InputRoot.Properties;
+		SET OutputRoot.Properties.MessageType		= msgtype;
+		SET OutputRoot.Properties.MessageSet		= msgset;
+		SET OutputRoot.Properties.MessageFormat		= msgformat;
+		
+		-- mantener correlId
+		SET OutputRoot.MQMD	= InputRoot.MQMD;
+		
+		CALL UTILS.decodemsg(parser, msgtype, msgset, msgformat, msgblob, msgref);
+		
+		-- almacenar en environment propiedades del mensaje
+		SET Environment.Variables.header	= headin;
+		SET Environment.Variables.body		= bodyin;
+				
+		RETURN TRUE;
+	END;
+END MODULE;
+
+-----------------------------------------------
+-- MODULE envolveHL7FSFB
+-- Poner formato FSFB del mensaje HL7 y pasarlo 
+-- para ser consumido por el servicio
+-----------------------------------------------		
+CREATE COMPUTE MODULE envolveHL7FSFB
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- recuperar propiedades del mensaje de petición
+		DECLARE envvar		REFERENCE TO Environment.Variables;
+		
+		-- construir mensaje FSFB de salida
+		SET OutputRoot.MQMD		= envvar.MQMD;
+		SET OutputRoot.Properties = InputRoot.Properties;
+		SET OutputLocalEnvironment = InputLocalEnvironment;
+		
+		CREATE FIELD OutputRoot.XMLNSC.ns:FSFB;
+		DECLARE fsfb		REFERENCE TO OutputRoot.XMLNSC.ns:FSFB;
+		CREATE FIELD fsfb.ns:Header;
+		DECLARE headout		REFERENCE TO fsfb.ns:Header;
+		CREATE FIELD fsfb.ns:Body;
+		DECLARE bodyout		REFERENCE TO fsfb.ns:Body;
+		
+		
+		-- referenciar propiedades para decodificar mensaje
+		DECLARE msgtype		CHARACTER envvar.body.parse.msgtype;
+		DECLARE msgset 		CHARACTER envvar.body.parse.msgset;
+		DECLARE msgformat	CHARACTER envvar.body.parse.msgformat;
+		DECLARE msgblob		BLOB;
+	
+		-- codificar el mensaje de respuesta obtenido del servicio
+		CALL UTILS.encodemsg(msgtype, msgset, msgformat, InputRoot.MRM, msgblob);
+		
+		-- construir mensaje de salida
+		SET headout				= envvar.header;
+		
+		CREATE FIELD bodyout.parse;
+		SET bodyout.parse		= envvar.body.parse;
+		CREATE FIELD bodyout.data;
+		SET bodyout.data		= msgblob;
+		
+	END;
+END MODULE;
+
+-----------------------------------------------
+-- MODULE envolveXMLFSFB
+-- Poner formato FSFB del mensaje XML y pasarlo 
+-- para ser consumido por el servicio
+-----------------------------------------------		
+CREATE COMPUTE MODULE envolveXMLFSFB
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- recuperar propiedades del mensaje de petición
+		DECLARE envvar		REFERENCE TO Environment.Variables;
+		
+		-- construir mensaje FSFB de salida
+		SET OutputRoot.MQMD		= envvar.MQMD;
+		
+		CREATE FIELD OutputRoot.XMLNSC.ns:FSFB;
+		DECLARE fsfb		REFERENCE TO OutputRoot.XMLNSC.ns:FSFB;
+		CREATE FIELD fsfb.ns:Header;
+		DECLARE headout		REFERENCE TO fsfb.ns:Header;
+		CREATE FIELD fsfb.ns:Body;
+		DECLARE bodyout		REFERENCE TO fsfb.ns:Body;
+		
+		-- referenciar propiedades para decodificar mensaje
+		DECLARE msgtype		CHARACTER envvar.body.parse.msgtype;
+		DECLARE msgset 		CHARACTER envvar.body.parse.msgset;
+		DECLARE msgformat	CHARACTER envvar.body.parse.msgformat;
+		DECLARE parser		CHARACTER envvar.body.parse.parser;
+		DECLARE msgblob		BLOB;
+	
+		-- codificar el mensaje de respuesta obtenido del servicio
+		CALL UTILS.encodemsg(msgtype, msgset, msgformat, InputRoot.XMLNSC, msgblob);
+		
+		-- construir mensaje de salida
+		--SET headout				= envvar.header;
+		
+		-- escribirlas en el campo service
+		SET headout.operation								= envvar.header.ns:operation;
+		SET headout.system									= envvar.header.ns:system;
+		SET headout.ns:service.(XMLNSC.Attribute)nombre		= envvar.header.ns:service.nombre;
+		SET headout.ns:service.(XMLNSC.Attribute)audit 		= envvar.header.ns:service.audit;
+		SET headout.ns:service.(XMLNSC.Attribute)log		= envvar.header.ns:service.log;
+		
+		SET headout.ns:service.request						= envvar.header.ns:service.request;
+		SET headout.ns:service.response						= envvar.header.ns:service.response;
+		
+		CREATE FIELD bodyout.parse;
+		SET bodyout.parse		= envvar.body.parse;
+		CREATE FIELD bodyout.data;
+		SET bodyout.data		= msgblob;
+
+	END;
+END MODULE;
+
+-----------------------------------------------
+-- MODULE envolveBLOB
+-- Poner formato FSFB del mensaje BLOB y pasarlo 
+-- para ser consumido por el servicio
+-----------------------------------------------		
+CREATE COMPUTE MODULE envolveBLOB
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- recuperar propiedades del mensaje de petición
+		DECLARE envvar		REFERENCE TO Environment.Variables;
+		
+		-- construir mensaje FSFB de salida
+		SET OutputRoot.MQMD		= envvar.MQMD;
+		SET OutputRoot.Properties = InputRoot.Properties;
+		
+		CREATE FIELD OutputRoot.XMLNSC.ns:FSFB;
+		DECLARE fsfb		REFERENCE TO OutputRoot.XMLNSC.ns:FSFB;
+		CREATE FIELD fsfb.ns:Header;
+		DECLARE headout		REFERENCE TO fsfb.ns:Header;
+		CREATE FIELD fsfb.ns:Body;
+		DECLARE bodyout		REFERENCE TO fsfb.ns:Body;
+		
+		
+		-- referenciar propiedades para decodificar mensaje
+		DECLARE msgtype		CHARACTER envvar.body.parse.msgtype;
+		DECLARE msgset 		CHARACTER envvar.body.parse.msgset;
+		DECLARE msgformat	CHARACTER envvar.body.parse.msgformat;
+		DECLARE msgblob		BLOB;
+		
+		-- construir mensaje de salida
+		SET headout				= envvar.header;
+		
+		CREATE FIELD bodyout.parse;
+		SET bodyout.parse		= envvar.body.parse;
+		CREATE FIELD bodyout.data;
+		SET bodyout.data		= InputRoot.BLOB.BLOB;
+		
+	END;
+END MODULE;
+
+
+-----------------------------------------------
+-- MODULE devolveFSFBblob
+-- Quitar el formato FSFB del mensaje y pasarlo 
+-- a la cola de entrada del servicio
+-----------------------------------------------		
+CREATE COMPUTE MODULE devolveFSFBblob
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- referenciar mensaje FSFB
+		DECLARE fsfb		REFERENCE TO InputRoot.XMLNSC.ns:FSFB;
+		DECLARE bodyin		REFERENCE TO fsfb.ns:Body;
+		DECLARE headin		REFERENCE TO fsfb.ns:Header;
+		
+		-- construir mensaje de salida
+		SET OutputRoot.Properties = InputRoot.Properties;
+		
+		-- mantener correlId
+		SET OutputRoot.MQMD	= InputRoot.MQMD;
+		SET OutputRoot.BLOB.BLOB = CAST(bodyin.data AS BLOB );
+		
+		-- almacenar en environment propiedades del mensaje
+		SET Environment.Variables.header	= headin;
+		SET Environment.Variables.body		= bodyin;
+				
+		RETURN TRUE;
+	END;
+END MODULE;

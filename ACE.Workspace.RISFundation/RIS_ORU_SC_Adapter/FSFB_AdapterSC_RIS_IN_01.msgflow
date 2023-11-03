@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ComIbmMQInput.msgnode="ComIbmMQInput.msgnode" xmlns:ComIbmMQOutput.msgnode="ComIbmMQOutput.msgnode" xmlns:ComIbmTCPIPServerInput.msgnode="ComIbmTCPIPServerInput.msgnode" xmlns:Commons_FSFB_LogHandler.subflow="Commons/FSFB_LogHandler.subflow" xmlns:MLLP_FSFB_TrimMLLP.subflow="MLLP/FSFB_TrimMLLP.subflow" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eflow="http://www.ibm.com/wbi/2005/eflow" xmlns:utility="http://www.ibm.com/wbi/2005/eflow_utility"
+    nsURI="FSFB_AdapterSC_RIS_IN_01.msgflow" nsPrefix="FSFB_AdapterSC_RIS_IN_01.msgflow">
+  <eClassifiers xmi:type="eflow:FCMComposite" name="FCMComposite_1">
+    <eSuperTypes href="http://www.ibm.com/wbi/2005/eflow#//FCMBlock"/>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.UDPauditable" name="UDPauditable" lowerBound="1">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xmi:type="ecore:EAttribute" xmi:id="Property.UDPtraceable" name="UDPtraceable" lowerBound="1">
+      <eType xmi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <translation xmi:type="utility:TranslatableString" key="FSFB_AdapterSC_RIS_IN_01" bundleName="FSFB_AdapterSC_RIS_IN_01" pluginId="RIS_ORU_SC_Adapter"/>
+    <colorGraphic16 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/RIS_ORU_SC_Adapter/icons/full/obj16/FSFB_AdapterSC_RIS_IN_01.gif"/>
+    <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/RIS_ORU_SC_Adapter/icons/full/obj30/FSFB_AdapterSC_RIS_IN_01.gif"/>
+    <shortDescription xmi:type="utility:ConstantString" string="Adaptador de Socket TCP para el sistema RIS"/>
+    <longDescription xmi:type="utility:ConstantString" string="@Athor: IBM - Miguel Angel Castillo Camacho"/>
+    <version xmi:type="utility:ConstantString" string="v1.0"/>
+    <composition>
+      <nodes xmi:type="ComIbmMQOutput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_16" location="411,122" queueName="RIS.ORU.INPUT" transactionMode="no" newMsgId="true">
+        <translation xmi:type="utility:ConstantString" string="SERVICE.REQ"/>
+      </nodes>
+      <nodes xmi:type="ComIbmTCPIPServerInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="98,122" connectionDetails="4121" messageDomainProperty="BLOB" recordDetection="delimited" recordDelimiter="customDelimiter" customDelimiter="1C0D">
+        <translation xmi:type="utility:ConstantString" string="RIS.REQ"/>
+      </nodes>
+      <nodes xmi:type="ComIbmMQInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_18" location="120,182" queueName="Backup_ORU" messageDomainProperty="BLOB">
+        <translation xmi:type="utility:ConstantString" string="MQ Input"/>
+      </nodes>
+      <nodes xmi:type="MLLP_FSFB_TrimMLLP.subflow:FCMComposite_1" xmi:id="FCMComposite_1_2" location="241,123">
+        <translation xmi:type="utility:ConstantString" string="FSFB_TrimMLLP"/>
+      </nodes>
+      <nodes xmi:type="Commons_FSFB_LogHandler.subflow:FCMComposite_1" xmi:id="FCMComposite_1_1" location="513,126" msgflow="FSFB_Commons.Adapters.FSFB_AdaptersSC_RIS.RESP" logfilename="log_adpSC_ris.log" auditfilename="IN_RIS.aud">
+        <translation xmi:type="utility:ConstantString" string="FSFB_LogHandler RESP"/>
+      </nodes>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_18" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="FCMComposite_1_16" sourceNode="FCMComposite_1_2" sourceTerminalName="OutTerminal.Output" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_3" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_16" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.Input"/>
+    </composition>
+    <propertyOrganizer>
+      <propertyDescriptor groupName="Group.Properties" configurable="true" userDefined="true" describedAttribute="Property.UDPauditable">
+        <propertyName xmi:type="utility:TranslatableString" key="Property.UDPauditable" bundleName="FSFB_AdapterSC_RIS_IN_01" pluginId="RIS_ORU_SC_Adapter"/>
+        <propertyDescriptor groupName="Group.Properties" configurable="true" userDefined="true" describedAttribute="Property.UDPtraceable">
+          <propertyName xmi:type="utility:TranslatableString" key="Property.UDPtraceable" bundleName="FSFB_AdapterSC_RIS_IN_01" pluginId="RIS_ORU_SC_Adapter"/>
+        </propertyDescriptor>
+      </propertyDescriptor>
+    </propertyOrganizer>
+    <stickyBoard/>
+  </eClassifiers>
+</ecore:EPackage>

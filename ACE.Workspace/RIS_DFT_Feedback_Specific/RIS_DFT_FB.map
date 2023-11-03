@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0" xmlns:map="default">
+    <input path="/RIS_DFT_Feedback_SpecificMessageSet/sisips/admsalud/HIS_DFTFeedback_AGFA.mxsd"/>
+    <output path="mbsharedlib://HL7-2.7/FSFB_HL7.xsd"/>
+    <imports>
+        <import kind="esql" namespace="/TESTTIME.esql"/>
+        <import kind="esql" namespace="/UTILS/mapping.esql"/>
+    </imports>
+    <namespaces>
+        <namespace kind="supplement" prefix="in" uri="http://sisips/admsalud"/>
+        <namespace kind="supplement" prefix="out" uri="urn:hl7-org:v2xml"/>
+        <namespace kind="extension" prefix="fn" uri="http://www.w3.org/2005/xpath-functions"/>
+        <namespace kind="extension" prefix="TESTTIME" uri="/TESTTIME.esql"/>
+        <namespace kind="extension" prefix="mapping" uri="/UTILS/mapping.esql"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="RIS_DFT_FB">
+        <input namespace="http://sisips/admsalud" path="mb:msg(AGFA_DFT,assembly,,Properties)" var="ComIbmMessageAssembly_AGFA_DFT"/>
+        <output namespace="urn:hl7-org:v2xml" path="mb:msg(DFTF_RIS,assembly,DFDL,Properties)" var="ComIbmMessageAssembly_DFTF_RIS"/>
+        <move>
+            <input path="$ComIbmMessageAssembly_AGFA_DFT/Properties"/>
+            <output path="$ComIbmMessageAssembly_DFTF_RIS/Properties"/>
+            <override>
+                <assign value="{HL7-2.7}">
+                    <output path="$ComIbmMessageAssembly_DFTF_RIS/Properties/MessageSet"/>
+                </assign>
+                <assign value="{urn:hl7-org:v2xml}:DFTF_RIS">
+                    <output path="$ComIbmMessageAssembly_DFTF_RIS/Properties/MessageType"/>
+                </assign>
+            </override>
+        </move>
+        <local>
+            <input path="$ComIbmMessageAssembly_AGFA_DFT/AGFA_DFT" var="AGFA_DFT"/>
+            <output path="$ComIbmMessageAssembly_DFTF_RIS/DFTF_RIS/MSH"/>
+            <assign value="|">
+                <output path="MSH.1.FieldSeparator"/>
+            </assign>
+            <assign value="^">
+                <output path="MSH.2.ServiceString/ComponentSeparator"/>
+            </assign>
+            <assign value="~">
+                <output path="MSH.2.ServiceString/RepeatSeparator"/>
+            </assign>
+            <assign value="\">
+                <output path="MSH.2.ServiceString/EscapeCharacter"/>
+            </assign>
+            <assign value="&amp;">
+                <output path="MSH.2.ServiceString/SubComponentSeparator"/>
+            </assign>
+            <assign value="HI_DFT_FEEDBACK">
+                <output path="MSH.3.SendingApplication/HD.1"/>
+            </assign>
+            <assign value="AGFA Healthcare Colombia">
+                <output path="MSH.6.ReceivingFacility/HD.1"/>
+            </assign>
+            <customFunction lang="esql" ref="mapping:CurrentTimestampHL7">
+                <output path="MSH.7.DateTimeOfMessage"/>
+            </customFunction>
+            <assign value="ACK">
+                <output path="MSH.9.MessageType/MSG.1"/>
+            </assign>
+            <assign value="ZPR">
+                <output path="MSH.9.MessageType/MSG.2"/>
+            </assign>
+            <assign>
+                <output path="MSH.9.MessageType/MSG.3"/>
+            </assign>
+            <function ref="normalize">
+                <input path="$AGFA_DFT/FT1_02_EXAM_CODE" var="FT1_02_EXAM_CODE"/>
+                <output path="MSH.10.MessageControlID"/>
+                <param name="input" value="$FT1_02_EXAM_CODE"/>
+            </function>
+            <assign>
+                <output path="MSH.11.ProcessingID/PT.1"/>
+            </assign>
+            <assign>
+                <output path="MSH.12.VersionID/VID.1"/>
+            </assign>
+            <assign value="CO">
+                <output path="MSH.17.CountryCode"/>
+            </assign>
+            <assign value="8859/1">
+                <output path="MSH.18.CharacterSet"/>
+            </assign>
+        </local>
+        <local>
+            <input path="$ComIbmMessageAssembly_AGFA_DFT/AGFA_DFT"/>
+            <output path="$ComIbmMessageAssembly_DFTF_RIS/DFTF_RIS/MSA"/>
+            <assign value="AA">
+                <output path="MSA.1.AcknowledgementCode"/>
+            </assign>
+            <function ref="normalize">
+                <input path="FT1_03_BATCH_ID" var="FT1_03_BATCH_ID"/>
+                <output path="MSA.2.MessageControlID"/>
+                <param name="input" value="$FT1_03_BATCH_ID"/>
+            </function>
+        </local>
+        <local>
+            <input path="$ComIbmMessageAssembly_AGFA_DFT/AGFA_DFT"/>
+            <output path="$ComIbmMessageAssembly_DFTF_RIS/DFTF_RIS/ZPR"/>
+            <condition>
+                <if>
+                    <input path="FT1_06_STATUS" var="FT1_06_STATUS1"/>
+                    <output path="CustomZPR1/HD.1"/>
+                    <test lang="xpath">$FT1_06_STATUS1 = 'P'</test>
+                    <assign value="|Accepted">
+                        <output path="."/>
+                    </assign>
+                </if>
+                <elseif>
+                    <input path="FT1_06_STATUS" var="FT1_06_STATUS2"/>
+                    <output path="CustomZPR1/HD.1"/>
+                    <test lang="xpath">$FT1_06_STATUS2 = 'R'</test>
+                    <assign value="|Rejected">
+                        <output path="."/>
+                    </assign>
+                </elseif>
+            </condition>
+            <condition>
+                <if>
+                    <input path="FT1_06_STATUS" var="FT1_06_STATUS1"/>
+                    <output path="CustomZPR1/HD.2" var="HD2"/>
+                    <test lang="xpath">$FT1_06_STATUS1 = 'P'</test>
+                    <assign value="VA">
+                        <output path="$HD2/."/>
+                    </assign>
+                </if>
+                <elseif>
+                    <input path="FT1_06_STATUS" var="FT1_06_STATUS2"/>
+                    <output path="CustomZPR1/HD.2" var="HD21"/>
+                    <test lang="xpath">$FT1_06_STATUS2 = 'R'</test>
+                    <assign value="VR">
+                        <output path="$HD21/."/>
+                    </assign>
+                </elseif>
+            </condition>
+            <condition>
+                <if>
+                    <input path="FT1_06_STATUS" var="FT1_06_STATUS1"/>
+                    <output path="CustomZPR2" var="HD2"/>
+                    <test lang="xpath">$FT1_06_STATUS1 = 'P'</test>
+                    <assign value="VA">
+                        <output path="$HD2/."/>
+                    </assign>
+                </if>
+                <elseif>
+                    <input path="FT1_06_STATUS" var="FT1_06_STATUS2"/>
+                    <output path="CustomZPR2" var="HD21"/>
+                    <test lang="xpath">$FT1_06_STATUS2 = 'R'</test>
+                    <assign value="VR">
+                        <output path="$HD21/."/>
+                    </assign>
+                </elseif>
+            </condition>
+            <function ref="fn:concat">
+                <input path="FT1_02_EXAM_CODE" var="FT1_02_EXAM_CODE1"/>
+                <output path="CustomZPR1/HD.3"/>
+                <param name="string2" value="$FT1_02_EXAM_CODE1"/>
+                <param name="string3" value="'|'"/>
+            </function>
+        </local>
+    </mappingDeclaration>
+</mappingRoot>

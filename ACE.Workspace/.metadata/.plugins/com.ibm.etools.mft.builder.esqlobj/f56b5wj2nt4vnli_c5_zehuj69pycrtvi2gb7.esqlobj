@@ -1,0 +1,49 @@
+CREATE FUNCTION getMyDateWhitFormat(IN myDate CHARACTER, IN myFormat CHARACTER)RETURNS CHARACTER
+
+BEGIN
+
+	DECLARE dateStr CHARACTER '';
+
+	DECLARE timeStr CHARACTER '';
+
+	
+
+    IF(LENGTH(myDate) > 0) THEN
+
+    	IF(CONTAINS(myDate,'T')) THEN
+
+    		SET dateStr = SUBSTRING(myDate BEFORE 'T');
+
+	    	SET timeStr = SUBSTRING(myDate AFTER 'T');
+
+		ELSEIF(CONTAINS(myDate,' ')) THEN
+
+			SET dateStr = SUBSTRING(myDate BEFORE ' ');
+
+		    SET timeStr = SUBSTRING(myDate AFTER ' ');
+
+		ELSE
+
+			SET dateStr = myDate;
+
+			SET timeStr = '00:00:00';
+
+		END IF;
+
+		
+
+    	SET dateStr 		= REPLACE(dateStr, '/','-');
+
+	    DECLARE Mytimestamp CHARACTER dateStr ||' '||timeStr;
+
+	    DECLARE dateTime 	TIMESTAMP CAST(Mytimestamp AS TIMESTAMP);
+
+	    RETURN CAST(dateTime AS CHARACTER FORMAT myFormat);
+
+	ELSE
+
+		RETURN getDateWhitFormat(myFormat);
+
+	END IF;
+
+END;

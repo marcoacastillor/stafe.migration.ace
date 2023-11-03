@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:root="http://www.ibm.com/dtx/A08" targetNamespace="http://www.ibm.com/dtx/A08" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element id="x3091" name="A08">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element id="x3554" name="MSH">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element id="x74" name="Field" type="xs:string" />
+              <xs:element id="x69" name="Data_In_MSH">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element id="x70" name="Encoding">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element id="x72" name="Comp" type="xs:string" />
+                          <xs:element id="x75" name="Repetition" type="xs:string" />
+                          <xs:element id="x73" name="EscapeCharacter" type="EscapeCharacter_73_Type" />
+                          <xs:element id="x77" name="SubComponent" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element id="x456" minOccurs="0" name="SendingApplication">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element minOccurs="0" ref="root:EntityIdentifier_1362" />
+                          <xs:element minOccurs="0" ref="root:NamespaceID_1091" />
+                          <xs:element minOccurs="0" ref="root:UniversalID_1495" />
+                          <xs:element minOccurs="0" ref="root:UniversalIDType_993" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element id="x457" minOccurs="0" name="SendingFacility">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element minOccurs="0" ref="root:EntityIdentifier_1362" />
+                          <xs:element minOccurs="0" ref="root:NamespaceID_1091" />
+                          <xs:element minOccurs="0" ref="root:UniversalID_1495" />
+                          <xs:element minOccurs="0" ref="root:UniversalIDType_993" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element id="x451" minOccurs="0" name="ReceivingApplication">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element minOccurs="0" ref="root:EntityIdentifier_1362" />
+                          <xs:element minOccurs="0" ref="root:NamespaceID_1091" />
+                          <xs:element minOccurs="0" ref="root:UniversalID_1495" />
+                          <xs:element minOccurs="0" ref="root:UniversalIDType_993" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element id="x452" minOccurs="0" name="ReceivingFacility">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element minOccurs="0" ref="root:EntityIdentifier_1362" />
+                          <xs:element minOccurs="0" ref="root:NamespaceID_1091" />
+                          <xs:element minOccurs="0" ref="root:UniversalID_1495" />
+                          <xs:element minOccurs="0" ref="root:UniversalIDType_993" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element id="x546" minOccurs="0" name="DateTimeOfMessage">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element id="x1516" minOccurs="0" name="DateTime" type="xs:dateTime" />
+                          <xs:element id="x1519" minOccurs="0" name="DegreeOfPrecision" type="xs:integer" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element id="x1455" minOccurs="0" name="Security" type="Security_1455_Type" />
+                    <xs:element id="x343" name="MessageType">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element id="x918" minOccurs="0" name="MessageType" type="MessageType_918_Type" />
+                          <xs:element id="x990" minOccurs="0" name="TriggerEvent" type="TriggerEvent_990_Type" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element ref="root:MessageControlID_1396" />
+                    <xs:element id="x499" name="ProcessingID">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element id="x943" minOccurs="0" name="ProcessingID" type="ProcessingID_943_Type" />
+                          <xs:element id="x944" minOccurs="0" name="ProcessingMode" type="ProcessingMode_944_Type" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element id="x995" name="VersionID" type="VersionID_995_Type" />
+                    <xs:element id="x1266" minOccurs="0" name="SequenceNumber" type="xs:decimal" />
+                    <xs:element id="x1341" minOccurs="0" name="ContinuationPointer" type="ContinuationPointer_1341_Type" />
+                    <xs:element id="x849" minOccurs="0" name="AcceptAcknowledgementType" type="AcceptAcknowledgementType_849_Type" />
+                    <xs:element id="x860" minOccurs="0" name="ApplicationAcknowledgementType" type="ApplicationAcknowledgementType_860_Type" />
+                    <xs:element id="x880" minOccurs="0" name="CountryCode" type="CountryCode_880_Type" />
+                    <xs:element id="x1676" minOccurs="0" name="CharacterSet">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element id="x867" maxOccurs="3" name="CharacterSet" type="CharacterSet_867_Type" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element id="x223" minOccurs="0" name="PrincipalLanguageOfMessage">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element minOccurs="0" ref="root:Identifier_1385" />
+                          <xs:element minOccurs="0" ref="root:Text_1473" />
+                          <xs:element minOccurs="0" ref="root:NameOfCodingSystem_1401" />
+                          <xs:element minOccurs="0" ref="root:AlternateIdentifier_1313" />
+                          <xs:element minOccurs="0" ref="root:AlternateText_1314" />
+                          <xs:element minOccurs="0" ref="root:NameOfAlternateCodingSystem_1400" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element id="x3553" name="MSA">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element id="x852" name="AcknowledgementCode" type="AcknowledgementCode_852_Type" />
+              <xs:element ref="root:MessageControlID_1396" />
+              <xs:element id="x1475" minOccurs="0" name="TextMessage" type="TextMessage_1475_Type" />
+              <xs:element id="x1197" minOccurs="0" name="ExpectedSequenceNumber" type="xs:decimal" />
+              <xs:element id="x884" minOccurs="0" name="DelayedAcknowledgementType" type="DelayedAcknowledgementType_884_Type" />
+              <xs:element id="x144" minOccurs="0" name="ErrorCondition">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element minOccurs="0" ref="root:Identifier_1385" />
+                    <xs:element minOccurs="0" ref="root:Text_1473" />
+                    <xs:element minOccurs="0" ref="root:NameOfCodingSystem_1401" />
+                    <xs:element minOccurs="0" ref="root:AlternateIdentifier_1313" />
+                    <xs:element minOccurs="0" ref="root:AlternateText_1314" />
+                    <xs:element minOccurs="0" ref="root:NameOfAlternateCodingSystem_1400" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element id="x3533" minOccurs="0" name="ERR">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element id="x1612" name="ErrorCodeAndLocation">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element id="x341" maxOccurs="unbounded" name="ErrorCodeAndLocation">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element id="x1456" minOccurs="0" name="SegmentID" type="SegmentID_1456_Type" />
+                          <xs:element id="x1265" minOccurs="0" name="Sequence" type="xs:decimal" />
+                          <xs:element id="x1199" minOccurs="0" name="FieldPosition" type="xs:decimal" />
+                          <xs:element id="x1907" minOccurs="0" name="CodeIdentifyingError">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element minOccurs="0" ref="root:Identifier_1385" />
+                                <xs:element minOccurs="0" ref="root:Text_1473" />
+                                <xs:element minOccurs="0" ref="root:NameOfCodingSystem_1401" />
+                                <xs:element minOccurs="0" ref="root:AlternateIdentifier_1313" />
+                                <xs:element minOccurs="0" ref="root:AlternateText_1314" />
+                                <xs:element minOccurs="0" ref="root:NameOfAlternateCodingSystem_1400" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="EscapeCharacter_73_Type">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="1" />
+      <xs:pattern value="\|!|@|#|$|%|^|&amp;|*|(|)|_|+|{|}|||:|&quot;|&lt;|&gt;|?|~" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EntityIdentifier_1362_Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element id="x1362" name="EntityIdentifier_1362" type="EntityIdentifier_1362_Type" />
+  <xs:simpleType name="NamespaceID_1091_Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element id="x1091" name="NamespaceID_1091" type="NamespaceID_1091_Type" />
+  <xs:simpleType name="UniversalID_1495_Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element id="x1495" name="UniversalID_1495" type="UniversalID_1495_Type" />
+  <xs:simpleType name="UniversalIDType_993_Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element id="x993" name="UniversalIDType_993" type="UniversalIDType_993_Type" />
+  <xs:simpleType name="Security_1455_Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MessageType_918_Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:pattern value="ACK|ADR|ADT|ARD|BAR|CRM|CSU|DFT|DSR|EDR|ERP|EQQ|MCF|MDM|MFN|MFK|MFD|MFQ|MFR|ORF|ORM|ORR|ORU|OSQ|OSR|PEX|PGL|PIN|PPG|PPP|PPR|PPT|PPV|PRR|PTR|QCK|QRY|RAR|RAS|RCI|RCL|RDE|RDR|RDS|REF|RER|RGR|RGV|ROR|RPA|RPI|RPL|RPR|RQA|RQC|RQI|RQP|RRA|RRD|RRE|RRG|RRI|SIU|SPQ|SQM|SQR|SRM|SRR|SUR|TBR|UDM|VQQ|VXQ|VXX|VXR|VXU" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TriggerEvent_990_Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:pattern value="A01|A02|A03|A04|A05|A06|A07|A08|A09|A10|A11|A12|A13|A14|A15|A16|A17|A18|A19|A20|A21|A22|A23|A24|A25|A26|A27|A28|A29|A30|A31|A32|A33|A34|A35|A36|A37|A38|C01|C02|C03|C04|C05|C06|C07|C08|C09|C10|C11|C12|I01|I02|I03|I04|I05|I06|I07|I08|I09|I10|I11|I12|I13|I14|I15|M01|M02|M03|varies|M04|M05|M06|M07|M08|O01|O02|RAR|RDR|RER|RGR|ROR|P01|P02|P03|P04|P05|P06|Q01|Q02|Q03|Q05|R01|R02|R03|R04|S01|S02|S03|S04|S05|S06|S07|S08|S09|S10|S11|S12|S13|S14|S15|S16|S17|S18|S19|S20|S21|S22|S23|S24|S25|T01|T02|T03|T04|T05|T06|T07|T08|T09|V01|V02|V03|V04|W01|W02|A39|A40|A41|A42|A43|A44|A45|A46|A47|A48|A49|A50|M09|M10|M11|P07|P08|P09|CNQ|PC1|PC2|PC3|PC4|PC5|PC6|PC7|PC8|PC9|PCB|PCC|PCD|PCE|PCF|PCG|PCH|PCJ|PCK|PCL|R05|R06|S26|T10|T11|T12" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="MessageControlID_1396_Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element id="x1396" name="MessageControlID_1396" type="MessageControlID_1396_Type" />
+  <xs:simpleType name="ProcessingID_943_Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:pattern value="D|P|T" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ProcessingMode_944_Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:pattern value="A|R|I|not&lt;SP&gt;present" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="VersionID_995_Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:pattern value="2.0|2.0D|2.1|2.2|2.3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ContinuationPointer_1341_Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="AcceptAcknowledgementType_849_Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:pattern value="AL|NE|ER|SU" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="ApplicationAcknowledgementType_860_Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:pattern value="AL|NE|ER|SU" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CountryCode_880_Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="CharacterSet_867_Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:pattern value="ASCII|8859/1|8859/2|8859/3|8859/4|8859/5|8859/6|8859/7|8859/8|8859/9|JAS2020|JIS&lt;SP&gt;X&lt;SP&gt;0202|JIS&lt;SP&gt;X&lt;SP&gt;0201-1976|JIS&lt;SP&gt;X&lt;SP&gt;0208&lt;SP&gt;-&lt;SP&gt;1990|JIS&lt;SP&gt;X&lt;SP&gt;0212-1990" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Identifier_1385_Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element id="x1385" name="Identifier_1385" type="Identifier_1385_Type" />
+  <xs:simpleType name="Text_1473_Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element id="x1473" name="Text_1473" type="Text_1473_Type" />
+  <xs:simpleType name="NameOfCodingSystem_1401_Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element id="x1401" name="NameOfCodingSystem_1401" type="NameOfCodingSystem_1401_Type" />
+  <xs:simpleType name="AlternateIdentifier_1313_Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element id="x1313" name="AlternateIdentifier_1313" type="AlternateIdentifier_1313_Type" />
+  <xs:simpleType name="AlternateText_1314_Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element id="x1314" name="AlternateText_1314" type="AlternateText_1314_Type" />
+  <xs:simpleType name="NameOfAlternateCodingSystem_1400_Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element id="x1400" name="NameOfAlternateCodingSystem_1400" type="NameOfAlternateCodingSystem_1400_Type" />
+  <xs:simpleType name="AcknowledgementCode_852_Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:pattern value="AA|AE|AR|CA|CE|CR" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TextMessage_1475_Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="DelayedAcknowledgementType_884_Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:pattern value="D|F" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="SegmentID_1456_Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

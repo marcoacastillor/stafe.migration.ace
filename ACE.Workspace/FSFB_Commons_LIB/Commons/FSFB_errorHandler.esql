@@ -1,0 +1,156 @@
+BROKER SCHEMA Commons
+
+
+
+-- declaración de namespace
+DECLARE ns 					NAMESPACE 'http://co/org/fsfb/fmwk';
+
+-- declaración de variables UDP
+DECLARE UDPmsgflow		EXTERNAL CHARACTER '';
+DECLARE UDPformato		EXTERNAL CHARACTER 'error';
+
+---------------------------------------------------------------
+--	MODULE FSFB_errorHandler
+--	Este módulo adecua el mensaje de error formato FSFB para
+-- 	dejarlo en cola de error y archivo de error.
+---------------------------------------------------------------
+CREATE COMPUTE MODULE FSFB_errorHandler
+	
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE system_			CHARACTER InputRoot.XMLNSC.ns:FSFB.Header.system;
+		DECLARE messageid_		BLOB;
+		DECLARE metadata_		REFERENCE TO InputRoot;
+
+		-- referenciar mensaje FSFB
+		DECLARE fsfb		REFERENCE TO InputRoot.XMLNSC.ns:FSFB;
+		DECLARE bodyin		REFERENCE TO fsfb.ns:Body;
+		DECLARE headin		REFERENCE TO fsfb.ns:Header;
+		-- referenciar propiedades para decodificar mensaje
+		DECLARE parser 		CHARACTER bodyin.parse.parser;
+		DECLARE msgtype		CHARACTER bodyin.parse.msgtype;
+		DECLARE msgset 		CHARACTER bodyin.parse.msgset;
+		DECLARE msgformat	CHARACTER bodyin.parse.msgformat;
+		DECLARE msgblob		BLOB bodyin.data;
+		DECLARE msgref		REFERENCE TO OutputLocalEnvironment.Variables.msg;
+		-- referencias al mensaje de salida
+		DECLARE msgid		BLOB InputRoot.MQMD.CorrelId;
+		DECLARE msgexc		REFERENCE TO InputExceptionList;
+		
+		CALL UTILS.decodemsg(parser, msgtype, msgset, msgformat, msgblob, msgref);
+		
+		SET OutputRoot.Properties.MessageSet		= 'FSFB_MessageSet (ERE46DS002001)';
+		SET OutputRoot.Properties.Encoding			= 546;
+		SET OutputRoot.Properties.CodedCharSetId	= 912;
+		SET OutputRoot.MQMD.MsgId					= msgid ;
+		SET OutputRoot.XMLNSC.error.msgflow 		= UDPmsgflow;
+		SET OutputRoot.XMLNSC.error.messageId		= msgid ;
+		SET OutputRoot.XMLNSC.error.timestamp 		= CURRENT_TIMESTAMP;
+		SET OutputRoot.XMLNSC.error.metadata 		= msgref;
+		SET OutputRoot.XMLNSC.error.system 			= msgexc;
+		
+		RETURN TRUE;
+		
+	END;
+
+END MODULE;
+
+---------------------------------------------------------------
+--	MODULE HL7_errorHandler
+--	Este módulo adecua el mensaje de error HL7 para
+-- 	dejarlo en cola de error y archivo de error.
+---------------------------------------------------------------
+CREATE COMPUTE MODULE HL7_errorHandler
+
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- referencias al mensaje de salida
+		DECLARE msgid		BLOB InputRoot.MQMD.CorrelId;
+		DECLARE metadata	REFERENCE TO InputRoot.MRM;
+		DECLARE msgexc		REFERENCE TO InputExceptionList;
+				
+		SET OutputRoot.Properties.MessageSet		= 'FSFB_MessageSet (ERE46DS002001)';
+		SET OutputRoot.Properties.Encoding			= 546;
+		SET OutputRoot.Properties.CodedCharSetId	= 912;
+		SET OutputRoot.MQMD.MsgId					= msgid ;
+		SET OutputRoot.XMLNSC.(XMLNSC.XmlDeclaration)*.(XMLNSC.Attribute)Encoding = 'iso-8859-1'; 
+		SET OutputRoot.XMLNSC.error.msgflow 		= UDPmsgflow;
+		SET OutputRoot.XMLNSC.error.messageId		= msgid ;
+		SET OutputRoot.XMLNSC.error.timestamp 		= CURRENT_TIMESTAMP;
+		SET OutputRoot.XMLNSC.error.metadata 		= metadata;
+		SET OutputRoot.XMLNSC.error.system 			= msgexc;
+		
+		RETURN TRUE;
+	END;
+	
+END MODULE;
+
+---------------------------------------------------------------
+--	MODULE XMLNS_errorHandler
+--	Este módulo adecua el mensaje de error XMLNS para
+-- 	dejarlo en cola de error y archivo de error.
+---------------------------------------------------------------
+CREATE COMPUTE MODULE XMLNS_errorHandler
+	
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- referencias al mensaje de salida
+		DECLARE msgid		BLOB InputRoot.MQMD.CorrelId;
+		DECLARE metadata	REFERENCE TO InputRoot.XMLNS;
+		DECLARE msgexc		REFERENCE TO InputExceptionList;
+		
+		--CALL builderror (msg, msgid, metadata, msgexc);
+			
+		SET OutputRoot.Properties.MessageSet		= 'FSFB_MessageSet (ERE46DS002001)';
+		SET OutputRoot.Properties.Encoding			= 546;
+		SET OutputRoot.Properties.CodedCharSetId	= 912;
+		SET OutputRoot.MQMD.MsgId					= msgid ;
+		SET OutputRoot.XMLNSC.error.msgflow 		= UDPmsgflow;
+		SET OutputRoot.XMLNSC.error.messageId		= msgid ;
+		SET OutputRoot.XMLNSC.error.timestamp 		= CURRENT_TIMESTAMP;
+		SET OutputRoot.XMLNSC.error.metadata 		= metadata;
+		SET OutputRoot.XMLNSC.error.system 			= msgexc;
+		
+		RETURN TRUE;
+		
+	END;
+
+END MODULE;
+
+---------------------------------------------------------------
+--	MODULE UDProute
+--	Enruta el mensaje de error dependiendo del tipo de 
+--	mensaje que se reciba. Pueden ser : hl7, xmlns, fsfb.
+---------------------------------------------------------------
+CREATE COMPUTE MODULE UDProute
+	
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- mantener CorrelId
+		SET OutputRoot = InputRoot;
+		
+		SET OutputLocalEnvironment.Destination.RouterList.DestinationData[1].labelName = UDPformato;
+	END;
+END MODULE;
+
+---------------------------------------------------------------
+--	FUNCTION builderror
+--	Función que construye el mensaje de error.
+---------------------------------------------------------------
+CREATE FUNCTION builderror(INOUT errormsg REFERENCE, IN messageid BLOB, IN metadata REFERENCE, IN lsexception REFERENCE)
+BEGIN
+	SET errormsg.Properties.MessageSet		= 'FSFB_MessageSet (ERE46DS002001)';
+	SET errormsg.Properties.Encoding		= 546;
+	SET errormsg.Properties.CodedCharSetId	= 850;
+	
+	SET errormsg.MQMD.MsgId					= messageid ;
+	
+	CREATE FIELD errormsg.XMLNSC.error;
+	
+	SET errormsg.XMLNSC.error.msgflow 		= UDPmsgflow;
+	SET errormsg.XMLNSC.error.messageId		= messageid ;
+	SET errormsg.XMLNSC.error.timestamp 	= CURRENT_TIMESTAMP;
+	SET errormsg.XMLNSC.error.metadata 		= metadata;
+	SET errormsg.XMLNSC.error.system 		= lsexception;
+END;
+

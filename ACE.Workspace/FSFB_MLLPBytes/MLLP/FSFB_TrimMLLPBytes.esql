@@ -1,0 +1,80 @@
+BROKER SCHEMA MLLP
+
+
+
+
+
+CREATE COMPUTE MODULE TrimMLLPBytes_Compute
+	DECLARE LeadingMLLPBytes EXTERNAL CHARACTER '0B';
+	DECLARE TrailingMLLPBytes EXTERNAL CHARACTER '1C0D';
+	DECLARE TrimLeadingMLLPBytes EXTERNAL BOOLEAN TRUE;
+	DECLARE TrimTrailingMLLPBytes EXTERNAL BOOLEAN FALSE;
+
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		DECLARE InputBlob REFERENCE TO InputRoot.BLOB.BLOB;
+		DECLARE FailureCondition BOOLEAN FALSE;
+		DECLARE env REFERENCE TO Environment.Variables;
+		SET OutputRoot = InputRoot;
+		SET OutputLocalEnvironment = InputLocalEnvironment;
+
+		IF ( TrimLeadingMLLPBytes ) THEN
+			DECLARE LeadingMLLPBLOB BLOB CAST ( LeadingMLLPBytes AS BLOB );
+			-- Checking whether the message has Leading MLLP Bytes
+			-- If not then propagate the message to 'Out' terminal, unchanged
+			DECLARE LeadingPosition INTEGER;
+			SET LeadingPosition = POSITION ( LeadingMLLPBLOB IN InputBlob );
+
+			IF ( LeadingPosition = 1 ) THEN
+				-- Trimming leading MLLP bytes
+				SET OutputRoot.BLOB.BLOB = TRIM ( LEADING LeadingMLLPBLOB FROM OutputRoot.BLOB.BLOB );
+			ELSE
+				-- Message does not contain the leading MLLP Bytes. Hence sets the
+				-- FailureCondition to TRUE and sets the Environment variables like
+				-- FlowMilestoneReached to 'MLLP' to indicate that error occurred while
+				-- trimming MLLP bytes and set other variables appropriately
+				SET FailureCondition = TRUE;
+				SET env.FlowMilestoneReached = 'MLLP';
+				SET env.SendNACK = 'NO'; -- Indicates whether to send the NACK message
+				SET env.EndConnection = 'YES'; -- Indicates whether to terminate the connection after NACK being sent
+				SET env.HL7RC = 'AR'; -- ACK code to be set in ACK message
+				SET env.Retry = 'YES'; -- Indicates whether to retry sending the message
+				SET env.ErrorCondition = 'MLLP error - missing start byte';  -- Error text to be included in the ACK message.
+			END IF;
+		END IF;		
+
+
+		IF ( TrimTrailingMLLPBytes ) THEN
+			DECLARE TrailingMLLPBLOB BLOB CAST ( TrailingMLLPBytes AS BLOB );
+			-- Checking whether the message has Trailing MLLP Bytes
+			-- If not then propagate the message to 'Out' terminal, unchanged
+			DECLARE TrailingPosition INTEGER POSITION ( TrailingMLLPBLOB IN InputBlob );
+			DECLARE TrailingBytesLength INTEGER LENGTH ( TrailingMLLPBLOB );
+			DECLARE MessageLength INTEGER LENGTH ( InputBlob );
+			DECLARE ActualPosition INTEGER ( MessageLength - TrailingBytesLength ) + 1;
+
+			IF ( TrailingPosition = ActualPosition ) THEN
+				-- Trimming trailing MLLP bytes
+				SET OutputRoot.BLOB.BLOB = TRIM ( TRAILING TrailingMLLPBLOB FROM OutputRoot.BLOB.BLOB );
+			ELSE
+				-- Message does not contain the trailing MLLP Bytes. Hence sets the
+				-- FailureCondition to TRUE and sets the Environment variables like
+				-- FlowMilestoneReached to 'MLLP' to indicate that error occurred while
+				-- trimming MLLP bytes and set other variables appropriately
+				SET FailureCondition = TRUE;
+				SET env.FlowMilestoneReached = 'MLLP';
+				SET env.SendNACK = 'YES';
+				SET env.EndConnection = 'YES';
+				SET env.HL7RC = 'AR';
+				SET env.Retry = 'YES';
+				SET env.ErrorCondition = 'MLLP error- missing or incorrect end bytes';
+			END IF;
+		END IF;
+		-- Checks if failure condition is set due to any error during trimming
+		-- of leading or trailing MLLP bytes and throws an Exception
+		IF ( FailureCondition ) THEN
+			THROW USER EXCEPTION VALUES('MLLP Error');
+		END IF;
+		RETURN TRUE;
+	END;
+END MODULE;

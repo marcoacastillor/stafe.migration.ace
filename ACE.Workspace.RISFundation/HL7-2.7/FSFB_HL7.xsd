@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+****************************************************************** 
+* 
+* The schemas contained in this document are reproduced with the express permission of 
+* Health Level Seven (R) International. ALL RIGHTS RESERVED.
+*  
+* The schemas contain material derived from HL7 standards. 
+* HL7 standards can be obtained from the HL7 website: www.HL7.org
+*
+* Health Level Seven International and IBM hereby grant permission, to those obtaining 
+* a copy of these materials, to use, copy and modify the materials solely for use with DFDL processors.
+*
+* Copyright © 1999-2011, Health Level Seven.
+*
+* © Copyright International Business Machines Corporation, 2013. 
+*
+************************************************************************
+*
+* Version 1.0 	GenericHL7.xsd
+*
+* This DFDL schema is for use with the IIB v10 DFDL HL7 tutorial.
+*
+* This DFDL schema is one of a set of schemas that model HL7 v2.7.
+* It provides a DFDL-annotated element to model an HL7 message in a generic manner. 
+* The generic HL7 message consists of an MSH segment followed by any number
+* of other HL7 segments or user-defined Z segments.   
+* 
+************************************************************************* 
+-->
+<xsd:schema elementFormDefault="qualified" targetNamespace="urn:hl7-org:v2xml" xmlns="urn:hl7-org:v2xml" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:hl7="urn:hl7-org:v2xml" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" xmlns:ibmhl7="http://www.ibm.com/dfdl/HL7Format" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions">
+
+    <xsd:import namespace="http://www.ibm.com/dfdl/HL7Format" schemaLocation="HL7Format.xsd"/>
+    <xsd:include schemaLocation="segments.xsd"/>
+
+    <xsd:annotation>
+		<xsd:appinfo source="http://www.ogf.org/dfdl/">
+			<dfdl:format ref="ibmhl7:HL7Format"/>
+		</xsd:appinfo>
+	</xsd:annotation>
+
+    <xsd:element dfdl:emptyValueDelimiterPolicy="initiator" ibmSchExtn:docRoot="true" name="ACK">
+		<xsd:complexType>
+			<xsd:sequence>
+		    	<xsd:element maxOccurs="1" minOccurs="1" ref="MSH"/>
+	    		<xsd:element maxOccurs="1" minOccurs="1" ref="MSA"/>
+	    		<xsd:element maxOccurs="1" minOccurs="0" ref="ERR"/>
+	    	</xsd:sequence>
+	    </xsd:complexType> 
+    </xsd:element>
+    
+    <xsd:element dfdl:emptyValueDelimiterPolicy="initiator" ibmSchExtn:docRoot="true" name="PV1_LOOP">
+		<xsd:complexType>
+			<xsd:sequence>
+		    	<xsd:element maxOccurs="1" minOccurs="1" ref="PV1"/>
+	    		<xsd:element maxOccurs="1" minOccurs="0" ref="PV2"/>
+	    	</xsd:sequence>
+	    </xsd:complexType> 
+    </xsd:element>
+    
+    <xsd:element dfdl:emptyValueDelimiterPolicy="initiator" ibmSchExtn:docRoot="true" name="IN1_LOOP">
+		<xsd:complexType>
+			<xsd:sequence>
+		    	<xsd:element maxOccurs="1" minOccurs="1" ref="IN1"/>
+	    		<xsd:element maxOccurs="1" minOccurs="0" ref="IN2"/>
+	    		<xsd:element maxOccurs="1" minOccurs="0" ref="IN3"/>
+	    	</xsd:sequence>
+	    </xsd:complexType> 
+    </xsd:element>
+    
+    <xsd:element dfdl:emptyValueDelimiterPolicy="initiator" ibmSchExtn:docRoot="true" name="OBX_LOOP">
+		<xsd:complexType>
+			<xsd:sequence>
+		    	<xsd:element maxOccurs="1" minOccurs="1" ref="OBX"/>
+	    		<xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+	    	</xsd:sequence>
+	    </xsd:complexType> 
+    </xsd:element>
+    
+    <xsd:element dfdl:emptyValueDelimiterPolicy="initiator" ibmSchExtn:docRoot="true" name="Order">
+		<xsd:complexType>
+			<xsd:sequence>
+		    	<xsd:element maxOccurs="1" minOccurs="1" ref="OBR"/>
+		    	<xsd:element maxOccurs="1" minOccurs="0" ref="ODS"/>
+		    	<xsd:element maxOccurs="1" minOccurs="0" ref="ODT"/>
+		    	<xsd:element maxOccurs="1" minOccurs="0" ref="RQ1"/>
+		    	<xsd:element maxOccurs="1" minOccurs="0" ref="RQD"/>
+		    	<xsd:element maxOccurs="1" minOccurs="0" ref="RXO"/>
+	    	</xsd:sequence>
+	    </xsd:complexType> 
+    </xsd:element>
+    
+    <xsd:element dfdl:emptyValueDelimiterPolicy="initiator" ibmSchExtn:docRoot="true" name="OrderDetail_LOOP">
+		<xsd:complexType>
+			<xsd:sequence>
+		    	<xsd:element maxOccurs="unbounded" minOccurs="0" ref="Order"/>
+	    		<xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+	    		<xsd:element maxOccurs="unbounded" minOccurs="0" ref="DG1"/>
+	    		<xsd:element maxOccurs="unbounded" minOccurs="0" ref="OBX_LOOP"/>
+	    	</xsd:sequence>
+	    </xsd:complexType> 
+    </xsd:element>    
+    
+    <xsd:element dfdl:emptyValueDelimiterPolicy="initiator" ibmSchExtn:docRoot="true" name="PID_LOOP">
+		<xsd:complexType>
+			<xsd:sequence>
+		    	<xsd:element maxOccurs="1" minOccurs="1" ref="PID"/>
+	    		<xsd:element maxOccurs="1" minOccurs="0" ref="PD1"/>
+	    		<xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+	    		<xsd:element maxOccurs="1" minOccurs="0" ref="PV1_LOOP"/>
+	    		<xsd:element maxOccurs="unbounded" minOccurs="0" ref="IN1_LOOP"/>
+	    		<xsd:element maxOccurs="1" minOccurs="0" ref="GT1"/>
+	    		<xsd:element maxOccurs="unbounded" minOccurs="0" ref="AL1"/>
+	    	</xsd:sequence>
+	    </xsd:complexType> 
+    </xsd:element> 
+    
+    <xsd:element dfdl:emptyValueDelimiterPolicy="initiator" ibmSchExtn:docRoot="true" name="ORC_LOOP">
+		<xsd:complexType>
+			<xsd:sequence>
+		    	<xsd:element maxOccurs="1" minOccurs="1" ref="ORC"/>
+	    		<xsd:element maxOccurs="1" minOccurs="0" ref="OrderDetail_LOOP"/>
+	    		<xsd:element maxOccurs="unbounded" minOccurs="0" ref="CTI"/>
+	    		<xsd:element maxOccurs="1" minOccurs="0" ref="BLG"/>
+	    	</xsd:sequence>
+	    </xsd:complexType> 
+    </xsd:element>
+    
+    <xsd:element dfdl:emptyValueDelimiterPolicy="initiator" ibmSchExtn:docRoot="true" name="O01">
+		<xsd:complexType>
+			<xsd:sequence>
+			    <xsd:element maxOccurs="1" minOccurs="1" ref="MSH"/>
+			    <xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+			    <xsd:element maxOccurs="1" minOccurs="0" ref="PID_LOOP"/>
+			    <xsd:element maxOccurs="unbounded" minOccurs="0" ref="ORC_LOOP"/>
+                <xsd:element dfdl:terminator="%NL;" minOccurs="0" name="OBR1" type="xsd:string"/>
+                <xsd:element dfdl:terminator="%NL;" minOccurs="0" name="OBR2" type="xsd:string"/>
+                <xsd:element dfdl:terminator="%NL;" minOccurs="0" name="OBR3" type="xsd:string"/>
+                <xsd:element dfdl:terminator="%NL;" minOccurs="0" name="OBR4" type="xsd:string"/>
+                <xsd:element dfdl:terminator="%NL;" minOccurs="0" name="OBR5" type="xsd:string"/>
+                <xsd:element dfdl:terminator="%NL;" minOccurs="0" name="OBR6" type="xsd:string"/>
+                <xsd:element dfdl:terminator="%NL;" minOccurs="0" name="OBR7" type="xsd:string"/>
+                <xsd:element dfdl:terminator="%NL;" minOccurs="0" name="OBR8" type="xsd:string"/>
+                <xsd:element dfdl:terminator="%NL;" minOccurs="0" name="OBR9" type="xsd:string"/>
+                <xsd:element dfdl:terminator="%NL;" minOccurs="0" name="OBR10" type="xsd:string"/>
+                <xsd:element dfdl:terminator="%NL;" minOccurs="0" name="OBR11" type="xsd:string"/>
+                <xsd:element dfdl:terminator="%NL;" minOccurs="0" name="OBR12" type="xsd:string"/>
+                <xsd:element dfdl:terminator="%NL;" minOccurs="0" name="OBR13" type="xsd:string"/>
+                <xsd:element dfdl:terminator="%NL;" minOccurs="0" name="OBR14" type="xsd:string"/>
+                <xsd:element dfdl:terminator="%NL;" minOccurs="0" name="OBR15" type="xsd:string"/>
+                <xsd:element maxOccurs="unbounded" minOccurs="0" ref="FT1"/>
+            </xsd:sequence>
+    	</xsd:complexType> 
+    </xsd:element>
+    
+    <xsd:element dfdl:emptyValueDelimiterPolicy="initiator" ibmSchExtn:docRoot="true" name="ADT">
+	    <xsd:complexType>
+		    <xsd:sequence>
+			    <xsd:element ref="MSH"/>
+				<xsd:element minOccurs="0" ref="EVN"/>
+				<xsd:element minOccurs="0" ref="PID"/>
+			    <xsd:element minOccurs="0" ref="PV1"/>
+		    </xsd:sequence>
+	    </xsd:complexType> 
+    </xsd:element>
+    
+    <xsd:element dfdl:emptyValueDelimiterPolicy="initiator" ibmSchExtn:docRoot="true" name="MFE_LOOP">
+		<xsd:complexType>
+			<xsd:sequence>
+			    <xsd:element maxOccurs="1" minOccurs="1" ref="MFE"/>
+			    <xsd:element maxOccurs="1" minOccurs="0" ref="STF"/>
+			    <xsd:element maxOccurs="1" minOccurs="0" ref="PRA"/>
+			    <xsd:element maxOccurs="1" minOccurs="0" ref="ORG"/>
+			    <xsd:element maxOccurs="1" minOccurs="0" ref="AFF"/>
+			    <xsd:element maxOccurs="1" minOccurs="0" ref="LAN"/>
+			    <xsd:element maxOccurs="1" minOccurs="0" ref="EDU"/>
+			    <xsd:element maxOccurs="1" minOccurs="0" ref="NTE"/>
+		    </xsd:sequence>
+	    </xsd:complexType> 
+    </xsd:element>
+
+    <xsd:element dfdl:emptyValueDelimiterPolicy="initiator" ibmSchExtn:docRoot="true" name="INRISMFN">
+		<xsd:complexType>
+			<xsd:sequence>
+			    <xsd:element maxOccurs="1" minOccurs="1" ref="MSH"/>
+			    <xsd:element maxOccurs="1" minOccurs="0" ref="MFI"/>
+			    <xsd:element maxOccurs="1" minOccurs="0" ref="MFE_LOOP"/>
+		    </xsd:sequence>
+	    </xsd:complexType> 
+    </xsd:element>
+    
+    <xsd:element dfdl:emptyValueDelimiterPolicy="initiator" ibmSchExtn:docRoot="true" name="R01">
+		<xsd:complexType>
+			<xsd:sequence>
+			    <xsd:element maxOccurs="1" minOccurs="1" ref="MSH"/>
+			    <xsd:element maxOccurs="unbounded" minOccurs="1" name="O01_LOOP">
+				    <xsd:complexType>
+				    	<xsd:sequence>
+						    <xsd:element maxOccurs="1" minOccurs="0" ref="PID_LOOP"/>
+						    <xsd:element maxOccurs="unbounded" minOccurs="1" ref="ORC_LOOP"/>
+					    </xsd:sequence>
+					 </xsd:complexType>
+			    </xsd:element> 
+			    <xsd:element maxOccurs="1" minOccurs="0" ref="DSC"/>
+		    </xsd:sequence>
+	    </xsd:complexType> 
+    </xsd:element>
+    
+    <xsd:element dfdl:emptyValueDelimiterPolicy="initiator" ibmSchExtn:docRoot="true" name="DFTF_RIS">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="MSH"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="MSA"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="ZPR"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="ERR"/>
+			</xsd:sequence>
+		</xsd:complexType> 
+	</xsd:element>
+	
+	<xsd:element dfdl:emptyValueDelimiterPolicy="initiator" ibmSchExtn:docRoot="true" name="P03">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="MSH"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="EVN"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="PID"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="PD1"/>
+				<xsd:element maxOccurs="unbounded" minOccurs="0" ref="ROL_LOOP_P03"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="PV1_LOOP_P03"/>
+				<xsd:element maxOccurs="unbounded" minOccurs="0" ref="DB1"/>
+				<xsd:element maxOccurs="unbounded" minOccurs="0" ref="ORC_LOOP_P03"/>
+				<xsd:element maxOccurs="unbounded" minOccurs="1" ref="FT1_LOOP_P03"/>
+				<xsd:element maxOccurs="unbounded" minOccurs="0" ref="DG1"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="DRG"/>
+				<xsd:element maxOccurs="unbounded" minOccurs="0" ref="GT1"/>
+				<xsd:element maxOccurs="unbounded" minOccurs="0" ref="IN1_LOOP_P03"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="ACC"/>
+			</xsd:sequence>
+		</xsd:complexType> 
+	</xsd:element>
+	
+	<xsd:element dfdl:emptyValueDelimiterPolicy="initiator" ibmSchExtn:docRoot="true" name="ROL_LOOP_P03">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="2" minOccurs="2" ref="ROL"/>
+			</xsd:sequence>
+		</xsd:complexType> 
+	</xsd:element>
+    
+    <xsd:element dfdl:emptyValueDelimiterPolicy="initiator" ibmSchExtn:docRoot="true" name="PV1_LOOP_P03">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="PV1"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="PV2"/>
+				<xsd:element maxOccurs="unbounded" minOccurs="0" ref="ROL_LOOP_P03"/>
+			</xsd:sequence>
+		</xsd:complexType> 
+	</xsd:element>
+	
+	<xsd:element dfdl:emptyValueDelimiterPolicy="initiator" ibmSchExtn:docRoot="true" name="ORC_LOOP_P03">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="ORC"/>
+				<xsd:element dfdl:emptyValueDelimiterPolicy="initiator" ibmSchExtn:docRoot="true" maxOccurs="1" minOccurs="0" name="OBR_LOOP">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element maxOccurs="1" minOccurs="1" ref="OBR"/>
+							<xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element> 
+				<xsd:element dfdl:emptyValueDelimiterPolicy="initiator" ibmSchExtn:docRoot="true" maxOccurs="unbounded" minOccurs="0" name="OBX_LOOP">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element maxOccurs="1" minOccurs="1" ref="OBX"/>
+							<xsd:element maxOccurs="unbounded" minOccurs="0" ref="NTE"/>
+						</xsd:sequence>
+					</xsd:complexType> 
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType> 
+	</xsd:element>
+	
+	<xsd:element dfdl:emptyValueDelimiterPolicy="initiator" ibmSchExtn:docRoot="true" name="FT1_LOOP_P03">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="FT1"/>
+				<xsd:element dfdl:emptyValueDelimiterPolicy="initiator" ibmSchExtn:docRoot="true" maxOccurs="unbounded" minOccurs="0" name="PR1_LOOP">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element maxOccurs="unbounded" minOccurs="0" ref="PR1"/>
+							<xsd:element maxOccurs="unbounded" minOccurs="0" ref="ROL_LOOP_P03"/>
+						</xsd:sequence>
+					</xsd:complexType> 
+				</xsd:element>
+				<xsd:element maxOccurs="unbounded" minOccurs="0" ref="ORC_LOOP_P03"/>
+				<xsd:element maxOccurs="unbounded" minOccurs="0" ref="DG1"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="DRG"/>
+				<xsd:element maxOccurs="unbounded" minOccurs="0" ref="GT1"/>
+				<xsd:element maxOccurs="unbounded" minOccurs="0" ref="IN1_LOOP_P03"/>
+			</xsd:sequence>
+		</xsd:complexType> 
+	</xsd:element>
+	
+	<xsd:element dfdl:emptyValueDelimiterPolicy="initiator" ibmSchExtn:docRoot="true" name="IN1_LOOP_P03">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element maxOccurs="1" minOccurs="1" ref="IN1"/>
+				<xsd:element maxOccurs="1" minOccurs="0" ref="IN2"/>
+				<xsd:element maxOccurs="unbounded" minOccurs="0" ref="IN3"/>
+				<xsd:element maxOccurs="unbounded" minOccurs="0" ref="ROL_LOOP_P03"/>
+			</xsd:sequence>
+		</xsd:complexType> 
+	</xsd:element>    
+</xsd:schema>
