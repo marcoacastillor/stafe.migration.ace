@@ -1,0 +1,16 @@
+CREATE COMPUTE MODULE Modules_GetIdentifierReply_Async
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- Anular propiedad soap
+		SET OutputRoot.Properties = NULL;
+		
+		-- Guardar información para responder a cliente
+		SET OutputLocalEnvironment.Destination.SOAP.Reply.ReplyIdentifier = CAST(InputLocalEnvironment.usr.response.replyIdentifier AS BLOB);
+		
+		--Copiar el mensaje
+		SET OutputRoot.XMLNSC = InputRoot.XMLNSC;
+		
+		RETURN TRUE;
+		
+	END;
+END MODULE;

@@ -1,4 +1,0 @@
-CREATE FUNCTION removeGlobalCache (IN key CHARACTER, IN mapName CHARACTER)
-RETURNS CHARACTER
-LANGUAGE JAVA
-EXTERNAL NAME "co.com.global.cache.GlobalCache.remove";

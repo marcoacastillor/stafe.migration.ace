@@ -1,0 +1,202 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Swagger Customer - OpenAPI 3.0",
+    "description": "Prueba de concepto",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "marcoacastillor@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.11"
+  },
+  "externalDocs": {
+    "description": "Buscar documentación sobre swagger",
+    "url": "http://swagger.io"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:7800/services/customer/api/v3"
+    }
+  ],
+  "tags": [
+    {
+      "name": "customer",
+      "description": "Operaciones sobre clientes",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://swagger.io"
+      }
+    }
+  ],
+  "paths": {
+    "/customer/get-by-id-mq": {
+      "post": {
+        "tags": [
+          "customer"
+        ],
+        "summary": "Consultar información de cliente por tipo y número de id",
+        "description": "Consulta",
+        "operationId": "getCustomer",
+        "requestBody": {
+          "description": "Consultar datos de cliente",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerSearch"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customer"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/customer/get-by-id-async": {
+      "post": {
+        "tags": [
+          "customer"
+        ],
+        "summary": "Consultar información de cliente por tipo y número de id",
+        "description": "Consulta",
+        "operationId": "getCustomerAsync",
+        "requestBody": {
+          "description": "Consultar datos de cliente",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerSearch"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Operación exitosa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customer"
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CustomerSearch": {
+        "type": "object",
+        "properties": {
+          "type_id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 100000
+          },
+          "number_id": {
+            "type": "string",
+            "example": "fehguy"
+          }
+        }
+      },
+      "Customer": {
+        "type": "object",
+        "properties": {
+          "type_id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 100000
+          },
+          "number_id": {
+            "type": "string",
+            "example": "fehguy"
+          },
+          "names": {
+            "type": "string",
+            "example": "Jhon"
+          },
+          "last_names": {
+            "type": "string",
+            "example": "Smith"
+          },
+          "address": {
+            "type": "string",
+            "example": "cra 34"
+          },
+          "jobs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Job"
+            }
+          }
+        }
+      },
+      "Job": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "example": "0001"
+          },
+          "name": {
+            "type": "string",
+            "example": "Consultor"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "petstore_auth": {
+        "type": "oauth2",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "https://petstore3.swagger.io/oauth/authorize",
+            "scopes": {
+              "write:pets": "modify pets in your account",
+              "read:pets": "read your pets"
+            }
+          }
+        }
+      }
+    }
+  }
+}

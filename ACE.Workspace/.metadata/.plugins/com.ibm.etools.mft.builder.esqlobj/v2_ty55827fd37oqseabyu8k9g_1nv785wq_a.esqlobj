@@ -1,7 +1,0 @@
-CREATE FUNCTION createHeader(INOUT fsfb REFERENCE, IN operation CHARACTER, IN system CHARACTER) 
-BEGIN
-	-- crear header del mensaje
-	CREATE FIELD fsfb.ns:Header;
-		SET fsfb.ns:Header.ns:operation 		= operation;
-		SET fsfb.ns:Header.ns:system			= system;
-END;

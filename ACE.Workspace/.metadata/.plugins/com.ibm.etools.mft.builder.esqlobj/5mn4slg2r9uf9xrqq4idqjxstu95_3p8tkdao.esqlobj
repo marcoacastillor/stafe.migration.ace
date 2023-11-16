@@ -1,7 +1,0 @@
-CREATE FUNCTION encodemsg (IN msgtype CHARACTER, IN msgset CHARACTER, IN msgformat CHARACTER, 
-							IN msgref REFERENCE, OUT msgblob BLOB ) BEGIN
-	
-	SET msgblob		= ASBITSTREAM(msgref CCSID 850  
-								SET msgset TYPE msgtype FORMAT msgformat);
-			
-END;

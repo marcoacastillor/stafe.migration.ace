@@ -1,0 +1,27 @@
+/*EATE FUNCTION Main() RETURNS BOOLE*/
+	BEGIN
+		-- Copiar datos de transacción
+		SET OutputLocalEnvironment = InputLocalEnvironment;
+		
+		-- Declarar variables
+		DECLARE code, name, desc CHARACTER '';
+		
+		--Declarar referencia a lista de excepciones técnicas.
+		DECLARE refExceptionList REFERENCE TO InputExceptionList;
+		CALL gov.co.cundinamarca.utils.getDescriptionExceptionList(refExceptionList, code, name, desc);
+		
+		
+		-- Crear mensaje de salida
+		/* --------------------------------------------------------- */
+		CREATE FIELD OutputRoot.XMLNSC.ns:GetDataAgreementResponse;
+		DECLARE refOut REFERENCE TO  OutputRoot.XMLNSC.ns:GetDataAgreementResponse;
+		
+		SET refOut.transactionRs.status.code	= 700;
+		SET refOut.transactionRs.status.desc	= 'Error en la mediación';
+		
+		
+		SET refOut.transactionRs.businessError.code	= code;
+		SET refOut.transactionRs.businessError.desc	= name || ' : ' || desc;
+		
+		RETURN TRUE;
+	END;

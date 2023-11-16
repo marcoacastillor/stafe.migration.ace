@@ -1,0 +1,36 @@
+CREATE COMPUTE MODULE Customer_GetById_ResponseService
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- Copiar cabeceras para respuesta
+		/* --------------------------------------------------------- */
+		SET OutputRoot.MQMD 	= InputRoot.MQMD;
+		SET OutputRoot.MQRFH2 	= InputRoot.MQRFH2;
+		
+		-- Declarar referencias
+		DECLARE refInp REFERENCE TO InputRoot;
+		MOVE refInp LASTCHILD;
+		MOVE refInp LASTCHILD;
+		
+		DECLARE sql CHARACTER 'SELECT * FROM CUSTOMER.CUSTOMER WHERE type_id = ? AND number_id = ?';
+		SET Environment.usr.data[] = PASSTHRU(sql, refInp.type_id, refInp.number_id);
+		
+		/* --------------------------------------------------------- */
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
+		
+		-- Prueba resultado
+		SET refOut.status.code = '200';
+		SET refOut.status.desc = 'Exitoso - mock';
+		SET refOut.status.dateResponse = CAST(CURRENT_TIMESTAMP AS CHARACTER FORMAT 'YYYYMMdd hh:mm:ss');
+		
+		IF CARDINALITY(Environment.usr.data[]) > 1 THEN
+			SET refOut.customer = Environment.usr.data;
+			FOR refCust AS Environment.usr.data[] THEN
+				
+			END FOR; 		
+		END IF;
+		
+		
+		RETURN TRUE;
+	END;
+END MODULE;
