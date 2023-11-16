@@ -1,0 +1,9 @@
+/*EATE FUNCTION Main() RETURNS BOOLE*/
+	BEGIN
+		-- Devolver parámetros de servicio
+		SET OutputLocalEnvironment.usr = Environment.usr;
+		
+		
+		
+		RETURN TRUE;
+	END;

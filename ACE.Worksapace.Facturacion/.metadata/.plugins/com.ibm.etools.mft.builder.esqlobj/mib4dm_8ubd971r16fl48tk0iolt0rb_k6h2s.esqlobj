@@ -1,9 +1,0 @@
-CREATE FUNCTION getYearsByDates(IN myBornDate CHARACTER, IN myActualDate CHARACTER)RETURNS CHARACTER
-BEGIN
-	DECLARE bornDate DATE CAST(myBornDate AS DATE);
-	DECLARE actualDate DATE CAST(myActualDate AS DATE);
-	
-	DECLARE yearInterval INTERVAL (actualDate - bornDate)YEAR;
-	DECLARE years INTEGER cast(yearInterval AS INTEGER); 
-	return CAST(years AS CHARACTER);
-END;

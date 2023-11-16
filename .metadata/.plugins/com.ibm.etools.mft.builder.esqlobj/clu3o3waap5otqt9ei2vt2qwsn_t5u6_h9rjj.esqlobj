@@ -1,0 +1,15 @@
+CREATE COMPUTE MODULE Modules_GetIdentifierReply_Async
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		--Poner utf-8 a la respuesta
+		SET OutputRoot.Properties.Encoding = 1209;
+		
+		--Copiar el mensaje
+		SET OutputRoot.JSON = InputRoot.JSON;
+		
+		-- Guardar información para responder a cliente
+		SET OutputLocalEnvironment.Destination.HTTP.RequestIdentifier = CAST(InputLocalEnvironment.usr.response.replyIdentifier AS BLOB);
+		
+		RETURN TRUE;
+	END;
+END MODULE;

@@ -1,0 +1,1330 @@
+!SESSION 2023-11-15 14:36:02.496 -----------------------------------------------
+eclipse.buildId=4.15.0.2020042
+java.fullversion=8.0.7.5 - pwa6480sr7fp5ifix-20220310_01(SR7 FP5+IJ37785)
+JRE 1.8.0 Windows 10 amd64-64-Bit Compressed References 20220104_19630 (JIT enabled, AOT enabled)
+OpenJ9   - 2d4c7d9
+OMR      - 59845b7
+IBM      - 3c151c1
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_CO
+Framework arguments:  -showlocation -product com.ibm.etools.msgbroker.tooling.ide tools_auto -showlocation -product com.ibm.etools.msgbroker.tooling.ide
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -showlocation -product com.ibm.etools.msgbroker.tooling.ide tools_auto -showlocation -product com.ibm.etools.msgbroker.tooling.ide
+
+!ENTRY org.eclipse.equinox.registry 2 0 2023-11-15 14:36:45.453
+!MESSAGE The extensions and extension-points from the bundle "org.eclipse.emf.commonj.sdo" are ignored. The bundle is not marked as singleton. 
+
+!ENTRY org.eclipse.emf.ecore 2 0 2023-11-15 15:07:09.871
+!MESSAGE Both 'com.ibm.etools.mft.fcb' and 'com.ibm.etools.mft.gef.emf' register a package for 'http://www.ibm.com/wbi/2005/eflow_utility'
+
+!ENTRY org.eclipse.emf.ecore 2 0 2023-11-15 15:07:09.873
+!MESSAGE Both 'com.ibm.etools.mft.gef.emf' and 'com.ibm.etools.mft.gef.emf' register a package for 'http://www.ibm.com/wbi/2005/eflow_utility'
+
+!ENTRY org.eclipse.emf.ecore 2 0 2023-11-15 15:07:09.875
+!MESSAGE Both 'com.ibm.etools.mft.fcb' and 'com.ibm.etools.mft.pattern.capture.annotation' register a package for 'http://www.ibm.com/patternAnnotation/2010'
+
+!ENTRY org.eclipse.emf.ecore 2 0 2023-11-15 15:07:09.877
+!MESSAGE Both 'com.ibm.etools.mft.gef.emf' and 'org.eclipse.emf.ecore' register a package for 'http://www.eclipse.org/emf/2002/Ecore'
+
+!ENTRY org.eclipse.emf.ecore 2 0 2023-11-15 15:07:09.884
+!MESSAGE Both 'com.ibm.etools.javaee.core' and 'com.ibm.etools.mft.service.model' register an extension parser for 'application'
+
+!ENTRY org.eclipse.ui 2 2 2023-11-15 15:07:12.750
+!MESSAGE Invalid preference category path: com.ibm.importer.preferences (bundle: com.ibm.adapter.c, page: com.ibm.adapter.c.ui.preferencepage.CPreferencePage)
+
+!ENTRY org.eclipse.ui 2 2 2023-11-15 15:07:12.753
+!MESSAGE Invalid preference category path: com.ibm.importer.preferences (bundle: com.ibm.etools.cobol.preference.ui, page: com.ibm.etools.cobol.preference.ui.preferencepage.CobolPreferencePage)
+
+!ENTRY org.eclipse.ui 2 2 2023-11-15 15:07:12.755
+!MESSAGE Invalid preference category path: com.ibm.debug.breakpoints.common.pref.tracepoint (bundle: com.ibm.debug.wsa, page: com.ibm.debug.wsa.WSATracepointPreferencePage)
+
+!ENTRY org.eclipse.jface.text 2 0 2023-11-15 15:07:16.847
+!MESSAGE Duplicate template id: 'com.ibm.datatools.sqlxeditor.templates.xmlnamespaces2'
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-11-15 15:07:17.530
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\marco'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.ibm.etools.mft.pattern.community 4 0 2023-11-15 15:07:18.392
+!MESSAGE Connection to the URL https://ot4i.github.io/ace-patterns/es/repo_metadata.json failed. Response code: 404
+
+!ENTRY com.ibm.mq.runtime 1 0 2023-11-15 15:07:18.750
+!MESSAGE 
+
+!ENTRY com.ibm.mq.runtime 1 0 2023-11-15 15:07:18.752
+!MESSAGE C:\Program Files\IBM\ACE\12.0.5.0\tools>mqsifindmqpath
+
+!ENTRY com.ibm.mq.runtime 1 0 2023-11-15 15:07:19.333
+!MESSAGE BIP8071I: El mandato ha finalizado correctamente. C:\Program Files\IBM\MQ
+
+!ENTRY com.ibm.mq.runtime 1 0 2023-11-15 15:07:19.335
+!MESSAGE MQ Install location found:C:/Program Files/IBM/MQ
+
+!ENTRY com.ibm.mq.runtime 1 0 2023-11-15 15:07:19.337
+!MESSAGE 
+
+!ENTRY com.ibm.etools.mft.uri 0 0 2023-11-15 15:24:02.228
+!MESSAGE 
+
+!ENTRY com.ibm.etools.mft.electronapp 4 0 2023-11-15 15:24:05.536
+!MESSAGE Unable to start the Toolkit applicationopenapi.json\\.\pipe\ibmtkelectronapp6096_1OAPIED (The system cannot find the file specified.)
+!STACK 0
+java.io.FileNotFoundException: \\.\pipe\ibmtkelectronapp6096_1OAPIED (The system cannot find the file specified.)
+	at java.io.RandomAccessFile.open(RandomAccessFile.java:333)
+	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:257)
+	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:135)
+	at com.ibm.etools.mft.electronapp.ElectronAppCommsSession.<init>(ElectronAppCommsSession.java:113)
+	at com.ibm.etools.mft.electronapp.ElectronApp$2.run(ElectronApp.java:423)
+	at java.lang.Thread.run(Thread.java:825)
+
+!ENTRY org.eclipse.ui 4 4 2023-11-15 16:12:09.283
+!MESSAGE To avoid deadlock while executing Display.syncExec() with argument: com.ibm.etools.mft.navigator.resource.viewer.ResourceTreeContentProvider$ResourceChangeListener$DeltaVisitorRunnable@a64a09aa, thread Worker-50: Building will interrupt UI thread.
+!SUBENTRY 1 org.eclipse.ui 4 4 2023-11-15 16:12:09.283
+!MESSAGE Worker-50: Building thread is an instance of Worker or owns an ILock
+!STACK 0
+java.lang.IllegalStateException: Call stack for thread Worker-50: Building
+	at com.ibm.java.lang.management.internal.ThreadMXBeanImpl.getMultiThreadInfoImpl(Native Method)
+	at com.ibm.java.lang.management.internal.ThreadMXBeanImpl.getThreadInfoCommon(ThreadMXBeanImpl.java:338)
+	at com.ibm.java.lang.management.internal.ThreadMXBeanImpl.getThreadInfo(ThreadMXBeanImpl.java:308)
+	at org.eclipse.ui.internal.UILockListener.reportInterruption(UILockListener.java:209)
+	at org.eclipse.ui.internal.UILockListener.interruptUI(UILockListener.java:179)
+	at org.eclipse.ui.internal.PendingSyncExec.waitUntilExecuted(PendingSyncExec.java:92)
+	at org.eclipse.ui.internal.UISynchronizer.syncExec(UISynchronizer.java:142)
+	at org.eclipse.swt.widgets.Display.syncExec(Display.java:4561)
+	at com.ibm.etools.mft.navigator.resource.viewer.ResourceTreeContentProvider$ResourceChangeListener.resourceChanged(ResourceTreeContentProvider.java:167)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:305)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:295)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:158)
+	at org.eclipse.core.internal.resources.Workspace.broadcastBuildEvent(Workspace.java:366)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:157)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:244)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.ui 4 4 2023-11-15 16:12:09.283
+!MESSAGE UI thread waiting on a job or lock.
+!STACK 0
+java.lang.IllegalStateException: Call stack for thread main
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:218)
+	at org.eclipse.core.internal.jobs.Semaphore.acquire(Semaphore.java:44)
+	at org.eclipse.core.internal.jobs.OrderedLock.doAcquire(OrderedLock.java:173)
+	at org.eclipse.core.internal.jobs.OrderedLock.acquire(OrderedLock.java:109)
+	at org.eclipse.core.internal.jobs.OrderedLock.acquire(OrderedLock.java:85)
+	at org.eclipse.core.internal.resources.WorkManager.checkIn(WorkManager.java:125)
+	at org.eclipse.core.internal.resources.Workspace.prepareOperation(Workspace.java:2242)
+	at org.eclipse.core.internal.resources.Marker.setAttribute(Marker.java:257)
+	at org.eclipse.core.internal.resources.Marker.setAttribute(Marker.java:283)
+	at com.ibm.etools.mft.debug.flow.breakpoints.AbstractFlowBreakpoint.setActive(AbstractFlowBreakpoint.java:145)
+	at com.ibm.etools.mft.debug.flow.utils.FlowDebugUtils.removeAllMarkers(FlowDebugUtils.java:497)
+	at com.ibm.etools.mft.debug.flow.utils.FlowDebugUtils.updateMarker(FlowDebugUtils.java:623)
+	at com.ibm.etools.mft.debug.flow.FlowDebugHelperDelegate$2.run(FlowDebugHelperDelegate.java:482)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3897)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3527)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1160)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1049)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:658)
+	at org.eclipse.ui.internal.Workbench$$Lambda$104/0x00000000d4d01550.run(Unknown Source)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:557)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:154)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:150)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:137)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:107)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:90)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55)
+	at java.lang.reflect.Method.invoke(Method.java:508)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:657)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:594)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1447)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1420)
+
+!ENTRY org.eclipse.ui 4 4 2023-11-15 16:12:10.326
+!MESSAGE To avoid deadlock while executing Display.syncExec() with argument: com.ibm.etools.mft.navigator.resource.viewer.ResourceTreeContentProvider$ResourceChangeListener$DeltaVisitorRunnable@9e2fe30d, thread Worker-50: Building will interrupt UI thread.
+!SUBENTRY 1 org.eclipse.ui 4 4 2023-11-15 16:12:10.326
+!MESSAGE Worker-50: Building thread is an instance of Worker or owns an ILock
+!STACK 0
+java.lang.IllegalStateException: Call stack for thread Worker-50: Building
+	at com.ibm.java.lang.management.internal.ThreadMXBeanImpl.getMultiThreadInfoImpl(Native Method)
+	at com.ibm.java.lang.management.internal.ThreadMXBeanImpl.getThreadInfoCommon(ThreadMXBeanImpl.java:338)
+	at com.ibm.java.lang.management.internal.ThreadMXBeanImpl.getThreadInfo(ThreadMXBeanImpl.java:308)
+	at org.eclipse.ui.internal.UILockListener.reportInterruption(UILockListener.java:209)
+	at org.eclipse.ui.internal.UILockListener.interruptUI(UILockListener.java:179)
+	at org.eclipse.ui.internal.PendingSyncExec.waitUntilExecuted(PendingSyncExec.java:92)
+	at org.eclipse.ui.internal.UISynchronizer.syncExec(UISynchronizer.java:142)
+	at org.eclipse.swt.widgets.Display.syncExec(Display.java:4561)
+	at com.ibm.etools.mft.navigator.resource.viewer.ResourceTreeContentProvider$ResourceChangeListener.resourceChanged(ResourceTreeContentProvider.java:167)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:305)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:295)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:158)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:380)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1502)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:169)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:244)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.ui 4 4 2023-11-15 16:12:10.327
+!MESSAGE UI thread waiting on a job or lock.
+!STACK 0
+java.lang.IllegalStateException: Call stack for thread main
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:218)
+	at org.eclipse.core.internal.jobs.Semaphore.acquire(Semaphore.java:44)
+	at org.eclipse.core.internal.jobs.OrderedLock.doAcquire(OrderedLock.java:173)
+	at org.eclipse.core.internal.jobs.OrderedLock.acquire(OrderedLock.java:109)
+	at org.eclipse.core.internal.jobs.OrderedLock.acquire(OrderedLock.java:85)
+	at org.eclipse.core.internal.resources.WorkManager.checkIn(WorkManager.java:125)
+	at org.eclipse.core.internal.resources.Workspace.prepareOperation(Workspace.java:2242)
+	at org.eclipse.core.internal.resources.Marker.delete(Marker.java:74)
+	at com.ibm.etools.mft.debug.flow.breakpoints.FlowPointManager.removeFlowpoint(FlowPointManager.java:161)
+	at com.ibm.etools.mft.debug.flow.utils.FlowDebugUtils.removeAllMarkers(FlowDebugUtils.java:524)
+	at com.ibm.etools.mft.debug.flow.utils.FlowDebugUtils.updateMarker(FlowDebugUtils.java:623)
+	at com.ibm.etools.mft.debug.flow.FlowDebugHelperDelegate$2.run(FlowDebugHelperDelegate.java:482)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3897)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3527)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1160)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1049)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:658)
+	at org.eclipse.ui.internal.Workbench$$Lambda$104/0x00000000d4d01550.run(Unknown Source)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:557)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:154)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:150)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:137)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:107)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:90)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55)
+	at java.lang.reflect.Method.invoke(Method.java:508)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:657)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:594)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1447)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1420)
+
+!ENTRY org.eclipse.ui 4 4 2023-11-15 16:12:11.346
+!MESSAGE To avoid deadlock while executing Display.syncExec() with argument: com.ibm.etools.fcb.plugin.FCBGraphicalEditorPart$ResourceChangeListener$1@33fd181, thread Worker-50: Building will interrupt UI thread.
+!SUBENTRY 1 org.eclipse.ui 4 4 2023-11-15 16:12:11.346
+!MESSAGE Worker-50: Building thread is an instance of Worker or owns an ILock
+!STACK 0
+java.lang.IllegalStateException: Call stack for thread Worker-50: Building
+	at com.ibm.java.lang.management.internal.ThreadMXBeanImpl.getMultiThreadInfoImpl(Native Method)
+	at com.ibm.java.lang.management.internal.ThreadMXBeanImpl.getThreadInfoCommon(ThreadMXBeanImpl.java:338)
+	at com.ibm.java.lang.management.internal.ThreadMXBeanImpl.getThreadInfo(ThreadMXBeanImpl.java:308)
+	at org.eclipse.ui.internal.UILockListener.reportInterruption(UILockListener.java:209)
+	at org.eclipse.ui.internal.UILockListener.interruptUI(UILockListener.java:179)
+	at org.eclipse.ui.internal.PendingSyncExec.waitUntilExecuted(PendingSyncExec.java:92)
+	at org.eclipse.ui.internal.UISynchronizer.syncExec(UISynchronizer.java:142)
+	at org.eclipse.swt.widgets.Display.syncExec(Display.java:4561)
+	at com.ibm.etools.fcb.plugin.FCBGraphicalEditorPart$ResourceChangeListener.resourceChanged(FCBGraphicalEditorPart.java:248)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:305)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:295)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:158)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:380)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1502)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:169)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:244)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.ui 4 4 2023-11-15 16:12:11.346
+!MESSAGE UI thread waiting on a job or lock.
+!STACK 0
+java.lang.IllegalStateException: Call stack for thread main
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:218)
+	at org.eclipse.core.internal.jobs.Semaphore.acquire(Semaphore.java:44)
+	at org.eclipse.core.internal.jobs.OrderedLock.doAcquire(OrderedLock.java:173)
+	at org.eclipse.core.internal.jobs.OrderedLock.acquire(OrderedLock.java:109)
+	at org.eclipse.core.internal.jobs.OrderedLock.acquire(OrderedLock.java:85)
+	at org.eclipse.core.internal.resources.WorkManager.checkIn(WorkManager.java:125)
+	at org.eclipse.core.internal.resources.Workspace.prepareOperation(Workspace.java:2242)
+	at org.eclipse.core.internal.resources.Marker.delete(Marker.java:74)
+	at com.ibm.etools.mft.debug.flow.breakpoints.FlowPointManager.removeFlowpoint(FlowPointManager.java:161)
+	at com.ibm.etools.mft.debug.flow.utils.FlowDebugUtils.removeAllMarkers(FlowDebugUtils.java:524)
+	at com.ibm.etools.mft.debug.flow.utils.FlowDebugUtils.updateMarker(FlowDebugUtils.java:623)
+	at com.ibm.etools.mft.debug.flow.FlowDebugHelperDelegate$2.run(FlowDebugHelperDelegate.java:482)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3897)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3527)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1160)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1049)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:658)
+	at org.eclipse.ui.internal.Workbench$$Lambda$104/0x00000000d4d01550.run(Unknown Source)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:557)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:154)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:150)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:137)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:107)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:90)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55)
+	at java.lang.reflect.Method.invoke(Method.java:508)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:657)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:594)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1447)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1420)
+
+!ENTRY org.eclipse.ui 4 4 2023-11-15 16:12:12.351
+!MESSAGE To avoid deadlock while executing Display.syncExec() with argument: com.ibm.etools.fcb.plugin.FCBGraphicalEditorPart$ResourceChangeListener$1@4da29245, thread Worker-50: Building will interrupt UI thread.
+!SUBENTRY 1 org.eclipse.ui 4 4 2023-11-15 16:12:12.351
+!MESSAGE Worker-50: Building thread is an instance of Worker or owns an ILock
+!STACK 0
+java.lang.IllegalStateException: Call stack for thread Worker-50: Building
+	at com.ibm.java.lang.management.internal.ThreadMXBeanImpl.getMultiThreadInfoImpl(Native Method)
+	at com.ibm.java.lang.management.internal.ThreadMXBeanImpl.getThreadInfoCommon(ThreadMXBeanImpl.java:338)
+	at com.ibm.java.lang.management.internal.ThreadMXBeanImpl.getThreadInfo(ThreadMXBeanImpl.java:308)
+	at org.eclipse.ui.internal.UILockListener.reportInterruption(UILockListener.java:209)
+	at org.eclipse.ui.internal.UILockListener.interruptUI(UILockListener.java:179)
+	at org.eclipse.ui.internal.PendingSyncExec.waitUntilExecuted(PendingSyncExec.java:92)
+	at org.eclipse.ui.internal.UISynchronizer.syncExec(UISynchronizer.java:142)
+	at org.eclipse.swt.widgets.Display.syncExec(Display.java:4561)
+	at com.ibm.etools.fcb.plugin.FCBGraphicalEditorPart$ResourceChangeListener.resourceChanged(FCBGraphicalEditorPart.java:248)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:305)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:295)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:158)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:380)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1502)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:169)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:244)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.ui 4 4 2023-11-15 16:12:12.351
+!MESSAGE UI thread waiting on a job or lock.
+!STACK 0
+java.lang.IllegalStateException: Call stack for thread main
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:218)
+	at org.eclipse.core.internal.jobs.Semaphore.acquire(Semaphore.java:44)
+	at org.eclipse.core.internal.jobs.OrderedLock.doAcquire(OrderedLock.java:173)
+	at org.eclipse.core.internal.jobs.OrderedLock.acquire(OrderedLock.java:109)
+	at org.eclipse.core.internal.jobs.OrderedLock.acquire(OrderedLock.java:85)
+	at org.eclipse.core.internal.resources.WorkManager.checkIn(WorkManager.java:125)
+	at org.eclipse.core.internal.resources.Workspace.prepareOperation(Workspace.java:2242)
+	at org.eclipse.core.internal.resources.Marker.delete(Marker.java:74)
+	at com.ibm.etools.mft.debug.flow.breakpoints.FlowPointManager.removeFlowpoint(FlowPointManager.java:161)
+	at com.ibm.etools.mft.debug.flow.utils.FlowDebugUtils.removeAllMarkers(FlowDebugUtils.java:524)
+	at com.ibm.etools.mft.debug.flow.utils.FlowDebugUtils.updateMarker(FlowDebugUtils.java:623)
+	at com.ibm.etools.mft.debug.flow.FlowDebugHelperDelegate$2.run(FlowDebugHelperDelegate.java:482)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3897)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3527)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1160)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1049)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:658)
+	at org.eclipse.ui.internal.Workbench$$Lambda$104/0x00000000d4d01550.run(Unknown Source)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:557)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:154)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:150)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:137)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:107)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:90)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55)
+	at java.lang.reflect.Method.invoke(Method.java:508)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:657)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:594)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1447)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1420)
+
+!ENTRY com.ibm.etools.mft.tutorials 1 0 2023-11-15 17:17:16.468
+!MESSAGE Waiting for the builds to complete
+
+!ENTRY com.ibm.etools.mft.tutorials 1 0 2023-11-15 17:17:21.483
+!MESSAGE Build jobs completed.
+
+!ENTRY com.ibm.etools.mft.tutorials 1 0 2023-11-15 17:22:56.410
+!MESSAGE Waiting for the builds to complete
+
+!ENTRY com.ibm.etools.mft.tutorials 1 0 2023-11-15 17:23:01.607
+!MESSAGE Build jobs completed.
+
+!ENTRY com.ibm.etools.mft.tutorials 1 0 2023-11-15 17:28:48.968
+!MESSAGE Waiting for the builds to complete
+
+!ENTRY com.ibm.etools.mft.tutorials 1 0 2023-11-15 17:28:52.979
+!MESSAGE Build jobs completed.
+
+!ENTRY com.ibm.etools.references 4 10000 2023-11-16 07:33:37.908
+!MESSAGE Fatal error while indexing /TEST_SERVER/adminLog. Link indexer has been disabled.
+!SUBENTRY 1 com.ibm.etools.references 4 10000 2023-11-16 07:33:37.908
+!MESSAGE TreeInconsistencyException
+!STACK 0
+com.ibm.etools.references.internal.bplustree.tree.TreeInconsistencyException: Could not get node with id: 0
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.getNode(BPTree.java:604)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.getRootNode(BPTree.java:675)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree$BPTreeIterator.<init>(BPTree.java:137)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.iterator(BPTree.java:980)
+	at com.ibm.etools.references.internal.index.DiskBasedReferenceIndex.entries(DiskBasedReferenceIndex.java:191)
+	at com.ibm.etools.references.internal.index.DiskBasedReferenceIndex.entries(DiskBasedReferenceIndex.java:1)
+	at com.ibm.etools.references.internal.index.IndexManager.search(IndexManager.java:1166)
+	at com.ibm.etools.references.internal.index.ReferenceDatabase.search(ReferenceDatabase.java:1438)
+	at com.ibm.etools.references.internal.search.BasicPattern.doFind(BasicPattern.java:188)
+	at com.ibm.etools.references.internal.search.BasicPattern.findIndexMatches(BasicPattern.java:118)
+	at com.ibm.etools.references.internal.search.InternalSearchEngine.doNonScopeAwareSearch(InternalSearchEngine.java:494)
+	at com.ibm.etools.references.internal.search.InternalSearchEngine.doSearch(InternalSearchEngine.java:456)
+	at com.ibm.etools.references.internal.search.InternalSearchEngine.search(InternalSearchEngine.java:389)
+	at com.ibm.etools.references.internal.management.ReferenceProcessor.searchForExistingLinks(ReferenceProcessor.java:2747)
+	at com.ibm.etools.references.internal.management.ReferenceProcessor.retrieveExistingLinks(ReferenceProcessor.java:1205)
+	at com.ibm.etools.references.internal.management.ReferenceProcessor.indexItem(ReferenceProcessor.java:799)
+	at com.ibm.etools.references.internal.management.ReferenceProcessor.indexLoop(ReferenceProcessor.java:633)
+	at com.ibm.etools.references.internal.management.ReferenceProcessor.call(ReferenceProcessor.java:484)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.runRunnable(InternalReferencesJob.java:271)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.doRun(InternalReferencesJob.java:200)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.run(InternalReferencesJob.java:154)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:522)
+	at com.ibm.etools.references.internal.ThreadSupport$ScheduledFutureTask$CallableWrapper.call(ThreadSupport.java:229)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:277)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1160)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:825)
+	at com.ibm.etools.references.internal.ReferenceThreadFactrory$ReferencesThread.run(ReferenceThreadFactrory.java:37)
+Caused by: com.ibm.etools.references.internal.bplustree.db.FatalIOException: Exception during read of slot id 0 [eid=0]
+	at com.ibm.etools.references.internal.bplustree.db.Extent.read(Extent.java:538)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.realReadRecord(ExtentManager.java:1786)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager$LoadDBRecordTask.load(ExtentManager.java:151)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager$LoadDBRecordTask.run(ExtentManager.java:140)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.readRecord(ExtentManager.java:1608)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.readRecord(ExtentManager.java:1556)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.getNode(BPTree.java:597)
+	... 27 more
+Caused by: java.lang.RuntimeException: com.ibm.etools.references.internal.bplustree.db.FatalIOException: Exception during read (offset=36, length=1) from file: <none>
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.runUninterruptibly(IO.java:405)
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.read(IO.java:235)
+	at com.ibm.etools.references.internal.bplustree.db.Extent.read(Extent.java:393)
+	... 33 more
+Caused by: com.ibm.etools.references.internal.bplustree.db.FatalIOException: Exception during read (offset=36, length=1) from file: <none>
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.doRead(IO.java:277)
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO$2.call(IO.java:239)
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO$2.call(IO.java:1)
+	... 6 more
+Caused by: java.io.IOException: The parameter is incorrect.
+	at sun.nio.ch.FileDispatcherImpl.read0(Native Method)
+	at sun.nio.ch.FileDispatcherImpl.read(FileDispatcherImpl.java:73)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:235)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:209)
+	at sun.nio.ch.FileChannelImpl.read(FileChannelImpl.java:171)
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.doRead(IO.java:268)
+	... 8 more
+
+!ENTRY com.ibm.etools.references 1 0 2023-11-16 07:33:37.909
+!MESSAGE Problems occurred during indexing. Performing automatic error recovery. Consecutive attempts: 1.
+
+!ENTRY com.ibm.etools.references 4 0 2023-11-16 07:33:39.934
+!MESSAGE Link Indexer Delayed Write-3 [EXCEPTION] Error during write back, file Z:\20.Assist\2.Proyectos\4.ClinicaSantafe\PruebasConcepto\.metadata\.plugins\com.ibm.etools.references\refDB\BY_SOURCEPATH-LINK
+!STACK 0
+com.ibm.etools.references.internal.bplustree.db.FatalIOException: Exception during read of slot id 0 [eid=0]
+	at com.ibm.etools.references.internal.bplustree.db.Extent.read(Extent.java:538)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.realReadRecord(ExtentManager.java:1786)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager$LoadDBRecordTask.load(ExtentManager.java:151)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager$LoadDBRecordTask.run(ExtentManager.java:140)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.readRecord(ExtentManager.java:1608)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.readRecord(ExtentManager.java:1556)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.getNode(BPTree.java:597)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.getRootNode(BPTree.java:675)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree$BPTreeIterator.<init>(BPTree.java:137)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.iterator(BPTree.java:980)
+	at com.ibm.etools.references.internal.index.DiskBasedReferenceIndex.entries(DiskBasedReferenceIndex.java:191)
+	at com.ibm.etools.references.internal.index.DiskBasedReferenceIndex.entries(DiskBasedReferenceIndex.java:1)
+	at com.ibm.etools.references.internal.index.IndexManager.search(IndexManager.java:1166)
+	at com.ibm.etools.references.internal.index.ReferenceDatabase.search(ReferenceDatabase.java:1438)
+	at com.ibm.etools.references.internal.search.BasicPattern.doFind(BasicPattern.java:188)
+	at com.ibm.etools.references.internal.search.BasicPattern.findIndexMatches(BasicPattern.java:118)
+	at com.ibm.etools.references.internal.search.InternalSearchEngine.doNonScopeAwareSearch(InternalSearchEngine.java:494)
+	at com.ibm.etools.references.internal.search.InternalSearchEngine.doSearch(InternalSearchEngine.java:456)
+	at com.ibm.etools.references.internal.search.InternalSearchEngine.search(InternalSearchEngine.java:389)
+	at com.ibm.etools.references.internal.management.ReferenceProcessor.searchForExistingLinks(ReferenceProcessor.java:2747)
+	at com.ibm.etools.references.internal.management.ReferenceProcessor.retrieveExistingLinks(ReferenceProcessor.java:1205)
+	at com.ibm.etools.references.internal.management.ReferenceProcessor.indexItem(ReferenceProcessor.java:799)
+	at com.ibm.etools.references.internal.management.ReferenceProcessor.indexLoop(ReferenceProcessor.java:633)
+	at com.ibm.etools.references.internal.management.ReferenceProcessor.call(ReferenceProcessor.java:484)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.runRunnable(InternalReferencesJob.java:271)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.doRun(InternalReferencesJob.java:200)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.run(InternalReferencesJob.java:154)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:522)
+	at com.ibm.etools.references.internal.ThreadSupport$ScheduledFutureTask$CallableWrapper.call(ThreadSupport.java:229)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:277)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1160)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:825)
+	at com.ibm.etools.references.internal.ReferenceThreadFactrory$ReferencesThread.run(ReferenceThreadFactrory.java:37)
+Caused by: java.lang.RuntimeException: com.ibm.etools.references.internal.bplustree.db.FatalIOException: Exception during read (offset=36, length=1) from file: <none>
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.runUninterruptibly(IO.java:405)
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.read(IO.java:235)
+	at com.ibm.etools.references.internal.bplustree.db.Extent.read(Extent.java:393)
+	... 33 more
+Caused by: com.ibm.etools.references.internal.bplustree.db.FatalIOException: Exception during read (offset=36, length=1) from file: <none>
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.doRead(IO.java:277)
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO$2.call(IO.java:239)
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO$2.call(IO.java:1)
+	... 6 more
+Caused by: java.io.IOException: The parameter is incorrect.
+	at sun.nio.ch.FileDispatcherImpl.read0(Native Method)
+	at sun.nio.ch.FileDispatcherImpl.read(FileDispatcherImpl.java:73)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:235)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:209)
+	at sun.nio.ch.FileChannelImpl.read(FileChannelImpl.java:171)
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.doRead(IO.java:268)
+	... 8 more
+
+!ENTRY com.ibm.etools.references 4 0 2023-11-16 07:33:39.935
+!MESSAGE Exception during close of [e=0]
+!STACK 0
+com.ibm.etools.references.internal.bplustree.db.FatalIOException: Exception during closing  of: Z:\20.Assist\2.Proyectos\4.ClinicaSantafe\PruebasConcepto\.metadata\.plugins\com.ibm.etools.references\refDB\artifact.db.e0
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:440)
+	at com.ibm.etools.references.internal.bplustree.db.Extent.close(Extent.java:808)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.doClose(ExtentManager.java:1944)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.close(ExtentManager.java:1910)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.delete(ExtentManager.java:1852)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.recreate(ExtentManager.java:1980)
+	at com.ibm.etools.references.internal.index.ReferenceDatabase.reset(ReferenceDatabase.java:662)
+	at com.ibm.etools.references.internal.management.ReferenceProcessor.reset(ReferenceProcessor.java:2922)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.reset(InternalReferenceManager.java:941)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.rebuildIndex(InternalReferenceManager.java:847)
+	at com.ibm.etools.references.internal.management.ErrorRecoveryJob.call(ErrorRecoveryJob.java:70)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.runRunnable(InternalReferencesJob.java:271)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.doRun(InternalReferencesJob.java:200)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.run(InternalReferencesJob.java:154)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:522)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:277)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:191)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1160)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:825)
+Caused by: java.io.IOException: The parameter is incorrect.
+	at sun.nio.ch.FileDispatcherImpl.release0(Native Method)
+	at sun.nio.ch.FileDispatcherImpl.release(FileDispatcherImpl.java:123)
+	at sun.nio.ch.FileChannelImpl.release(FileChannelImpl.java:1162)
+	at sun.nio.ch.FileLockImpl.release(FileLockImpl.java:73)
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:426)
+	... 20 more
+
+!ENTRY com.ibm.etools.references 4 0 2023-11-16 07:33:39.943
+!MESSAGE Exception during close of [e=0]
+!STACK 0
+com.ibm.etools.references.internal.bplustree.db.FatalIOException: Exception during closing  of: Z:\20.Assist\2.Proyectos\4.ClinicaSantafe\PruebasConcepto\.metadata\.plugins\com.ibm.etools.references\refDB\BY_TARGETPATH-RESOLVED_REFERENCE.e0
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:440)
+	at com.ibm.etools.references.internal.bplustree.db.Extent.close(Extent.java:808)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.doClose(ExtentManager.java:1944)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.close(ExtentManager.java:1910)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.delete(ExtentManager.java:1852)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.delete(BPTree.java:560)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.recreate(BPTree.java:1501)
+	at com.ibm.etools.references.internal.index.DiskBasedReferenceIndex.recreate(DiskBasedReferenceIndex.java:209)
+	at com.ibm.etools.references.internal.index.IndexManager.doConvert(IndexManager.java:794)
+	at com.ibm.etools.references.internal.index.IndexManager.recreateIndexes(IndexManager.java:1041)
+	at com.ibm.etools.references.internal.index.ReferenceDatabase.reset(ReferenceDatabase.java:673)
+	at com.ibm.etools.references.internal.management.ReferenceProcessor.reset(ReferenceProcessor.java:2922)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.reset(InternalReferenceManager.java:941)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.rebuildIndex(InternalReferenceManager.java:847)
+	at com.ibm.etools.references.internal.management.ErrorRecoveryJob.call(ErrorRecoveryJob.java:70)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.runRunnable(InternalReferencesJob.java:271)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.doRun(InternalReferencesJob.java:200)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.run(InternalReferencesJob.java:154)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:522)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:277)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:191)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1160)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:825)
+Caused by: java.io.IOException: The parameter is incorrect.
+	at sun.nio.ch.FileDispatcherImpl.release0(Native Method)
+	at sun.nio.ch.FileDispatcherImpl.release(FileDispatcherImpl.java:123)
+	at sun.nio.ch.FileChannelImpl.release(FileChannelImpl.java:1162)
+	at sun.nio.ch.FileLockImpl.release(FileLockImpl.java:73)
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:426)
+	... 24 more
+
+!ENTRY com.ibm.etools.references 4 0 2023-11-16 07:33:39.950
+!MESSAGE Exception during close of [e=0]
+!STACK 0
+com.ibm.etools.references.internal.bplustree.db.FatalIOException: Exception during closing  of: Z:\20.Assist\2.Proyectos\4.ClinicaSantafe\PruebasConcepto\.metadata\.plugins\com.ibm.etools.references\refDB\BY_TARGETLINKID-RESOLVED_REFERENCE.e0
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:440)
+	at com.ibm.etools.references.internal.bplustree.db.Extent.close(Extent.java:808)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.doClose(ExtentManager.java:1944)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.close(ExtentManager.java:1910)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.delete(ExtentManager.java:1852)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.delete(BPTree.java:560)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.recreate(BPTree.java:1501)
+	at com.ibm.etools.references.internal.index.DiskBasedReferenceIndex.recreate(DiskBasedReferenceIndex.java:209)
+	at com.ibm.etools.references.internal.index.IndexManager.doConvert(IndexManager.java:794)
+	at com.ibm.etools.references.internal.index.IndexManager.recreateIndexes(IndexManager.java:1041)
+	at com.ibm.etools.references.internal.index.ReferenceDatabase.reset(ReferenceDatabase.java:673)
+	at com.ibm.etools.references.internal.management.ReferenceProcessor.reset(ReferenceProcessor.java:2922)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.reset(InternalReferenceManager.java:941)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.rebuildIndex(InternalReferenceManager.java:847)
+	at com.ibm.etools.references.internal.management.ErrorRecoveryJob.call(ErrorRecoveryJob.java:70)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.runRunnable(InternalReferencesJob.java:271)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.doRun(InternalReferencesJob.java:200)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.run(InternalReferencesJob.java:154)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:522)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:277)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:191)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1160)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:825)
+Caused by: java.io.IOException: The parameter is incorrect.
+	at sun.nio.ch.FileDispatcherImpl.release0(Native Method)
+	at sun.nio.ch.FileDispatcherImpl.release(FileDispatcherImpl.java:123)
+	at sun.nio.ch.FileChannelImpl.release(FileChannelImpl.java:1162)
+	at sun.nio.ch.FileLockImpl.release(FileLockImpl.java:73)
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:426)
+	... 24 more
+
+!ENTRY com.ibm.etools.references 4 0 2023-11-16 07:33:39.955
+!MESSAGE Exception during close of [e=0]
+!STACK 0
+com.ibm.etools.references.internal.bplustree.db.FatalIOException: Exception during closing  of: Z:\20.Assist\2.Proyectos\4.ClinicaSantafe\PruebasConcepto\.metadata\.plugins\com.ibm.etools.references\refDB\BY_SOURCELINKID-REFERENCE.e0
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:440)
+	at com.ibm.etools.references.internal.bplustree.db.Extent.close(Extent.java:808)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.doClose(ExtentManager.java:1944)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.close(ExtentManager.java:1910)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.delete(ExtentManager.java:1852)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.delete(BPTree.java:560)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.recreate(BPTree.java:1501)
+	at com.ibm.etools.references.internal.index.DiskBasedReferenceIndex.recreate(DiskBasedReferenceIndex.java:209)
+	at com.ibm.etools.references.internal.index.IndexManager.doConvert(IndexManager.java:794)
+	at com.ibm.etools.references.internal.index.IndexManager.recreateIndexes(IndexManager.java:1041)
+	at com.ibm.etools.references.internal.index.ReferenceDatabase.reset(ReferenceDatabase.java:673)
+	at com.ibm.etools.references.internal.management.ReferenceProcessor.reset(ReferenceProcessor.java:2922)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.reset(InternalReferenceManager.java:941)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.rebuildIndex(InternalReferenceManager.java:847)
+	at com.ibm.etools.references.internal.management.ErrorRecoveryJob.call(ErrorRecoveryJob.java:70)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.runRunnable(InternalReferencesJob.java:271)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.doRun(InternalReferencesJob.java:200)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.run(InternalReferencesJob.java:154)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:522)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:277)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:191)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1160)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:825)
+Caused by: java.io.IOException: The parameter is incorrect.
+	at sun.nio.ch.FileDispatcherImpl.release0(Native Method)
+	at sun.nio.ch.FileDispatcherImpl.release(FileDispatcherImpl.java:123)
+	at sun.nio.ch.FileChannelImpl.release(FileChannelImpl.java:1162)
+	at sun.nio.ch.FileLockImpl.release(FileLockImpl.java:73)
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:426)
+	... 24 more
+
+!ENTRY com.ibm.etools.references 4 0 2023-11-16 07:33:39.961
+!MESSAGE Exception during close of [e=0]
+!STACK 0
+com.ibm.etools.references.internal.bplustree.db.FatalIOException: Exception during closing  of: Z:\20.Assist\2.Proyectos\4.ClinicaSantafe\PruebasConcepto\.metadata\.plugins\com.ibm.etools.references\refDB\BY_LINKTEXT-LINK.e0
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:440)
+	at com.ibm.etools.references.internal.bplustree.db.Extent.close(Extent.java:808)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.doClose(ExtentManager.java:1944)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.close(ExtentManager.java:1910)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.delete(ExtentManager.java:1852)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.delete(BPTree.java:560)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.recreate(BPTree.java:1501)
+	at com.ibm.etools.references.internal.index.DiskBasedReferenceIndex.recreate(DiskBasedReferenceIndex.java:209)
+	at com.ibm.etools.references.internal.index.IndexManager.doConvert(IndexManager.java:794)
+	at com.ibm.etools.references.internal.index.IndexManager.recreateIndexes(IndexManager.java:1041)
+	at com.ibm.etools.references.internal.index.ReferenceDatabase.reset(ReferenceDatabase.java:673)
+	at com.ibm.etools.references.internal.management.ReferenceProcessor.reset(ReferenceProcessor.java:2922)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.reset(InternalReferenceManager.java:941)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.rebuildIndex(InternalReferenceManager.java:847)
+	at com.ibm.etools.references.internal.management.ErrorRecoveryJob.call(ErrorRecoveryJob.java:70)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.runRunnable(InternalReferencesJob.java:271)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.doRun(InternalReferencesJob.java:200)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.run(InternalReferencesJob.java:154)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:522)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:277)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:191)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1160)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:825)
+Caused by: java.io.IOException: The parameter is incorrect.
+	at sun.nio.ch.FileDispatcherImpl.release0(Native Method)
+	at sun.nio.ch.FileDispatcherImpl.release(FileDispatcherImpl.java:123)
+	at sun.nio.ch.FileChannelImpl.release(FileChannelImpl.java:1162)
+	at sun.nio.ch.FileLockImpl.release(FileLockImpl.java:73)
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:426)
+	... 24 more
+
+!ENTRY com.ibm.etools.references 4 0 2023-11-16 07:33:39.967
+!MESSAGE Exception during close of [e=0]
+!STACK 0
+com.ibm.etools.references.internal.bplustree.db.FatalIOException: Exception during closing  of: Z:\20.Assist\2.Proyectos\4.ClinicaSantafe\PruebasConcepto\.metadata\.plugins\com.ibm.etools.references\refDB\BY_LINKNAME-LINK.e0
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:440)
+	at com.ibm.etools.references.internal.bplustree.db.Extent.close(Extent.java:808)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.doClose(ExtentManager.java:1944)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.close(ExtentManager.java:1910)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.delete(ExtentManager.java:1852)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.delete(BPTree.java:560)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.recreate(BPTree.java:1501)
+	at com.ibm.etools.references.internal.index.DiskBasedReferenceIndex.recreate(DiskBasedReferenceIndex.java:209)
+	at com.ibm.etools.references.internal.index.IndexManager.doConvert(IndexManager.java:794)
+	at com.ibm.etools.references.internal.index.IndexManager.recreateIndexes(IndexManager.java:1041)
+	at com.ibm.etools.references.internal.index.ReferenceDatabase.reset(ReferenceDatabase.java:673)
+	at com.ibm.etools.references.internal.management.ReferenceProcessor.reset(ReferenceProcessor.java:2922)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.reset(InternalReferenceManager.java:941)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.rebuildIndex(InternalReferenceManager.java:847)
+	at com.ibm.etools.references.internal.management.ErrorRecoveryJob.call(ErrorRecoveryJob.java:70)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.runRunnable(InternalReferencesJob.java:271)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.doRun(InternalReferencesJob.java:200)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.run(InternalReferencesJob.java:154)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:522)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:277)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:191)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1160)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:825)
+Caused by: java.io.IOException: The parameter is incorrect.
+	at sun.nio.ch.FileDispatcherImpl.release0(Native Method)
+	at sun.nio.ch.FileDispatcherImpl.release(FileDispatcherImpl.java:123)
+	at sun.nio.ch.FileChannelImpl.release(FileChannelImpl.java:1162)
+	at sun.nio.ch.FileLockImpl.release(FileLockImpl.java:73)
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:426)
+	... 24 more
+
+!ENTRY com.ibm.etools.references 4 0 2023-11-16 07:33:39.972
+!MESSAGE Exception during close of [e=0]
+!STACK 0
+com.ibm.etools.references.internal.bplustree.db.FatalIOException: Exception during closing  of: Z:\20.Assist\2.Proyectos\4.ClinicaSantafe\PruebasConcepto\.metadata\.plugins\com.ibm.etools.references\refDB\BY_MODELINSTANCEID_REF-RESOLVED_REFERENCE.e0
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:440)
+	at com.ibm.etools.references.internal.bplustree.db.Extent.close(Extent.java:808)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.doClose(ExtentManager.java:1944)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.close(ExtentManager.java:1910)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.delete(ExtentManager.java:1852)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.delete(BPTree.java:560)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.recreate(BPTree.java:1501)
+	at com.ibm.etools.references.internal.index.DiskBasedReferenceIndex.recreate(DiskBasedReferenceIndex.java:209)
+	at com.ibm.etools.references.internal.index.IndexManager.doConvert(IndexManager.java:794)
+	at com.ibm.etools.references.internal.index.IndexManager.recreateIndexes(IndexManager.java:1041)
+	at com.ibm.etools.references.internal.index.ReferenceDatabase.reset(ReferenceDatabase.java:673)
+	at com.ibm.etools.references.internal.management.ReferenceProcessor.reset(ReferenceProcessor.java:2922)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.reset(InternalReferenceManager.java:941)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.rebuildIndex(InternalReferenceManager.java:847)
+	at com.ibm.etools.references.internal.management.ErrorRecoveryJob.call(ErrorRecoveryJob.java:70)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.runRunnable(InternalReferencesJob.java:271)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.doRun(InternalReferencesJob.java:200)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.run(InternalReferencesJob.java:154)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:522)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:277)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:191)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1160)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:825)
+Caused by: java.io.IOException: The parameter is incorrect.
+	at sun.nio.ch.FileDispatcherImpl.release0(Native Method)
+	at sun.nio.ch.FileDispatcherImpl.release(FileDispatcherImpl.java:123)
+	at sun.nio.ch.FileChannelImpl.release(FileChannelImpl.java:1162)
+	at sun.nio.ch.FileLockImpl.release(FileLockImpl.java:73)
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:426)
+	... 24 more
+
+!ENTRY com.ibm.etools.references 4 0 2023-11-16 07:33:39.978
+!MESSAGE Exception during close of [e=0]
+!STACK 0
+com.ibm.etools.references.internal.bplustree.db.FatalIOException: Exception during closing  of: Z:\20.Assist\2.Proyectos\4.ClinicaSantafe\PruebasConcepto\.metadata\.plugins\com.ibm.etools.references\refDB\BY_SOURCEPATH-RESOLVED_REFERENCE.e0
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:440)
+	at com.ibm.etools.references.internal.bplustree.db.Extent.close(Extent.java:808)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.doClose(ExtentManager.java:1944)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.close(ExtentManager.java:1910)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.delete(ExtentManager.java:1852)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.delete(BPTree.java:560)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.recreate(BPTree.java:1501)
+	at com.ibm.etools.references.internal.index.DiskBasedReferenceIndex.recreate(DiskBasedReferenceIndex.java:209)
+	at com.ibm.etools.references.internal.index.IndexManager.doConvert(IndexManager.java:794)
+	at com.ibm.etools.references.internal.index.IndexManager.recreateIndexes(IndexManager.java:1041)
+	at com.ibm.etools.references.internal.index.ReferenceDatabase.reset(ReferenceDatabase.java:673)
+	at com.ibm.etools.references.internal.management.ReferenceProcessor.reset(ReferenceProcessor.java:2922)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.reset(InternalReferenceManager.java:941)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.rebuildIndex(InternalReferenceManager.java:847)
+	at com.ibm.etools.references.internal.management.ErrorRecoveryJob.call(ErrorRecoveryJob.java:70)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.runRunnable(InternalReferencesJob.java:271)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.doRun(InternalReferencesJob.java:200)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.run(InternalReferencesJob.java:154)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:522)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:277)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:191)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1160)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:825)
+Caused by: java.io.IOException: The parameter is incorrect.
+	at sun.nio.ch.FileDispatcherImpl.release0(Native Method)
+	at sun.nio.ch.FileDispatcherImpl.release(FileDispatcherImpl.java:123)
+	at sun.nio.ch.FileChannelImpl.release(FileChannelImpl.java:1162)
+	at sun.nio.ch.FileLockImpl.release(FileLockImpl.java:73)
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:426)
+	... 24 more
+
+!ENTRY com.ibm.etools.references 4 0 2023-11-16 07:33:39.982
+!MESSAGE Exception during close of [e=0]
+!STACK 0
+com.ibm.etools.references.internal.bplustree.db.FatalIOException: Exception during closing  of: Z:\20.Assist\2.Proyectos\4.ClinicaSantafe\PruebasConcepto\.metadata\.plugins\com.ibm.etools.references\refDB\BY_SOURCELINKID-RESOLVED_REFERENCE.e0
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:440)
+	at com.ibm.etools.references.internal.bplustree.db.Extent.close(Extent.java:808)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.doClose(ExtentManager.java:1944)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.close(ExtentManager.java:1910)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.delete(ExtentManager.java:1852)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.delete(BPTree.java:560)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.recreate(BPTree.java:1501)
+	at com.ibm.etools.references.internal.index.DiskBasedReferenceIndex.recreate(DiskBasedReferenceIndex.java:209)
+	at com.ibm.etools.references.internal.index.IndexManager.doConvert(IndexManager.java:794)
+	at com.ibm.etools.references.internal.index.IndexManager.recreateIndexes(IndexManager.java:1041)
+	at com.ibm.etools.references.internal.index.ReferenceDatabase.reset(ReferenceDatabase.java:673)
+	at com.ibm.etools.references.internal.management.ReferenceProcessor.reset(ReferenceProcessor.java:2922)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.reset(InternalReferenceManager.java:941)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.rebuildIndex(InternalReferenceManager.java:847)
+	at com.ibm.etools.references.internal.management.ErrorRecoveryJob.call(ErrorRecoveryJob.java:70)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.runRunnable(InternalReferencesJob.java:271)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.doRun(InternalReferencesJob.java:200)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.run(InternalReferencesJob.java:154)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:522)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:277)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:191)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1160)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:825)
+Caused by: java.io.IOException: The parameter is incorrect.
+	at sun.nio.ch.FileDispatcherImpl.release0(Native Method)
+	at sun.nio.ch.FileDispatcherImpl.release(FileDispatcherImpl.java:123)
+	at sun.nio.ch.FileChannelImpl.release(FileChannelImpl.java:1162)
+	at sun.nio.ch.FileLockImpl.release(FileLockImpl.java:73)
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:426)
+	... 24 more
+
+!ENTRY com.ibm.etools.references 4 0 2023-11-16 07:33:39.987
+!MESSAGE Exception during close of [e=0]
+!STACK 0
+com.ibm.etools.references.internal.bplustree.db.FatalIOException: Exception during closing  of: Z:\20.Assist\2.Proyectos\4.ClinicaSantafe\PruebasConcepto\.metadata\.plugins\com.ibm.etools.references\refDB\BY_REFERENCETYPE-REFERENCE.e0
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:440)
+	at com.ibm.etools.references.internal.bplustree.db.Extent.close(Extent.java:808)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.doClose(ExtentManager.java:1944)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.close(ExtentManager.java:1910)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.delete(ExtentManager.java:1852)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.delete(BPTree.java:560)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.recreate(BPTree.java:1501)
+	at com.ibm.etools.references.internal.index.DiskBasedReferenceIndex.recreate(DiskBasedReferenceIndex.java:209)
+	at com.ibm.etools.references.internal.index.IndexManager.doConvert(IndexManager.java:794)
+	at com.ibm.etools.references.internal.index.IndexManager.recreateIndexes(IndexManager.java:1041)
+	at com.ibm.etools.references.internal.index.ReferenceDatabase.reset(ReferenceDatabase.java:673)
+	at com.ibm.etools.references.internal.management.ReferenceProcessor.reset(ReferenceProcessor.java:2922)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.reset(InternalReferenceManager.java:941)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.rebuildIndex(InternalReferenceManager.java:847)
+	at com.ibm.etools.references.internal.management.ErrorRecoveryJob.call(ErrorRecoveryJob.java:70)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.runRunnable(InternalReferencesJob.java:271)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.doRun(InternalReferencesJob.java:200)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.run(InternalReferencesJob.java:154)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:522)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:277)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:191)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1160)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:825)
+Caused by: java.io.IOException: The parameter is incorrect.
+	at sun.nio.ch.FileDispatcherImpl.release0(Native Method)
+	at sun.nio.ch.FileDispatcherImpl.release(FileDispatcherImpl.java:123)
+	at sun.nio.ch.FileChannelImpl.release(FileChannelImpl.java:1162)
+	at sun.nio.ch.FileLockImpl.release(FileLockImpl.java:73)
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:426)
+	... 24 more
+
+!ENTRY com.ibm.etools.references 4 0 2023-11-16 07:33:39.993
+!MESSAGE Exception during close of [e=0]
+!STACK 0
+com.ibm.etools.references.internal.bplustree.db.FatalIOException: Exception during closing  of: Z:\20.Assist\2.Proyectos\4.ClinicaSantafe\PruebasConcepto\.metadata\.plugins\com.ibm.etools.references\refDB\LINK-BY_SOURCEPATH-BY_LINKTYPE.e0
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:440)
+	at com.ibm.etools.references.internal.bplustree.db.Extent.close(Extent.java:808)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.doClose(ExtentManager.java:1944)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.close(ExtentManager.java:1910)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.delete(ExtentManager.java:1852)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.delete(BPTree.java:560)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.recreate(BPTree.java:1501)
+	at com.ibm.etools.references.internal.index.DiskBasedReferenceIndex.recreate(DiskBasedReferenceIndex.java:209)
+	at com.ibm.etools.references.internal.index.IndexManager.doConvert(IndexManager.java:794)
+	at com.ibm.etools.references.internal.index.IndexManager.recreateIndexes(IndexManager.java:1041)
+	at com.ibm.etools.references.internal.index.ReferenceDatabase.reset(ReferenceDatabase.java:673)
+	at com.ibm.etools.references.internal.management.ReferenceProcessor.reset(ReferenceProcessor.java:2922)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.reset(InternalReferenceManager.java:941)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.rebuildIndex(InternalReferenceManager.java:847)
+	at com.ibm.etools.references.internal.management.ErrorRecoveryJob.call(ErrorRecoveryJob.java:70)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.runRunnable(InternalReferencesJob.java:271)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.doRun(InternalReferencesJob.java:200)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.run(InternalReferencesJob.java:154)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:522)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:277)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:191)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1160)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:825)
+Caused by: java.io.IOException: The parameter is incorrect.
+	at sun.nio.ch.FileDispatcherImpl.release0(Native Method)
+	at sun.nio.ch.FileDispatcherImpl.release(FileDispatcherImpl.java:123)
+	at sun.nio.ch.FileChannelImpl.release(FileChannelImpl.java:1162)
+	at sun.nio.ch.FileLockImpl.release(FileLockImpl.java:73)
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:426)
+	... 24 more
+
+!ENTRY com.ibm.etools.references 4 0 2023-11-16 07:33:39.998
+!MESSAGE Exception during close of [e=0]
+!STACK 0
+com.ibm.etools.references.internal.bplustree.db.FatalIOException: Exception during closing  of: Z:\20.Assist\2.Proyectos\4.ClinicaSantafe\PruebasConcepto\.metadata\.plugins\com.ibm.etools.references\refDB\BY_REFERENCE_ID-RESOLVED_REFERENCE.e0
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:440)
+	at com.ibm.etools.references.internal.bplustree.db.Extent.close(Extent.java:808)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.doClose(ExtentManager.java:1944)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.close(ExtentManager.java:1910)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.delete(ExtentManager.java:1852)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.delete(BPTree.java:560)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.recreate(BPTree.java:1501)
+	at com.ibm.etools.references.internal.index.DiskBasedReferenceIndex.recreate(DiskBasedReferenceIndex.java:209)
+	at com.ibm.etools.references.internal.index.IndexManager.doConvert(IndexManager.java:794)
+	at com.ibm.etools.references.internal.index.IndexManager.recreateIndexes(IndexManager.java:1041)
+	at com.ibm.etools.references.internal.index.ReferenceDatabase.reset(ReferenceDatabase.java:673)
+	at com.ibm.etools.references.internal.management.ReferenceProcessor.reset(ReferenceProcessor.java:2922)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.reset(InternalReferenceManager.java:941)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.rebuildIndex(InternalReferenceManager.java:847)
+	at com.ibm.etools.references.internal.management.ErrorRecoveryJob.call(ErrorRecoveryJob.java:70)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.runRunnable(InternalReferencesJob.java:271)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.doRun(InternalReferencesJob.java:200)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.run(InternalReferencesJob.java:154)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:522)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:277)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:191)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1160)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:825)
+Caused by: java.io.IOException: The parameter is incorrect.
+	at sun.nio.ch.FileDispatcherImpl.release0(Native Method)
+	at sun.nio.ch.FileDispatcherImpl.release(FileDispatcherImpl.java:123)
+	at sun.nio.ch.FileChannelImpl.release(FileChannelImpl.java:1162)
+	at sun.nio.ch.FileLockImpl.release(FileLockImpl.java:73)
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:426)
+	... 24 more
+
+!ENTRY com.ibm.etools.references 4 0 2023-11-16 07:33:40.003
+!MESSAGE Exception during close of [e=0]
+!STACK 0
+com.ibm.etools.references.internal.bplustree.db.FatalIOException: Exception during closing  of: Z:\20.Assist\2.Proyectos\4.ClinicaSantafe\PruebasConcepto\.metadata\.plugins\com.ibm.etools.references\refDB\BY_LINKTYPE-LINK.e0
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:440)
+	at com.ibm.etools.references.internal.bplustree.db.Extent.close(Extent.java:808)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.doClose(ExtentManager.java:1944)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.close(ExtentManager.java:1910)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.delete(ExtentManager.java:1852)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.delete(BPTree.java:560)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.recreate(BPTree.java:1501)
+	at com.ibm.etools.references.internal.index.DiskBasedReferenceIndex.recreate(DiskBasedReferenceIndex.java:209)
+	at com.ibm.etools.references.internal.index.IndexManager.doConvert(IndexManager.java:794)
+	at com.ibm.etools.references.internal.index.IndexManager.recreateIndexes(IndexManager.java:1041)
+	at com.ibm.etools.references.internal.index.ReferenceDatabase.reset(ReferenceDatabase.java:673)
+	at com.ibm.etools.references.internal.management.ReferenceProcessor.reset(ReferenceProcessor.java:2922)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.reset(InternalReferenceManager.java:941)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.rebuildIndex(InternalReferenceManager.java:847)
+	at com.ibm.etools.references.internal.management.ErrorRecoveryJob.call(ErrorRecoveryJob.java:70)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.runRunnable(InternalReferencesJob.java:271)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.doRun(InternalReferencesJob.java:200)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.run(InternalReferencesJob.java:154)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:522)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:277)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:191)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1160)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:825)
+Caused by: java.io.IOException: The parameter is incorrect.
+	at sun.nio.ch.FileDispatcherImpl.release0(Native Method)
+	at sun.nio.ch.FileDispatcherImpl.release(FileDispatcherImpl.java:123)
+	at sun.nio.ch.FileChannelImpl.release(FileChannelImpl.java:1162)
+	at sun.nio.ch.FileLockImpl.release(FileLockImpl.java:73)
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:426)
+	... 24 more
+
+!ENTRY com.ibm.etools.references 4 0 2023-11-16 07:33:40.009
+!MESSAGE Exception during close of [e=0]
+!STACK 0
+com.ibm.etools.references.internal.bplustree.db.FatalIOException: Exception during closing  of: Z:\20.Assist\2.Proyectos\4.ClinicaSantafe\PruebasConcepto\.metadata\.plugins\com.ibm.etools.references\refDB\BY_SOURCEPATH-LINK.e0
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:440)
+	at com.ibm.etools.references.internal.bplustree.db.Extent.close(Extent.java:808)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.doClose(ExtentManager.java:1944)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.close(ExtentManager.java:1910)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.delete(ExtentManager.java:1852)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.delete(BPTree.java:560)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.recreate(BPTree.java:1501)
+	at com.ibm.etools.references.internal.index.DiskBasedReferenceIndex.recreate(DiskBasedReferenceIndex.java:209)
+	at com.ibm.etools.references.internal.index.IndexManager.doConvert(IndexManager.java:794)
+	at com.ibm.etools.references.internal.index.IndexManager.recreateIndexes(IndexManager.java:1041)
+	at com.ibm.etools.references.internal.index.ReferenceDatabase.reset(ReferenceDatabase.java:673)
+	at com.ibm.etools.references.internal.management.ReferenceProcessor.reset(ReferenceProcessor.java:2922)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.reset(InternalReferenceManager.java:941)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.rebuildIndex(InternalReferenceManager.java:847)
+	at com.ibm.etools.references.internal.management.ErrorRecoveryJob.call(ErrorRecoveryJob.java:70)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.runRunnable(InternalReferencesJob.java:271)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.doRun(InternalReferencesJob.java:200)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.run(InternalReferencesJob.java:154)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:522)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:277)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:191)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1160)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:825)
+Caused by: java.io.IOException: The parameter is incorrect.
+	at sun.nio.ch.FileDispatcherImpl.release0(Native Method)
+	at sun.nio.ch.FileDispatcherImpl.release(FileDispatcherImpl.java:123)
+	at sun.nio.ch.FileChannelImpl.release(FileChannelImpl.java:1162)
+	at sun.nio.ch.FileLockImpl.release(FileLockImpl.java:73)
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:426)
+	... 24 more
+
+!ENTRY com.ibm.etools.references 4 0 2023-11-16 07:33:40.014
+!MESSAGE Exception during close of [e=0]
+!STACK 0
+com.ibm.etools.references.internal.bplustree.db.FatalIOException: Exception during closing  of: Z:\20.Assist\2.Proyectos\4.ClinicaSantafe\PruebasConcepto\.metadata\.plugins\com.ibm.etools.references\refDB\string.db.e0
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:440)
+	at com.ibm.etools.references.internal.bplustree.db.Extent.close(Extent.java:808)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.doClose(ExtentManager.java:1944)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.close(ExtentManager.java:1910)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.delete(ExtentManager.java:1852)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.recreate(ExtentManager.java:1980)
+	at com.ibm.etools.references.internal.index.StringDatabase.reset(StringDatabase.java:690)
+	at com.ibm.etools.references.internal.index.ReferenceDatabase.reset(ReferenceDatabase.java:683)
+	at com.ibm.etools.references.internal.management.ReferenceProcessor.reset(ReferenceProcessor.java:2922)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.reset(InternalReferenceManager.java:941)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.rebuildIndex(InternalReferenceManager.java:847)
+	at com.ibm.etools.references.internal.management.ErrorRecoveryJob.call(ErrorRecoveryJob.java:70)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.runRunnable(InternalReferencesJob.java:271)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.doRun(InternalReferencesJob.java:200)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.run(InternalReferencesJob.java:154)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:522)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:277)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:191)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1160)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:825)
+Caused by: java.io.IOException: The parameter is incorrect.
+	at sun.nio.ch.FileDispatcherImpl.release0(Native Method)
+	at sun.nio.ch.FileDispatcherImpl.release(FileDispatcherImpl.java:123)
+	at sun.nio.ch.FileChannelImpl.release(FileChannelImpl.java:1162)
+	at sun.nio.ch.FileLockImpl.release(FileLockImpl.java:73)
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:426)
+	... 21 more
+
+!ENTRY com.ibm.etools.references 4 0 2023-11-16 07:33:40.020
+!MESSAGE Exception during close of [e=0]
+!STACK 0
+com.ibm.etools.references.internal.bplustree.db.FatalIOException: Exception during closing  of: Z:\20.Assist\2.Proyectos\4.ClinicaSantafe\PruebasConcepto\.metadata\.plugins\com.ibm.etools.references\refDB\string.idx.e0
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:440)
+	at com.ibm.etools.references.internal.bplustree.db.Extent.close(Extent.java:808)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.doClose(ExtentManager.java:1944)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.close(ExtentManager.java:1910)
+	at com.ibm.etools.references.internal.bplustree.db.ExtentManager.delete(ExtentManager.java:1852)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.delete(BPTree.java:560)
+	at com.ibm.etools.references.internal.bplustree.tree.BPTree.recreate(BPTree.java:1501)
+	at com.ibm.etools.references.internal.index.DiskBasedReferenceIndex.recreate(DiskBasedReferenceIndex.java:209)
+	at com.ibm.etools.references.internal.index.StringDatabase.reset(StringDatabase.java:691)
+	at com.ibm.etools.references.internal.index.ReferenceDatabase.reset(ReferenceDatabase.java:683)
+	at com.ibm.etools.references.internal.management.ReferenceProcessor.reset(ReferenceProcessor.java:2922)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.reset(InternalReferenceManager.java:941)
+	at com.ibm.etools.references.internal.management.InternalReferenceManager.rebuildIndex(InternalReferenceManager.java:847)
+	at com.ibm.etools.references.internal.management.ErrorRecoveryJob.call(ErrorRecoveryJob.java:70)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.runRunnable(InternalReferencesJob.java:271)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.doRun(InternalReferencesJob.java:200)
+	at com.ibm.etools.references.internal.InternalReferencesJob$InternalRunner.run(InternalReferencesJob.java:154)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:522)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:277)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:191)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1160)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:825)
+Caused by: java.io.IOException: The parameter is incorrect.
+	at sun.nio.ch.FileDispatcherImpl.release0(Native Method)
+	at sun.nio.ch.FileDispatcherImpl.release(FileDispatcherImpl.java:123)
+	at sun.nio.ch.FileChannelImpl.release(FileChannelImpl.java:1162)
+	at sun.nio.ch.FileLockImpl.release(FileLockImpl.java:73)
+	at com.ibm.etools.references.internal.bplustree.db.IO$FileChannelIO.close(IO.java:426)
+	... 23 more
+
+!ENTRY com.ibm.etools.mft.electronapp 4 0 2023-11-16 07:47:29.090
+!MESSAGE Unable to start the Toolkit applicationopenapi.json\\.\pipe\ibmtkelectronapp6096_2OAPIED (The system cannot find the file specified.)
+!STACK 0
+java.io.FileNotFoundException: \\.\pipe\ibmtkelectronapp6096_2OAPIED (The system cannot find the file specified.)
+	at java.io.RandomAccessFile.open0(Native Method)
+	at java.io.RandomAccessFile.open(RandomAccessFile.java:333)
+	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:257)
+	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:135)
+	at com.ibm.etools.mft.electronapp.ElectronAppCommsSession.<init>(ElectronAppCommsSession.java:113)
+	at com.ibm.etools.mft.electronapp.ElectronApp$2.run(ElectronApp.java:423)
+	at java.lang.Thread.run(Thread.java:825)
+
+!ENTRY com.ibm.etools.mft.electronapp 4 0 2023-11-16 08:17:57.198
+!MESSAGE Unable to start the Toolkit applicationopenapi.json\\.\pipe\ibmtkelectronapp6096_3OAPIED (The system cannot find the file specified.)
+!STACK 0
+java.io.FileNotFoundException: \\.\pipe\ibmtkelectronapp6096_3OAPIED (The system cannot find the file specified.)
+	at java.io.RandomAccessFile.open0(Native Method)
+	at java.io.RandomAccessFile.open(RandomAccessFile.java:333)
+	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:257)
+	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:135)
+	at com.ibm.etools.mft.electronapp.ElectronAppCommsSession.<init>(ElectronAppCommsSession.java:113)
+	at com.ibm.etools.mft.electronapp.ElectronApp$2.run(ElectronApp.java:423)
+	at java.lang.Thread.run(Thread.java:825)
+
+!ENTRY com.ibm.etools.mft.electronapp 4 0 2023-11-16 08:40:22.702
+!MESSAGE Unable to start the Toolkit applicationopenapi.json\\.\pipe\ibmtkelectronapp6096_4OAPIED (The system cannot find the file specified.)
+!STACK 0
+java.io.FileNotFoundException: \\.\pipe\ibmtkelectronapp6096_4OAPIED (The system cannot find the file specified.)
+	at java.io.RandomAccessFile.open0(Native Method)
+	at java.io.RandomAccessFile.open(RandomAccessFile.java:333)
+	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:257)
+	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:135)
+	at com.ibm.etools.mft.electronapp.ElectronAppCommsSession.<init>(ElectronAppCommsSession.java:113)
+	at com.ibm.etools.mft.electronapp.ElectronApp$2.run(ElectronApp.java:423)
+	at java.lang.Thread.run(Thread.java:825)
+
+!ENTRY com.ibm.etools.mft.restapi.ui 4 0 2023-11-16 08:40:42.750
+!MESSAGE The following problem occurred while loading the OpenAPI document "openapi.json" in REST API Project "Customer_API_BckAsyncNode": No se ha podido analizar el documento de OpenAPI 'openapi.json', con la razón: 'Null or empty definition'., El documento de OpenAPI 'openapi.json' no existe o no se puede acceder a él.
+
+!ENTRY org.eclipse.ui 4 0 2023-11-16 08:40:42.758
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.IllegalArgumentException: Argument cannot be null
+	at org.eclipse.swt.SWT.error(SWT.java:4704)
+	at org.eclipse.swt.SWT.error(SWT.java:4638)
+	at org.eclipse.swt.SWT.error(SWT.java:4609)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:432)
+	at org.eclipse.swt.widgets.Text.setText(Text.java:2275)
+	at com.ibm.etools.mft.restapi.ui.editors.SectionHeaderNew$1.run(SectionHeaderNew.java:207)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3897)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3527)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1160)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1049)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:658)
+	at org.eclipse.ui.internal.Workbench$$Lambda$104/0x00000000d4d01550.run(Unknown Source)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:557)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:154)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:150)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:137)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:107)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:90)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55)
+	at java.lang.reflect.Method.invoke(Method.java:508)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:657)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:594)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1447)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1420)
+
+!ENTRY com.ibm.etools.mft.restapi.ui 4 0 2023-11-16 08:40:50.678
+!MESSAGE The following problem occurred while loading the OpenAPI document "openapi.json" in REST API Project "Customer_API_BckAsyncNode": No se ha podido analizar el documento de OpenAPI 'openapi.json', con la razón: 'Null or empty definition'., El documento de OpenAPI 'openapi.json' no existe o no se puede acceder a él.
+
+!ENTRY org.eclipse.ui 4 0 2023-11-16 08:40:50.877
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.IllegalArgumentException: Argument cannot be null
+	at org.eclipse.swt.SWT.error(SWT.java:4704)
+	at org.eclipse.swt.SWT.error(SWT.java:4638)
+	at org.eclipse.swt.SWT.error(SWT.java:4609)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:432)
+	at org.eclipse.swt.widgets.Text.setText(Text.java:2275)
+	at com.ibm.etools.mft.restapi.ui.editors.SectionHeaderNew$1.run(SectionHeaderNew.java:207)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3897)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3527)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1160)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1049)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:658)
+	at org.eclipse.ui.internal.Workbench$$Lambda$104/0x00000000d4d01550.run(Unknown Source)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:557)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:154)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:150)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:137)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:107)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:90)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55)
+	at java.lang.reflect.Method.invoke(Method.java:508)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:657)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:594)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1447)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1420)
+
+!ENTRY com.ibm.etools.mft.electronapp 4 0 2023-11-16 08:40:51.548
+!MESSAGE Unable to start the Toolkit applicationopenapi.json\\.\pipe\ibmtkelectronapp6096_5OAPIED (The system cannot find the file specified.)
+!STACK 0
+java.io.FileNotFoundException: \\.\pipe\ibmtkelectronapp6096_5OAPIED (The system cannot find the file specified.)
+	at java.io.RandomAccessFile.open0(Native Method)
+	at java.io.RandomAccessFile.open(RandomAccessFile.java:333)
+	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:257)
+	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:135)
+	at com.ibm.etools.mft.electronapp.ElectronAppCommsSession.<init>(ElectronAppCommsSession.java:113)
+	at com.ibm.etools.mft.electronapp.ElectronApp$2.run(ElectronApp.java:423)
+	at java.lang.Thread.run(Thread.java:825)
+
+!ENTRY com.ibm.etools.mft.restapi.ui 4 0 2023-11-16 08:41:01.693
+!MESSAGE The following problem occurred while loading the OpenAPI document "openapi.json" in REST API Project "Customer_API_BckAsyncNode": No se ha podido analizar el documento de OpenAPI 'openapi.json', con la razón: 'Null or empty definition'., El documento de OpenAPI 'openapi.json' no existe o no se puede acceder a él.
+
+!ENTRY org.eclipse.ui 4 0 2023-11-16 08:41:01.701
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.IllegalArgumentException: Argument cannot be null
+	at org.eclipse.swt.SWT.error(SWT.java:4704)
+	at org.eclipse.swt.SWT.error(SWT.java:4638)
+	at org.eclipse.swt.SWT.error(SWT.java:4609)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:432)
+	at org.eclipse.swt.widgets.Text.setText(Text.java:2275)
+	at com.ibm.etools.mft.restapi.ui.editors.SectionHeaderNew$1.run(SectionHeaderNew.java:207)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3897)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3527)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1160)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1049)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:658)
+	at org.eclipse.ui.internal.Workbench$$Lambda$104/0x00000000d4d01550.run(Unknown Source)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:557)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:154)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:150)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:137)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:107)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:90)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55)
+	at java.lang.reflect.Method.invoke(Method.java:508)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:657)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:594)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1447)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1420)
+
+!ENTRY com.ibm.etools.mft.restapi.ui 4 0 2023-11-16 08:41:31.130
+!MESSAGE The following problem occurred while loading the OpenAPI document "openapi.json" in REST API Project "Customer_API_BckAsyncNode": No se ha podido analizar el documento de OpenAPI 'openapi.json', con la razón: 'Null or empty definition'., El documento de OpenAPI 'openapi.json' no existe o no se puede acceder a él.
+
+!ENTRY com.ibm.etools.mft.restapi.ui 4 0 2023-11-16 08:41:33.958
+!MESSAGE The following problem occurred while loading the OpenAPI document "openapi.json" in REST API Project "Customer_API_BckAsyncNode": No se ha podido analizar el documento de OpenAPI 'openapi.json', con la razón: 'Null or empty definition'., El documento de OpenAPI 'openapi.json' no existe o no se puede acceder a él.
+
+!ENTRY org.eclipse.ui 4 0 2023-11-16 08:41:33.965
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.IllegalArgumentException: Argument cannot be null
+	at org.eclipse.swt.SWT.error(SWT.java:4704)
+	at org.eclipse.swt.SWT.error(SWT.java:4638)
+	at org.eclipse.swt.SWT.error(SWT.java:4609)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:432)
+	at org.eclipse.swt.widgets.Text.setText(Text.java:2275)
+	at com.ibm.etools.mft.restapi.ui.editors.SectionHeaderNew$1.run(SectionHeaderNew.java:207)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3897)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3527)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1160)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1049)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:658)
+	at org.eclipse.ui.internal.Workbench$$Lambda$104/0x00000000d4d01550.run(Unknown Source)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:557)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:154)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:150)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:137)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:107)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:90)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:55)
+	at java.lang.reflect.Method.invoke(Method.java:508)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:657)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:594)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1447)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1420)
+
+!ENTRY com.ibm.etools.mft.electronapp 4 0 2023-11-16 08:41:34.881
+!MESSAGE Unable to start the Toolkit applicationopenapi.json\\.\pipe\ibmtkelectronapp6096_6OAPIED (The system cannot find the file specified.)
+!STACK 0
+java.io.FileNotFoundException: \\.\pipe\ibmtkelectronapp6096_6OAPIED (The system cannot find the file specified.)
+	at java.io.RandomAccessFile.open0(Native Method)
+	at java.io.RandomAccessFile.open(RandomAccessFile.java:333)
+	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:257)
+	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:135)
+	at com.ibm.etools.mft.electronapp.ElectronAppCommsSession.<init>(ElectronAppCommsSession.java:113)
+	at com.ibm.etools.mft.electronapp.ElectronApp$2.run(ElectronApp.java:423)
+	at java.lang.Thread.run(Thread.java:825)
+
+!ENTRY com.ibm.etools.mft.electronapp 4 0 2023-11-16 08:47:16.304
+!MESSAGE Unable to start the Toolkit applicationopenapi.json\\.\pipe\ibmtkelectronapp6096_7OAPIED (The system cannot find the file specified.)
+!STACK 0
+java.io.FileNotFoundException: \\.\pipe\ibmtkelectronapp6096_7OAPIED (The system cannot find the file specified.)
+	at java.io.RandomAccessFile.open0(Native Method)
+	at java.io.RandomAccessFile.open(RandomAccessFile.java:333)
+	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:257)
+	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:135)
+	at com.ibm.etools.mft.electronapp.ElectronAppCommsSession.<init>(ElectronAppCommsSession.java:113)
+	at com.ibm.etools.mft.electronapp.ElectronApp$2.run(ElectronApp.java:423)
+	at java.lang.Thread.run(Thread.java:825)
+
+!ENTRY com.ibm.etools.mft.electronapp 4 0 2023-11-16 08:47:59.019
+!MESSAGE Unable to start the Toolkit applicationopenapi.json\\.\pipe\ibmtkelectronapp6096_8OAPIED (The system cannot find the file specified.)
+!STACK 0
+java.io.FileNotFoundException: \\.\pipe\ibmtkelectronapp6096_8OAPIED (The system cannot find the file specified.)
+	at java.io.RandomAccessFile.open0(Native Method)
+	at java.io.RandomAccessFile.open(RandomAccessFile.java:333)
+	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:257)
+	at java.io.RandomAccessFile.<init>(RandomAccessFile.java:135)
+	at com.ibm.etools.mft.electronapp.ElectronAppCommsSession.<init>(ElectronAppCommsSession.java:113)
+	at com.ibm.etools.mft.electronapp.ElectronApp$2.run(ElectronApp.java:423)
+	at java.lang.Thread.run(Thread.java:825)

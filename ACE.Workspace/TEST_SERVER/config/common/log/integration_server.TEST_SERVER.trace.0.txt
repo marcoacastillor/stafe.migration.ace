@@ -1,7 +1,0 @@
-
-====== Starting plaintext trace (process ID 11180 - integration_server.TEST_SERVER) ======
-=== Build ib000-L220617.2532 (S000-L220617.11599) - IBM App Connect Enterprise 12.0.5.0 ===
-=== Platform Windows 10 Pro / AMD64 / 6.3 build 19045  ===
-=== Timestamps are formatted in local time, 300 minutes before GMT. ===
-=== Time now 2023-10-05 12:52:42.672304 ===
-

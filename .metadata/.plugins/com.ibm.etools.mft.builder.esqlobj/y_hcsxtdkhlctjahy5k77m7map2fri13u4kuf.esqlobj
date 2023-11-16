@@ -1,0 +1,14 @@
+/*EATE FUNCTION Main() RETURNS BOOLE*/
+	BEGIN
+		-- Copiar datos de configuración
+		SET OutputLocalEnvironment.usr.transaction.X_Request_ID 		= COALESCE(InputRoot.HTTPInputHeader."X-Request-ID",UUIDASCHAR);
+		 
+		-- Guardar información para responder a cliente
+		SET OutputLocalEnvironment.usr.response.replyIdentifier 		= InputLocalEnvironment.Destination.HTTP.RequestIdentifier;
+		
+		--Copiar el mensaje
+		SET OutputRoot.JSON = InputRoot.JSON;
+
+		
+		RETURN TRUE;
+	END;

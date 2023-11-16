@@ -1,0 +1,15 @@
+CREATE COMPUTE MODULE Modules_RouteMessage_Async
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		--Información del componente invocado.
+		SET OutputLocalEnvironment.usr.transaction.X_Token				= InputRoot.HTTPInputHeader.Authorization;
+		 
+		-- Guardar información para responder a cliente
+		SET OutputLocalEnvironment.usr.response.replyIdentifier 		= InputLocalEnvironment.Destination.SOAP.Reply.ReplyIdentifier;
+		
+		--Copiar el mensaje
+		SET OutputRoot.XMLNSC = InputRoot.XMLNSC;
+		
+		RETURN TRUE;
+	END;
+END MODULE;
