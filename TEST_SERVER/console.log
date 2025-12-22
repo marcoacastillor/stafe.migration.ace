@@ -1,0 +1,92 @@
+2023-11-15 16:03:46.042928: BIP1990I: El servidor de integración 'TEST_SERVER' está empezando la inicialización; versión '12.0.5.0' (64 bits) 
+2023-11-15 16:03:46.320916: BIP9905I: Inicializando gestores de recursos. 
+Listening for transport dt_socket at address: 9997
+2023-11-15 16:03:53.370228: BIP9906I: Leyendo recursos desplegados. 
+2023-11-15 16:03:53.437628: BIP9907I: Inicializando recursos desplegados. 
+2023-11-15 16:03:53.442852: BIP2155I: A punto de 'Initialize' el recurso desplegado 'Customer_LIB' de tipo 'SharedLibrary'. 
+2023-11-15 16:03:53.454248: BIP2155I: A punto de 'Initialize' el recurso desplegado 'Customer_GetById' de tipo 'Application'. 
+2023-11-15 16:03:53.466536: BIP2155I: A punto de 'Initialize' el recurso desplegado 'Customer_API_BckMQ' de tipo 'RestAPI'. 
+2023-11-15 16:03:55.145452: BIP2155I: A punto de 'Start' el recurso desplegado 'Customer_GetById' de tipo 'Application'. 
+2023-11-15 16:03:55.147544: BIP2269I: El recurso desplegado 'co.com.customer.service.Customer_GetById' (uuid='co.com.customer.service.Customer_GetById',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2023-11-15 16:03:55.147884: BIP2155I: A punto de 'Start' el recurso desplegado 'Customer_API_BckMQ' de tipo 'RestAPI'. 
+An http endpoint was registered on port '7800', path '/services/customer/api/v3*'.
+2023-11-15 16:03:55.188328: BIP3132I: El escucha HTTP ha empezado a escuchar en el puerto '7800' para conexiones 'http'. 
+2023-11-15 16:03:55.188524: BIP1996I: Escuchando por el URL HTTP '/services/customer/api/v3*'. 
+Started native listener for HTTP input node on port 7800 for URL /services/customer/api/v3*
+2023-11-15 16:03:55.189016: BIP2269I: El recurso desplegado 'gen.Customer_API_BckMQ' (uuid='gen.Customer_API_BckMQ',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2023-11-15 16:03:56.273952: BIP2866I: La administración de seguridad de IBM App Connect Enterprise es inactive. 
+2023-11-15 16:03:56.289340: BIP3132I: El escucha HTTP ha empezado a escuchar en el puerto '7600' para conexiones 'RestAdmin http'. 
+2023-11-15 16:03:56.296896: BIP1991I: El servidor de integración ha terminado la inicialización. 
+2023-11-15 16:04:09.986571: BIP2152I: Se ha recibido el mensaje de configuración. 
+2023-11-15 16:04:10.040904: BIP2155I: A punto de 'Stop' el recurso desplegado 'Customer_GetById' de tipo 'Application'. 
+2023-11-15 16:04:11.188899: BIP2271I: El recurso desplegado 'co.com.customer.service.Customer_GetById' (uuid='co.com.customer.service.Customer_GetById',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2023-11-15 16:04:11.189435: BIP2155I: A punto de 'TearDown' el recurso desplegado 'Customer_GetById' de tipo 'Application'. 
+2023-11-15 16:04:11.349742: BIP2155I: A punto de 'Initialize' el recurso desplegado 'Customer_GetById' de tipo 'Application'. 
+2023-11-15 16:04:11.402843: BIP2155I: A punto de 'Start' el recurso desplegado 'Customer_GetById' de tipo 'Application'. 
+2023-11-15 16:04:11.403511: BIP2269I: El recurso desplegado 'co.com.customer.service.Customer_GetById' (uuid='co.com.customer.service.Customer_GetById',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2023-11-15 16:04:11.403752: BIP9332I: Application 'Customer_GetById' se ha changed correctamente. 
+2023-11-15 16:04:11.403865: BIP9326I: El origen 'Customer_GetByIdproject.generated.bar' se ha desplegado correctamente. 
+2023-11-15 16:04:11.406237: BIP2154I: El servidor de integración ha finalizado con el mensaje de configuración. 
+2023-11-15 16:04:20.836438: BIP2152I: Se ha recibido el mensaje de configuración. 
+2023-11-15 16:04:20.902170: BIP2155I: A punto de 'Stop' el recurso desplegado 'Customer_API_BckMQ' de tipo 'RestAPI'. 
+2023-11-15 16:04:26.251624: BIP2271I: El recurso desplegado 'gen.Customer_API_BckMQ' (uuid='gen.Customer_API_BckMQ',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2023-11-15 16:04:26.252054: BIP2155I: A punto de 'TearDown' el recurso desplegado 'Customer_API_BckMQ' de tipo 'RestAPI'. 
+2023-11-15 16:04:26.259836: BIP3133I: El escucha HTTP ha dejado de escuchar en el puerto '7800' para conexiones 'http'. 
+2023-11-15 16:04:26.375438: BIP2155I: A punto de 'Initialize' el recurso desplegado 'Customer_API_BckMQ' de tipo 'RestAPI'. 
+2023-11-15 16:04:26.459948: BIP2155I: A punto de 'Start' el recurso desplegado 'Customer_API_BckMQ' de tipo 'RestAPI'. 
+An http endpoint was registered on port '7800', path '/services/customer/api/v3*'.
+2023-11-15 16:04:26.491536: BIP3132I: El escucha HTTP ha empezado a escuchar en el puerto '7800' para conexiones 'http'. 
+2023-11-15 16:04:26.491752: BIP1996I: Escuchando por el URL HTTP '/services/customer/api/v3*'. 
+Started native listener for HTTP input node on port 7800 for URL /services/customer/api/v3*
+2023-11-15 16:04:26.492246: BIP2269I: El recurso desplegado 'gen.Customer_API_BckMQ' (uuid='gen.Customer_API_BckMQ',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2023-11-15 16:04:26.492516: BIP9332I: RestAPI 'Customer_API_BckMQ' se ha changed correctamente. 
+2023-11-15 16:04:26.492678: BIP9326I: El origen 'Customer_API_BckMQproject.generated.bar' se ha desplegado correctamente. 
+2023-11-15 16:04:26.495404: BIP2154I: El servidor de integración ha finalizado con el mensaje de configuración. 
+2023-11-15 16:11:39.338796: BIP2152I: Se ha recibido el mensaje de configuración. 
+2023-11-15 16:11:39.403616: BIP2155I: A punto de 'Stop' el recurso desplegado 'Customer_GetById' de tipo 'Application'. 
+2023-11-15 16:11:39.404104: BIP2155I: A punto de 'Stop' el recurso desplegado 'Customer_API_BckMQ' de tipo 'RestAPI'. 
+2023-11-15 16:11:42.989664: BIP2271I: El recurso desplegado 'co.com.customer.service.Customer_GetById' (uuid='co.com.customer.service.Customer_GetById',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2023-11-15 16:11:42.992548: BIP2271I: El recurso desplegado 'gen.Customer_API_BckMQ' (uuid='gen.Customer_API_BckMQ',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2023-11-15 16:11:42.993176: BIP2155I: A punto de 'TearDown' el recurso desplegado 'Customer_GetById' de tipo 'Application'. 
+2023-11-15 16:11:43.000828: BIP2155I: A punto de 'TearDown' el recurso desplegado 'Customer_API_BckMQ' de tipo 'RestAPI'. 
+2023-11-15 16:11:43.011108: BIP3133I: El escucha HTTP ha dejado de escuchar en el puerto '7800' para conexiones 'http'. 
+2023-11-15 16:11:43.043276: BIP2155I: A punto de 'TearDown' el recurso desplegado 'Customer_LIB' de tipo 'SharedLibrary'. 
+2023-11-15 16:11:43.261264: BIP2155I: A punto de 'Initialize' el recurso desplegado 'Customer_LIB' de tipo 'SharedLibrary'. 
+2023-11-15 16:11:43.272296: BIP2155I: A punto de 'Initialize' el recurso desplegado 'Customer_GetById' de tipo 'Application'. 
+2023-11-15 16:11:43.281796: BIP2155I: A punto de 'Initialize' el recurso desplegado 'Customer_API_BckMQ' de tipo 'RestAPI'. 
+2023-11-15 16:11:43.577944: BIP9332I: SharedLibrary 'Customer_LIB' se ha changed correctamente. 
+2023-11-15 16:11:43.578340: BIP2155I: A punto de 'Start' el recurso desplegado 'Customer_GetById' de tipo 'Application'. 
+2023-11-15 16:11:43.579024: BIP2269I: El recurso desplegado 'co.com.customer.service.Customer_GetById' (uuid='co.com.customer.service.Customer_GetById',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2023-11-15 16:11:43.579228: BIP9332I: Application 'Customer_GetById' se ha reloaded correctamente. 
+2023-11-15 16:11:43.579424: BIP2155I: A punto de 'Start' el recurso desplegado 'Customer_API_BckMQ' de tipo 'RestAPI'. 
+An http endpoint was registered on port '7800', path '/services/customer/api/v3*'.
+2023-11-15 16:11:43.615612: BIP3132I: El escucha HTTP ha empezado a escuchar en el puerto '7800' para conexiones 'http'. 
+2023-11-15 16:11:43.615928: BIP1996I: Escuchando por el URL HTTP '/services/customer/api/v3*'. 
+Started native listener for HTTP input node on port 7800 for URL /services/customer/api/v3*
+2023-11-15 16:11:43.616488: BIP2269I: El recurso desplegado 'gen.Customer_API_BckMQ' (uuid='gen.Customer_API_BckMQ',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2023-11-15 16:11:43.616744: BIP9332I: RestAPI 'Customer_API_BckMQ' se ha reloaded correctamente. 
+2023-11-15 16:11:43.617012: BIP9326I: El origen 'Customer_LIBproject.generated.bar' se ha desplegado correctamente. 
+2023-11-15 16:11:43.623728: BIP2154I: El servidor de integración ha finalizado con el mensaje de configuración. 
+Listening for transport dt_socket at address: 9997
+2023-11-15 16:14:19.294062: BIP2152I: Se ha recibido el mensaje de configuración. 
+2023-11-15 16:14:19.344776: BIP2155I: A punto de 'Stop' el recurso desplegado 'Customer_GetById' de tipo 'Application'. 
+2023-11-15 16:14:21.427330: BIP2271I: El recurso desplegado 'co.com.customer.service.Customer_GetById' (uuid='co.com.customer.service.Customer_GetById',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2023-11-15 16:14:21.427664: BIP2155I: A punto de 'TearDown' el recurso desplegado 'Customer_GetById' de tipo 'Application'. 
+2023-11-15 16:14:21.530756: BIP2155I: A punto de 'Initialize' el recurso desplegado 'Customer_GetById' de tipo 'Application'. 
+2023-11-15 16:14:21.588778: BIP2155I: A punto de 'Start' el recurso desplegado 'Customer_GetById' de tipo 'Application'. 
+2023-11-15 16:14:21.589414: BIP2269I: El recurso desplegado 'co.com.customer.service.Customer_GetById' (uuid='co.com.customer.service.Customer_GetById',tipo='MessageFlow') se ha iniciado satisfactoriamente. 
+2023-11-15 16:14:21.589576: BIP9332I: Application 'Customer_GetById' se ha changed correctamente. 
+2023-11-15 16:14:21.589692: BIP9326I: El origen 'Customer_GetByIdproject.generated.bar' se ha desplegado correctamente. 
+2023-11-15 16:14:21.591634: BIP2154I: El servidor de integración ha finalizado con el mensaje de configuración. 
+2023-11-15 16:47:12.246024: BIP2155I: A punto de 'Stop' el recurso desplegado 'Customer_GetById' de tipo 'Application'. 
+2023-11-15 16:47:16.710196: BIP2271I: El recurso desplegado 'co.com.customer.service.Customer_GetById' (uuid='co.com.customer.service.Customer_GetById',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2023-11-15 16:47:16.710516: BIP2155I: A punto de 'TearDown' el recurso desplegado 'Customer_GetById' de tipo 'Application'. 
+2023-11-15 16:47:16.896348: BIP9521I: Application 'Customer_GetById' se ha borrado. 
+2023-11-15 16:47:16.896864: BIP2364E: La biblioteca compartida 'Customer_LIB' no puede borrarse porque hay recursos desplegados que la referencian [ RestAPI/Customer_API_BckMQ ]. 
+2023-11-15 16:47:16.897266: BIP2155I: A punto de 'Stop' el recurso desplegado 'Customer_API_BckMQ' de tipo 'RestAPI'. 
+2023-11-15 16:47:21.728024: BIP2271I: El recurso desplegado 'gen.Customer_API_BckMQ' (uuid='gen.Customer_API_BckMQ',tipo='MessageFlow') se ha detenido satisfactoriamente. 
+2023-11-15 16:47:21.728318: BIP2155I: A punto de 'TearDown' el recurso desplegado 'Customer_API_BckMQ' de tipo 'RestAPI'. 
+2023-11-15 16:47:21.745442: BIP3133I: El escucha HTTP ha dejado de escuchar en el puerto '7800' para conexiones 'http'. 
+2023-11-15 16:47:21.786548: BIP9521I: RestAPI 'Customer_API_BckMQ' se ha borrado. 
+2023-11-15 16:48:36.792852: BIP2155I: A punto de 'TearDown' el recurso desplegado 'Customer_LIB' de tipo 'SharedLibrary'. 
+2023-11-15 16:48:36.880192: BIP9521I: SharedLibrary 'Customer_LIB' se ha borrado. 

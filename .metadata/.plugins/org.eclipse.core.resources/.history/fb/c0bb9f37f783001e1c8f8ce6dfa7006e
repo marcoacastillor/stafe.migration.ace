@@ -1,0 +1,53 @@
+BROKER SCHEMA co.com.commons.module
+
+
+CREATE COMPUTE MODULE Modules_RouteMessage
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- Crear árbol de salida
+		CREATE FIELD OutputRoot.MQMD;
+		CREATE FIELD OutputRoot.MQRFH2;
+		
+		-- Declarar referencias
+		DECLARE refMQRFH2 REFERENCE TO OutputRoot.MQRFH2;
+		
+		-- Declarar referencia a objeto de entrada
+		DECLARE refInp REFERENCE TO InputRoot;
+		MOVE refInp LASTCHILD;
+		MOVE refInp LASTCHILD;
+		
+		-- Copiar datos de configuración
+		SET refMQRFH2.usr.transaction.X_Request_ID 		= COALESCE(InputRoot.HTTPInputHeader."X-Request-ID",UUIDASCHAR);
+		
+		-- Guardar información para responder a cliente
+		SET refMQRFH2.usr.response.replyIdentifier = InputLocalEnvironment.Destination.HTTP.RequestIdentifier;
+		
+		--Copiar el mensaje
+		SET OutputRoot.JSON = InputRoot.JSON;
+		
+		RETURN TRUE;
+	END;
+END MODULE;
+
+
+
+CREATE COMPUTE MODULE Modules_RouteMessage
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- Copiar cabeceras
+		SET OutputRoot.MQMD 		= InputRoot.MQMD;
+		SET OutputRoot.MQRFH2 		= InputRoot.MQRFH2;
+		
+		--Poner utf-8 a la respuesta
+		SET OutputRoot.Properties.Encoding = 1209;
+		
+		--Copiar el mensaje
+		SET OutputRoot.JSON = InputRoot.JSON;
+		
+		-- Guardar información para responder a cliente
+		SET OutputLocalEnvironment.Destination.HTTP.RequestIdentifier = CAST(refMQRFH2.usr.response.replyIdentifier AS BLOB);
+		
+		RETURN TRUE;
+		
+	END;
+END MODULE;

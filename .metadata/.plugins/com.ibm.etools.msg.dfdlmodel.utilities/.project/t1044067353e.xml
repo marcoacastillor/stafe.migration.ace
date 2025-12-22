@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><MessageBroker name="Kactus_MsgModel_WSDL">
+  <XSDCollection href="platform:/resource/Kactus_MsgModel_WSDL/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd" prefix="tns" targetNamespace="http://schemas.xmlsoap.org/soap/envelope/">
+    <import name="IBMdefined/org/w3/www/xml/_1998/namespace/xml.xsd" targetNamespace="http://www.w3.org/XML/1998/namespace"/>
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//Envelope;XSDElementDeclaration" name="Envelope" type="mlib://Kactus_MsgModel_WSDL#/-/complexType{http://schemas.xmlsoap.org/soap/envelope/}Envelope"/>
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//Header;XSDElementDeclaration=1" name="Header" type="mlib://Kactus_MsgModel_WSDL#/-/complexType{http://schemas.xmlsoap.org/soap/envelope/}Header"/>
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//Body;XSDElementDeclaration=2" name="Body" type="mlib://Kactus_MsgModel_WSDL#/-/complexType{http://schemas.xmlsoap.org/soap/envelope/}Body"/>
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//Fault;XSDElementDeclaration=3" name="Fault" type="mlib://Kactus_MsgModel_WSDL#/-/complexType{http://schemas.xmlsoap.org/soap/envelope/}Fault"/>
+    <complexType baseType="mlib://Kactus_MsgModel_WSDL#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/Kactus_MsgModel_WSDL/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//Envelope;XSDComplexTypeDefinition" name="Envelope"/>
+    <complexType baseType="mlib://Kactus_MsgModel_WSDL#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/Kactus_MsgModel_WSDL/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//Header;XSDComplexTypeDefinition=1" name="Header"/>
+    <complexType baseType="mlib://Kactus_MsgModel_WSDL#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/Kactus_MsgModel_WSDL/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//Body;XSDComplexTypeDefinition=2" name="Body"/>
+    <complexType baseType="mlib://Kactus_MsgModel_WSDL#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/Kactus_MsgModel_WSDL/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//Fault;XSDComplexTypeDefinition=3" name="Fault"/>
+    <complexType href="platform:/resource/Kactus_MsgModel_WSDL/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//FaultString;XSDComplexTypeDefinition=4" name="FaultString"/>
+    <complexType baseType="mlib://Kactus_MsgModel_WSDL#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/Kactus_MsgModel_WSDL/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//detail;XSDComplexTypeDefinition=5" name="detail"/>
+    <simpleType href="platform:/resource/Kactus_MsgModel_WSDL/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//encodingStyle;XSDSimpleTypeDefinition" name="encodingStyle" variety="list"/>
+    <attribute href="platform:/resource/Kactus_MsgModel_WSDL/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//mustUnderstand;XSDAttributeDeclaration" name="mustUnderstand"/>
+    <attribute href="platform:/resource/Kactus_MsgModel_WSDL/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//actor;XSDAttributeDeclaration=1" name="actor"/>
+    <attribute href="platform:/resource/Kactus_MsgModel_WSDL/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//encodingStyle;XSDAttributeDeclaration=2" name="encodingStyle"/>
+    <attributeGroup href="platform:/resource/Kactus_MsgModel_WSDL/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//encodingStyle;XSDAttributeGroupDefinition" name="encodingStyle"/>
+  </XSDCollection>
+  <XSDCollection href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_1_wsdl.xsd" prefix="tns" targetNamespace="http://tempuri.org/">
+    <include name="/Kactus_MsgModel_WSDL/KWsInfog.xsd" targetNamespace="http://tempuri.org/"/>
+    <import name="KWsInfog_2.xsd" targetNamespace="http://schemas.datacontract.org/2004/07/"/>
+    <import name="KWsInfog_1.xsd" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+    <import name="KWsInfog_3.xsd" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+  </XSDCollection>
+  <XSDCollection href="platform:/resource/Kactus_MsgModel_WSDL/IBMdefined/soap.xsd" prefix="" targetNamespace="">
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/IBMdefined/soap.xsd#//SOAP_Domain_Msg;XSDElementDeclaration" name="SOAP_Domain_Msg" type="mlib://Kactus_MsgModel_WSDL#/-/complexType{}SOAP_Msg_type"/>
+    <complexType baseType="mlib://Kactus_MsgModel_WSDL#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/Kactus_MsgModel_WSDL/IBMdefined/soap.xsd#//MIME_Headers_type;XSDComplexTypeDefinition" name="MIME_Headers_type"/>
+    <complexType baseType="mlib://Kactus_MsgModel_WSDL#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/Kactus_MsgModel_WSDL/IBMdefined/soap.xsd#//Attachment_type;XSDComplexTypeDefinition=1" name="Attachment_type"/>
+    <complexType baseType="mlib://Kactus_MsgModel_WSDL#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/Kactus_MsgModel_WSDL/IBMdefined/soap.xsd#//SOAP_Msg_type;XSDComplexTypeDefinition=2" name="SOAP_Msg_type"/>
+    <group href="platform:/resource/Kactus_MsgModel_WSDL/IBMdefined/soap.xsd#//MIME_header_fields;XSDModelGroupDefinition" name="MIME_header_fields"/>
+  </XSDCollection>
+  <XSDCollection href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_1.xsd" prefix="tns" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_1.xsd#//ArrayOfstring;XSDElementDeclaration" name="ArrayOfstring" type="mlib://Kactus_MsgModel_WSDL#/-/complexType{http://schemas.microsoft.com/2003/10/Serialization/Arrays}ArrayOfstring"/>
+    <complexType baseType="mlib://Kactus_MsgModel_WSDL#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_1.xsd#//ArrayOfstring;XSDComplexTypeDefinition" name="ArrayOfstring"/>
+  </XSDCollection>
+  <XSDCollection href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_3.xsd" prefix="tns" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/">
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_3.xsd#//anyType;XSDElementDeclaration" name="anyType" type="mlib://Kactus_MsgModel_WSDL#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType"/>
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_3.xsd#//anyURI;XSDElementDeclaration=1" name="anyURI" type="mlib://Kactus_MsgModel_WSDL#/-/simpleType{http://www.w3.org/2001/XMLSchema}anyURI"/>
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_3.xsd#//base64Binary;XSDElementDeclaration=2" name="base64Binary" type="mlib://Kactus_MsgModel_WSDL#/-/simpleType{http://www.w3.org/2001/XMLSchema}base64Binary"/>
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_3.xsd#//boolean;XSDElementDeclaration=3" name="boolean" type="mlib://Kactus_MsgModel_WSDL#/-/simpleType{http://www.w3.org/2001/XMLSchema}boolean"/>
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_3.xsd#//byte;XSDElementDeclaration=4" name="byte" type="mlib://Kactus_MsgModel_WSDL#/-/simpleType{http://www.w3.org/2001/XMLSchema}byte"/>
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_3.xsd#//dateTime;XSDElementDeclaration=5" name="dateTime" type="mlib://Kactus_MsgModel_WSDL#/-/simpleType{http://www.w3.org/2001/XMLSchema}dateTime"/>
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_3.xsd#//decimal;XSDElementDeclaration=6" name="decimal" type="mlib://Kactus_MsgModel_WSDL#/-/simpleType{http://www.w3.org/2001/XMLSchema}decimal"/>
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_3.xsd#//double;XSDElementDeclaration=7" name="double" type="mlib://Kactus_MsgModel_WSDL#/-/simpleType{http://www.w3.org/2001/XMLSchema}double"/>
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_3.xsd#//float;XSDElementDeclaration=8" name="float" type="mlib://Kactus_MsgModel_WSDL#/-/simpleType{http://www.w3.org/2001/XMLSchema}float"/>
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_3.xsd#//int;XSDElementDeclaration=9" name="int" type="mlib://Kactus_MsgModel_WSDL#/-/simpleType{http://www.w3.org/2001/XMLSchema}int"/>
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_3.xsd#//long;XSDElementDeclaration=10" name="long" type="mlib://Kactus_MsgModel_WSDL#/-/simpleType{http://www.w3.org/2001/XMLSchema}long"/>
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_3.xsd#//QName;XSDElementDeclaration=11" name="QName" type="mlib://Kactus_MsgModel_WSDL#/-/simpleType{http://www.w3.org/2001/XMLSchema}QName"/>
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_3.xsd#//short;XSDElementDeclaration=12" name="short" type="mlib://Kactus_MsgModel_WSDL#/-/simpleType{http://www.w3.org/2001/XMLSchema}short"/>
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_3.xsd#//string;XSDElementDeclaration=13" name="string" type="mlib://Kactus_MsgModel_WSDL#/-/simpleType{http://www.w3.org/2001/XMLSchema}string"/>
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_3.xsd#//unsignedByte;XSDElementDeclaration=14" name="unsignedByte" type="mlib://Kactus_MsgModel_WSDL#/-/simpleType{http://www.w3.org/2001/XMLSchema}unsignedByte"/>
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_3.xsd#//unsignedInt;XSDElementDeclaration=15" name="unsignedInt" type="mlib://Kactus_MsgModel_WSDL#/-/simpleType{http://www.w3.org/2001/XMLSchema}unsignedInt"/>
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_3.xsd#//unsignedLong;XSDElementDeclaration=16" name="unsignedLong" type="mlib://Kactus_MsgModel_WSDL#/-/simpleType{http://www.w3.org/2001/XMLSchema}unsignedLong"/>
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_3.xsd#//unsignedShort;XSDElementDeclaration=17" name="unsignedShort" type="mlib://Kactus_MsgModel_WSDL#/-/simpleType{http://www.w3.org/2001/XMLSchema}unsignedShort"/>
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_3.xsd#//char;XSDElementDeclaration=18" name="char" type="mlib://Kactus_MsgModel_WSDL#/-/simpleType{http://schemas.microsoft.com/2003/10/Serialization/}char"/>
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_3.xsd#//duration;XSDElementDeclaration=19" name="duration" type="mlib://Kactus_MsgModel_WSDL#/-/simpleType{http://schemas.microsoft.com/2003/10/Serialization/}duration"/>
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_3.xsd#//guid;XSDElementDeclaration=20" name="guid" type="mlib://Kactus_MsgModel_WSDL#/-/simpleType{http://schemas.microsoft.com/2003/10/Serialization/}guid"/>
+    <simpleType href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_3.xsd#//char;XSDSimpleTypeDefinition" name="char" variety="atomic"/>
+    <simpleType href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_3.xsd#//duration;XSDSimpleTypeDefinition=1" name="duration" variety="atomic"/>
+    <simpleType href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_3.xsd#//guid;XSDSimpleTypeDefinition=2" name="guid" variety="atomic"/>
+    <attribute href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_3.xsd#//FactoryType;XSDAttributeDeclaration" name="FactoryType"/>
+    <attribute href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_3.xsd#//Id;XSDAttributeDeclaration=1" name="Id"/>
+    <attribute href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_3.xsd#//Ref;XSDAttributeDeclaration=2" name="Ref"/>
+  </XSDCollection>
+  <XSDCollection href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_2.xsd" prefix="tns" targetNamespace="http://schemas.datacontract.org/2004/07/">
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_2.xsd#//DatoCompuesto;XSDElementDeclaration" name="DatoCompuesto" type="mlib://Kactus_MsgModel_WSDL#/-/complexType{http://schemas.datacontract.org/2004/07/}DatoCompuesto"/>
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_2.xsd#//Token;XSDElementDeclaration=1" name="Token" type="mlib://Kactus_MsgModel_WSDL#/-/complexType{http://schemas.datacontract.org/2004/07/}Token"/>
+    <complexType baseType="mlib://Kactus_MsgModel_WSDL#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_2.xsd#//DatoCompuesto;XSDComplexTypeDefinition" name="DatoCompuesto"/>
+    <complexType baseType="mlib://Kactus_MsgModel_WSDL#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog_2.xsd#//Token;XSDComplexTypeDefinition=1" name="Token"/>
+  </XSDCollection>
+  <XSDCollection href="platform:/resource/Kactus_MsgModel_WSDL/IBMdefined/org/w3/www/xml/_1998/namespace/xml.xsd" prefix="xml" targetNamespace="http://www.w3.org/XML/1998/namespace">
+    <attribute href="platform:/resource/Kactus_MsgModel_WSDL/IBMdefined/org/w3/www/xml/_1998/namespace/xml.xsd#//lang;XSDAttributeDeclaration" name="lang"/>
+    <attribute href="platform:/resource/Kactus_MsgModel_WSDL/IBMdefined/org/w3/www/xml/_1998/namespace/xml.xsd#//space;XSDAttributeDeclaration=1" name="space"/>
+    <attribute href="platform:/resource/Kactus_MsgModel_WSDL/IBMdefined/org/w3/www/xml/_1998/namespace/xml.xsd#//base;XSDAttributeDeclaration=2" name="base"/>
+    <attributeGroup href="platform:/resource/Kactus_MsgModel_WSDL/IBMdefined/org/w3/www/xml/_1998/namespace/xml.xsd#//specialAttrs;XSDAttributeGroupDefinition" name="specialAttrs"/>
+  </XSDCollection>
+  <XSDCollection href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog.xsd" prefix="tns" targetNamespace="http://tempuri.org/">
+    <import name="KWsInfog_1.xsd" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays"/>
+    <import name="KWsInfog_2.xsd" targetNamespace="http://schemas.datacontract.org/2004/07/"/>
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog.xsd#//ConsultarInfo;XSDElementDeclaration" name="ConsultarInfo"/>
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog.xsd#//ConsultarInfoResponse;XSDElementDeclaration=1" name="ConsultarInfoResponse"/>
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog.xsd#//Autenticacion;XSDElementDeclaration=2" name="Autenticacion"/>
+    <element href="platform:/resource/Kactus_MsgModel_WSDL/KWsInfog.xsd#//AutenticacionResponse;XSDElementDeclaration=3" name="AutenticacionResponse"/>
+  </XSDCollection>
+</MessageBroker>

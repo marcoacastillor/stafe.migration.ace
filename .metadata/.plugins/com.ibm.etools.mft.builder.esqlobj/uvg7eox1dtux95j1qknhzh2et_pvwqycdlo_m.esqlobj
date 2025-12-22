@@ -1,0 +1,41 @@
+CREATE COMPUTE MODULE Modules_RouteMessage
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- Crear árbol de salida
+		CREATE FIELD OutputRoot.MQMD;
+		CREATE FIELD OutputRoot.MQRFH2;
+		
+		-- Declarar referencias
+		DECLARE refMQRFH2 REFERENCE TO OutputRoot.MQRFH2;
+		
+		-- Declarar referencia a objeto de entrada
+		DECLARE refInp REFERENCE TO InputRoot;
+		MOVE refInp LASTCHILD;
+		MOVE refInp LASTCHILD;
+		
+		-- Copiar datos de configuración
+		SET refMQRFH2.usr.transaction.X_Request_ID 		= COALESCE(InputRoot.HTTPInputHeader."X-Request-ID",UUIDASCHAR);
+		SET refMQRFH2.usr.transaction.X_Username 		= COALESCE(refInp.authentication.username, InputRoot.HTTPInputHeader."X-Username");--Capturar información de body
+		SET refMQRFH2.usr.transaction.X_Password 		= COALESCE(refInp.authentication.password, InputRoot.HTTPInputHeader."X-Password");--Capturar información de body
+		SET refMQRFH2.usr.transaction.X_Channel_Name 	= COALESCE(InputRoot.HTTPInputHeader."X-Channel-Name",'na');
+		SET refMQRFH2.usr.transaction.X_Token 			= COALESCE(InputRoot.HTTPInputHeader."X-Token",'na');
+		SET refMQRFH2.usr.transaction.X_Device 			= COALESCE(InputRoot.HTTPInputHeader."X-Device",InputRoot.HTTPInputHeader."X-Remote-Host");
+		
+		
+		--Información del componente invocado.
+		SET refMQRFH2.usr.trazability.component			= InputLocalEnvironment.HTTP.Input.Path.Segment[3];
+		SET refMQRFH2.usr.trazability.version			= InputLocalEnvironment.HTTP.Input.Path.Segment[4];
+		SET refMQRFH2.usr.trazability.service			= InputLocalEnvironment.HTTP.Input.Path.Segment[5];
+		SET refMQRFH2.usr.trazability.operation			= InputLocalEnvironment.HTTP.Input.Path.Segment[6];
+		SET refMQRFH2.usr.trazability.order 			= 2;
+		SET refMQRFH2.usr.trazability.timestamp			= CAST(CURRENT_TIMESTAMP as CHARACTER FORMAT 'YYY-dd-MM HH:mm:ss.SSS');
+		 
+		-- Guardar información para responder a cliente
+		SET refMQRFH2.usr.response.replyIdentifier = InputLocalEnvironment.Destination.HTTP.RequestIdentifier;
+		
+		--Copiar el mensaje
+		SET OutputRoot.JSON = InputRoot.JSON;
+		
+		RETURN TRUE;
+	END;
+END MODULE;

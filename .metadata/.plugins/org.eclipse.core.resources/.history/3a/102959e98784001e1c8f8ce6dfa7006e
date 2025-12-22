@@ -1,0 +1,10 @@
+BROKER SCHEMA co.com.customer.service
+
+
+CREATE COMPUTE MODULE Customer_GetById_ResponseService
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+		RETURN TRUE;
+	END;
+END MODULE;

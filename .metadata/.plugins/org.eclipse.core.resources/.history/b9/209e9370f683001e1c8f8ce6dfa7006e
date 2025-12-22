@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:restapiDescriptor xmlns="http://com.ibm.etools.mft.descriptor.base" xmlns:ns2="http://com.ibm.etools.mft.descriptor.restapi" definitionType="openapi_3" definitionFile="openapi.json" implementation="gen/Account_API.msgflow" https="true" definitionWithExtRef="false" faultFormat="JSON">
+    <references>
+        <sharedLibraryReference>
+            <libraryName>Commons_LIB</libraryName>
+        </sharedLibraryReference>
+    </references>
+    <ns2:operations>
+        <ns2:operation name="postAddChargeCommision" implementation="postAddChargeCommision.subflow"/>
+        <ns2:operation name="postAddEnroll" implementation="postAddEnroll.subflow"/>
+        <ns2:operation name="postAddSavingAcct" implementation="postAddSavingAcct.subflow"/>
+        <ns2:operation name="postAddTransfer" implementation="postAddTransfer.subflow"/>
+        <ns2:operation name="postInqBasicDataByIdAcct" implementation="postInqBasicDataByIdAcct.subflow"/>
+        <ns2:operation name="postInqBasicDataByIdAcctMeta" implementation="postInqBasicDataByIdAcctMeta.subflow"/>
+        <ns2:operation name="postInqBasicDataByIdCust" implementation="postInqBasicDataByIdCust.subflow"/>
+        <ns2:operation name="postInqBasicDataByIdCustV2" implementation="postInqBasicDataByIdCustV2.subflow"/>
+        <ns2:operation name="postInqChannelProducts" implementation="postInqChannelProducts.subflow"/>
+        <ns2:operation name="postInqCommission" implementation="postInqCommission.subflow"/>
+        <ns2:operation name="postInqMovementByDates" implementation="postInqMovementByDates.subflow"/>
+        <ns2:operation name="postInqProductsCompany" implementation="postInqProductsCompany.subflow"/>
+        <ns2:operation name="postInqSavingAccountSimulation" implementation="postInqSavingAccountSimulation.subflow"/>
+        <ns2:operation name="postInqSavingAcct" implementation="postInqSavingAcct.subflow"/>
+        <ns2:operation name="postInqTermDepositAccounts" implementation="postInqTermDepositAccounts.subflow"/>
+        <ns2:operation name="postModLockoutAccount" implementation="postModLockoutAccount.subflow"/>
+        <ns2:operation name="postRedemptionPointsCA" implementation="postRedemptionPointsCA.subflow"/>
+    </ns2:operations>
+    <ns2:errorHandlers>
+        <ns2:errorHandler type="CATCH" implementation="Account_APIInputCatchHandler.subflow"/>
+        <ns2:errorHandler type="FAILURE" implementation="Account_APIInputFailureHandler.subflow"/>
+        <ns2:errorHandler type="TIMEOUT" implementation="Account_APIInputTimeoutHandler.subflow"/>
+    </ns2:errorHandlers>
+</ns2:restapiDescriptor>

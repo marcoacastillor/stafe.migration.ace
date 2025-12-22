@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><MRMessageSet id="ES3OJ4C002001" name="RIS_DFT_Feedback_SpecificMessageSet" parser="XMLNSC">
-  
-<MRMsgCollection href="platform:/resource/RIS_DFT_Feedback_SpecificMessageSet/RIS_DFT_Feedback_SpecificMessageSet/sisips/admsalud/HIS_DFTFeedback_AGFA.mxsd" prefix="NS1" targetNamespace="http://sisips/admsalud">
-    <message href="platform:/resource/RIS_DFT_Feedback_SpecificMessageSet/RIS_DFT_Feedback_SpecificMessageSet/sisips/admsalud/HIS_DFTFeedback_AGFA.mxsd#/0/AGFA_DFT;XSDElementDeclaration$MRMessage" name="AGFA_DFT"/>
-    <element href="platform:/resource/RIS_DFT_Feedback_SpecificMessageSet/RIS_DFT_Feedback_SpecificMessageSet/sisips/admsalud/HIS_DFTFeedback_AGFA.mxsd#/0/AGFA_DFT;XSDElementDeclaration" name="AGFA_DFT"/>
-  </MRMsgCollection>
-</MRMessageSet>

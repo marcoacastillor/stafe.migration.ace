@@ -1,0 +1,28 @@
+/*EATE FUNCTION Main() RETURNS BOOLE*/
+	BEGIN
+		-- Copiar cabeceras para respuesta
+		/* --------------------------------------------------------- */
+		SET OutputRoot.MQMD 	= InputRoot.MQMD;
+		SET OutputRoot.MQRFH2 	= InputRoot.MQRFH2;
+		
+		-- Declarar referencias
+		DECLARE refInp REFERENCE TO InputRoot;
+		MOVE refInp LASTCHILD;
+		
+		-- Enviar a auditoria
+		/* --------------------------------------------------------- */
+		SET OutputRoot.MQRFH2.usr.trazability.order 	= 6;
+		SET OutputRoot.MQRFH2.usr.trazability.timestamp	= CAST(CURRENT_TIMESTAMP as CHARACTER FORMAT 'YYY-dd-MM HH:mm:ss.SSS');
+		
+		SET OutputRoot.{FIELDNAME(refInp)}		= InputRoot.{FIELDNAME(refInp)};
+		PROPAGATE TO TERMINAL 'out1' DELETE NONE; 
+		SET OutputRoot.{FIELDNAME(refInp)} = NULL;
+		/* --------------------------------------------------------- */
+		
+		-- Validar respuesta
+		/* --------------------------------------------------------- */
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
+		
+		RETURN TRUE;
+	END;

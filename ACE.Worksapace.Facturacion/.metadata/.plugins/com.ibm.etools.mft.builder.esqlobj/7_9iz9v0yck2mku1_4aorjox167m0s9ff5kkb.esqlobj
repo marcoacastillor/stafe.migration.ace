@@ -1,8 +1,0 @@
-CREATE FUNCTION getBooleanValue(IN myValue CHARACTER)RETURNS BOOLEAN
-BEGIN
-    IF myValue = '1' THEN
-    	return true;
-    ELSE
-    	return false;
-    END IF;
-END;

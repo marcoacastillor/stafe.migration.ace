@@ -1,0 +1,128 @@
+Customer_LIB>>>>TEST_SERVER>>SUCCESS>>1700082111936
+BIP9332I<<SharedLibrary 'Customer_LIB' se ha created correctamente. <<1700082111936
+BIP9326I<<El origen 'Customer_LIBproject.generated.bar' se ha desplegado correctamente. <<1700082111936
+Customer_API_BckMQ>>>>TEST_SERVER>>WARNING>>1700082123890
+BIP1361E<<El nodo de flujo de mensajes 'CUSTOMER.GETBYID.REQ', 'getCustomer#FCMComposite_1_2' en el flujo de mensajes 'getCustomer.instance', 'getCustomer.subflow' requiere la política 'Default' de tipo 'MQEndpoint', que no está desplegada. <<1700082123890
+BIP1361E<<El nodo de flujo de mensajes 'CUSTOMER.API.RESP', 'getCustomer#FCMComposite_1_3' en el flujo de mensajes 'getCustomer.instance', 'getCustomer.subflow' requiere la política 'Default' de tipo 'MQEndpoint', que no está desplegada. <<1700082123890
+BIP1096E<<El origen 'Customer_API_BckMQproject.generated.bar' se ha desplegado, pero ha habido uno o más errores que podrían suponer que los recursos desplegados no puedan ejecutar. <<1700082123890
+Customer_GetById>>>>TEST_SERVER>>WARNING>>1700082176822
+BIP1361E<<El nodo de flujo de mensajes 'CUSTOMER.GETBYID.REQ', 'co.com.customer.service.Customer_GetById#FCMComposite_1_1' en el flujo de mensajes 'co.com.customer.service.Customer_GetById', 'co.com.customer.service.Customer_GetById' requiere la política 'Default' de tipo 'MQEndpoint', que no está desplegada. <<1700082176822
+BIP1361E<<El nodo de flujo de mensajes 'MQ Reply', 'co.com.customer.service.Customer_GetById#FCMComposite_1_4' en el flujo de mensajes 'co.com.customer.service.Customer_GetById', 'co.com.customer.service.Customer_GetById' requiere la política 'Default' de tipo 'MQEndpoint', que no está desplegada. <<1700082176822
+BIP1361E<<El nodo de flujo de mensajes 'MQ Reply1', 'co.com.customer.service.Customer_GetById#FCMComposite_1_5' en el flujo de mensajes 'co.com.customer.service.Customer_GetById', 'co.com.customer.service.Customer_GetById' requiere la política 'Default' de tipo 'MQEndpoint', que no está desplegada. <<1700082176822
+BIP1096E<<El origen 'Customer_GetByIdproject.generated.bar' se ha desplegado, pero ha habido uno o más errores que podrían suponer que los recursos desplegados no puedan ejecutar. <<1700082176822
+Customer_GetById>>>>TEST_SERVER>>SUCCESS>>1700082249982
+BIP9332I<<Application 'Customer_GetById' se ha changed correctamente. <<1700082249982
+BIP9326I<<El origen 'Customer_GetByIdproject.generated.bar' se ha desplegado correctamente. <<1700082249982
+Customer_API_BckMQ>>>>TEST_SERVER>>SUCCESS>>1700082260832
+BIP9332I<<RestAPI 'Customer_API_BckMQ' se ha changed correctamente. <<1700082260832
+BIP9326I<<El origen 'Customer_API_BckMQproject.generated.bar' se ha desplegado correctamente. <<1700082260832
+Customer_LIB>>>>TEST_SERVER>>SUCCESS>>1700082699334
+BIP9332I<<SharedLibrary 'Customer_LIB' se ha changed correctamente. <<1700082699334
+BIP9332I<<Application 'Customer_GetById' se ha reloaded correctamente. <<1700082699334
+BIP9332I<<RestAPI 'Customer_API_BckMQ' se ha reloaded correctamente. <<1700082699334
+BIP9326I<<El origen 'Customer_LIBproject.generated.bar' se ha desplegado correctamente. <<1700082699334
+Customer_GetById>>>>TEST_SERVER>>SUCCESS>>1700082859290
+BIP9332I<<Application 'Customer_GetById' se ha changed correctamente. <<1700082859290
+BIP9326I<<El origen 'Customer_GetByIdproject.generated.bar' se ha desplegado correctamente. <<1700082859290
+Customer_LIB>>ESBBRK>>DEFAULT>>SUCCESS>>1700085336072
+BIP9332I<<SharedLibrary 'Customer_LIB' has been created successfully. <<1700085336072
+BIP9326I<<The source 'Customer_LIBproject.generated.bar' has been successfully deployed. <<1700085336072
+Customer_API_BckMQ>>ESBBRK>>DEFAULT>>WARNING>>1700085353665
+BIP1361E<<Message flow node 'CUSTOMER.GETBYID.REQ', 'getCustomer#FCMComposite_1_2' in Message flow 'getCustomer.instance', 'getCustomer.subflow' requires Policy 'Default' of type 'MQEndpoint' which is not deployed. <<1700085353665
+BIP1361E<<Message flow node 'CUSTOMER.API.RESP', 'getCustomer#FCMComposite_1_3' in Message flow 'getCustomer.instance', 'getCustomer.subflow' requires Policy 'Default' of type 'MQEndpoint' which is not deployed. <<1700085353665
+BIP1096E<<The source 'Customer_API_BckMQproject.generated.bar' has been deployed but there were one or more failures which may mean the deployed resources will be unable to execute. <<1700085353665
+Policies_Gral>>ESBBRK>>DEFAULT>>SUCCESS>>1700085474100
+BIP9332I<<PolicyProject 'Policies_Gral' has been created successfully. <<1700085474100
+BIP9326I<<The source 'Policies_Gralproject.generated.bar' has been successfully deployed. <<1700085474100
+Customer_API_BckMQ>>ESBBRK>>DEFAULT>>WARNING>>1700085544224
+BIP9320E<<Message Flow 'gen.Customer_API_BckMQ', 'gen.Customer_API_BckMQ' encountered a failure and could not start. <<1700085544224
+BIP2214E<<Invalid configuration message with no value for attribute 'channelName', object 'gen.Customer_API_BckMQ.getCustomer (Implementation).CUSTOMER.GETBYID.REQ'. <<1700085544224
+BIP9333W<<RestAPI 'Customer_API_BckMQ' has been created but contains errors which has prevented some resources from starting. <<1700085544224
+BIP1096E<<The source 'Customer_API_BckMQproject.generated.bar' has been deployed but there were one or more failures which may mean the deployed resources will be unable to execute. <<1700085544224
+Policies_Gral>>ESBBRK>>DEFAULT>>SUCCESS>>1700087384682
+BIP9332I<<Policy 'EndpointMQ' has been changed successfully. <<1700087384682
+BIP9332I<<MessageFlow 'gen.Customer_API_BckMQ' has been reloaded successfully. <<1700087384682
+BIP9326I<<The source 'Policies_Gralproject.generated.bar' has been successfully deployed. <<1700087384682
+Customer_API_BckMQ>>ESBBRK>>DEFAULT>>SUCCESS>>1700087405294
+BIP9332I<<RestAPI 'Customer_API_BckMQ' has been changed successfully. <<1700087405294
+BIP9326I<<The source 'Customer_API_BckMQproject.generated.bar' has been successfully deployed. <<1700087405294
+Customer_GetById>>ESBBRK>>DEFAULT>>SUCCESS>>1700087411166
+BIP9332I<<Application 'Customer_GetById' has been created successfully. <<1700087411166
+BIP9326I<<The source 'Customer_GetByIdproject.generated.bar' has been successfully deployed. <<1700087411166
+Customer_GetById>>ESBBRK>>DEFAULT>>SUCCESS>>1700087684407
+BIP9332I<<Application 'Customer_GetById' has been changed successfully. <<1700087684407
+BIP9326I<<The source 'Customer_GetByIdproject.generated.bar' has been successfully deployed. <<1700087684407
+Customer_API_BckMQ>>ESBBRK>>DEFAULT>>SUCCESS>>1700138866057
+BIP9332I<<RestAPI 'Customer_API_BckMQ' has been changed successfully. <<1700138866057
+BIP9326I<<The source 'Customer_API_BckMQproject.generated.bar' has been successfully deployed. <<1700138866057
+Customer_GetById>>ESBBRK>>DEFAULT>>SUCCESS>>1700139614099
+BIP9332I<<Application 'Customer_GetById' has been changed successfully. <<1700139614099
+BIP9326I<<The source 'Customer_GetByIdproject.generated.bar' has been successfully deployed. <<1700139614099
+Customer_GetById>>ESBBRK>>DEFAULT>>SUCCESS>>1700139715105
+BIP9332I<<Application 'Customer_GetById' has been changed successfully. <<1700139715105
+BIP9326I<<The source 'Customer_GetByIdproject.generated.bar' has been successfully deployed. <<1700139715105
+Customer_GetById>>ESBBRK>>DEFAULT>>SUCCESS>>1700139785020
+BIP9332I<<Application 'Customer_GetById' has been changed successfully. <<1700139785020
+BIP9326I<<The source 'Customer_GetByIdproject.generated.bar' has been successfully deployed. <<1700139785020
+Customer_API_BckMQ>>ESBBRK>>DEFAULT>>SUCCESS>>1700140694275
+BIP9332I<<RestAPI 'Customer_API_BckMQ' has been changed successfully. <<1700140694275
+BIP9326I<<The source 'Customer_API_BckMQproject.generated.bar' has been successfully deployed. <<1700140694275
+Customer_GetById>>ESBBRK>>DEFAULT>>SUCCESS>>1700141391602
+BIP9332I<<Application 'Customer_GetById' has been changed successfully. <<1700141391602
+BIP9326I<<The source 'Customer_GetByIdproject.generated.bar' has been successfully deployed. <<1700141391602
+Customer_GetById>>ESBBRK>>DEFAULT>>SUCCESS>>1700141505213
+BIP9332I<<Application 'Customer_GetById' has been changed successfully. <<1700141505213
+BIP9326I<<The source 'Customer_GetByIdproject.generated.bar' has been successfully deployed. <<1700141505213
+Customer_API>>ESBBRK>>DEFAULT>>WARNING>>1700144063747
+BIP9320E<<Message Flow 'gen.Customer_API', 'gen.Customer_API' encountered a failure and could not start. <<1700144063747
+BIP4001E<<Syntax error in SQL statements in node '{0}'. <<1700144063747
+BIP4127E<<Failed to find ESQL module 'co.com.commons.module.Modules_RouteMessage_Async'. <<1700144063747
+BIP9320E<<Message Flow 'gen.Customer_API_BckMQ', 'gen.Customer_API_BckMQ' encountered a failure and could not start. <<1700144063747
+BIP6319E<<The HTTPInput node 'HTTP Input' in message flow 'gen.Customer_API_BckMQ' (application 'Customer_API', library '') could not be deployed because it has an invalid URL specifier of '/services/customer/api/v3*'. The URL specifier is invalid as it clashes with the URL specifier '/services/customer/api/v3*' of the HTTPInput node 'HTTP Input' in message flow 'gen.Customer_API_BckMQ' (application 'Customer_API_BckMQ', library ''). <<1700144063747
+BIP9333W<<RestAPI 'Customer_API' has been created but contains errors which has prevented some resources from starting. <<1700144063747
+BIP1096E<<The source 'Customer_APIproject.generated.bar' has been deployed but there were one or more failures which may mean the deployed resources will be unable to execute. <<1700144063747
+Customer_LIB>>ESBBRK>>DEFAULT>>WARNING>>1700144080854
+BIP9332I<<SharedLibrary 'Customer_LIB' has been changed successfully. <<1700144080854
+BIP9332I<<RestAPI 'Customer_API_BckMQ' has been reloaded successfully. <<1700144080854
+BIP9332I<<Application 'Customer_GetById' has been reloaded successfully. <<1700144080854
+BIP9320E<<Message Flow 'gen.Customer_API', 'gen.Customer_API' encountered a failure and could not start. <<1700144080854
+BIP6319E<<The HTTPInput node 'HTTP Input' in message flow 'gen.Customer_API' (application 'Customer_API', library '') could not be deployed because it has an invalid URL specifier of '/services/customer/api/v3*'. The URL specifier is invalid as it clashes with the URL specifier '/services/customer/api/v3*' of the HTTPInput node 'HTTP Input' in message flow 'gen.Customer_API_BckMQ' (application 'Customer_API_BckMQ', library ''). <<1700144080854
+BIP9320E<<Message Flow 'gen.Customer_API_BckMQ', 'gen.Customer_API_BckMQ' encountered a failure and could not start. <<1700144080854
+BIP6319E<<The HTTPInput node 'HTTP Input' in message flow 'gen.Customer_API_BckMQ' (application 'Customer_API', library '') could not be deployed because it has an invalid URL specifier of '/services/customer/api/v3*'. The URL specifier is invalid as it clashes with the URL specifier '/services/customer/api/v3*' of the HTTPInput node 'HTTP Input' in message flow 'gen.Customer_API_BckMQ' (application 'Customer_API_BckMQ', library ''). <<1700144080854
+BIP9333W<<RestAPI 'Customer_API' has been reloaded but contains errors which has prevented some resources from starting. <<1700144080854
+BIP1096E<<The source 'Customer_LIBproject.generated.bar' has been deployed but there were one or more failures which may mean the deployed resources will be unable to execute. <<1700144080854
+Customer_LIB>>ESBBRK>>DEFAULT>>SUCCESS>>1700144151412
+BIP9332I<<SharedLibrary 'Customer_LIB' has been created successfully. <<1700144151412
+BIP9326I<<The source 'Customer_LIBproject.generated.bar' has been successfully deployed. <<1700144151412
+Customer_API>>ESBBRK>>DEFAULT>>WARNING>>1700144158182
+BIP9320E<<Message Flow 'gen.Customer_API_BckMQ', 'gen.Customer_API_BckMQ' encountered a failure and could not start. <<1700144158182
+BIP6319E<<The HTTPInput node 'HTTP Input' in message flow 'gen.Customer_API_BckMQ' (application 'Customer_API', library '') could not be deployed because it has an invalid URL specifier of '/services/customer/api/v3*'. The URL specifier is invalid as it clashes with the URL specifier '/services/customer/api/v3*' of the HTTPInput node 'HTTP Input' in message flow 'gen.Customer_API' (application 'Customer_API', library ''). <<1700144158182
+BIP9333W<<RestAPI 'Customer_API' has been created but contains errors which has prevented some resources from starting. <<1700144158182
+BIP1096E<<The source 'Customer_APIproject.generated.bar' has been deployed but there were one or more failures which may mean the deployed resources will be unable to execute. <<1700144158182
+Customer_API>>ESBBRK>>DEFAULT>>SUCCESS>>1700144209252
+BIP9332I<<RestAPI 'Customer_API' has been changed successfully. <<1700144209252
+BIP9326I<<The source 'Customer_APIproject.generated.bar' has been successfully deployed. <<1700144209252
+Customer_GetByIdAsync>>ESBBRK>>DEFAULT>>SUCCESS>>1700144225782
+BIP9332I<<Application 'Customer_GetByIdAsync' has been created successfully. <<1700144225782
+BIP9326I<<The source 'Customer_GetByIdAsyncproject.generated.bar' has been successfully deployed. <<1700144225782
+Customer_GetByIdMQ>>ESBBRK>>DEFAULT>>SUCCESS>>1700144226114
+BIP9332I<<Application 'Customer_GetByIdMQ' has been created successfully. <<1700144226114
+BIP9326I<<The source 'Customer_GetByIdMQproject.generated.bar' has been successfully deployed. <<1700144226114
+Customer_API>>ESBBRK>>DEFAULT>>SUCCESS>>1700144451151
+BIP9332I<<RestAPI 'Customer_API' has been changed successfully. <<1700144451151
+BIP9326I<<The source 'Customer_APIproject.generated.bar' has been successfully deployed. <<1700144451151
+Customer_GetByIdAsync>>ESBBRK>>DEFAULT>>SUCCESS>>1700144573693
+BIP9332I<<Application 'Customer_GetByIdAsync' has been changed successfully. <<1700144573693
+BIP9326I<<The source 'Customer_GetByIdAsyncproject.generated.bar' has been successfully deployed. <<1700144573693
+Customer_LIB>>ESBBRK>>DEFAULT>>SUCCESS>>1700144688180
+BIP9332I<<SharedLibrary 'Customer_LIB' has been changed successfully. <<1700144688180
+BIP9332I<<Application 'Customer_GetByIdMQ' has been reloaded successfully. <<1700144688180
+BIP9332I<<RestAPI 'Customer_API' has been reloaded successfully. <<1700144688180
+BIP9332I<<Application 'Customer_GetByIdAsync' has been reloaded successfully. <<1700144688180
+BIP9326I<<The source 'Customer_LIBproject.generated.bar' has been successfully deployed. <<1700144688180
+Customer_GetByIdAsync>>ESBBRK>>DEFAULT>>SUCCESS>>1700145016258
+BIP9332I<<Application 'Customer_GetByIdAsync' has been changed successfully. <<1700145016258
+BIP9326I<<The source 'Customer_GetByIdAsyncproject.generated.bar' has been successfully deployed. <<1700145016258
+Customer_GetByIdMQ>>ESBBRK>>DEFAULT>>SUCCESS>>1700145017756
+BIP9332I<<Application 'Customer_GetByIdMQ' has been changed successfully. <<1700145017756
+BIP9326I<<The source 'Customer_GetByIdMQproject.generated.bar' has been successfully deployed. <<1700145017756

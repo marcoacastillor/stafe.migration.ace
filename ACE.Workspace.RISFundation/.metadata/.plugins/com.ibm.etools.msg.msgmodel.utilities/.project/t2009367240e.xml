@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><MRMessageSet id="EQGS0Q8002001" name="RIS_MFN_SpecificMessageSet" parser="XMLNSC">
-  <MRMsgCollection href="platform:/resource/RIS_MFN_SpecificMessageSet/RIS_MFN_SpecificMessageSet/xe/admsalud/XE_RIS_ORM_MFN_IN.mxsd" prefix="NS1" targetNamespace="http://xe/admsalud">
-    <message href="platform:/resource/RIS_MFN_SpecificMessageSet/RIS_MFN_SpecificMessageSet/xe/admsalud/XE_RIS_ORM_MFN_IN.mxsd#/0/AGFA_MFN;XSDElementDeclaration$MRMessage" name="AGFA_MFN"/>
-    <element href="platform:/resource/RIS_MFN_SpecificMessageSet/RIS_MFN_SpecificMessageSet/xe/admsalud/XE_RIS_ORM_MFN_IN.mxsd#/0/AGFA_MFN;XSDElementDeclaration" name="AGFA_MFN"/>
-  </MRMsgCollection>
-</MRMessageSet>

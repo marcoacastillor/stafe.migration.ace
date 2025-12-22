@@ -1,0 +1,25 @@
+/*EATE FUNCTION Main() RETURNS BOOLE*/
+	BEGIN
+		-- Crear árbol de salida
+		CREATE FIELD OutputRoot.MQMD;
+		CREATE FIELD OutputRoot.MQRFH2;
+		
+		-- Declarar referencias
+		DECLARE refMQRFH2 REFERENCE TO OutputRoot.MQRFH2;
+		
+		-- Declarar referencia a objeto de entrada
+		DECLARE refInp REFERENCE TO InputRoot;
+		MOVE refInp LASTCHILD;
+		MOVE refInp LASTCHILD;
+		
+		-- Copiar datos de configuración
+		SET refMQRFH2.usr.transaction.X_Request_ID 		= COALESCE(InputRoot.HTTPInputHeader."X-Request-ID",UUIDASCHAR);
+		
+		-- Guardar información para responder a cliente
+		SET refMQRFH2.usr.response.replyIdentifier = InputLocalEnvironment.Destination.HTTP.RequestIdentifier;
+		
+		--Copiar el mensaje
+		SET OutputRoot.JSON = InputRoot.JSON;
+		
+		RETURN TRUE;
+	END;

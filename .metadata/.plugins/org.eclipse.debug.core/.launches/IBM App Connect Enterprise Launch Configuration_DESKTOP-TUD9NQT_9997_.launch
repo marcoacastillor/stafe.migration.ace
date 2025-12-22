@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><launchConfiguration type="com.ibm.etools.mft.debug.internal.mbLaunchConfigurationDelegate">
+<stringAttribute key="BRName" value="TEST_SERVER"/>
+<stringAttribute key="ConnectionInfo" value="localhost:7600"/>
+<stringAttribute key="EGName" value=""/>
+<stringAttribute key="com.ibm.etools.mft.debug.attr_hostname" value="DESKTOP-TUD9NQT"/>
+<stringAttribute key="com.ibm.etools.mft.debug.attr_javaportname" value="9997"/>
+</launchConfiguration>

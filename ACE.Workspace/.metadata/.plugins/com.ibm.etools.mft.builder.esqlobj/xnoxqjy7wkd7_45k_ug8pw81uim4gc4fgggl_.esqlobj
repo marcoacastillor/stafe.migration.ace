@@ -1,9 +1,0 @@
-/*EATE FUNCTION Main() RETURNS BOOLE*/
-	BEGIN
-		SET OutputRoot.Properties	= NULL;
-		SET OutputRoot.MQMD 		= InputRoot.MQMD;
-		SET OutputRoot.MQRFH2 		= InputRoot.MQRFH2;
-		SET OutputRoot.JSON 		= InputRoot.JSON;
-		
-		RETURN TRUE;
-	END;

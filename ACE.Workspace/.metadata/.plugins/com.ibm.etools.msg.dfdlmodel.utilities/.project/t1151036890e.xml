@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><MessageBroker name="LIS_ADT_Specific">
-  <XSDCollection href="platform:/resource/LIS_ADT_Specific/HIS_ADTTable.xsd" prefix="NS1" targetNamespace="http://co/org/fsfb/HIS_ADTTable/impl">
-    <element href="platform:/resource/LIS_ADT_Specific/HIS_ADTTable.xsd#//ADT;XSDElementDeclaration" name="ADT"/>
-  </XSDCollection>
-</MessageBroker>

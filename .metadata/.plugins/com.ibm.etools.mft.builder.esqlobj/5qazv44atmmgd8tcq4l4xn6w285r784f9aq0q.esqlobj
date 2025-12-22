@@ -1,0 +1,11 @@
+CREATE COMPUTE MODULE Customer_GetById_ResponseService
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- Devolver parámetros de servicio
+		SET OutputLocalEnvironment.usr = Environment.usr;
+		
+		
+		
+		RETURN TRUE;
+	END;
+END MODULE;

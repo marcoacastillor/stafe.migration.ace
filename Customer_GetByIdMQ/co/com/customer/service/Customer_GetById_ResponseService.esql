@@ -1,0 +1,47 @@
+BROKER SCHEMA co.com.customer.service
+
+
+CREATE COMPUTE MODULE Customer_GetById_ResponseService
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- Copiar cabeceras para respuesta
+		/* --------------------------------------------------------- */
+		SET OutputRoot.MQMD 	= InputRoot.MQMD;
+		SET OutputRoot.MQRFH2 	= InputRoot.MQRFH2;
+		
+		-- Declarar referencias
+		DECLARE refInp REFERENCE TO InputRoot;
+		MOVE refInp LASTCHILD;
+		MOVE refInp LASTCHILD;
+		
+		DECLARE sql CHARACTER 'SELECT * FROM CUSTOMER.CUSTOMER WHERE type_id = ? AND number_id = ?';
+		SET Environment.usr.data[] = PASSTHRU(sql, refInp.type_id, refInp.number_id);
+		
+		/* --------------------------------------------------------- */
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
+		
+		-- Prueba resultado
+		SET refOut.status.code = '200';
+		SET refOut.status.desc = 'Exitoso - mq';
+		SET refOut.status.dateResponse = CAST(CURRENT_TIMESTAMP AS CHARACTER FORMAT 'YYYYMMdd hh:mm:ss');
+		
+		IF CARDINALITY(Environment.usr.data[]) > 0 THEN
+			SET refOut.customer = Environment.usr.data;
+			
+			DECLARE refCust REFERENCE TO Environment.usr.data;
+			SET sql = 'select j.* from CUSTOMER.jobs j, CUSTOMER.customer_jobs cj 
+						where cj.fk_id_job = j.id 
+						and cj.fk_id_customer  = ?';
+						
+			SET Environment.usr.jobs[] = PASSTHRU(sql, refCust.id);
+			DECLARE i INTEGER 1;
+			FOR refJob AS Environment.usr.jobs[] DO
+				SET refOut.customer.(JSON.Array)jobs.d[i] = refJob;
+				SET i = i + 1;
+			END FOR; 		
+		END IF;
+		
+		RETURN TRUE;
+	END;
+END MODULE;

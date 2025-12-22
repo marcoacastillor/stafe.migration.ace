@@ -1,7 +1,0 @@
-/*EATE FUNCTION Main() RETURNS BOOLE*/
-	BEGIN
-		-- mantener CorrelId
-		SET OutputRoot = InputRoot;
-		
-		SET OutputLocalEnvironment.Destination.RouterList.DestinationData[1].labelName = UDPformato;
-	END;

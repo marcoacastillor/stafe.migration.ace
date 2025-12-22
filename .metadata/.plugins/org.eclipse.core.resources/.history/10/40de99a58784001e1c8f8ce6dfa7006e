@@ -1,0 +1,124 @@
+BROKER SCHEMA co.com.commons.module
+
+
+CREATE COMPUTE MODULE Modules_RouteMessage
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- Crear árbol de salida
+		CREATE FIELD OutputRoot.MQMD;
+		CREATE FIELD OutputRoot.MQRFH2;
+		
+		-- Declarar referencias
+		DECLARE refMQRFH2 REFERENCE TO OutputRoot.MQRFH2;
+		
+		-- Declarar referencia a objeto de entrada
+		DECLARE refInp REFERENCE TO InputRoot;
+		MOVE refInp LASTCHILD;
+		MOVE refInp LASTCHILD;
+		
+		-- Copiar datos de configuración
+		SET refMQRFH2.usr.transaction.X_Request_ID 		= COALESCE(InputRoot.HTTPInputHeader."X-Request-ID",UUIDASCHAR);
+		
+		-- Guardar información para responder a cliente
+		SET refMQRFH2.usr.response.replyIdentifier = InputLocalEnvironment.Destination.HTTP.RequestIdentifier;
+		
+		--Copiar el mensaje
+		SET OutputRoot.JSON = InputRoot.JSON;
+		
+		RETURN TRUE;
+	END;
+END MODULE;
+
+
+
+CREATE COMPUTE MODULE Modules_GetIdentifierReply
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- Copiar cabeceras
+		--SET OutputRoot.MQMD 		= InputRoot.MQMD;
+		--SET OutputRoot.MQRFH2 		= InputRoot.MQRFH2;
+		
+		-- Declarar referencias
+		DECLARE refMQRFH2 REFERENCE TO InputRoot.MQRFH2;
+		
+		--Poner utf-8 a la respuesta
+		SET OutputRoot.Properties.Encoding = 1209;
+		
+		--Copiar el mensaje
+		SET OutputRoot.JSON = InputRoot.JSON;
+		
+		-- Guardar información para responder a cliente
+		SET OutputLocalEnvironment.Destination.HTTP.RequestIdentifier = CAST(refMQRFH2.usr.response.replyIdentifier AS BLOB);
+		
+		RETURN TRUE;
+		
+	END;
+END MODULE;
+
+
+CREATE COMPUTE MODULE Service_CatchError
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- Copiar cabeceras para respuesta
+		/* --------------------------------------------------------- */
+		SET OutputRoot.MQMD 	= InputRoot.MQMD;
+		SET OutputRoot.MQRFH2 	= InputRoot.MQRFH2;
+		
+		-- Declarar variables
+		DECLARE code, name, desc CHARACTER '';
+		
+		--Declarar referencia a lista de excepciones técnicas.
+		DECLARE refExceptionList REFERENCE TO InputExceptionList;
+		CALL co.com.commons.procedure.getDescriptionExceptionList(refExceptionList, code, name, desc);
+		
+		--Poner nombre de componente
+		SET OutputRoot.MQRFH2.usr.trazability.component = SUBSTRING(desc BEFORE '-  -');
+		SET OutputRoot.MQRFH2.usr.trazability.order 	= 6;
+		
+		-- Crear mensaje de salida
+		/* --------------------------------------------------------- */
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE refOut REFERENCE TO  OutputRoot.JSON.Data;
+		
+		SET refOut.status.code					= 506;
+		SET refOut.status.dateTransaction		= CURRENT_TIMESTAMP;
+		SET refOut.status.desc					= 'Error en la mediación';
+		
+		SET refOut.status.additionalStatus.code	= code;
+		SET refOut.status.additionalStatus.desc	= name || ' : ' || desc;
+		
+		RETURN TRUE;
+	END;
+END MODULE;
+
+
+
+CREATE COMPUTE MODULE Service_CatchError_Async
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		-- Copiar datos de transacción
+		SET OutputLocalEnvironment = InputLocalEnvironment;
+		
+		-- Declarar variables
+		DECLARE code, name, desc CHARACTER '';
+		
+		--Declarar referencia a lista de excepciones técnicas.
+		DECLARE refExceptionList REFERENCE TO InputExceptionList;
+		CALL gov.co.cundinamarca.utils.getDescriptionExceptionList(refExceptionList, code, name, desc);
+		
+		
+		-- Crear mensaje de salida
+		/* --------------------------------------------------------- */
+		CREATE FIELD OutputRoot.XMLNSC.ns:GetDataAgreementResponse;
+		DECLARE refOut REFERENCE TO  OutputRoot.XMLNSC.ns:GetDataAgreementResponse;
+		
+		SET refOut.transactionRs.status.code	= 700;
+		SET refOut.transactionRs.status.desc	= 'Error en la mediación';
+		
+		
+		SET refOut.transactionRs.businessError.code	= code;
+		SET refOut.transactionRs.businessError.desc	= name || ' : ' || desc;
+		
+		RETURN TRUE;
+	END;
+END MODULE;

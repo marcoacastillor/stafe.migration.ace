@@ -1,0 +1,17 @@
+/*EATE FUNCTION Main() RETURNS BOOLE*/
+	BEGIN
+		-- Declarar referencias
+		DECLARE refMQRFH2 REFERENCE TO InputRoot.MQRFH2;
+		
+		--Poner utf-8 a la respuesta
+		SET OutputRoot.Properties.Encoding = 1209;
+		
+		--Copiar el mensaje
+		SET OutputRoot.JSON = InputRoot.JSON;
+		
+		-- Guardar información para responder a cliente
+		SET OutputLocalEnvironment.Destination.HTTP.RequestIdentifier = CAST(refMQRFH2.usr.response.replyIdentifier AS BLOB);
+		
+		RETURN TRUE;
+		
+	END;

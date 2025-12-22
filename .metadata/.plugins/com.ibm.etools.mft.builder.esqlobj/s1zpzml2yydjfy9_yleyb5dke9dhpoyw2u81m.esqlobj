@@ -1,0 +1,23 @@
+/*EATE FUNCTION Main() RETURNS BOOLE*/
+	BEGIN
+		-- Copiar cabeceras para respuesta
+		/* --------------------------------------------------------- */
+		SET OutputRoot.MQMD 	= InputRoot.MQMD;
+		SET OutputRoot.MQRFH2 	= InputRoot.MQRFH2;
+		
+		-- Declarar referencias
+		DECLARE refInp REFERENCE TO InputRoot;
+		MOVE refInp LASTCHILD;
+		
+		-- Validar respuesta
+		/* --------------------------------------------------------- */
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE refOut REFERENCE TO OutputRoot.JSON.Data;
+		
+		-- Prueba resultado
+		SET refOut.status.code = '200';
+		SET refOut.status.desc = 'Exitoso';
+		SET refOut.status.dateResponse = CAST(CURRENT_TIMESTAMP AS CHARACTER FORMAT 'YYYYMMdd hh:mm:ss');
+		
+		RETURN TRUE;
+	END;
